@@ -1,0 +1,1 @@
+const fs=require('fs'),path=require('path');const src=path.join(__dirname,'..','data','db.json'),dir=path.join(__dirname,'..','backups');fs.mkdirSync(dir,{recursive:true});fs.copyFileSync(src,path.join(dir,'manual-'+Date.now()+'.json'));console.log('Backup created.');

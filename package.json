@@ -1,0 +1,8 @@
+{
+  "name":"terminal-quiz-lan",
+  "version":"1.0.0",
+  "private":true,
+  "description":"LAN-based Terminal Quiz symposium platform",
+  "scripts":{"start":"node server/index.js","event":"node server/index.js","backup":"node server/backup.js"},
+  "engines":{"node":">=18"}
+}

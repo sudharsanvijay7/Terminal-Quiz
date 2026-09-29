@@ -1,0 +1,490 @@
+{
+  "event": {
+    "name": "TERMINAL QUIZ",
+    "state": "ROUND2_ACTIVE",
+    "round": 2,
+    "startAt": 1790676429092,
+    "endAt": 1790678229092,
+    "paused": false,
+    "remainingMs": null,
+    "leaderboardPublished": false
+  },
+  "participants": {
+    "27340923704": {
+      "id": "27340923704",
+      "name": "Sam",
+      "registerNumber": "27340923704",
+      "token": "772891b7fec82fa8fa467a22b28738ea340932fcc0410587",
+      "online": true,
+      "round1Submitted": true,
+      "round1Score": 0,
+      "round2Score": 0,
+      "createdAt": "2026-09-29T10:02:00.174Z",
+      "lastSeen": 1790676434998
+    }
+  },
+  "answers": {
+    "27340923704:1": {
+      "participantId": "27340923704",
+      "questionId": 1,
+      "answer": 3,
+      "at": "2026-09-29T10:03:17.260Z"
+    },
+    "27340923704:2": {
+      "participantId": "27340923704",
+      "questionId": 2,
+      "answer": 1,
+      "at": "2026-09-29T10:03:20.060Z"
+    },
+    "27340923704:3": {
+      "participantId": "27340923704",
+      "questionId": 3,
+      "answer": 2,
+      "at": "2026-09-29T10:03:25.204Z"
+    },
+    "27340923704:4": {
+      "participantId": "27340923704",
+      "questionId": 4,
+      "answer": 0,
+      "at": "2026-09-29T10:03:26.748Z"
+    },
+    "27340923704:5": {
+      "participantId": "27340923704",
+      "questionId": 5,
+      "answer": 2,
+      "at": "2026-09-29T10:03:31.948Z"
+    },
+    "27340923704:6": {
+      "participantId": "27340923704",
+      "questionId": 6,
+      "answer": 3,
+      "at": "2026-09-29T10:03:33.452Z"
+    },
+    "27340923704:7": {
+      "participantId": "27340923704",
+      "questionId": 7,
+      "answer": 2,
+      "at": "2026-09-29T10:03:36.868Z"
+    },
+    "27340923704:8": {
+      "participantId": "27340923704",
+      "questionId": 8,
+      "answer": 2,
+      "at": "2026-09-29T10:03:44.004Z"
+    },
+    "27340923704:9": {
+      "participantId": "27340923704",
+      "questionId": 9,
+      "answer": 3,
+      "at": "2026-09-29T10:03:48.828Z"
+    },
+    "27340923704:10": {
+      "participantId": "27340923704",
+      "questionId": 10,
+      "answer": 3,
+      "at": "2026-09-29T10:03:54.693Z"
+    },
+    "27340923704:11": {
+      "participantId": "27340923704",
+      "questionId": 11,
+      "answer": 3,
+      "at": "2026-09-29T10:04:03.964Z"
+    },
+    "27340923704:12": {
+      "participantId": "27340923704",
+      "questionId": 12,
+      "answer": 3,
+      "at": "2026-09-29T10:04:08.044Z"
+    },
+    "27340923704:13": {
+      "participantId": "27340923704",
+      "questionId": 13,
+      "answer": 0,
+      "at": "2026-09-29T10:04:17.716Z"
+    },
+    "27340923704:14": {
+      "participantId": "27340923704",
+      "questionId": 14,
+      "answer": 0,
+      "at": "2026-09-29T10:04:21.004Z"
+    },
+    "27340923704:15": {
+      "participantId": "27340923704",
+      "questionId": 15,
+      "answer": 3,
+      "at": "2026-09-29T10:04:33.196Z"
+    },
+    "27340923704:16": {
+      "participantId": "27340923704",
+      "questionId": 16,
+      "answer": 3,
+      "at": "2026-09-29T10:04:38.261Z"
+    },
+    "27340923704:17": {
+      "participantId": "27340923704",
+      "questionId": 17,
+      "answer": 3,
+      "at": "2026-09-29T10:04:48.412Z"
+    },
+    "27340923704:18": {
+      "participantId": "27340923704",
+      "questionId": 18,
+      "answer": 3,
+      "at": "2026-09-29T10:04:57.852Z"
+    },
+    "27340923704:19": {
+      "participantId": "27340923704",
+      "questionId": 19,
+      "answer": 3,
+      "at": "2026-09-29T10:05:19.228Z"
+    },
+    "27340923704:20": {
+      "participantId": "27340923704",
+      "questionId": 20,
+      "answer": 3,
+      "at": "2026-09-29T10:05:29.444Z"
+    }
+  },
+  "terminal": {
+    "27340923704": {
+      "cwd": "/",
+      "files": {},
+      "challenge": 1,
+      "attempts": {}
+    }
+  },
+  "logs": [
+    {
+      "time": "2026-09-29T10:01:00.839Z",
+      "type": "RESET",
+      "detail": "Event reset"
+    },
+    {
+      "time": "2026-09-29T10:02:00.174Z",
+      "type": "LOGIN",
+      "detail": "27340923704 Sam"
+    },
+    {
+      "time": "2026-09-29T10:02:03.757Z",
+      "type": "ROUND_START",
+      "detail": "Round 1"
+    },
+    {
+      "time": "2026-09-29T10:02:11.631Z",
+      "type": "ROUND1_SUBMIT",
+      "detail": "27340923704"
+    },
+    {
+      "time": "2026-09-29T10:06:06.317Z",
+      "type": "ROUND_END",
+      "detail": "Round 1"
+    },
+    {
+      "time": "2026-09-29T10:07:09.092Z",
+      "type": "ROUND_START",
+      "detail": "Round 2"
+    }
+  ],
+  "questions": [
+    {
+      "id": 1,
+      "text": "Which component is responsible for process scheduling?",
+      "options": [
+        "CPU",
+        "Operating System",
+        "Compiler",
+        "RAM"
+      ],
+      "correct": 1,
+      "marks": 1
+    },
+    {
+      "id": 2,
+      "text": "Which Linux command prints the current working directory?",
+      "options": [
+        "cd",
+        "pwd",
+        "ls",
+        "whoami"
+      ],
+      "correct": 1,
+      "marks": 1
+    },
+    {
+      "id": 3,
+      "text": "Which memory technique uses pages?",
+      "options": [
+        "Paging",
+        "Spooling",
+        "Polling",
+        "Batching"
+      ],
+      "correct": 0,
+      "marks": 1
+    },
+    {
+      "id": 4,
+      "text": "A process in execution is represented by a…",
+      "options": [
+        "PCB",
+        "DNS",
+        "BIOS",
+        "URI"
+      ],
+      "correct": 0,
+      "marks": 1
+    },
+    {
+      "id": 5,
+      "text": "Which scheduling algorithm uses a time quantum?",
+      "options": [
+        "FCFS",
+        "Round Robin",
+        "SJF",
+        "FIFO"
+      ],
+      "correct": 1,
+      "marks": 1
+    },
+    {
+      "id": 6,
+      "text": "Which command lists directory contents?",
+      "options": [
+        "ls",
+        "cat",
+        "pwd",
+        "grep"
+      ],
+      "correct": 0,
+      "marks": 1
+    },
+    {
+      "id": 7,
+      "text": "Virtual memory allows a system to…",
+      "options": [
+        "Use disk as memory extension",
+        "Disable RAM",
+        "Remove processes",
+        "Increase CPU cores"
+      ],
+      "correct": 0,
+      "marks": 1
+    },
+    {
+      "id": 8,
+      "text": "Which is a Linux file permission command?",
+      "options": [
+        "chmod",
+        "mkdir",
+        "ping",
+        "top"
+      ],
+      "correct": 0,
+      "marks": 1
+    },
+    {
+      "id": 9,
+      "text": "A thread is best described as…",
+      "options": [
+        "Smallest unit of CPU execution within a process",
+        "A disk partition",
+        "A file system",
+        "A compiler"
+      ],
+      "correct": 0,
+      "marks": 1
+    },
+    {
+      "id": 10,
+      "text": "Which command searches text patterns?",
+      "options": [
+        "grep",
+        "cd",
+        "date",
+        "clear"
+      ],
+      "correct": 0,
+      "marks": 1
+    },
+    {
+      "id": 11,
+      "text": "Deadlock requires mutual exclusion, hold-and-wait, no preemption and…",
+      "options": [
+        "Circular wait",
+        "Paging",
+        "Caching",
+        "Compilation"
+      ],
+      "correct": 0,
+      "marks": 1
+    },
+    {
+      "id": 12,
+      "text": "Which component translates virtual addresses?",
+      "options": [
+        "MMU",
+        "ALU",
+        "BIOS",
+        "NIC"
+      ],
+      "correct": 0,
+      "marks": 1
+    },
+    {
+      "id": 13,
+      "text": "Which command displays running processes?",
+      "options": [
+        "ps",
+        "mkdir",
+        "touch",
+        "mv"
+      ],
+      "correct": 0,
+      "marks": 1
+    },
+    {
+      "id": 14,
+      "text": "What does chmod 755 commonly grant to the owner?",
+      "options": [
+        "rwx",
+        "r--",
+        "rw-",
+        "---"
+      ],
+      "correct": 0,
+      "marks": 1
+    },
+    {
+      "id": 15,
+      "text": "Which architecture separates user and kernel privilege levels?",
+      "options": [
+        "Protected-mode OS architecture",
+        "Spreadsheet architecture",
+        "Markup architecture",
+        "CSS architecture"
+      ],
+      "correct": 0,
+      "marks": 1
+    },
+    {
+      "id": 16,
+      "text": "Which command can display file contents?",
+      "options": [
+        "cat",
+        "cd",
+        "pwd",
+        "whoami"
+      ],
+      "correct": 0,
+      "marks": 1
+    },
+    {
+      "id": 17,
+      "text": "CPU cache is primarily used to…",
+      "options": [
+        "Reduce memory access latency",
+        "Store passwords",
+        "Replace the OS",
+        "Format disks"
+      ],
+      "correct": 0,
+      "marks": 1
+    },
+    {
+      "id": 18,
+      "text": "What is context switching?",
+      "options": [
+        "Switching CPU from one process/thread to another",
+        "Changing a file extension",
+        "Restarting BIOS",
+        "Changing IP"
+      ],
+      "correct": 0,
+      "marks": 1
+    },
+    {
+      "id": 19,
+      "text": "Which Linux command identifies the current user?",
+      "options": [
+        "whoami",
+        "grep",
+        "find",
+        "head"
+      ],
+      "correct": 0,
+      "marks": 1
+    },
+    {
+      "id": 20,
+      "text": "What is a system call?",
+      "options": [
+        "Interface for a program to request OS services",
+        "A CPU instruction cache",
+        "A file extension",
+        "A network cable"
+      ],
+      "correct": 0,
+      "marks": 1
+    }
+  ],
+  "challenges": [
+    {
+      "id": 1,
+      "title": "Ghost in the Directory",
+      "skill": "Hidden files",
+      "marks": 5,
+      "files": {
+        "/README.txt": "Look carefully at hidden entries.",
+        "/.ghost.txt": "SECRET-GHOST-42",
+        "/notes.txt": "Nothing useful here."
+      },
+      "answer": "SECRET-GHOST-42"
+    },
+    {
+      "id": 2,
+      "title": "Needle in the Logs",
+      "skill": "grep -r",
+      "marks": 5,
+      "files": {
+        "/logs/a.log": "INFO start\nINFO ready",
+        "/logs/b.log": "INFO idle\nSECRET=NEEDLE-731",
+        "/logs/c.log": "INFO end"
+      },
+      "answer": "NEEDLE-731"
+    },
+    {
+      "id": 3,
+      "title": "Lost in the Tree",
+      "skill": "cd, ls, cat",
+      "marks": 10,
+      "files": {
+        "/README.txt": "Travel to the archive directory.",
+        "/archive/clue.txt": "The answer is TREE-908",
+        "/archive/old.txt": "ignore"
+      },
+      "answer": "TREE-908"
+    },
+    {
+      "id": 4,
+      "title": "Pipe Dreams",
+      "skill": "grep | sort | uniq -c | sort -rn | head",
+      "marks": 10,
+      "files": {
+        "/data/events.txt": "red\nblue\nred\ngreen\nred\nblue\nyellow\nblue"
+      },
+      "answer": "red"
+    },
+    {
+      "id": 5,
+      "title": "The Final Chain",
+      "skill": "grep, find, grep -c",
+      "marks": 20,
+      "files": {
+        "/final/a.txt": "noise",
+        "/final/b.txt": "TARGET=FINAL-2026",
+        "/final/c.txt": "TARGET=OTHER"
+      },
+      "answer": "FINAL-2026"
+    }
+  ]
+}
