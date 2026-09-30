@@ -1,0 +1,7 @@
+if(!requireParticipant()) throw new Error('participant auth required');
+let poll;
+function title(s){return {WAITING:'Waiting Room',ROUND1_COMPLETED:'Round 1 Complete',ROUND2_COMPLETED:'Event Complete'}[s]||s.replaceAll('_',' ')}
+function waiting(s,p){$('#app').innerHTML=layout(`<div class="hero"><span class="badge">CONNECTED • ${escapeHtml(p.id)}</span><h2>Welcome, ${escapeHtml(p.name)}</h2><div class="card"><h3>${title(s.state)}</h3><p class="muted">${s.state==='WAITING'?'The coordinator will start Round 1 shortly.':'Stay on this page. Your next stage will appear automatically.'}</p>${s.state==='ROUND1_COMPLETED'?'<p>Round 1 is complete. Wait for the coordinator to open Round 2.</p>':''}${s.state==='ROUND2_COMPLETED'?(s.leaderboardPublished?'<a class="btn" href="/leaderboard.html">VIEW LEADERBOARD</a>':'<p>The coordinator has not published the leaderboard yet.</p>'):''}</div><button class="btn alt" onclick="logout()">EXIT</button></div>`)}
+function logout(){clearParticipant();location.href='/participant-login.html'}
+async function refresh(){try{const d=await api('/api/me');const s=d.state;if(s.state==='ROUND1_ACTIVE'){location.href='/round1.html';return}if(s.state==='ROUND2_ACTIVE'){location.href='/round2.html';return}if(s.state==='ROUND2_COMPLETED'&&s.leaderboardPublished){location.href='/leaderboard.html';return}waiting(s,d.participant)}catch(e){clearParticipant();location.href='/participant-login.html'}}
+refresh();poll=setInterval(refresh,2000);

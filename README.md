@@ -1,89 +1,76 @@
-# TERMINAL QUIZ — LAN Symposium Platform
+# Terminal Quiz — LAN Symposium Website
 
-A self-contained local web portal for the college Terminal Quiz. It is designed for ~60 lab computers connecting to one coordinator laptop over the same LAN.
+A local-network event platform for the college Terminal Quiz symposium. The coordinator laptop runs the server; up to 60 lab computers open the same LAN URL.
 
-## What is included
-- Attractive terminal/cyber themed participant portal
-- Participant registration with unique register number
-- 20-question Round 1, 20 minutes, 20 marks
-- Server-side answer validation and scoring
-- Round 2 with 5 simulated Linux terminal challenges, 30 minutes
-- Safe simulated terminal: student commands never execute on the host OS
-- Admin control center
-- Start/end round controls
-- Live participant status and scores
-- Audit log
-- Final leaderboard publication
-- CSV export endpoint
-- Automatic JSON database backups every 5 minutes
-- No cloud database or internet required
+## Separate pages
 
-## Requirements
-- Windows 10/11, macOS or Linux coordinator laptop
-- Node.js 18+ (Node 20+ recommended)
-- All lab PCs and coordinator laptop on the same LAN
+- `/index.html` — public event landing page
+- `/participant-login.html` — participant login
+- `/participant.html` — participant waiting/event router
+- `/round1.html` — Round 1 technical quiz
+- `/round2.html` — Round 2 simulated terminal
+- `/leaderboard.html` — published final leaderboard
+- `/admin-login.html` — coordinator login
+- `/admin.html` — coordinator dashboard
+
+Every major screen has its own HTML file and page-specific JavaScript. Shared API/auth/UI helpers are in `public/assets/common.js`; styling is in `public/assets/style.css`.
 
 ## Run
-Open a terminal in this folder:
 
-    node server/index.js
+1. Install Node.js 18+.
+2. Open a terminal in this folder.
+3. Run:
+
+```bash
+node server/index.js
+```
 
 The console prints the LAN address, for example:
 
-    LAN: http://192.168.1.10:3000
+```text
+Local: http://localhost:3000
+LAN:   http://192.168.1.10:3000
+```
 
-Students open that address in Chrome/Edge.
+Open the LAN address on every lab computer.
 
-Admin opens the same address and clicks **ADMIN CONTROL**.
+## Admin
 
-Default admin password is `admin123` only for local testing. Before the real event, set an environment variable:
+Open `/admin-login.html` or click **ADMIN CONTROL** on the home page.
 
-PowerShell:
+Default development password: `admin123`.
 
-    $env:ADMIN_PASSWORD="YourStrongPassword"
-    node server/index.js
+For the actual event, set `ADMIN_PASSWORD` in the environment before starting the server.
 
-Command Prompt:
+## Event flow
 
-    set ADMIN_PASSWORD=YourStrongPassword
-    node server/index.js
+1. Students open `participant-login.html` and register.
+2. They wait on `participant.html`.
+3. Admin starts Round 1.
+4. Participants are sent to `round1.html`.
+5. When Round 1 ends, participants return to the waiting page.
+6. Admin starts Round 2.
+7. Participants are sent to `round2.html`.
+8. Admin ends Round 2 and publishes the leaderboard.
+9. Participants can open `leaderboard.html`.
 
-## Windows Firewall
-If the lab PCs cannot open the page, allow Node.js through Windows Defender Firewall, or create an inbound TCP rule for port 3000. Ask the lab/network administrator if client-to-client traffic is blocked.
+## LAN requirements
 
-## Find the laptop IP
+- Coordinator laptop and all lab computers must be on the same LAN.
+- Client-to-client communication must be permitted by the college network.
+- Windows Firewall must allow Node.js/the selected port.
+- Use the LAN URL printed by the server, not `localhost`, on student computers.
 
-    ipconfig
+Example:
 
-Look for the IPv4 address of the active Ethernet/Wi-Fi adapter. Do not use `127.0.0.1` on the student PCs.
-
-## Event-day procedure
-1. Connect coordinator laptop to the lab LAN.
-2. Start the server.
-3. Open the LAN URL on the coordinator laptop.
-4. Open Admin Control and sign in.
-5. Test one lab PC.
-6. Have all 60 participants register with their unique register numbers.
-7. Start Round 1.
-8. End Round 1 (or let its 20-minute timer expire).
-9. Start Round 2.
-10. Participants solve five terminal challenges.
-11. End Round 2 (or let its 30-minute timer expire).
-12. Publish leaderboard.
-13. Export CSV.
-
-## Important network test
-From a lab PC, open:
-
-    http://COORDINATOR-IP:3000
-
-If it does not load, first check that the PC can ping the coordinator laptop and that the Windows firewall/network isolation is not blocking port 3000.
+```text
+http://192.168.1.10:3000
+```
 
 ## Terminal safety
-Round 2 uses an in-memory simulated terminal rather than a real host shell. Do not replace it with `child_process.exec()` or another direct shell execution mechanism.
 
-## Data
-The event data is stored in `data/db.json`. Backups are written under `backups/`. Do not expose these folders through the web server.
+Round 2 uses a simulated terminal. Participant commands are interpreted by the application and are not executed as shell commands on the coordinator laptop.
 
-## Reset before a fresh event
-Stop the server and delete `data/db.json`, then restart. A new database is created automatically.
+## Event controls
+
+The admin dashboard supports starting/ending both rounds, publishing the leaderboard, resetting the event, viewing participant status and exporting results.

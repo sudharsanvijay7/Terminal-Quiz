@@ -7,194 +7,121 @@
     "endAt": null,
     "paused": false,
     "remainingMs": null,
-    "leaderboardPublished": false
+    "leaderboardPublished": true
   },
   "participants": {
-    "3634634": {
-      "id": "3634634",
-      "name": "vijay",
-      "registerNumber": "3634634",
-      "token": "ec0bd106a97c8712d412fc56c9adac749e7e02934296fd24",
+    "953723104091": {
+      "id": "953723104091",
+      "name": "Sanjay",
+      "registerNumber": "953723104091",
+      "token": "f7a66de71ebeaea4628cf0fd6e7d109020dcb264210095d4",
       "online": false,
-      "round1Submitted": true,
-      "round1Score": 2,
+      "round1Submitted": false,
+      "round1Score": 0,
       "round2Score": 0,
-      "createdAt": "2026-09-30T06:12:48.719Z",
-      "lastSeen": 1790748912059
+      "createdAt": "2026-09-29T10:09:32.550Z",
+      "lastSeen": 1790678024071
     }
   },
   "answers": {
-    "3634634:1": {
-      "participantId": "3634634",
+    "953723104091:1": {
+      "participantId": "953723104091",
       "questionId": 1,
       "answer": 0,
-      "at": "2026-09-30T06:13:37.873Z"
+      "at": "2026-09-29T10:09:49.867Z"
     },
-    "3634634:2": {
-      "participantId": "3634634",
+    "953723104091:2": {
+      "participantId": "953723104091",
       "questionId": 2,
       "answer": 0,
-      "at": "2026-09-30T06:13:39.754Z"
+      "at": "2026-09-29T10:09:58.095Z"
     },
-    "3634634:3": {
-      "participantId": "3634634",
-      "questionId": 3,
-      "answer": 1,
-      "at": "2026-09-30T06:13:40.872Z"
-    },
-    "3634634:4": {
-      "participantId": "3634634",
-      "questionId": 4,
-      "answer": 2,
-      "at": "2026-09-30T06:13:42.388Z"
-    },
-    "3634634:5": {
-      "participantId": "3634634",
+    "953723104091:5": {
+      "participantId": "953723104091",
       "questionId": 5,
       "answer": 2,
-      "at": "2026-09-30T06:13:43.272Z"
+      "at": "2026-09-29T10:10:20.392Z"
     },
-    "3634634:6": {
-      "participantId": "3634634",
+    "953723104091:6": {
+      "participantId": "953723104091",
       "questionId": 6,
-      "answer": 2,
-      "at": "2026-09-30T06:13:44.248Z"
+      "answer": 0,
+      "at": "2026-09-29T10:10:31.038Z"
     },
-    "3634634:7": {
-      "participantId": "3634634",
-      "questionId": 7,
-      "answer": 2,
-      "at": "2026-09-30T06:13:45.186Z"
-    },
-    "3634634:8": {
-      "participantId": "3634634",
-      "questionId": 8,
-      "answer": 3,
-      "at": "2026-09-30T06:13:46.288Z"
-    },
-    "3634634:9": {
-      "participantId": "3634634",
+    "953723104091:9": {
+      "participantId": "953723104091",
       "questionId": 9,
-      "answer": 3,
-      "at": "2026-09-30T06:13:47.344Z"
-    },
-    "3634634:10": {
-      "participantId": "3634634",
-      "questionId": 10,
-      "answer": 3,
-      "at": "2026-09-30T06:13:48.446Z"
-    },
-    "3634634:11": {
-      "participantId": "3634634",
-      "questionId": 11,
-      "answer": 3,
-      "at": "2026-09-30T06:13:49.649Z"
-    },
-    "3634634:12": {
-      "participantId": "3634634",
-      "questionId": 12,
-      "answer": 2,
-      "at": "2026-09-30T06:13:50.548Z"
-    },
-    "3634634:13": {
-      "participantId": "3634634",
-      "questionId": 13,
-      "answer": 1,
-      "at": "2026-09-30T06:13:51.502Z"
-    },
-    "3634634:14": {
-      "participantId": "3634634",
-      "questionId": 14,
-      "answer": 1,
-      "at": "2026-09-30T06:13:52.454Z"
-    },
-    "3634634:15": {
-      "participantId": "3634634",
-      "questionId": 15,
       "answer": 0,
-      "at": "2026-09-30T06:13:53.440Z"
+      "at": "2026-09-29T10:10:46.091Z"
     },
-    "3634634:16": {
-      "participantId": "3634634",
-      "questionId": 16,
+    "953723104091:3": {
+      "participantId": "953723104091",
+      "questionId": 3,
       "answer": 0,
-      "at": "2026-09-30T06:13:54.792Z"
+      "at": "2026-09-29T10:11:01.851Z"
     },
-    "3634634:17": {
-      "participantId": "3634634",
-      "questionId": 17,
-      "answer": 3,
-      "at": "2026-09-30T06:13:56.010Z"
-    },
-    "3634634:18": {
-      "participantId": "3634634",
-      "questionId": 18,
-      "answer": 3,
-      "at": "2026-09-30T06:13:56.940Z"
-    },
-    "3634634:19": {
-      "participantId": "3634634",
-      "questionId": 19,
-      "answer": 3,
-      "at": "2026-09-30T06:13:58.004Z"
-    },
-    "3634634:20": {
-      "participantId": "3634634",
-      "questionId": 20,
-      "answer": 3,
-      "at": "2026-09-30T06:13:58.870Z"
+    "953723104091:4": {
+      "participantId": "953723104091",
+      "questionId": 4,
+      "answer": 0,
+      "at": "2026-09-29T10:11:07.209Z"
     }
   },
   "terminal": {
-    "3634634": {
+    "953723104091": {
       "cwd": "/",
       "files": {},
       "challenge": 1,
       "attempts": {
-        "1": 4
+        "1": 6
       }
     }
   },
   "logs": [
     {
-      "time": "2026-09-30T05:58:40.149Z",
+      "time": "2026-09-29T10:09:19.639Z",
       "type": "RESET",
       "detail": "Event reset"
     },
     {
-      "time": "2026-09-30T06:12:48.719Z",
+      "time": "2026-09-29T10:09:32.550Z",
       "type": "LOGIN",
-      "detail": "3634634 vijay"
+      "detail": "953723104091 Sanjay"
     },
     {
-      "time": "2026-09-30T06:13:03.129Z",
+      "time": "2026-09-29T10:09:40.933Z",
       "type": "ROUND_START",
       "detail": "Round 1"
     },
     {
-      "time": "2026-09-30T06:14:04.151Z",
-      "type": "ROUND1_SUBMIT",
-      "detail": "3634634"
-    },
-    {
-      "time": "2026-09-30T06:14:24.624Z",
+      "time": "2026-09-29T10:11:07.989Z",
       "type": "ROUND_END",
       "detail": "Round 1"
     },
     {
-      "time": "2026-09-30T06:14:45.381Z",
+      "time": "2026-09-29T10:11:15.269Z",
       "type": "ROUND_START",
       "detail": "Round 2"
     },
     {
-      "time": "2026-09-30T06:15:12.055Z",
+      "time": "2026-09-29T10:13:58.934Z",
       "type": "TERMINAL_ATTEMPT",
-      "detail": "3634634 challenge 1"
+      "detail": "953723104091 challenge 1"
     },
     {
-      "time": "2026-09-30T06:15:39.043Z",
+      "time": "2026-09-29T10:14:08.069Z",
+      "type": "TERMINAL_ATTEMPT",
+      "detail": "953723104091 challenge 1"
+    },
+    {
+      "time": "2026-09-29T10:14:47.549Z",
       "type": "ROUND_END",
       "detail": "Round 2"
+    },
+    {
+      "time": "2026-09-29T10:14:58.141Z",
+      "type": "LEADERBOARD",
+      "detail": "Published"
     }
   ],
   "questions": [
