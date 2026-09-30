@@ -3,196 +3,193 @@
     "name": "TERMINAL QUIZ",
     "state": "ROUND2_ACTIVE",
     "round": 2,
-    "startAt": 1790760699659,
-    "endAt": 1790762499659,
+    "startAt": 1790760067534,
+    "endAt": 1790761867534,
     "paused": false,
     "remainingMs": null,
     "leaderboardPublished": false
   },
   "participants": {
-    "3123": {
-      "id": "3123",
-      "name": "asddas",
-      "registerNumber": "3123",
-      "token": "5e798a91e2dbb759f8f6e9e22356aba3fcf4cd4310c6e72e",
+    "1212": {
+      "id": "1212",
+      "name": "adfssdfsd",
+      "registerNumber": "1212",
+      "token": "f62f54cf46a29ae4e6dbeef186fa4297e7e0a23161c68a00",
       "online": true,
       "round1Submitted": true,
-      "round1Score": 1,
-      "round2Score": 5,
-      "createdAt": "2026-09-30T09:30:12.174Z",
-      "lastSeen": 1790760815723
+      "round1Score": 2,
+      "round2Score": 0,
+      "createdAt": "2026-09-30T09:19:22.172Z",
+      "lastSeen": 1790760248807
     }
   },
   "answers": {
-    "3123:1": {
-      "participantId": "3123",
+    "1212:1": {
+      "participantId": "1212",
       "questionId": 1,
-      "answer": 1,
-      "at": "2026-09-30T09:30:26.257Z"
+      "answer": 0,
+      "at": "2026-09-30T09:19:48.724Z"
     },
-    "3123:2": {
-      "participantId": "3123",
+    "1212:2": {
+      "participantId": "1212",
       "questionId": 2,
-      "answer": 2,
-      "at": "2026-09-30T09:30:28.125Z"
+      "answer": 1,
+      "at": "2026-09-30T09:19:56.549Z"
     },
-    "3123:3": {
-      "participantId": "3123",
+    "1212:3": {
+      "participantId": "1212",
       "questionId": 3,
       "answer": 3,
-      "at": "2026-09-30T09:30:28.999Z"
+      "at": "2026-09-30T09:20:08.309Z"
     },
-    "3123:4": {
-      "participantId": "3123",
+    "1212:4": {
+      "participantId": "1212",
       "questionId": 4,
       "answer": 3,
-      "at": "2026-09-30T09:30:29.665Z"
+      "at": "2026-09-30T09:20:12.742Z"
     },
-    "3123:5": {
-      "participantId": "3123",
+    "1212:5": {
+      "participantId": "1212",
       "questionId": 5,
-      "answer": 3,
-      "at": "2026-09-30T09:30:30.493Z"
+      "answer": 1,
+      "at": "2026-09-30T09:20:15.151Z"
     },
-    "3123:6": {
-      "participantId": "3123",
+    "1212:6": {
+      "participantId": "1212",
       "questionId": 6,
       "answer": 3,
-      "at": "2026-09-30T09:30:31.181Z"
+      "at": "2026-09-30T09:20:17.183Z"
     },
-    "3123:7": {
-      "participantId": "3123",
+    "1212:7": {
+      "participantId": "1212",
       "questionId": 7,
       "answer": 3,
-      "at": "2026-09-30T09:30:31.821Z"
+      "at": "2026-09-30T09:20:18.073Z"
     },
-    "3123:8": {
-      "participantId": "3123",
+    "1212:8": {
+      "participantId": "1212",
       "questionId": 8,
       "answer": 3,
-      "at": "2026-09-30T09:30:32.751Z"
+      "at": "2026-09-30T09:20:18.785Z"
     },
-    "3123:9": {
-      "participantId": "3123",
-      "questionId": 9,
-      "answer": 3,
-      "at": "2026-09-30T09:30:37.869Z"
-    },
-    "3123:10": {
-      "participantId": "3123",
+    "1212:10": {
+      "participantId": "1212",
       "questionId": 10,
       "answer": 3,
-      "at": "2026-09-30T09:30:38.799Z"
+      "at": "2026-09-30T09:20:20.261Z"
     },
-    "3123:11": {
-      "participantId": "3123",
+    "1212:11": {
+      "participantId": "1212",
       "questionId": 11,
       "answer": 3,
-      "at": "2026-09-30T09:30:39.565Z"
+      "at": "2026-09-30T09:20:20.879Z"
     },
-    "3123:12": {
-      "participantId": "3123",
+    "1212:12": {
+      "participantId": "1212",
       "questionId": 12,
       "answer": 3,
-      "at": "2026-09-30T09:30:40.253Z"
+      "at": "2026-09-30T09:20:21.567Z"
     },
-    "3123:13": {
-      "participantId": "3123",
+    "1212:13": {
+      "participantId": "1212",
       "questionId": 13,
       "answer": 3,
-      "at": "2026-09-30T09:30:40.847Z"
+      "at": "2026-09-30T09:20:22.145Z"
     },
-    "3123:14": {
-      "participantId": "3123",
+    "1212:14": {
+      "participantId": "1212",
       "questionId": 14,
       "answer": 3,
-      "at": "2026-09-30T09:30:41.393Z"
+      "at": "2026-09-30T09:20:22.841Z"
     },
-    "3123:15": {
-      "participantId": "3123",
+    "1212:15": {
+      "participantId": "1212",
       "questionId": 15,
       "answer": 3,
-      "at": "2026-09-30T09:30:41.917Z"
+      "at": "2026-09-30T09:20:23.435Z"
     },
-    "3123:16": {
-      "participantId": "3123",
+    "1212:16": {
+      "participantId": "1212",
       "questionId": 16,
-      "answer": 3,
-      "at": "2026-09-30T09:30:42.473Z"
+      "answer": 2,
+      "at": "2026-09-30T09:20:23.919Z"
     },
-    "3123:17": {
-      "participantId": "3123",
+    "1212:17": {
+      "participantId": "1212",
       "questionId": 17,
       "answer": 3,
-      "at": "2026-09-30T09:30:42.989Z"
+      "at": "2026-09-30T09:20:24.973Z"
     },
-    "3123:18": {
-      "participantId": "3123",
+    "1212:18": {
+      "participantId": "1212",
       "questionId": 18,
       "answer": 3,
-      "at": "2026-09-30T09:30:43.543Z"
+      "at": "2026-09-30T09:20:25.480Z"
     },
-    "3123:19": {
-      "participantId": "3123",
+    "1212:19": {
+      "participantId": "1212",
       "questionId": 19,
       "answer": 3,
-      "at": "2026-09-30T09:30:44.074Z"
+      "at": "2026-09-30T09:20:25.975Z"
     },
-    "3123:20": {
-      "participantId": "3123",
+    "1212:20": {
+      "participantId": "1212",
       "questionId": 20,
       "answer": 3,
-      "at": "2026-09-30T09:30:44.738Z"
+      "at": "2026-09-30T09:20:27.271Z"
+    },
+    "1212:9": {
+      "participantId": "1212",
+      "questionId": 9,
+      "answer": 1,
+      "at": "2026-09-30T09:20:37.337Z"
     }
   },
   "terminal": {
-    "3123": {
+    "1212": {
       "cwd": "/",
       "files": {},
-      "challenge": 2,
+      "challenge": 1,
       "attempts": {
-        "1": 3
-      },
-      "solved": {
-        "1": true
+        "1": 4
       }
     }
   },
   "logs": [
     {
-      "time": "2026-09-30T09:29:54.773Z",
-      "type": "RESET",
-      "detail": "Event reset"
-    },
-    {
-      "time": "2026-09-30T09:30:12.174Z",
+      "time": "2026-09-30T09:19:22.172Z",
       "type": "LOGIN",
-      "detail": "3123 asddas"
+      "detail": "1212 adfssdfsd"
     },
     {
-      "time": "2026-09-30T09:30:21.128Z",
+      "time": "2026-09-30T09:19:42.031Z",
       "type": "ROUND_START",
       "detail": "Round 1"
     },
     {
-      "time": "2026-09-30T09:30:50.149Z",
+      "time": "2026-09-30T09:20:48.221Z",
       "type": "ROUND1_SUBMIT",
-      "detail": "3123"
+      "detail": "1212"
     },
     {
-      "time": "2026-09-30T09:31:35.337Z",
+      "time": "2026-09-30T09:20:57.352Z",
       "type": "ROUND_END",
       "detail": "Round 1"
     },
     {
-      "time": "2026-09-30T09:31:39.659Z",
+      "time": "2026-09-30T09:21:07.534Z",
       "type": "ROUND_START",
       "detail": "Round 2"
     },
     {
-      "time": "2026-09-30T09:32:08.267Z",
-      "type": "TERMINAL_SOLVE",
-      "detail": "3123 challenge 1"
+      "time": "2026-09-30T09:22:38.857Z",
+      "type": "TERMINAL_ATTEMPT",
+      "detail": "1212 challenge 1"
+    },
+    {
+      "time": "2026-09-30T09:22:42.609Z",
+      "type": "TERMINAL_ATTEMPT",
+      "detail": "1212 challenge 1"
     }
   ],
   "questions": [

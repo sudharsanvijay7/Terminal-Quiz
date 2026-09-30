@@ -10,3 +10,12 @@ function clearParticipant(){localStorage.removeItem('tq_token')}
 function clearAdmin(){localStorage.removeItem('tq_admin')}
 function requireParticipant(){if(!getToken()){location.href='/participant-login.html';return false}return true}
 function requireAdmin(){if(!getAdmin()){location.href='/admin-login.html';return false}return true}
+
+let participantHeartbeatId=null;
+function startParticipantHeartbeat(){
+  if(!getToken() || participantHeartbeatId) return;
+  const beat=()=>api('/api/heartbeat',{method:'POST',body:'{}'}).catch(()=>{});
+  beat();
+  participantHeartbeatId=setInterval(beat,5000);
+}
+if(getToken() && !location.pathname.includes('/admin/')) startParticipantHeartbeat();
