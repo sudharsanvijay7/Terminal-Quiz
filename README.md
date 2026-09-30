@@ -4,7 +4,7 @@ A local-network event platform for the college Terminal Quiz symposium. The coor
 
 ## Separate pages
 
-- `/index.html` — public event landing page
+- `/` or `/index.html` — public event landing page
 - `/participant-login.html` — participant login
 - `/participant.html` — participant waiting/event router
 - `/round1.html` — Round 1 technical quiz

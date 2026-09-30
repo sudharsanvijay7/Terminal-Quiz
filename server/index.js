@@ -35,7 +35,48 @@ t.attempts[c.id]=(t.attempts[c.id]||0)+1;let solved=String(b.answer||'').trim().
 'GET /api/leaderboard':(req,res)=>{if(!db.event.leaderboardPublished)return json(res,403,{error:'Leaderboard not published'});const a=Object.values(db.participants).map(p=>({name:p.name,id:p.id,round1:p.round1Score,round2:p.round2Score,total:p.round1Score+p.round2Score})).sort((a,b)=>b.total-a.total||b.round2-a.round2);json(res,200,a.map((x,i)=>({...x,rank:i+1})))},
 'GET /api/admin/export':(req,res)=>{const t=(req.headers.authorization||'').replace('Bearer ','');if(!global.adminTokens?.has(t))return json(res,401,{error:'Unauthorized'});const esc=v=>{let s=String(v??'');if(/^[=+\-@]/.test(s))s="'"+s;return '"'+s.replaceAll('"','""')+'"'};let csv='Rank,Participant ID,Name,Round 1,Round 2,Total\n';Object.values(db.participants).sort((a,b)=>(b.round1Score+b.round2Score)-(a.round1Score+a.round2Score)).forEach((p,i)=>csv+=`${i+1},${esc(p.id)},${esc(p.name)},${p.round1Score},${p.round2Score},${p.round1Score+p.round2Score}\n`);res.writeHead(200,{'Content-Type':'text/csv','Content-Disposition':'attachment; filename="terminal-quiz-results.csv"'});res.end(csv)}
 };
-async function handler(req,res){let u=new URL(req.url,`http://${req.headers.host}`);if(req.method==='GET'&&(u.pathname==='/'||u.pathname==='/index.html'))return serve('index.html',res);if(req.method==='GET'&&u.pathname.endsWith('.html'))return serve(u.pathname.slice(1),res);if(req.method==='GET'&&u.pathname.startsWith('/assets/'))return serve(u.pathname.slice(1),res);const r=routes[req.method+' '+u.pathname];if(r){try{return await r(req,res)}catch(e){console.error(e);return json(res,500,{error:'Server error'})}}json(res,404,{error:'Not found'})}
-function serve(file,res){const p=path.join(PUBLIC,file);if(!p.startsWith(PUBLIC)||!fs.existsSync(p))return json(res,404,{error:'Not found'});const ext=path.extname(p);const types={'.html':'text/html','.js':'text/javascript','.css':'text/css','.svg':'image/svg+xml'};res.writeHead(200,{'Content-Type':types[ext]||'application/octet-stream','Cache-Control':'no-store'});fs.createReadStream(p).pipe(res)}
+const pageAliases={
+  '/participant-login.html':'participant/participant-login.html',
+  '/participant.html':'participant/participant.html',
+  '/round1.html':'round_1/round1.html',
+  '/round2.html':'round_2/round2.html',
+  '/leaderboard.html':'leaderboard/leaderboard.html',
+  '/admin-login.html':'admin/admin-login.html',
+  '/admin.html':'admin/admin.html'
+};
+const assetAliases={
+  '/assets/index.js':'index.js',
+  '/assets/participant-login.js':'participant/participant-login.js',
+  '/assets/participant.js':'participant/participant.js',
+  '/assets/round1.js':'round_1/round1.js',
+  '/assets/round2.js':'round_2/round2.js',
+  '/assets/leaderboard.js':'leaderboard/leaderboard.js',
+  '/assets/admin-login.js':'admin/admin-login.js',
+  '/assets/admin.js':'admin/admin.js',
+  '/assets/common.js':'assets/common.js',
+  '/assets/style.css':'assets/style.css'
+};
+async function handler(req,res){
+  let u=new URL(req.url,`http://${req.headers.host}`);
+  if(req.method==='GET'){
+    if(u.pathname==='/'||u.pathname==='/index.html')return serve('index.html',res);
+    if(pageAliases[u.pathname])return serve(pageAliases[u.pathname],res);
+    if(assetAliases[u.pathname])return serve(assetAliases[u.pathname],res);
+    if(u.pathname.startsWith('/assets/'))return serve(u.pathname.slice(1),res);
+    if(u.pathname.endsWith('.html'))return serve(u.pathname.slice(1),res);
+  }
+  const r=routes[req.method+' '+u.pathname];
+  if(r){try{return await r(req,res)}catch(e){console.error(e);return json(res,500,{error:'Server error'})}}
+  json(res,404,{error:'Not found'});
+}
+function serve(file,res){
+  const root=path.resolve(PUBLIC),p=path.resolve(PUBLIC,file);
+  if(!p.startsWith(root+path.sep)&&p!==root)return json(res,404,{error:'Not found'});
+  if(!fs.existsSync(p)||!fs.statSync(p).isFile())return json(res,404,{error:'Not found'});
+  const ext=path.extname(p).toLowerCase();
+  const types={'.html':'text/html; charset=utf-8','.js':'text/javascript; charset=utf-8','.css':'text/css; charset=utf-8','.svg':'image/svg+xml'};
+  res.writeHead(200,{'Content-Type':types[ext]||'application/octet-stream','Cache-Control':'no-store'});
+  fs.createReadStream(p).pipe(res);
+}
 setInterval(()=>{Object.values(db.participants).forEach(p=>{if(p.online&&Date.now()-p.lastSeen>30000)p.online=false});state();save()},5000);setInterval(()=>{try{fs.copyFileSync(DATA,path.join(BACKUPS,'db-'+new Date().toISOString().replaceAll(':','-')+'.json'))}catch{}},5*60*1000);
 const server=http.createServer(handler);const PORT=Number(process.env.PORT||3000);server.listen(PORT,'0.0.0.0',()=>{const nets=os.networkInterfaces();let ips=[];for(const x of Object.values(nets))for(const n of x||[])if(n.family==='IPv4'&&!n.internal)ips.push(n.address);console.log('\n========================================');console.log(' TERMINAL QUIZ EVENT SERVER');console.log('========================================');console.log(` Local: http://localhost:${PORT}`);ips.forEach(ip=>console.log(` LAN:   http://${ip}:${PORT}`));console.log(` Admin: http://localhost:${PORT}/#admin`);console.log(' Default admin password: admin123');console.log('========================================\n')});
