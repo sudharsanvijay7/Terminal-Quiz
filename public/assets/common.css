@@ -1,0 +1,579 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;700;800&family=JetBrains+Mono:wght@400;700&display=swap');
+
+/* ===== FONTS (must stay at the very top) ===== */
+/*
+  Works while the laptop has internet.
+
+  For the offline lab, uncomment the @font-face block below
+  and delete this @import line.
+*/
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;700;800&family=JetBrains+Mono:wght@400;700&display=swap');
+
+/*
+  ===== OFFLINE VERSION =====
+
+  Put the .woff2 files in:
+  public/assets/fonts/
+
+  Then uncomment this block and remove the @import above.
+
+@font-face{
+  font-family:'Outfit';
+  font-weight:400;
+  font-display:swap;
+  src:url('/assets/fonts/outfit-latin-400-normal.woff2') format('woff2')
+}
+
+
+
+@font-face{
+  font-family:'Outfit';
+  font-weight:700;
+  font-display:swap;
+  src:url('/assets/fonts/outfit-latin-700-normal.woff2') format('woff2')
+}
+
+
+
+@font-face{
+  font-family:'Outfit';
+  font-weight:800;
+  font-display:swap;
+  src:url('/assets/fonts/outfit-latin-800-normal.woff2') format('woff2')
+}
+
+
+
+@font-face{
+  font-family:'JetBrains Mono';
+  font-weight:400;
+  font-display:swap;
+  src:url('/assets/fonts/jetbrains-mono-latin-400-normal.woff2') format('woff2')
+}
+
+
+
+@font-face{
+  font-family:'JetBrains Mono';
+  font-weight:700;
+  font-display:swap;
+  src:url('/assets/fonts/jetbrains-mono-latin-700-normal.woff2') format('woff2')
+}
+
+
+*/
+
+
+/* ===== ROOT VARIABLES ===== */
+
+:root{
+  --g:#34f58b;
+  --g-dim:rgba(52,245,139,.14);
+
+  --sans:
+    'Google Sans',
+    'Product Sans',
+    'Outfit',
+    system-ui,
+    'Segoe UI',
+    Arial,
+    sans-serif;
+
+  --mono:
+    'JetBrains Mono',
+    'Google Sans Code',
+    Consolas,
+    'Courier New',
+    monospace;
+}
+
+
+
+
+/* ===== BASE ===== */
+
+*{
+  box-sizing:border-box;
+}
+
+
+
+html{
+  scroll-behavior:smooth;
+}
+
+
+
+body{
+  margin:0;
+  background:#05070b;
+  color:#edf2f7;
+  font-family:var(--sans);
+  min-height:100vh;
+  -webkit-font-smoothing:antialiased;
+  text-rendering:optimizeLegibility;
+}
+
+
+
+body::before{
+  content:'';
+  position:fixed;
+  inset:0;
+
+  background:
+    linear-gradient(
+      rgba(0,255,140,.025) 1px,
+      transparent 1px
+    ),
+    linear-gradient(
+      90deg,
+      rgba(0,255,140,.025) 1px,
+      transparent 1px
+    );
+
+  background-size:36px 36px;
+  pointer-events:none;
+  z-index:-1;
+}
+
+
+
+::selection{
+  background:rgba(52,245,139,.24);
+  color:#fff;
+}
+
+
+
+
+/* ===== COMMON LAYOUT ===== */
+
+.wrap{
+  width:min(1180px,92%);
+  margin:auto;
+}
+
+
+
+.nav{
+  height:74px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  border-bottom:1px solid #18212c;
+}
+
+
+
+.brand{
+  font-family:var(--mono);
+  font-weight:700;
+}
+
+
+
+.green{
+  color:#34f58b;
+}
+
+
+
+.muted{
+  color:#8995a3;
+}
+
+
+
+
+/* ===== HERO ===== */
+
+.hero{
+  padding:90px 0 50px;
+}
+
+
+
+.hero h1{
+  font-size:clamp(52px,9vw,105px);
+  line-height:.86;
+  margin:20px 0;
+  font-weight:800;
+  letter-spacing:-5px;
+}
+
+
+
+.hero p{
+  max-width:650px;
+  font-size:19px;
+  color:#a9b4c0;
+  line-height:1.7;
+}
+
+
+
+.badge{
+  display:inline-block;
+  padding:7px 12px;
+  border:1px solid #1d6644;
+  border-radius:999px;
+  color:#59f5a1;
+  background:#072016;
+  font:600 12px var(--mono);
+}
+
+
+
+
+/* ===== GRID / CARDS ===== */
+
+.grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+  gap:18px;
+}
+
+
+
+.card{
+  background:linear-gradient(145deg,#0c1118,#080c12);
+  border:1px solid #1b2632;
+  border-radius:18px;
+  padding:24px;
+  box-shadow:0 12px 40px #0004;
+}
+
+
+
+
+/* ===== BUTTONS ===== */
+
+.btn{
+  border:0;
+  border-radius:10px;
+  padding:13px 18px;
+  font-weight:700;
+  cursor:pointer;
+  background:#34f58b;
+  color:#03130a;
+}
+
+
+
+.btn.alt{
+  background:#111923;
+  color:#dbe6ef;
+  border:1px solid #253443;
+}
+
+
+
+.btn.danger{
+  background:#ff5f6d;
+  color:#190305;
+}
+
+
+
+.actions{
+  display:flex;
+  gap:10px;
+  flex-wrap:wrap;
+}
+
+
+
+
+/* ===== INPUT / FORMS ===== */
+
+.input{
+  width:100%;
+  padding:14px;
+  border-radius:10px;
+  border:1px solid #263544;
+  background:#080d13;
+  color:white;
+  font-size:16px;
+  outline:none;
+}
+
+
+
+.input:focus{
+  border-color:#34f58b;
+}
+
+
+
+.form{
+  display:grid;
+  gap:14px;
+}
+
+
+
+
+/* ===== TERMINAL ===== */
+
+.terminal{
+  background:#030605;
+  border:1px solid #234d38;
+  border-radius:14px;
+  overflow:hidden;
+}
+
+
+
+.termbar{
+  padding:11px 14px;
+  background:#0b1510;
+  border-bottom:1px solid #183b29;
+  font:12px var(--mono);
+  color:#70dca0;
+}
+
+
+
+.termout{
+  min-height:330px;
+  padding:18px;
+  white-space:pre-wrap;
+  font:14px/1.6 var(--mono);
+  color:#9effbd;
+  overflow:auto;
+}
+
+
+
+.termline{
+  display:flex;
+  align-items:center;
+  border-top:1px solid #183b29;
+  padding:12px;
+}
+
+
+
+.termline span{
+  color:#35f58b;
+  font-family:var(--mono);
+  margin-right:8px;
+}
+
+
+
+.termline input{
+  flex:1;
+  background:none;
+  border:0;
+  color:white;
+  outline:0;
+  font:14px var(--mono);
+}
+
+
+
+.main{
+  padding:28px;
+}
+
+
+
+
+/* ===== TABLE ===== */
+
+.table{
+  width:100%;
+  border-collapse:collapse;
+}
+
+
+
+.table th,
+.table td{
+  padding:12px;
+  border-bottom:1px solid #1a2430;
+  text-align:left;
+  font-size:13px;
+}
+
+
+
+.pill{
+  padding:5px 8px;
+  border-radius:999px;
+  background:#111a23;
+  color:#a9b7c5;
+  font-size:11px;
+}
+
+
+
+.online{
+  color:#55f79d;
+}
+
+
+
+
+/* ===== QUIZ ===== */
+
+.timer{
+  font:800 44px var(--mono);
+  letter-spacing:-2px;
+}
+
+
+
+.toast{
+  position:fixed;
+  right:20px;
+  bottom:20px;
+  background:#101923;
+  border:1px solid #30404f;
+  padding:14px 18px;
+  border-radius:10px;
+  z-index:99;
+}
+
+
+
+
+/* ===== UTILITY ===== */
+
+.center{
+  min-height:100vh;
+  display:grid;
+  place-items:center;
+}
+
+
+
+.small{
+  font-size:12px;
+}
+
+
+
+.dangerText{
+  color:#ff7c86;
+}
+
+
+
+.top{
+  padding:30px 0;
+}
+
+
+
+
+/* ===== RESPONSIVE BASE ===== */
+
+@media(max-width:800px){
+
+  .dashboard{
+    grid-template-columns:1fr;
+  }
+
+  .side{
+    border-right:0;
+    border-bottom:1px solid #1a2530;
+  }
+
+  .hero{
+    padding-top:55px;
+  }
+
+  .main{
+    padding:18px;
+  }
+}
+
+
+
+
+/* =========================================================
+   SHARED POLISH
+   ========================================================= */
+
+.btn{
+  font-family:var(--sans);
+  letter-spacing:.08em;
+  text-decoration:none;
+  display:inline-block;
+
+  transition:
+    transform .2s,
+    box-shadow .2s,
+    background .2s;
+}
+
+
+
+.btn:hover{
+  transform:translateY(-3px);
+  box-shadow:0 0 28px rgba(52,245,139,.55);
+}
+
+
+
+.card{
+  transition:
+    transform .25s,
+    border-color .25s,
+    box-shadow .25s;
+}
+
+
+
+.card:hover{
+  transform:translateY(-4px);
+  border-color:var(--g);
+  box-shadow:0 0 26px rgba(52,245,139,.2);
+}
+
+
+
+
+/* ===== HOME RESPONSIVE ===== */
+
+@media(max-width:860px){
+
+  .h-main{
+    grid-template-columns:1fr;
+    padding-top:38px;
+  }
+}
+
+
+
+
+/* =========================================================
+   ACCESSIBILITY / INTERACTION
+   ========================================================= */
+
+button:focus-visible,
+a:focus-visible,
+input:focus-visible{
+  outline:2px solid var(--g);
+  outline-offset:3px;
+}
+
+
+
+
+/* ===== REDUCED MOTION ===== */
+
+@media(prefers-reduced-motion:reduce){
+
+  *,
+  *::before,
+  *::after{
+    animation-duration:.01ms !important;
+    animation-iteration-count:1 !important;
+    scroll-behavior:auto !important;
+    transition-duration:.01ms !important;
+  }
+}

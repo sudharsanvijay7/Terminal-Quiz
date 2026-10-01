@@ -1,0 +1,467 @@
+/* =========================================================
+   HOME REDESIGN v3
+   ========================================================= */
+
+.nav a{
+  color:var(--g);
+  font-family:var(--mono);
+  text-decoration:none;
+}
+
+
+
+.nav a:hover{
+  text-shadow:0 0 12px rgba(52,245,139,.45);
+}
+
+
+
+.home{
+  padding:0 0 70px;
+}
+
+
+
+.h-left,
+.h-pane{
+  min-width:0;
+}
+
+
+
+.h-top{
+  display:flex;
+  justify-content:space-between;
+  gap:12px;
+  flex-wrap:wrap;
+
+  padding-bottom:18px;
+  border-bottom:1px dashed #1f2c38;
+
+  font:13px var(--mono);
+  color:#6f7d8c;
+}
+
+
+
+.h-top b{
+  color:var(--g);
+}
+
+
+
+.h-live{
+  display:flex;
+  align-items:center;
+  gap:8px;
+  color:var(--g);
+}
+
+
+
+.h-live i{
+  width:7px;
+  height:7px;
+  border-radius:50%;
+  background:var(--g);
+  animation:hb 1.4s infinite;
+}
+
+
+
+@keyframes hb{
+  50%{
+    opacity:.25;
+  }
+}
+
+
+
+
+/* ===== HOME MAIN ===== */
+
+.h-main{
+  display:grid;
+  grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);
+  gap:56px;
+  align-items:center;
+
+  min-height:calc(100vh - 170px);
+  padding:30px 0 40px;
+}
+
+
+
+.h-eyebrow{
+  margin:0 0 14px;
+  font:13px var(--mono);
+  letter-spacing:.25em;
+  text-transform:uppercase;
+  color:#6f7d8c;
+}
+
+
+
+.h-title{
+  margin:0 0 26px;
+
+  font:
+    800
+    clamp(44px,6.5vw,92px)
+    /
+    .9
+    var(--sans);
+
+  letter-spacing:-.04em;
+  text-transform:uppercase;
+}
+
+
+
+.h-title span{
+  display:block;
+}
+
+
+
+.h-title .o{
+  color:transparent;
+  -webkit-text-stroke:2px #27b86a;
+}
+
+
+
+.h-type{
+  min-height:1.6em;
+  margin:0 0 32px;
+
+  font:
+    500
+    clamp(16px,2.2vw,22px)
+    var(--mono);
+
+  color:#cfe9da;
+}
+
+
+
+.h-type em{
+  font-style:normal;
+  color:var(--g);
+}
+
+
+
+.h-caret{
+  display:inline-block;
+  width:.6em;
+  height:1.1em;
+  margin-left:3px;
+  vertical-align:-.2em;
+  background:#27b86a;
+
+  animation:cb 1s steps(1) infinite;
+}
+
+
+
+@keyframes cb{
+  50%{
+    opacity:0;
+  }
+}
+
+
+
+
+/* ===== HOME BUTTONS ===== */
+
+.h-btns{
+  display:flex;
+  gap:14px;
+  flex-wrap:wrap;
+}
+
+
+
+.h-btn{
+  padding:14px 20px;
+
+  border:1px solid var(--g);
+  border-radius:4px;
+  background:var(--g);
+  color:#03130a;
+
+  font:
+    700
+    14px
+    var(--mono);
+
+  letter-spacing:.06em;
+  text-decoration:none;
+
+  transition:
+    transform .2s,
+    box-shadow .2s;
+}
+
+
+
+.h-btn:hover{
+  transform:translate(-3px,-3px);
+  box-shadow:5px 5px 0 rgba(52,245,139,.35);
+}
+
+
+
+.h-btn.ghost{
+  background:transparent;
+  color:var(--g);
+}
+
+
+
+
+/* ===== HOME ROUND PANEL ===== */
+
+.h-pane{
+  border:1px solid #1d3a2b;
+  border-radius:8px;
+  background:#050a08;
+  overflow:hidden;
+}
+
+
+
+.h-bar{
+  display:flex;
+  align-items:center;
+  gap:6px;
+
+  padding:10px 14px;
+
+  border-bottom:1px solid #1d3a2b;
+  background:#0a1410;
+
+  font:12px var(--mono);
+  color:#5fbf8a;
+}
+
+
+
+.h-bar b{
+  width:10px;
+  height:10px;
+  border-radius:50%;
+  background:#1d3a2b;
+}
+
+
+
+.h-bar span{
+  margin-left:auto;
+}
+
+
+
+.h-row{
+  display:flex;
+  gap:16px;
+
+  padding:20px 18px;
+
+  border-bottom:1px solid #12251b;
+
+  transition:background .2s;
+}
+
+
+
+.h-row:last-child{
+  border-bottom:0;
+}
+
+
+
+.h-row:hover{
+  background:#08130d;
+}
+
+
+
+.h-n{
+  min-width:38px;
+  font:700 26px var(--mono);
+  color:#27b86a;
+}
+
+
+
+.h-row h3{
+  margin:0 0 4px;
+  font:700 17px var(--sans);
+}
+
+
+
+.h-row p{
+  margin:0;
+  color:#8995a3;
+  font-size:14px;
+  line-height:1.5;
+}
+
+
+
+
+/* ===== HOME STEPS ===== */
+
+.h-sec{
+  margin:0 0 20px;
+  font:13px var(--mono);
+  color:#6f7d8c;
+}
+
+
+
+.h-steps{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+  gap:26px;
+
+  margin:0;
+  padding:30px 0 0;
+
+  list-style:none;
+  border-top:1px dashed #1f2c38;
+}
+
+
+
+.h-steps b{
+  display:block;
+  margin-bottom:8px;
+
+  font:
+    700
+    13px
+    var(--mono);
+
+  color:var(--g);
+}
+
+
+
+.h-steps b::before{
+  content:'$ step_';
+}
+
+
+
+.h-steps span{
+  color:#a9b4c0;
+  line-height:1.6;
+}
+
+
+
+
+/* ===== HOME STATUS ===== */
+
+.h-status{
+  display:flex;
+  margin-top:48px;
+
+  border:1px solid #12251b;
+
+  font:12px var(--mono);
+}
+
+
+
+.h-status span{
+  padding:8px 14px;
+}
+
+
+
+.h-status span:first-child{
+  background:var(--g);
+  color:#03130a;
+  font-weight:700;
+}
+
+
+
+.h-status span:last-child{
+  margin-left:auto;
+  color:#6f7d8c;
+}
+
+
+
+
+/* ===== HOME ANIMATION ===== */
+
+@keyframes up{
+  from{
+    opacity:0;
+    transform:translateY(18px);
+  }
+}
+
+
+
+.h-left > *,
+.h-pane,
+.h-steps li{
+  animation:up .7s backwards;
+}
+
+
+
+.h-left > :nth-child(2){
+  animation-delay:.1s;
+}
+
+
+
+.h-left > :nth-child(3){
+  animation-delay:.2s;
+}
+
+
+
+.h-left > :nth-child(4){
+  animation-delay:.3s;
+}
+
+
+
+.h-pane{
+  animation-delay:.35s;
+}
+
+
+
+.h-steps li:nth-child(1){
+  animation-delay:.6s;
+}
+
+
+
+.h-steps li:nth-child(2){
+  animation-delay:.7s;
+}
+
+
+
+.h-steps li:nth-child(3){
+  animation-delay:.8s;
+}
+
+
+
+.h-steps li:nth-child(4){
+  animation-delay:.9s;
+}

@@ -1,0 +1,80 @@
+/* ===== DASHBOARD ===== */
+
+.dashboard{
+  display:grid;
+  grid-template-columns:230px 1fr;
+  min-height:100vh;
+}
+
+
+
+.side{
+  border-right:1px solid #1a2530;
+  padding:22px;
+  background:#070a0f;
+}
+
+
+
+.stat{
+  font-size:34px;
+  font-weight:800;
+}
+
+
+
+
+/* =========================================================
+   EXISTING FUNCTIONAL STYLES — PRESERVED
+   ========================================================= */
+
+
+/* ===== STATUS DOT ===== */
+
+.status-dot{
+  display:inline-block;
+  width:9px;
+  height:9px;
+  border-radius:50%;
+  margin-right:7px;
+  vertical-align:middle;
+  background:#5d6874;
+}
+
+
+
+.status-dot.is-online{
+  background:#34f58b;
+
+  box-shadow:
+    0 0 0 0 rgba(52,245,139,.75);
+
+  animation:onlinePulse 1.4s infinite;
+}
+
+
+
+.status-dot.is-offline{
+  background:#5d6874;
+  opacity:.8;
+}
+
+
+
+@keyframes onlinePulse{
+
+  0%{
+    box-shadow:0 0 0 0 rgba(52,245,139,.75);
+    opacity:1;
+  }
+
+  70%{
+    box-shadow:0 0 0 7px rgba(52,245,139,0);
+    opacity:.72;
+  }
+
+  100%{
+    box-shadow:0 0 0 0 rgba(52,245,139,0);
+    opacity:1;
+  }
+}

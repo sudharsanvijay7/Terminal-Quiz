@@ -1,0 +1,202 @@
+.question{
+  font-size:21px;
+  line-height:1.5;
+}
+
+
+
+
+/* ===== ROUND 1 OPTIONS ===== */
+
+.option{
+  display:block;
+  padding:15px;
+  border:1px solid #233140;
+  border-radius:12px;
+  margin:10px 0;
+  cursor:pointer;
+  background:#0b1118;
+}
+
+
+
+.option:hover{
+  border-color:#3be58a;
+}
+
+
+
+.option.selected{
+  border-color:#34f58b;
+  background:#0b2117;
+}
+
+
+
+
+/* ===== ROUND 1 OPTION READABILITY ===== */
+
+/*
+  Brighter text so answer choices are clearly readable
+  against the dark card.
+*/
+
+.option{
+  color:#f1f6fa;
+  font-weight:500;
+}
+
+
+
+.option label,
+.option span{
+  color:#f1f6fa;
+}
+
+
+
+.option input{
+  accent-color:var(--g);
+}
+
+
+
+.option:hover{
+  color:#ffffff;
+}
+
+
+
+.option.selected{
+  color:#ffffff;
+}
+
+
+
+.option.selected label,
+.option.selected span{
+  color:#ffffff;
+}
+
+
+
+
+/* ===== QUESTION PALETTE ===== */
+
+.palette{
+  display:flex;
+  flex-wrap:wrap;
+  gap:7px;
+}
+
+
+
+.qnum{
+  width:38px;
+  height:38px;
+  border-radius:8px;
+  border:1px solid #243240;
+  background:#0b1118;
+  color:#b8c4cf;
+  cursor:pointer;
+}
+
+
+
+.qnum.answered{
+  background:#0c3b25;
+  border-color:#34f58b;
+  color:#fff;
+}
+
+
+
+.qnum.current{
+  outline:2px solid #34f58b;
+}
+
+
+
+
+/* ===== NOTICE / TOAST ===== */
+
+.notice{
+  padding:14px;
+  border-radius:10px;
+  background:#0d171f;
+  border:1px solid #203142;
+  color:#b9c7d3;
+}
+
+
+
+
+/* ===== REVIEW LIST ===== */
+
+.review-list{
+  display:grid;
+  gap:10px;
+  margin-top:18px;
+}
+
+
+
+.review-item{
+  display:flex;
+  justify-content:space-between;
+  gap:18px;
+  align-items:center;
+
+  padding:15px;
+
+  border:1px solid #1b2936;
+  border-radius:12px;
+  background:#0b1118;
+}
+
+
+
+.review-item strong{
+  color:#f4f8fb;
+}
+
+
+
+.review-item .btn{
+  white-space:nowrap;
+}
+
+
+
+@media(max-width:650px){
+
+  .review-item{
+    flex-direction:column;
+    align-items:stretch;
+  }
+}
+
+
+
+.option-letter{
+  width:30px;
+  height:30px;
+  min-width:30px;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  border:1px solid #3a4b5a;
+  border-radius:50%;
+
+  font-weight:800;
+  color:#9fb0bf;
+}
+
+
+
+.round2-option.selected .option-letter{
+  border-color:#34f58b;
+  color:#34f58b;
+}

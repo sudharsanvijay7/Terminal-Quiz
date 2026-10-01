@@ -1,0 +1,58 @@
+/* =========================================================
+   ROUND 2 OPTIONS
+   ========================================================= */
+
+.round2-option{
+  display:flex;
+  align-items:center;
+  gap:12px;
+
+  padding:13px 14px;
+
+  border:1px solid #263544;
+  border-radius:10px;
+
+  background:#080d13;
+  color:#f4f7fa;
+
+  cursor:pointer;
+
+  transition:all .18s ease;
+
+  line-height:1.4;
+}
+
+
+
+.round2-option:hover{
+  border-color:#34f58b;
+  background:#0b1512;
+}
+
+
+
+.round2-option.selected{
+  border-color:#34f58b;
+  background:#0d2118;
+
+  box-shadow:
+    0 0 0 1px #34f58b55 inset;
+}
+
+
+
+.round2-option input{
+  position:absolute;
+  opacity:0;
+  pointer-events:none;
+}
+
+
+
+
+/* ===== ROUND 2 SUBMIT BUTTON ===== */
+
+#submitAnswer:disabled{
+  opacity:.6;
+  cursor:not-allowed;
+}
