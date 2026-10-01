@@ -21,18 +21,6 @@
       "round2Score": 5,
       "createdAt": "2026-09-30T09:30:12.174Z",
       "lastSeen": 1790760815723
-    },
-    "953723104064": {
-      "id": "953723104064",
-      "name": "shaban",
-      "registerNumber": "953723104064",
-      "token": "367da0ac4e55e5dce4e6d1f7ad5255308338472026a751e7",
-      "online": false,
-      "round1Submitted": false,
-      "round1Score": 0,
-      "round2Score": 0,
-      "createdAt": "2026-09-30T13:06:50.389Z",
-      "lastSeen": 1790773612499
     }
   },
   "answers": {
@@ -168,12 +156,6 @@
       "solved": {
         "1": true
       }
-    },
-    "953723104064": {
-      "cwd": "/",
-      "files": {},
-      "challenge": 1,
-      "attempts": {}
     }
   },
   "logs": [
@@ -216,11 +198,6 @@
       "time": "2026-09-30T12:40:59.454Z",
       "type": "ROUND_AUTO_END",
       "detail": "Round 2 timer expired"
-    },
-    {
-      "time": "2026-09-30T13:06:50.389Z",
-      "type": "LOGIN",
-      "detail": "953723104064 shaban"
     }
   ],
   "questions": [
