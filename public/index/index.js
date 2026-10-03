@@ -1,40 +1,45 @@
 $('#app').innerHTML=layout(`
 <main class="home">
+  <div class="h-top">
+    <span>root@terminal-quiz:~$ <b>./start_event.sh</b></span>
+    <span class="h-live"><i></i> LAN LIVE · <span id="clk">--:--:--</span></span>
+  </div>
+
   <section class="h-main">
     <div class="h-left">
       <p class="h-eyebrow">/ welcome to the</p>
-      <h1 class="h-title"><span>Terminal</span><span class="o">Quiz</span></h1>
+      <h1 class="h-title"><span class="glitch" data-t="Terminal">Terminal</span><span class="o">Quiz</span></h1>
       <p class="h-type"><em>&gt;</em> <span id="tw"></span><i class="h-caret"></i></p>
-      <div class="h-btns">
-        <a class="h-btn" href="/participant-login.html">ENTER EVENT →</a>
-        <a class="h-btn ghost" href="/admin-login.html">ADMIN CONTROL</a>
-      </div>
     </div>
 
-    <aside class="h-pane">
+    <aside class="h-pane" id="pane">
       <div class="h-bar"><b></b><b></b><b></b><span>rounds.sh</span></div>
+      <div class="h-boot" id="boot"></div>
       <div class="h-row"><span class="h-n">01</span><div><h3>Technical Quiz</h3><p>20 questions · 20 minutes · 20 marks</p></div></div>
       <div class="h-row"><span class="h-n">02</span><div><h3>Terminal Quiz</h3><p>5 challenges · 30 minutes · command-line investigation</p></div></div>
     </aside>
   </section>
 
   <p class="h-sec">$ cat how_it_works.txt</p>
-  <ol class="h-steps">
+  <ol class="h-steps" id="steps">
     <li><b>01</b><span>Join with your participant ID.</span></li>
     <li><b>02</b><span>Complete the timed technical quiz.</span></li>
     <li><b>03</b><span>Solve five terminal challenges.</span></li>
     <li><b>04</b><span>View the final leaderboard when published.</span></li>
   </ol>
 
-  <div class="h-status"><span>NORMAL</span><span>terminal-quiz · ready</span></div>
+  <div class="h-btns big">
+    <a class="h-btn" href="/participant-login.html">ENTER EVENT →</a>
+    <a class="h-btn ghost" href="/admin-login.html">ADMIN CONTROL</a>
+  </div>
 </main>`);
 
-/* remove the "COLLEGE SYMPOSIUM • LAN EVENT" text from the top bar (homepage only) */
+/* remove the "COLLEGE SYMPOSIUM • LAN EVENT" text from the top bar */
 document.querySelectorAll('#app *').forEach(e=>{
   if(!e.children.length && /symposium/i.test(e.textContent)) e.remove();
 });
 
-/* looping typewriter */
+/* looping typewriter (unchanged) */
 (function(){
   const el=document.getElementById('tw'); if(!el) return;
   const words=['Operating Systems.','Linux fundamentals.','Terminal problem solving.','Think. Type. Solve.'];
@@ -47,4 +52,68 @@ document.querySelectorAll('#app *').forEach(e=>{
     i+=del?-1:1;
     setTimeout(tick,del?35:70);
   })();
+})();
+
+/* matrix rain background */
+(function(){
+  if(matchMedia('(prefers-reduced-motion:reduce)').matches) return;
+  const c=document.createElement('canvas'); c.id='rain'; document.body.prepend(c);
+  const x=c.getContext('2d'), chars='01$#>_/\\|{}[]<>=+*ABCDEF'.split(''), fs=16;
+  let cols,drops;
+  const size=()=>{c.width=innerWidth;c.height=innerHeight;cols=Math.ceil(c.width/fs);drops=Array.from({length:cols},()=>Math.random()*-50)};
+  size(); addEventListener('resize',size);
+  setInterval(()=>{
+    x.fillStyle='rgba(3,8,5,.12)'; x.fillRect(0,0,c.width,c.height);
+    x.font=fs+'px monospace';
+    drops.forEach((y,i)=>{
+      x.fillStyle=Math.random()>.97?'#d6ffe8':'#27b86a';
+      x.fillText(chars[Math.random()*chars.length|0],i*fs,y*fs);
+      drops[i]=(y*fs>c.height&&Math.random()>.975)?0:y+1;
+    });
+  },50);
+})();
+
+/* boot log typing */
+(function(){
+  const el=document.getElementById('boot'); if(!el) return;
+  const lines=['[<span class="ok"> OK </span>] mounting /dev/quiz','[<span class="ok"> OK </span>] LAN server online','[<span class="ok"> OK </span>] rounds loaded: 2','[<span class="ok"> OK </span>] awaiting participants_'];
+  let n=0;
+  (function next(){ if(n>=lines.length) return; el.insertAdjacentHTML('beforeend',lines[n++]+'<br>'); setTimeout(next,450); })();
+})();
+
+/* live clock */
+(function(){
+  const c=document.getElementById('clk');
+  const t=()=>{ if(c) c.textContent=new Date().toLocaleTimeString('en-GB'); };
+  t(); setInterval(t,1000);
+})();
+
+
+/* cursor spotlight on the pane */
+(function(){
+  const p=document.getElementById('pane'); if(!p) return;
+  p.addEventListener('pointermove',e=>{
+    const r=p.getBoundingClientRect();
+    p.style.setProperty('--mx',(e.clientX-r.left)+'px');
+    p.style.setProperty('--my',(e.clientY-r.top)+'px');
+  });
+})();
+
+/* press Enter to join */
+addEventListener('keydown',e=>{
+  if(e.key==='Enter' && !/INPUT|TEXTAREA|A|BUTTON/.test(document.activeElement.tagName))
+    location.href='/participant-login.html';
+});
+
+/* steps: reveal one by one, typing each line */
+(function(){
+  const box=document.getElementById('steps'); if(!box) return;
+  const items=[...box.children].map(li=>{const s=li.querySelector('span');const t=s.textContent;s.textContent='';return {li,s,t}});
+  let started=false; box.classList.add('seq');
+  function run(k){
+    if(k>=items.length) return;
+    const {li,s,t}=items[k]; li.classList.add('on'); let i=0;
+    (function type(){ s.textContent=t.slice(0,++i); if(i<t.length) setTimeout(type,28); else setTimeout(()=>run(k+1),350); })();
+  }
+  new IntersectionObserver((e,o)=>{ if(e[0].isIntersecting&&!started){started=true;o.disconnect();run(0)} },{threshold:.35}).observe(box);
 })();

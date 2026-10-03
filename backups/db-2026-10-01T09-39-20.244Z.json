@@ -1,22 +1,52 @@
 {
   "event": {
     "name": "TERMINAL QUIZ",
-    "state": "WAITING",
-    "round": 0,
+    "state": "ROUND1_COMPLETED",
+    "round": 1,
     "startAt": null,
     "endAt": null,
     "paused": false,
     "remainingMs": null,
     "leaderboardPublished": false
   },
-  "participants": {},
+  "participants": {
+    "953723104064": {
+      "id": "953723104064",
+      "name": "Mohammed",
+      "registerNumber": "953723104064",
+      "token": "0728e2552870d5761f9ac1cbf060d4667919339f53dae726",
+      "online": true,
+      "round1Submitted": false,
+      "round1Score": 0,
+      "round2Score": 0,
+      "createdAt": "2026-10-01T09:39:00.131Z",
+      "lastSeen": 1790847560238
+    }
+  },
   "answers": {},
-  "terminal": {},
+  "terminal": {
+    "953723104064": {
+      "cwd": "/",
+      "files": {},
+      "challenge": 1,
+      "attempts": {}
+    }
+  },
   "logs": [
     {
-      "time": "2026-10-01T10:07:34.709Z",
-      "type": "RESET",
-      "detail": "Event reset"
+      "time": "2026-10-01T09:35:27.022Z",
+      "type": "ROUND_START",
+      "detail": "Round 1"
+    },
+    {
+      "time": "2026-10-01T09:35:29.735Z",
+      "type": "ROUND_END",
+      "detail": "Round 1"
+    },
+    {
+      "time": "2026-10-01T09:39:00.131Z",
+      "type": "LOGIN",
+      "detail": "953723104064 Mohammed"
     }
   ],
   "questions": [

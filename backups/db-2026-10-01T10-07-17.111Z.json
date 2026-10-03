@@ -1,22 +1,243 @@
 {
   "event": {
     "name": "TERMINAL QUIZ",
-    "state": "WAITING",
-    "round": 0,
+    "state": "ROUND2_COMPLETED",
+    "round": 2,
     "startAt": null,
     "endAt": null,
     "paused": false,
     "remainingMs": null,
-    "leaderboardPublished": false
+    "leaderboardPublished": true
   },
-  "participants": {},
-  "answers": {},
-  "terminal": {},
+  "participants": {
+    "953723104064": {
+      "id": "953723104064",
+      "name": "shaban",
+      "registerNumber": "953723104064",
+      "token": "c5886c74a1bac610810ccc410456c4f77b475b1583251e47",
+      "online": true,
+      "round1Submitted": true,
+      "round1Score": 5,
+      "round2Score": 10,
+      "createdAt": "2026-10-01T10:03:51.074Z",
+      "lastSeen": 1790849237059,
+      "round2Submitted": true
+    }
+  },
+  "answers": {
+    "953723104064:1": {
+      "participantId": "953723104064",
+      "questionId": 1,
+      "answer": 2,
+      "at": "2026-10-01T10:03:55.170Z"
+    },
+    "953723104064:2": {
+      "participantId": "953723104064",
+      "questionId": 2,
+      "answer": 3,
+      "at": "2026-10-01T10:03:57.229Z"
+    },
+    "953723104064:3": {
+      "participantId": "953723104064",
+      "questionId": 3,
+      "answer": 1,
+      "at": "2026-10-01T10:03:59.689Z"
+    },
+    "953723104064:4": {
+      "participantId": "953723104064",
+      "questionId": 4,
+      "answer": 1,
+      "at": "2026-10-01T10:04:02.625Z"
+    },
+    "953723104064:5": {
+      "participantId": "953723104064",
+      "questionId": 5,
+      "answer": 1,
+      "at": "2026-10-01T10:04:07.317Z"
+    },
+    "953723104064:7": {
+      "participantId": "953723104064",
+      "questionId": 7,
+      "answer": 1,
+      "at": "2026-10-01T10:04:10.450Z"
+    },
+    "953723104064:8": {
+      "participantId": "953723104064",
+      "questionId": 8,
+      "answer": 1,
+      "at": "2026-10-01T10:04:13.066Z"
+    },
+    "953723104064:6": {
+      "participantId": "953723104064",
+      "questionId": 6,
+      "answer": 3,
+      "at": "2026-10-01T10:04:19.295Z"
+    },
+    "953723104064:9": {
+      "participantId": "953723104064",
+      "questionId": 9,
+      "answer": 2,
+      "at": "2026-10-01T10:04:23.048Z"
+    },
+    "953723104064:10": {
+      "participantId": "953723104064",
+      "questionId": 10,
+      "answer": 3,
+      "at": "2026-10-01T10:04:25.016Z"
+    },
+    "953723104064:11": {
+      "participantId": "953723104064",
+      "questionId": 11,
+      "answer": 1,
+      "at": "2026-10-01T10:04:26.987Z"
+    },
+    "953723104064:12": {
+      "participantId": "953723104064",
+      "questionId": 12,
+      "answer": 2,
+      "at": "2026-10-01T10:04:29.092Z"
+    },
+    "953723104064:13": {
+      "participantId": "953723104064",
+      "questionId": 13,
+      "answer": 3,
+      "at": "2026-10-01T10:04:31.175Z"
+    },
+    "953723104064:14": {
+      "participantId": "953723104064",
+      "questionId": 14,
+      "answer": 3,
+      "at": "2026-10-01T10:04:33.247Z"
+    },
+    "953723104064:15": {
+      "participantId": "953723104064",
+      "questionId": 15,
+      "answer": 1,
+      "at": "2026-10-01T10:04:35.480Z"
+    },
+    "953723104064:16": {
+      "participantId": "953723104064",
+      "questionId": 16,
+      "answer": 0,
+      "at": "2026-10-01T10:04:37.934Z"
+    },
+    "953723104064:17": {
+      "participantId": "953723104064",
+      "questionId": 17,
+      "answer": 0,
+      "at": "2026-10-01T10:04:55.883Z"
+    },
+    "953723104064:18": {
+      "participantId": "953723104064",
+      "questionId": 18,
+      "answer": 0,
+      "at": "2026-10-01T10:04:42.349Z"
+    },
+    "953723104064:19": {
+      "participantId": "953723104064",
+      "questionId": 19,
+      "answer": 1,
+      "at": "2026-10-01T10:04:44.839Z"
+    },
+    "953723104064:20": {
+      "participantId": "953723104064",
+      "questionId": 20,
+      "answer": 0,
+      "at": "2026-10-01T10:04:47.149Z"
+    }
+  },
+  "terminal": {
+    "953723104064": {
+      "cwd": "/",
+      "files": {},
+      "challenge": 6,
+      "attempts": {
+        "1": 4,
+        "2": 1,
+        "3": 1,
+        "4": 1,
+        "5": 1
+      },
+      "solved": {
+        "4": true
+      }
+    }
+  },
   "logs": [
     {
-      "time": "2026-10-01T10:07:34.709Z",
+      "time": "2026-10-01T10:03:35.094Z",
       "type": "RESET",
       "detail": "Event reset"
+    },
+    {
+      "time": "2026-10-01T10:03:39.089Z",
+      "type": "ROUND_START",
+      "detail": "Round 1"
+    },
+    {
+      "time": "2026-10-01T10:03:51.074Z",
+      "type": "LOGIN",
+      "detail": "953723104064 shaban"
+    },
+    {
+      "time": "2026-10-01T10:04:59.971Z",
+      "type": "ROUND1_SUBMIT",
+      "detail": "953723104064"
+    },
+    {
+      "time": "2026-10-01T10:05:06.640Z",
+      "type": "ROUND_END",
+      "detail": "Round 1"
+    },
+    {
+      "time": "2026-10-01T10:05:14.936Z",
+      "type": "ROUND_START",
+      "detail": "Round 2"
+    },
+    {
+      "time": "2026-10-01T10:05:47.361Z",
+      "type": "TERMINAL_ATTEMPT",
+      "detail": "953723104064 challenge 1"
+    },
+    {
+      "time": "2026-10-01T10:05:59.044Z",
+      "type": "TERMINAL_ATTEMPT",
+      "detail": "953723104064 challenge 2"
+    },
+    {
+      "time": "2026-10-01T10:06:03.568Z",
+      "type": "TERMINAL_ATTEMPT",
+      "detail": "953723104064 challenge 3"
+    },
+    {
+      "time": "2026-10-01T10:06:07.129Z",
+      "type": "TERMINAL_SOLVE",
+      "detail": "953723104064 challenge 4"
+    },
+    {
+      "time": "2026-10-01T10:06:12.599Z",
+      "type": "TERMINAL_ATTEMPT",
+      "detail": "953723104064 challenge 5"
+    },
+    {
+      "time": "2026-10-01T10:06:12.600Z",
+      "type": "ROUND2_SUBMIT",
+      "detail": "953723104064 completed Round 2"
+    },
+    {
+      "time": "2026-10-01T10:06:19.445Z",
+      "type": "ROUND_END",
+      "detail": "Round 2"
+    },
+    {
+      "time": "2026-10-01T10:06:39.413Z",
+      "type": "LEADERBOARD",
+      "detail": "Published"
+    },
+    {
+      "time": "2026-10-01T10:06:39.420Z",
+      "type": "LEADERBOARD",
+      "detail": "Published"
     }
   ],
   "questions": [
