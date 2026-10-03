@@ -1,14 +1,107 @@
 if(!requireAdmin()) throw new Error('admin auth required');
-let timerId;
-async function dashboard(){try{const [s,p,l]=await Promise.all([api('/api/state'),api('/api/admin/participants'),api('/api/admin/logs')]);$('#app').innerHTML=`<div class="dashboard"><aside class="side"><a class="brand link" href="/index.html"><span class="green">&gt;_</span> TERMINAL QUIZ</a><p class="muted small">CONTROL CENTER</p><hr style="border-color:#17212b"><p>State: <b>${s.state}</b></p><p>Round: <b>${s.round||'—'}</b></p><p>Time: <b id="timer">${fmt(s.remainingMs)}</b></p><div class="actions"><button class="btn" onclick="control('start1')">START R1</button><button class="btn danger" onclick="control('end1')">END R1</button><button class="btn" onclick="control('start2')">START R2</button><button class="btn danger" onclick="control('end2')">END R2</button><button class="btn alt" onclick="control('publish')">PUBLISH</button><button class="btn alt" onclick="control('reset')">RESET</button><button class="btn alt" onclick="logoutAdmin()">LOGOUT</button><button class="btn alt" onclick="exportCsv()">EXPORT CSV</button></div></aside><main class="main"><div class="grid"><div class="card"><div class="muted">PARTICIPANTS</div><div class="stat">${s.participantCount}</div></div><div class="card"><div class="muted">ONLINE</div><div class="stat online">${s.onlineCount}</div></div><div class="card"><div class="muted">SUBMITTED R1</div><div class="stat">${p.filter(x=>x.round1Submitted).length}</div></div><div class="card"><div class="muted">TOP SCORE</div><div class="stat">${p[0]?.total||0}</div></div></div><div class="card" style="margin-top:18px"><h2>Live Participants</h2><div style="overflow:auto"><table class="table"><thead><tr><th>ID</th><th>Name</th><th>Status</th><th>R1</th><th>R2</th><th>Total</th></tr></thead><tbody>${p.map(x=>`<tr><td>${escapeHtml(x.id)}</td><td>${escapeHtml(x.name)}</td><td class="${x.online?'online':''}"><span class="status-dot ${x.online?'is-online':'is-offline'}"></span>${x.online?'Online':'Offline'}</td><td>${x.round1Score}</td><td>${x.round2Score}</td><td><b>${x.total}</b></td></tr>`).join('')}</tbody></table></div></div><div class="card" style="margin-top:18px"><h2>Audit Log</h2>${l.slice(0,20).map(x=>`<div class="small" style="padding:8px 0;border-bottom:1px solid #17212b"><span class="muted">${new Date(x.time).toLocaleTimeString()}</span> — ${escapeHtml(x.type)} — ${escapeHtml(x.detail)}</div>`).join('')}</div></main></div>`;if(s.remainingMs!=null)startTimer(s.remainingMs);else clearInterval(timerId);setTimeout(dashboard,3000)}catch(e){clearAdmin();location.href='/admin-login.html'}}
-function startTimer(ms){clearInterval(timerId);let end=Date.now()+ms;timerId=setInterval(()=>{const el=$('#timer');if(!el)return;const left=Math.max(0,end-Date.now());el.textContent=fmt(left);if(left<=0)clearInterval(timerId)},500)}
-async function control(action){if(action==='reset'&&!confirm('Reset the entire event and all participants/scores?'))return;try{await api('/api/admin/control',{method:'POST',body:JSON.stringify({action})});toast(action.toUpperCase()+' completed');dashboard()}catch(x){toast(x.message)}}
-async function exportCsv(){
+let timerId, pollId, lastSig='', first=true;
+const STAGES=['WAITING','ROUND1_ACTIVE','ROUND1_COMPLETED','ROUND2_ACTIVE','ROUND2_COMPLETED'];
+const STAGE_LABELS=['Lobby','Round 1','R1 done','Round 2','Finished'];
+
+/* what the coordinator should do next, for each phase */
+function phase(s,p){
+  const n=s.participantCount, on=s.onlineCount, sub=p.filter(x=>x.round1Submitted).length;
+  switch(s.state){
+    case 'WAITING': return {t:'Lobby is open',h:`${on} of ${n} participants are online. Start Round 1 when everyone is in.`,a:'start1',l:'START ROUND 1'};
+    case 'ROUND1_ACTIVE': return {t:'Round 1 is live',h:`${sub} of ${n} have submitted. The round ends automatically when the timer hits zero.`,a:'end1',l:'END ROUND 1',danger:1};
+    case 'ROUND1_COMPLETED': return {t:'Round 1 finished',h:'Check the scores below, then open Round 2.',a:'start2',l:'START ROUND 2'};
+    case 'ROUND2_ACTIVE': return {t:'Round 2 is live',h:'Participants are solving the terminal challenges.',a:'end2',l:'END ROUND 2',danger:1};
+    case 'ROUND2_COMPLETED': return s.leaderboardPublished
+      ? {t:'Event finished',h:'The leaderboard is published and visible to participants.',done:1}
+      : {t:'Event finished',h:'Publish the leaderboard when you are ready to reveal it.',a:'publish',l:'PUBLISH LEADERBOARD'};
+    default: return {t:String(s.state).replaceAll('_',' '),h:'',done:1};
+  }
+}
+
+async function dashboard(){
+  clearTimeout(pollId);
   try{
-    const r=await fetch('/api/admin/export',{headers:{Authorization:'Bearer '+getAdmin()}});
-    if(!r.ok){const d=await r.json().catch(()=>({}));throw Error(d.error||'Export failed')}
-    const blob=await r.blob(),url=URL.createObjectURL(blob),a=document.createElement('a');
-    a.href=url;a.download='terminal-quiz-results.csv';document.body.appendChild(a);a.click();a.remove();URL.revokeObjectURL(url);
+    const [s,p,l]=await Promise.all([api('/api/state'),api('/api/admin/participants'),api('/api/admin/logs')]);
+    /* redraw only when data changed (timer excluded): no flicker */
+    const sig=JSON.stringify([{...s,remainingMs:null},p,l.slice(0,20)]);
+    if(sig!==lastSig){
+      lastSig=sig;
+      const wasOpen=document.querySelector('.ad-adv')?.open;
+      const ph=phase(s,p), cur=Math.max(0,STAGES.indexOf(s.state));
+      const steps=STAGE_LABELS.map((t,i)=>`<li class="${i<cur?'done':i===cur?'now':''}"><i>${i<cur?'✓':i+1}</i><span>${t}</span></li>`).join('');
+      const action=ph.done?`<div class="ad-ok">✓ All done</div>`:`<button class="ad-go${ph.danger?' danger':''}" onclick="control('${ph.a}')">${ph.l}</button>`;
+      $('#app').innerHTML=`<div class="dashboard${first?' enter':''}">
+<header class="ad-top">
+  <a class="ad-brand" href="/index.html"><span>&gt;_</span> TERMINAL QUIZ</a>
+  <span class="ad-pill"><i></i> CONTROL CENTER</span>
+  <div class="ad-topbtns">
+    <button class="ad-btn" onclick="exportCsv()">EXPORT CSV</button>
+    <button class="ad-btn" onclick="logoutAdmin()">LOGOUT</button>
+  </div>
+</header>
+<div class="ad-wrap">
+  <section class="ad-console">
+    <div class="ad-left">
+      <p class="ad-kicker">CURRENT PHASE</p>
+      <h1 class="ad-phase">${ph.t}</h1>
+      <p class="ad-hint">${ph.h}</p>
+      <ol class="ad-steps">${steps}</ol>
+    </div>
+    <div class="ad-right">
+      <div class="ad-timer"><small>TIME LEFT</small><b id="timer" class="${s.remainingMs==null?'idle':''}">${s.remainingMs==null?'--:--':fmt(s.remainingMs)}</b></div>
+      ${action}
+    </div>
+  </section>
+
+  <section class="ad-stats">
+    <div><small>PARTICIPANTS</small><b>${s.participantCount}</b></div>
+    <div><small>ONLINE</small><b class="g">${s.onlineCount}</b></div>
+    <div><small>SUBMITTED R1</small><b>${p.filter(x=>x.round1Submitted).length}</b></div>
+    <div><small>TOP SCORE</small><b>${p[0]?.total||0}</b></div>
+  </section>
+
+  <section class="ad-cols">
+    <div class="ad-panel">
+      <div class="ad-ph"><h2>Participants</h2><span>${p.length}</span></div>
+      <div class="ad-scroll"><table class="ad-table"><thead><tr><th>#</th><th>Name</th><th>ID</th><th>Status</th><th>R1</th><th>R2</th><th>Total</th></tr></thead><tbody>${p.map((x,i)=>`<tr class="${i<3&&x.total>0?'top'+(i+1):''}"><td class="rk">${i+1}</td><td>${escapeHtml(x.name)}</td><td class="id">${escapeHtml(x.id)}</td><td class="${x.online?'on':'off'}"><span class="status-dot ${x.online?'is-online':'is-offline'}"></span>${x.online?'Online':'Offline'}</td><td>${x.round1Score}</td><td>${x.round2Score}</td><td><b>${x.total}</b></td></tr>`).join('')||'<tr><td colspan="7" class="empty">Waiting for participants to join…</td></tr>'}</tbody></table></div>
+    </div>
+    <div class="ad-panel">
+      <div class="ad-ph"><h2>Activity</h2><span>latest ${Math.min(20,l.length)}</span></div>
+      <div class="ad-scroll">${l.slice(0,20).map(x=>`<div class="ad-log"><time>${new Date(x.time).toLocaleTimeString()}</time><div><em>${escapeHtml(x.type)}</em>${escapeHtml(x.detail)}</div></div>`).join('')||'<div class="empty">No events yet.</div>'}</div>
+    </div>
+  </section>
+
+  <details class="ad-adv"${wasOpen?' open':''}>
+    <summary>Manual controls</summary>
+    <div class="ad-advrow">
+      <button class="ad-btn" onclick="control('start1')">START R1</button>
+      <button class="ad-btn" onclick="control('end1')">END R1</button>
+      <button class="ad-btn" onclick="control('start2')">START R2</button>
+      <button class="ad-btn" onclick="control('end2')">END R2</button>
+      <button class="ad-btn" onclick="control('publish')">PUBLISH</button>
+      <button class="ad-btn red" onclick="control('reset')">RESET EVENT</button>
+    </div>
+  </details>
+</div></div>`;
+      first=false;
+      if(s.remainingMs!=null)startTimer(s.remainingMs);else clearInterval(timerId);
+    }
+    pollId=setTimeout(dashboard,3000);
+  }catch(e){clearAdmin();location.href='/admin-login.html'}
+}
+
+function startTimer(ms){clearInterval(timerId);let end=Date.now()+ms;timerId=setInterval(()=>{const el=$('#timer');if(!el)return;const left=Math.max(0,end-Date.now());el.textContent=fmt(left);el.classList.toggle('warn',left>0&&left<60000);if(left<=0)clearInterval(timerId)},500)}
+async function control(action){
+  if(action==='reset'&&!confirm('Reset the entire event and all participants/scores?'))return;
+  if((action==='end1'||action==='end2')&&!confirm('End the round now for everyone?'))return;
+  try{await api('/api/admin/control',{method:'POST',body:JSON.stringify({action})});toast(action.toUpperCase()+' completed');lastSig='';dashboard()}catch(x){toast(x.message)}
+}
+async function exportCsv(){
+try{
+const r=await fetch('/api/admin/export',{headers:{Authorization:'Bearer '+getAdmin()}});
+if(!r.ok){const d=await r.json().catch(()=>({}));throw Error(d.error||'Export failed')}
+const blob=await r.blob(),url=URL.createObjectURL(blob),a=document.createElement('a');
+a.href=url;a.download='terminal-quiz-results.csv';document.body.appendChild(a);a.click();a.remove();URL.revokeObjectURL(url);
   }catch(e){toast(e.message)}
 }
 function logoutAdmin(){clearAdmin();location.href='/admin-login.html'}

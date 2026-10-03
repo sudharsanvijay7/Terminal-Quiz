@@ -1,22 +1,188 @@
 {
   "event": {
     "name": "TERMINAL QUIZ",
-    "state": "WAITING",
-    "round": 0,
-    "startAt": null,
-    "endAt": null,
+    "state": "ROUND2_ACTIVE",
+    "round": 2,
+    "startAt": 1791039597708,
+    "endAt": 1791041397708,
     "paused": false,
     "remainingMs": null,
     "leaderboardPublished": false
   },
-  "participants": {},
-  "answers": {},
-  "terminal": {},
+  "participants": {
+    "7248059990": {
+      "id": "7248059990",
+      "name": "starlord",
+      "registerNumber": "7248059990",
+      "token": "e5c78f23b79b87434d2522a2a1108aac95d8421b08e2e5ff",
+      "online": true,
+      "round1Submitted": true,
+      "round1Score": 2,
+      "round2Score": 0,
+      "createdAt": "2026-10-03T14:58:31.288Z",
+      "lastSeen": 1791039598094
+    }
+  },
+  "answers": {
+    "7248059990:1": {
+      "participantId": "7248059990",
+      "questionId": 1,
+      "answer": 3,
+      "at": "2026-10-03T14:58:44.841Z"
+    },
+    "7248059990:2": {
+      "participantId": "7248059990",
+      "questionId": 2,
+      "answer": 3,
+      "at": "2026-10-03T14:58:46.499Z"
+    },
+    "7248059990:3": {
+      "participantId": "7248059990",
+      "questionId": 3,
+      "answer": 3,
+      "at": "2026-10-03T14:58:47.948Z"
+    },
+    "7248059990:4": {
+      "participantId": "7248059990",
+      "questionId": 4,
+      "answer": 3,
+      "at": "2026-10-03T14:58:49.403Z"
+    },
+    "7248059990:5": {
+      "participantId": "7248059990",
+      "questionId": 5,
+      "answer": 3,
+      "at": "2026-10-03T14:58:50.928Z"
+    },
+    "7248059990:6": {
+      "participantId": "7248059990",
+      "questionId": 6,
+      "answer": 3,
+      "at": "2026-10-03T14:58:52.675Z"
+    },
+    "7248059990:7": {
+      "participantId": "7248059990",
+      "questionId": 7,
+      "answer": 3,
+      "at": "2026-10-03T14:58:54.410Z"
+    },
+    "7248059990:8": {
+      "participantId": "7248059990",
+      "questionId": 8,
+      "answer": 2,
+      "at": "2026-10-03T14:58:56.333Z"
+    },
+    "7248059990:9": {
+      "participantId": "7248059990",
+      "questionId": 9,
+      "answer": 1,
+      "at": "2026-10-03T14:58:58.212Z"
+    },
+    "7248059990:10": {
+      "participantId": "7248059990",
+      "questionId": 10,
+      "answer": 2,
+      "at": "2026-10-03T14:59:00.517Z"
+    },
+    "7248059990:11": {
+      "participantId": "7248059990",
+      "questionId": 11,
+      "answer": 1,
+      "at": "2026-10-03T14:59:02.228Z"
+    },
+    "7248059990:12": {
+      "participantId": "7248059990",
+      "questionId": 12,
+      "answer": 3,
+      "at": "2026-10-03T14:59:04.488Z"
+    },
+    "7248059990:13": {
+      "participantId": "7248059990",
+      "questionId": 13,
+      "answer": 1,
+      "at": "2026-10-03T14:59:06.665Z"
+    },
+    "7248059990:14": {
+      "participantId": "7248059990",
+      "questionId": 14,
+      "answer": 1,
+      "at": "2026-10-03T14:59:08.782Z"
+    },
+    "7248059990:15": {
+      "participantId": "7248059990",
+      "questionId": 15,
+      "answer": 1,
+      "at": "2026-10-03T14:59:10.745Z"
+    },
+    "7248059990:16": {
+      "participantId": "7248059990",
+      "questionId": 16,
+      "answer": 0,
+      "at": "2026-10-03T14:59:12.945Z"
+    },
+    "7248059990:17": {
+      "participantId": "7248059990",
+      "questionId": 17,
+      "answer": 2,
+      "at": "2026-10-03T14:59:14.755Z"
+    },
+    "7248059990:18": {
+      "participantId": "7248059990",
+      "questionId": 18,
+      "answer": 1,
+      "at": "2026-10-03T14:59:16.667Z"
+    },
+    "7248059990:19": {
+      "participantId": "7248059990",
+      "questionId": 19,
+      "answer": 0,
+      "at": "2026-10-03T14:59:18.713Z"
+    },
+    "7248059990:20": {
+      "participantId": "7248059990",
+      "questionId": 20,
+      "answer": 2,
+      "at": "2026-10-03T14:59:20.939Z"
+    }
+  },
+  "terminal": {
+    "7248059990": {
+      "cwd": "/",
+      "files": {},
+      "challenge": 1,
+      "attempts": {}
+    }
+  },
   "logs": [
     {
-      "time": "2026-10-03T15:01:00.665Z",
+      "time": "2026-10-03T14:57:59.681Z",
       "type": "RESET",
       "detail": "Event reset"
+    },
+    {
+      "time": "2026-10-03T14:58:31.288Z",
+      "type": "LOGIN",
+      "detail": "7248059990 starlord"
+    },
+    {
+      "time": "2026-10-03T14:58:40.269Z",
+      "type": "ROUND_START",
+      "detail": "Round 1"
+    },
+    {
+      "time": "2026-10-03T14:59:27.031Z",
+      "type": "ROUND1_SUBMIT",
+      "detail": "7248059990"
+    },
+    {
+      "time": "2026-10-03T14:59:46.634Z",
+      "type": "ROUND_END",
+      "detail": "Round 1"
+    },
+    {
+      "time": "2026-10-03T14:59:57.708Z",
+      "type": "ROUND_START",
+      "detail": "Round 2"
     }
   ],
   "questions": [

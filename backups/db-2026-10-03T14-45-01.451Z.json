@@ -9,14 +9,39 @@
     "remainingMs": null,
     "leaderboardPublished": false
   },
-  "participants": {},
+  "participants": {
+    "953723104064": {
+      "id": "953723104064",
+      "name": "Shaban",
+      "registerNumber": "953723104064",
+      "token": "d87008e4b5c12b4bcf661d8fdfb6d9f1071f602c3f57232b",
+      "online": false,
+      "round1Submitted": false,
+      "round1Score": 0,
+      "round2Score": 0,
+      "createdAt": "2026-10-03T14:38:59.372Z",
+      "lastSeen": 1791038530721
+    }
+  },
   "answers": {},
-  "terminal": {},
+  "terminal": {
+    "953723104064": {
+      "cwd": "/",
+      "files": {},
+      "challenge": 1,
+      "attempts": {}
+    }
+  },
   "logs": [
     {
-      "time": "2026-10-03T15:01:00.665Z",
+      "time": "2026-10-01T10:07:34.709Z",
       "type": "RESET",
       "detail": "Event reset"
+    },
+    {
+      "time": "2026-10-03T14:38:59.373Z",
+      "type": "LOGIN",
+      "detail": "953723104064 Shaban"
     }
   ],
   "questions": [
