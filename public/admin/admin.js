@@ -91,8 +91,47 @@ async function dashboard(){
 }
 
 function startTimer(ms){clearInterval(timerId);let end=Date.now()+ms;timerId=setInterval(()=>{const el=$('#timer');if(!el)return;const left=Math.max(0,end-Date.now());el.textContent=fmt(left);el.classList.toggle('warn',left>0&&left<60000);if(left<=0)clearInterval(timerId)},500)}
+/* RESET needs the admin password: themed modal, verified against the admin login endpoint */
+function resetGate(){
+  return new Promise(resolve=>{
+    if(document.getElementById('rm')) return resolve(false);
+    const m=document.createElement('div'); m.id='rm'; m.className='rm';
+    m.innerHTML=`<div class="rm-win">
+      <div class="rm-warn">⚠ DANGER ZONE</div>
+      <div class="rm-body">
+        <h3>Reset the entire event?</h3>
+        <p>This permanently deletes <b>all participants and scores</b> and returns to the lobby. Enter the admin password to continue.</p>
+        <label class="rm-field"><span>$ sudo</span><input id="rmPass" type="password" placeholder="Admin password" autocomplete="off"><button type="button" id="rmEye">SHOW</button></label>
+        <p class="rm-err" id="rmErr"></p>
+        <div class="rm-btns"><button type="button" class="ad-btn" id="rmNo">CANCEL</button><button type="button" class="rm-go" id="rmGo">RESET EVENT</button></div>
+      </div></div>`;
+    document.body.appendChild(m);
+    const pass=m.querySelector('#rmPass'), err=m.querySelector('#rmErr'), go=m.querySelector('#rmGo'), win=m.querySelector('.rm-win');
+    const close=ok=>{document.removeEventListener('keydown',onKey);m.remove();resolve(ok)};
+    const onKey=e=>{if(e.key==='Escape')close(false)};
+    document.addEventListener('keydown',onKey);
+    m.addEventListener('mousedown',e=>{if(e.target===m)close(false)});
+    m.querySelector('#rmNo').onclick=()=>close(false);
+    m.querySelector('#rmEye').onclick=()=>{const s=pass.type==='password';pass.type=s?'text':'password';m.querySelector('#rmEye').textContent=s?'HIDE':'SHOW';pass.focus()};
+    async function submit(){
+      if(!pass.value){err.textContent='Enter the admin password.';return}
+      go.disabled=true; go.textContent='VERIFYING…'; err.textContent='';
+      try{
+        await api('/api/admin/login',{method:'POST',body:JSON.stringify({password:pass.value})});
+        close(true);
+      }catch(x){
+        go.disabled=false; go.textContent='RESET EVENT';
+        err.textContent='✗ Incorrect password';
+        pass.select(); win.classList.remove('shake'); void win.offsetWidth; win.classList.add('shake');
+      }
+    }
+    go.onclick=submit;
+    pass.addEventListener('keydown',e=>{if(e.key==='Enter')submit()});
+    setTimeout(()=>pass.focus(),50);
+  });
+}
 async function control(action){
-  if(action==='reset'&&!confirm('Reset the entire event and all participants/scores?'))return;
+  if(action==='reset'&&!(await resetGate()))return;
   if((action==='end1'||action==='end2')&&!confirm('End the round now for everyone?'))return;
   try{await api('/api/admin/control',{method:'POST',body:JSON.stringify({action})});toast(action.toUpperCase()+' completed');lastSig='';dashboard()}catch(x){toast(x.message)}
 }

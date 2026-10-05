@@ -58,7 +58,7 @@
 .h-status span:last-child{margin-left:auto;color:#6f7d8c}
 .h-status kbd{border:1px solid #1d3a2b;border-radius:3px;padding:0 6px;color:var(--g)}
 #clk{color:var(--g)}
-#rain{position:fixed;inset:0;z-index:0;width:100%;height:100%;opacity:.22;pointer-events:none}
+#rain{position:fixed;inset:0;z-index:0;width:100%;height:100%;opacity:.16;pointer-events:none}
 body::after{content:'';position:fixed;inset:0;z-index:50;pointer-events:none;background:repeating-linear-gradient(0deg,rgba(0,0,0,.18) 0 1px,transparent 1px 3px),radial-gradient(ellipse at center,transparent 55%,rgba(0,0,0,.65) 100%)}
 .glitch{position:relative}
 .glitch::before,.glitch::after{content:attr(data-t);position:absolute;inset:0;clip-path:inset(0 0 100% 0)}
@@ -140,7 +140,7 @@ body::after{content:'';position:fixed;inset:0;z-index:50;pointer-events:none;bac
 
 /* QUIZ: entrance, then neon pulse + gentle float */
 .h-title .o{
-  animation:heroIn 1.2s cubic-bezier(.2,.8,.2,1) .3s backwards, neon 2.8s ease-in-out 1.5s infinite, floaty 5s ease-in-out 1.5s infinite;
+  animation:heroIn 1.2s cubic-bezier(.2,.8,.2,1) .3s backwards, neon 2.8s ease-in-out 1.5s infinite;
 }
 @keyframes heroIn{
   from{opacity:0;letter-spacing:.35em;filter:blur(14px);transform:scale(1.15)}
@@ -155,3 +155,62 @@ body::after{content:'';position:fixed;inset:0;z-index:50;pointer-events:none;bac
 @media (prefers-reduced-motion:reduce){
   .h-title .glitch,.h-title .o{animation:none}
 }
+
+
+/* ===== v9: SCROLL DIVE + CYBER LAYER ===== */
+html,body{overflow-x:clip}
+.zoom{position:relative;height:420vh;width:100vw;margin-left:calc(50% - 50vw)}
+.stage{position:absolute;top:0;left:0;width:100%;height:100vh;overflow:hidden;display:grid;place-items:center}
+.stage.pin{position:fixed;width:100vw}
+.stage.end{top:auto;bottom:0}
+.zoom-hero{grid-area:1/1;width:100%;text-align:center;will-change:transform,opacity}
+.zoom-hero .h-eyebrow{margin:0 0 2vh}
+.zoom-hero .h-type{margin:0!important}
+.h-type::after{content:'scroll to dive in ↓'}
+.zoom-hero.zooming .glitch,.zoom-hero.zooming .o{animation-play-state:paused!important;filter:none!important}
+.zoom-hero.zooming .glitch::before,.zoom-hero.zooming .glitch::after{display:none}
+.q{font-style:normal}
+.stage .h-pane{grid-area:1/1;width:min(760px,92vw);max-width:none;margin:0!important;opacity:0;pointer-events:none;will-change:transform,opacity,filter}
+.zoom-glow{position:absolute;inset:0;pointer-events:none;opacity:var(--zg,0);
+  background:radial-gradient(circle,transparent 25%,rgba(52,245,139,.3) 100%)}
+.zoom-glow::after{content:'';position:absolute;inset:0;background:repeating-conic-gradient(from 0deg,rgba(52,245,139,.1) 0 1deg,transparent 1deg 7deg);
+  -webkit-mask-image:radial-gradient(circle,transparent 15%,#000 85%);mask-image:radial-gradient(circle,transparent 15%,#000 85%)}
+.zoom.nozoom{height:auto}.nozoom .stage{position:static;height:auto;display:block;padding:40px 0}
+.nozoom .stage .h-pane{opacity:1;pointer-events:auto;margin:40px auto!important}
+
+/* cyber background */
+.floor{position:fixed;left:-50%;right:-50%;bottom:0;height:60vh;z-index:0;pointer-events:none;opacity:.35;
+  background:linear-gradient(rgba(52,245,139,.4) 1px,transparent 1px) 0 0/100% 60px,linear-gradient(90deg,rgba(52,245,139,.4) 1px,transparent 1px) 0 0/60px 100%;
+  transform:perspective(420px) rotateX(64deg);transform-origin:50% 100%;animation:floor 2s linear infinite;
+  -webkit-mask-image:linear-gradient(to top,#000,transparent 85%);mask-image:linear-gradient(to top,#000,transparent 85%)}
+@keyframes floor{to{background-position:0 60px,0 0}}
+.hud{position:fixed;z-index:40;padding:10px 14px;font:11px var(--mono);letter-spacing:.18em;color:#3f8f63;pointer-events:none}
+.hud b{color:var(--g)}
+.hud.tl{top:10px;left:14px;border-top:1px solid #1d6b45;border-left:1px solid #1d6b45}
+.hud.tr{top:10px;right:14px;border-top:1px solid #1d6b45;border-right:1px solid #1d6b45}
+.hud.bl{bottom:10px;left:14px;border-bottom:1px solid #1d6b45;border-left:1px solid #1d6b45}
+.hud.br{bottom:10px;right:14px;border-bottom:1px solid #1d6b45;border-right:1px solid #1d6b45}
+.hud-line{position:fixed;left:0;top:0;width:3px;height:100vh;z-index:40;background:#0c1a12}
+.hud-line i{display:block;width:100%;height:100%;background:var(--g);box-shadow:0 0 10px var(--g);transform-origin:top;transform:scaleY(0)}
+@media(max-width:700px){.hud.bl,.hud.br{display:none}}
+
+/* boot screen */
+.bootscr{position:fixed;inset:0;z-index:200;background:#030805;display:flex;flex-direction:column;justify-content:center;padding:0 12vw;font:15px/2 var(--mono);color:var(--g);text-shadow:0 0 10px rgba(52,245,139,.6);transition:opacity .5s}
+.bootscr.out{opacity:0;pointer-events:none}
+.home.booting .h-title span,.home.booting .h-eyebrow{opacity:0;animation:none}
+@media(prefers-reduced-motion:reduce){.floor{animation:none}.bootscr{display:none}}
+
+
+/* ===== v10: CENTRED TITLE + SMOOTH PERFORMANCE ===== */
+.zt{position:relative;display:inline-block}
+.zoom-hero .h-title{margin:0}
+.zoom-hero .h-eyebrow{position:absolute;left:0;right:0;bottom:100%;margin:0 0 2.5vh;white-space:nowrap}
+.zoom-hero .h-type{position:absolute;left:0;right:0;top:100%;margin:3.5vh 0 0!important;white-space:nowrap}
+.zoom-hero{backface-visibility:hidden}
+.qbase{display:inline-block;width:0;height:0}
+/* animated layers: compositor-only, and paused while the page is scrolling */
+.floor{background:none;animation:none;overflow:hidden}
+.floor::before{content:'';position:absolute;left:0;right:0;top:-60px;bottom:0;will-change:transform;animation:floor2 2s linear infinite;
+  background:linear-gradient(rgba(52,245,139,.4) 1px,transparent 1px) 0 0/100% 60px,linear-gradient(90deg,rgba(52,245,139,.4) 1px,transparent 1px) 0 0/60px 100%}
+@keyframes floor2{to{transform:translate3d(0,60px,0)}}
+.scrolling .floor::before,.scrolling .glitch,.scrolling .o,.scrolling .h-pane::after,.scrolling .h-caret{animation-play-state:paused}

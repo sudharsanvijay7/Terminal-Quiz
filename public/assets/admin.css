@@ -240,3 +240,34 @@ body:has(.al)::after{content:'';position:fixed;inset:0;z-index:50;pointer-events
   .ad-wrap{padding:18px 14px 50px}.ad-top{padding:12px 14px}
 }
 @media(prefers-reduced-motion:reduce){.dashboard.enter .ad-console,.ad-go,.ad-timer b.warn,.ad-pill i{animation:none}}
+
+
+
+/* =========================================================
+   RESET PASSWORD MODAL
+   ========================================================= */
+.rm{position:fixed;inset:0;z-index:100;display:flex;align-items:center;justify-content:center;padding:20px;background:rgba(0,0,0,.78);backdrop-filter:blur(4px);animation:rmFade .25s}
+@keyframes rmFade{from{opacity:0}}
+.rm-win{width:min(460px,100%);border:1px solid #5a2420;border-radius:12px;background:#070a08;overflow:hidden;box-shadow:0 0 70px rgba(255,95,86,.22);animation:rmPop .35s cubic-bezier(.2,.8,.2,1)}
+@keyframes rmPop{from{opacity:0;transform:translateY(24px) scale(.96)}}
+.rm-win.shake{animation:rmShake .45s}
+@keyframes rmShake{20%{transform:translateX(-10px)}40%{transform:translateX(9px)}60%{transform:translateX(-6px)}80%{transform:translateX(4px)}}
+.rm-warn{padding:10px 16px;text-align:center;font:700 12px var(--am);letter-spacing:.2em;color:#ff5f56;border-bottom:1px solid #3a1815;
+  background:repeating-linear-gradient(135deg,rgba(255,95,86,.16) 0 14px,transparent 14px 28px);background-size:40px 40px;animation:alHaz 1.6s linear infinite}
+.rm-body{padding:26px 26px 24px}
+.rm-body h3{margin:0 0 10px;font:800 24px var(--as);color:#e9fff3;letter-spacing:-.02em}
+.rm-body p{margin:0 0 18px;font-size:14px;line-height:1.55;color:#a9b4c0}
+.rm-body b{color:#ff5f56}
+.rm-field{display:flex;align-items:center;gap:12px;padding:0 10px 0 16px;border:1px solid #3a1815;border-radius:6px;background:#0b0808;transition:.2s}
+.rm-field span{font:700 13px var(--am);color:#ff5f56;white-space:nowrap}
+.rm-field input{flex:1;min-width:0;padding:15px 0;border:0;outline:0;background:transparent;color:#e9fff3;font:15px var(--am);caret-color:#ff5f56;letter-spacing:.08em}
+.rm-field input::placeholder{color:#4c5b68;letter-spacing:0}
+.rm-field:focus-within{border-color:#ff5f56;box-shadow:0 0 0 3px rgba(255,95,86,.14)}
+.rm-field button{padding:6px 10px;border:1px solid #3a1815;border-radius:4px;background:transparent;color:#6f7d8c;font:700 11px var(--am);letter-spacing:.1em;cursor:pointer}
+.rm-field button:hover{color:#ff5f56;border-color:#ff5f56}
+.rm-body .rm-err{min-height:20px;margin:10px 0 6px;font:700 13px var(--am);color:#ff5f56}
+.rm-btns{display:flex;gap:12px;justify-content:flex-end}
+.rm-go{padding:12px 22px;border:1px solid #ff5f56;border-radius:6px;background:#ff5f56;color:#1a0605;font:800 13px var(--am);letter-spacing:.1em;cursor:pointer;transition:.2s}
+.rm-go:hover{box-shadow:0 0 26px rgba(255,95,86,.5);transform:translate(-2px,-2px)}
+.rm-go:disabled{opacity:.7;cursor:wait;transform:none}
+@media(prefers-reduced-motion:reduce){.rm,.rm-win,.rm-warn{animation:none}}

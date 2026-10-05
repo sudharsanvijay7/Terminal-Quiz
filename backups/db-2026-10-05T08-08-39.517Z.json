@@ -9,14 +9,39 @@
     "remainingMs": null,
     "leaderboardPublished": false
   },
-  "participants": {},
+  "participants": {
+    "953724104303": {
+      "id": "953724104303",
+      "name": "muthu",
+      "registerNumber": "953724104303",
+      "token": "d77e2d3fe72d2618d68ef462f46a0ad1b17c8b57f38612c2",
+      "online": false,
+      "round1Submitted": false,
+      "round1Score": 0,
+      "round2Score": 0,
+      "createdAt": "2026-10-05T06:55:37.456Z",
+      "lastSeen": 1791187432597
+    }
+  },
   "answers": {},
-  "terminal": {},
+  "terminal": {
+    "953724104303": {
+      "cwd": "/",
+      "files": {},
+      "challenge": 1,
+      "attempts": {}
+    }
+  },
   "logs": [
     {
-      "time": "2026-10-05T08:15:56.241Z",
+      "time": "2026-10-05T05:59:12.869Z",
       "type": "RESET",
       "detail": "Event reset"
+    },
+    {
+      "time": "2026-10-05T06:55:37.457Z",
+      "type": "LOGIN",
+      "detail": "953724104303 muthu"
     }
   ],
   "questions": [

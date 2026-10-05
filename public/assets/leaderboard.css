@@ -1,0 +1,74 @@
+/* leaderboard.css — terminal theme (own variables) */
+:root{--lg:#34f58b;--lgold:#ffd24a;--lm:ui-monospace,"JetBrains Mono","Fira Code",Consolas,monospace;--ls:Inter,system-ui,Arial,sans-serif}
+.nav a{color:var(--lg);font-family:var(--lm);text-decoration:none}
+#lbrain{position:fixed;inset:0;z-index:0;width:100%;height:100%;opacity:.2;pointer-events:none}
+#lbconf{position:fixed;inset:0;z-index:60;pointer-events:none}
+body::after{content:'';position:fixed;inset:0;z-index:50;pointer-events:none;background:repeating-linear-gradient(0deg,rgba(0,0,0,.18) 0 1px,transparent 1px 3px),radial-gradient(ellipse at center,transparent 55%,rgba(0,0,0,.65) 100%)}
+
+.lb{position:relative;z-index:2;max-width:980px;margin:0 auto;padding:40px 0 70px;text-align:center}
+.lb-badge{display:inline-flex;align-items:center;gap:10px;padding:8px 18px;border:1px solid #1d6b45;border-radius:99px;background:rgba(52,245,139,.07);color:var(--lg);font:700 13px var(--lm);letter-spacing:.2em;animation:lbUp .7s backwards}
+.lb-badge i{width:8px;height:8px;border-radius:50%;background:var(--lg);box-shadow:0 0 10px var(--lg);animation:lbHb 1.4s infinite}
+@keyframes lbHb{50%{opacity:.25}}
+@keyframes lbUp{from{opacity:0;transform:translateY(20px)}}
+
+.lb-title{margin:26px 0 14px;font:800 clamp(46px,10vw,120px)/.9 var(--ls);letter-spacing:-.04em;text-transform:uppercase}
+.lb-title span{display:block}
+.lb-t1{color:#e9fff3;text-shadow:0 0 28px rgba(52,245,139,.25);animation:lbIn 1.1s cubic-bezier(.2,.8,.2,1) backwards}
+.lb-t2{color:transparent;-webkit-text-stroke:2px var(--lg);filter:drop-shadow(0 0 14px rgba(52,245,139,.6));animation:lbIn 1.1s cubic-bezier(.2,.8,.2,1) .25s backwards,lbNeon 2.8s ease-in-out 1.4s infinite}
+@keyframes lbIn{from{opacity:0;letter-spacing:.3em;filter:blur(14px);transform:scale(1.12)}}
+@keyframes lbNeon{50%{filter:drop-shadow(0 0 30px rgba(52,245,139,.95))}}
+.lb-sub{margin:0 0 54px;font:500 clamp(14px,2vw,18px) var(--lm);color:#cfe9da;animation:lbUp .8s .5s backwards}
+.lb-sub em{font-style:normal;color:var(--lg)}
+.lb-caret{display:inline-block;width:.6em;height:1.05em;margin-left:3px;vertical-align:-.2em;background:#27b86a;animation:lbCb 1s steps(1) infinite}
+@keyframes lbCb{50%{opacity:0}}
+
+/* podium */
+.lb-podium{display:grid;grid-template-columns:1fr 1.15fr 1fr;gap:18px;align-items:end;margin-bottom:60px}
+.lb-pod{display:flex;flex-direction:column;align-items:center;opacity:0;transform:translateY(60px);animation:lbPod .9s cubic-bezier(.2,.8,.2,1) forwards}
+.lb-pod.p3{animation-delay:.6s}.lb-pod.p2{animation-delay:1.3s}.lb-pod.p1{animation-delay:2.2s}
+@keyframes lbPod{to{opacity:1;transform:none}}
+.lb-who{padding:0 6px 16px;max-width:100%}
+.lb-medal{display:inline-block;margin-bottom:8px;padding:3px 12px;border:1px solid currentColor;border-radius:99px;font:700 11px var(--lm);letter-spacing:.2em}
+.lb-who h3{margin:0 0 6px;font:800 clamp(18px,2.6vw,26px)/1.15 var(--ls);color:#e9fff3;word-break:break-word}
+.lb-score b{font:800 clamp(34px,5vw,56px)/1 var(--lm);color:var(--lg);text-shadow:0 0 20px rgba(52,245,139,.55)}
+.lb-score small{margin-left:6px;font:12px var(--lm);color:#6f7d8c}
+.lb-who p{margin:6px 0 0;font:12px var(--lm);color:#6f7d8c}
+.lb-ped{width:100%;display:grid;place-items:start center;padding-top:14px;border:1px solid #1d3a2b;border-bottom:0;border-radius:10px 10px 0 0;background:linear-gradient(180deg,rgba(52,245,139,.16),rgba(5,10,8,.9));font:800 clamp(26px,4vw,42px) var(--lm);color:rgba(233,255,243,.85)}
+.p1 .lb-ped{height:230px}.p2 .lb-ped{height:170px}.p3 .lb-ped{height:130px}
+.p1{color:var(--lgold)}.p2{color:#cfd6dd}.p3{color:#d99058}
+.p1 .lb-who h3{font-size:clamp(22px,3.2vw,34px)}
+.p1 .lb-ped{border-color:var(--lgold);background:linear-gradient(180deg,rgba(255,210,74,.2),rgba(5,10,8,.9));box-shadow:0 0 50px rgba(255,210,74,.2)}
+.p2 .lb-ped{border-color:#4a525b}.p3 .lb-ped{border-color:#5a4030}
+.p1 .lb-ped span{color:var(--lgold);text-shadow:0 0 18px rgba(255,210,74,.6)}
+.lb-crown{display:block;font-size:44px;line-height:1;color:var(--lgold);filter:drop-shadow(0 0 14px rgba(255,210,74,.8));animation:lbFloat 2.4s ease-in-out infinite}
+@keyframes lbFloat{50%{transform:translateY(-8px)}}
+.lb-pod.empty{visibility:hidden}
+
+/* table for rank 4+ */
+.lb-pane{border:1px solid #1d3a2b;border-radius:10px;background:rgba(5,10,8,.92);overflow:hidden;text-align:left;box-shadow:0 0 50px rgba(52,245,139,.1);opacity:0;animation:lbUp .8s 2.8s forwards}
+.lb-bar{display:flex;align-items:center;gap:6px;padding:10px 16px;border-bottom:1px solid #1d3a2b;background:#0a1410;font:12px var(--lm);color:#5fbf8a}
+.lb-bar b{width:10px;height:10px;border-radius:50%}
+.lb-bar b:nth-child(1){background:#ff5f56}.lb-bar b:nth-child(2){background:#ffbd2e}.lb-bar b:nth-child(3){background:#27c93f}
+.lb-bar span{margin-left:auto}
+.lb-table{width:100%;border-collapse:collapse;font:15px var(--lm)}
+.lb-table th{padding:12px 18px;text-align:left;font:700 11px var(--lm);letter-spacing:.18em;text-transform:uppercase;color:#3f8f63;border-bottom:1px solid #1d3a2b}
+.lb-table td{padding:14px 18px;border-top:1px solid #0f1f17;color:#cfe9da;white-space:nowrap}
+.lb-table tbody tr{opacity:0;animation:lbRow .5s var(--d) forwards;background:linear-gradient(90deg,rgba(52,245,139,.09) var(--w),transparent var(--w))}
+@keyframes lbRow{from{opacity:0;transform:translateX(-20px)}to{opacity:1;transform:none}}
+.lb-table tbody tr:hover{background:#0a1a11}
+.lb-table td:first-child b{color:#6f7d8c}
+.lb-table td:last-child b{color:var(--lg);font-size:17px;text-shadow:0 0 10px rgba(52,245,139,.4)}
+
+.lb-empty{font:15px var(--lm);color:#6f7d8c}
+.lb-actions{margin-top:44px;animation:lbUp .8s 3s backwards}
+.lb-btn{display:inline-block;padding:20px 40px;border:1px solid var(--lg);border-radius:6px;background:transparent;color:var(--lg);font:700 16px var(--lm);letter-spacing:.1em;text-decoration:none;transition:.2s}
+.lb-btn:hover{background:rgba(52,245,139,.1);transform:translate(-3px,-3px);box-shadow:5px 5px 0 rgba(52,245,139,.35)}
+
+@media(max-width:640px){
+  .lb-podium{grid-template-columns:1fr;gap:26px}
+  .lb-podium .p1{order:-1}
+  .p1 .lb-ped{height:90px}.p2 .lb-ped,.p3 .lb-ped{height:70px}
+}
+@media(prefers-reduced-motion:reduce){
+  .lb *{animation:none!important}.lb-pod,.lb-pane,.lb-table tbody tr{opacity:1;transform:none}#lbrain,#lbconf{display:none}
+}
