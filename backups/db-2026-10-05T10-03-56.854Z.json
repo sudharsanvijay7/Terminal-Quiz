@@ -15,12 +15,12 @@
       "name": "star",
       "registerNumber": "353132123",
       "token": "87f52b77dabdc5c32609e37706253f01a32fe268425bd10e",
-      "online": false,
+      "online": true,
       "round1Submitted": false,
       "round1Score": 0,
       "round2Score": 0,
       "createdAt": "2026-10-05T10:02:43.286Z",
-      "lastSeen": 1791194719756
+      "lastSeen": 1791194636617
     }
   },
   "answers": {},

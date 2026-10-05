@@ -6,7 +6,7 @@ $('#app').innerHTML=layout(`
       <div class="zoom-glow"></div>
       <div class="zoom-hero" id="zhero"><div class="zt">
         <p class="h-eyebrow" id="eyebrow">/ welcome to the</p>
-        <h1 class="h-title"><span class="glitch" data-t="Terminal">Terminal</span><span class="o"><i class="q" id="q">Q</i><b class="qbase" id="qbase"></b>uiz</span></h1>
+        <h1 class="h-title"><span class="glitch" data-t="Terminal">Terminal</span><span class="o"><i class="q" id="q">Q</i><b class="bl" id="bl"></b>uiz</span></h1>
         <p class="h-type"><em>&gt;</em> <span id="tw"></span><i class="h-caret"></i></p>
       </div></div>
       <aside class="h-pane" id="pane">
@@ -148,55 +148,21 @@ function scramble(el,text,dur=900){
   let i=0; (function nx(){ if(i<lines.length){o.insertAdjacentHTML('beforeend','<div>'+lines[i++]+'</div>');setTimeout(nx,380)} else setTimeout(()=>{o.classList.add('out');home.classList.remove('booting');setTimeout(()=>o.remove(),600)},450) })();
 })();
 
-/* ===== SCROLL DIVE (optimised): zoom into the bowl of the "Q", then rounds.sh appears ===== */
+/* ===== normal scrolling: no zoom, just the HUD scroll meter ===== */
 (function(){
-  const G=id=>document.getElementById(id);
-  const track=G('zoom'), stage=G('stage'), hero=G('zhero'), pane=G('pane'), q=G('q'), bl=G("qbase"), depthEl=G('depth'), prog=G('hprog'), glow=document.querySelector('.zoom-glow');
-  if(!track) return;
-  if(matchMedia('(prefers-reduced-motion:reduce)').matches){ track.classList.add('nozoom'); return; }
-  const clamp=x=>Math.min(1,Math.max(0,x)), sm=x=>{x=clamp(x);return x*x*(3-2*x)};
-  let S=14,dx=0,dy=0,trackTop=0,total=1,maxScroll=1,mode='',lastD=-1,paneOn=false,hid=false,ticking=false,st,first=true;
-
-  function measure(){
-    hero.style.transform='none'; hero.style.opacity=1; hero.style.visibility='visible'; hid=false;
-    const r=track.getBoundingClientRect();
-    trackTop=r.top+scrollY; total=Math.max(1,track.offsetHeight-innerHeight); maxScroll=Math.max(1,document.documentElement.scrollHeight-innerHeight);
-    /* real ink bounds of the Q glyph -> centre of its bowl (the hole), not the box centre */
-    const cs=getComputedStyle(q), ctx=document.createElement('canvas').getContext('2d');
-    ctx.font=cs.fontWeight+' '+cs.fontSize+' '+cs.fontFamily;
-    const t=ctx.measureText('Q'), qr=q.getBoundingClientRect(), br=bl.getBoundingClientRect(), hr=hero.getBoundingClientRect(), sr=stage.getBoundingClientRect();
-    const abl=t.actualBoundingBoxLeft??0, abr=t.actualBoundingBoxRight??qr.width, asc=t.actualBoundingBoxAscent||qr.height*.7;
-    const inkW=(abl+abr)||qr.width, cx=qr.left+(abr-abl)/2, cy=br.bottom-asc/2;
-    hero.style.transformOrigin=(cx-hr.left)+'px '+(cy-hr.top)+'px';
-    dx=innerWidth/2-cx; dy=innerHeight/2-(cy-sr.top);
-    S=Math.max(8,innerWidth*1.5/(inkW*.45),innerHeight*1.5/(asc*.55));
-    update();
-  }
-
-  /* runs once per frame; reads only cached numbers + scrollY (no layout reads) and writes only transform/opacity */
+  const depthEl=document.getElementById('depth'), prog=document.getElementById('hprog');
+  let ticking=false, st;
   function update(){
     ticking=false;
-    const y=scrollY-trackTop, p=clamp(y/total), m=y<0?'':(y>=total?' end':' pin');
-    if(m!==mode){mode=m;stage.className='stage'+m}
-    const z=Math.min(1,p/.72), e=z<.5?2*z*z:1-Math.pow(-2*z+2,2)/2, c=Math.min(1,e*1.6);
-    hero.style.transform='translate3d('+dx*c+'px,'+dy*c+'px,0) scale('+Math.pow(S,e)+')';
-    const ho=1-sm((p-.5)/.2); hero.style.opacity=ho;
-    const hide=ho<=.001; if(hide!==hid){hid=hide;hero.style.visibility=hide?'hidden':'visible'}
-    hero.classList.toggle('zooming',p>.01);
-    const k=sm((p-.62)/.25); pane.style.opacity=k; pane.style.transform='scale('+(.5+.5*k)+')';
-    const on=k>.9; if(on!==paneOn){paneOn=on;pane.style.pointerEvents=on?'auto':'none'}
-    glow.style.opacity=Math.sin(Math.min(1,p/.8)*Math.PI);
-    const d=Math.round(p*100); if(d!==lastD){lastD=d;depthEl.textContent=String(d).padStart(3,'0')}
-    prog.style.transform='scaleY('+(scrollY/maxScroll)+')';
+    const max=Math.max(1,document.documentElement.scrollHeight-innerHeight);
+    const p=Math.min(1,Math.max(0,scrollY/max));
+    if(depthEl) depthEl.textContent=String(Math.round(p*100)).padStart(3,'0');
+    if(prog) prog.style.transform='scaleY('+p+')';
   }
-
   addEventListener('scroll',()=>{
-    if(first){first=false;measure()}
     document.body.classList.add('scrolling'); clearTimeout(st); st=setTimeout(()=>document.body.classList.remove('scrolling'),140);
     if(!ticking){ticking=true;requestAnimationFrame(update)}
   },{passive:true});
-  let rt; addEventListener('resize',()=>{clearTimeout(rt);rt=setTimeout(measure,150)});
-  hero.addEventListener('animationend',e=>{ if(e.animationName==='heroIn') measure() });
-  (document.fonts?document.fonts.ready:Promise.resolve()).then(()=>{measure();setTimeout(measure,2600);setTimeout(measure,5200)});
-  measure();
+  addEventListener('resize',update);
+  update();
 })();

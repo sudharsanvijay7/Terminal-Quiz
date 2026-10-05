@@ -9,29 +9,9 @@
     "remainingMs": null,
     "leaderboardPublished": false
   },
-  "participants": {
-    "353132123": {
-      "id": "353132123",
-      "name": "star",
-      "registerNumber": "353132123",
-      "token": "87f52b77dabdc5c32609e37706253f01a32fe268425bd10e",
-      "online": false,
-      "round1Submitted": false,
-      "round1Score": 0,
-      "round2Score": 0,
-      "createdAt": "2026-10-05T10:02:43.286Z",
-      "lastSeen": 1791194719756
-    }
-  },
+  "participants": {},
   "answers": {},
-  "terminal": {
-    "353132123": {
-      "cwd": "/",
-      "files": {},
-      "challenge": 1,
-      "attempts": {}
-    }
-  },
+  "terminal": {},
   "logs": [
     {
       "time": "2026-10-05T09:52:41.124Z",
@@ -42,11 +22,6 @@
       "time": "2026-10-05T09:56:03.010Z",
       "type": "ADMIN_LOGIN",
       "detail": "10.42.0.134 signed in"
-    },
-    {
-      "time": "2026-10-05T10:02:43.286Z",
-      "type": "LOGIN",
-      "detail": "353132123 star"
     }
   ],
   "questions": [

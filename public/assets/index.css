@@ -214,3 +214,21 @@ html,body{overflow-x:clip}
   background:linear-gradient(rgba(52,245,139,.4) 1px,transparent 1px) 0 0/100% 60px,linear-gradient(90deg,rgba(52,245,139,.4) 1px,transparent 1px) 0 0/60px 100%}
 @keyframes floor2{to{transform:translate3d(0,60px,0)}}
 .scrolling .floor::before,.scrolling .glitch,.scrolling .o,.scrolling .h-pane::after,.scrolling .h-caret{animation-play-state:paused}
+
+/* ===== v11: STATIC HERO + NORMAL SCROLL (zoom removed, glitch/shimmer/neon kept) ===== */
+.zoom{height:auto!important}
+.stage,.stage.pin,.stage.end{position:static;top:auto;bottom:auto;width:100%;height:auto;overflow:visible;display:block}
+.zoom-glow{display:none}
+.zoom-hero{display:flex;align-items:center;justify-content:center;min-height:100vh;transform:none!important;opacity:1!important;visibility:visible!important;will-change:auto}
+.stage .h-pane{opacity:1;pointer-events:auto;transform:none;width:min(760px,92vw);margin:40px auto 70px!important}
+.h-type::after{content:'scroll down \2193'}
+
+/* ===== v12: HERO EXACTLY CENTRED IN THE SCREEN (both axes) ===== */
+.zoom{margin-top:-74px}
+.zoom-hero{position:relative;height:100vh;min-height:0;display:flex;align-items:center;justify-content:center;pointer-events:none}
+.zt{display:flex;flex-direction:column;align-items:center;text-align:center}
+.zoom-hero .h-eyebrow,.zoom-hero .h-type{position:static;margin:0;white-space:nowrap}
+.zoom-hero .h-eyebrow{margin-bottom:2.5vh;padding-left:.25em}
+.zoom-hero .h-type{margin-top:3.5vh!important}
+.zoom-hero .h-type::after{position:absolute;left:0;right:0;bottom:5vh;margin:0}
+.zoom-hero .h-title .o{position:relative;left:-.02em}
