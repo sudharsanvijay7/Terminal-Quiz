@@ -1,13 +1,10 @@
-/* index.css — full replacement for the homepage CSS */
+/* index.css — FULL REPLACEMENT (all previous effects kept + matched sizes + binary background) */
 :root{--g:#34f58b;--mono:ui-monospace,"JetBrains Mono","Fira Code",Consolas,monospace;--sans:Inter,system-ui,Arial,sans-serif}
 .nav a{color:var(--g);font-family:var(--mono);text-decoration:none}
 .home{padding:0 0 70px;position:relative;z-index:2}
 .h-left,.h-pane{min-width:0}
 .h-top{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;padding-bottom:18px;border-bottom:1px dashed #1f2c38;font:13px var(--mono);color:#6f7d8c}
 .h-top b{color:var(--g)}
-.h-live{display:flex;align-items:center;gap:8px;color:var(--g)}
-.h-live i{width:7px;height:7px;border-radius:50%;background:var(--g);animation:hb 1.4s infinite}
-@keyframes hb{50%{opacity:.25}}
 .h-main{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);gap:56px;align-items:center;min-height:calc(100vh - 170px);padding:30px 0 40px}
 .h-eyebrow{margin:0 0 14px;font:13px var(--mono);letter-spacing:.25em;text-transform:uppercase;color:#6f7d8c}
 .h-title{margin:0 0 26px;font:800 clamp(44px,6.5vw,92px)/.9 var(--sans);letter-spacing:-.04em;text-transform:uppercase;text-shadow:0 0 28px rgba(52,245,139,.25)}
@@ -41,10 +38,6 @@
 .h-n{min-width:38px;font:700 26px var(--mono);color:#27b86a}
 .h-row h3{margin:0 0 4px;font:700 17px var(--sans)}
 .h-row p{margin:0;color:#8995a3;font:13px/1.5 var(--mono)}
-.h-stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:1px;margin:0 0 56px;background:#12251b;border:1px solid #12251b}
-.h-stats div{background:#050a08;padding:16px 18px}
-.h-stats strong{display:block;font:800 30px var(--mono);color:var(--g);text-shadow:0 0 16px rgba(52,245,139,.45)}
-.h-stats small{font:12px var(--mono);color:#6f7d8c;letter-spacing:.1em}
 .h-sec{margin:0 0 20px;font:13px var(--mono);color:#6f7d8c}
 .h-steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:26px;margin:0;padding:30px 0 0;list-style:none;border-top:1px dashed #1f2c38}
 .h-steps li{padding:18px;border:1px solid #12251b;background:rgba(5,10,8,.7);transition:border-color .25s,box-shadow .25s,transform .25s}
@@ -52,11 +45,6 @@
 .h-steps b{display:block;margin-bottom:8px;font:700 13px var(--mono);color:var(--g)}
 .h-steps b::before{content:'$ step_'}
 .h-steps span{color:#a9b4c0;line-height:1.6}
-.h-status{display:flex;margin-top:48px;border:1px solid #12251b;font:12px var(--mono);background:rgba(5,10,8,.8)}
-.h-status span{padding:8px 14px}
-.h-status span:first-child{background:var(--g);color:#03130a;font-weight:700}
-.h-status span:last-child{margin-left:auto;color:#6f7d8c}
-.h-status kbd{border:1px solid #1d3a2b;border-radius:3px;padding:0 6px;color:var(--g)}
 #clk{color:var(--g)}
 #rain{position:fixed;inset:0;z-index:0;width:100%;height:100%;opacity:.16;pointer-events:none}
 body::after{content:'';position:fixed;inset:0;z-index:50;pointer-events:none;background:repeating-linear-gradient(0deg,rgba(0,0,0,.18) 0 1px,transparent 1px 3px),radial-gradient(ellipse at center,transparent 55%,rgba(0,0,0,.65) 100%)}
@@ -66,8 +54,8 @@ body::after{content:'';position:fixed;inset:0;z-index:50;pointer-events:none;bac
 .glitch::after{color:#ff2e63;transform:translate(3px,0);animation:gl2 4s infinite steps(1);mix-blend-mode:screen}
 @keyframes gl1{0%,92%,100%{clip-path:inset(0 0 100% 0)}93%{clip-path:inset(10% 0 60% 0)}95%{clip-path:inset(55% 0 20% 0)}97%{clip-path:inset(80% 0 4% 0)}}
 @keyframes gl2{0%,92%,100%{clip-path:inset(0 0 100% 0)}94%{clip-path:inset(35% 0 40% 0)}96%{clip-path:inset(5% 0 80% 0)}98%{clip-path:inset(65% 0 10% 0)}}
-@media(max-width:860px){.h-main{grid-template-columns:1fr;gap:36px;min-height:0}.h-status span:last-child{display:none}}
-@media(prefers-reduced-motion:reduce){.glitch::before,.glitch::after,.h-pane::after,.h-live i{animation:none}#rain{display:none}}
+@media(max-width:860px){.h-main{grid-template-columns:1fr;gap:36px;min-height:0}}
+@media(prefers-reduced-motion:reduce){.glitch::before,.glitch::after,.h-pane::after{animation:none}#rain{display:none}}
 
 /* ===== v5 CENTERED LAYOUT ===== */
 .home{max-width:860px;margin:0 auto;text-align:center}
@@ -90,10 +78,9 @@ body::after{content:'';position:fixed;inset:0;z-index:50;pointer-events:none;bac
 .h-btns.big .h-btn{padding:22px 46px;font-size:18px;border-radius:6px;letter-spacing:.1em}
 .h-btns.big .h-btn:not(.ghost){animation:pulse 2.4s infinite}
 @keyframes pulse{50%{box-shadow:0 0 44px rgba(52,245,139,.7)}}
-.h-status{text-align:left}
 @media(max-width:560px){.h-btns.big .h-btn{width:100%;padding:20px}}
 
-/* ===== v6 FORCE ORDER: title > rounds.sh > steps > buttons > status (works with any markup) ===== */
+/* ===== v6 FORCE ORDER ===== */
 .home{display:flex;flex-direction:column}
 .h-main,.h-left{display:contents}
 .h-top{order:0}
@@ -103,10 +90,7 @@ body::after{content:'';position:fixed;inset:0;z-index:50;pointer-events:none;bac
 .h-steps{order:6;width:100%}
 .h-btns{order:7;justify-content:center;margin:10px 0 0}
 .h-btns .h-btn{padding:22px 46px;font-size:18px;border-radius:6px;letter-spacing:.1em}
-.h-status{order:8}
 .h-steps li span{display:block}
-
-.h-status{display:none!important}
 
 /* ===== v7 FULL-SCREEN HERO + BIGGER STEPS ===== */
 .h-eyebrow{margin-top:max(20px,calc((73vh - 270px) / 2))}
@@ -114,7 +98,6 @@ body::after{content:'';position:fixed;inset:0;z-index:50;pointer-events:none;bac
 .h-type{margin-bottom:max(20px,calc((73vh - 270px) / 2))!important}
 .h-type::after{content:'scroll ↓';display:block;margin-top:5vh;font:12px var(--mono);letter-spacing:.25em;color:#3f8f63;animation:bob 1.8s ease-in-out infinite}
 @keyframes bob{50%{transform:translateY(8px);opacity:.5}}
-
 .h-pane{max-width:760px}
 .h-sec{max-width:820px;font-size:16px}
 .h-steps{max-width:820px;padding-left:34px}
@@ -127,8 +110,6 @@ body::after{content:'';position:fixed;inset:0;z-index:50;pointer-events:none;bac
 .h-title{font-size:clamp(60px,min(21vh,15vw),250px);line-height:.88;margin-bottom:2vh}
 .h-eyebrow{margin-top:max(16px,calc((62vh - 250px) / 2))}
 .h-type{margin-bottom:max(16px,calc((62vh - 250px) / 2))!important}
-
-/* TERMINAL: animated green-white shimmer */
 .h-title .glitch{
   color:transparent;
   background:linear-gradient(100deg,#e9fff3 0%,#e9fff3 38%,#34f58b 50%,#e9fff3 62%,#e9fff3 100%);
@@ -137,8 +118,6 @@ body::after{content:'';position:fixed;inset:0;z-index:50;pointer-events:none;bac
   animation:heroIn 1.2s cubic-bezier(.2,.8,.2,1) backwards, shimmer 4.5s linear 1.2s infinite;
 }
 @keyframes shimmer{from{background-position:130% 0}to{background-position:-130% 0}}
-
-/* QUIZ: entrance, then neon pulse + gentle float */
 .h-title .o{
   animation:heroIn 1.2s cubic-bezier(.2,.8,.2,1) .3s backwards, neon 2.8s ease-in-out 1.5s infinite;
 }
@@ -150,35 +129,20 @@ body::after{content:'';position:fixed;inset:0;z-index:50;pointer-events:none;bac
   50%{filter:drop-shadow(0 0 30px rgba(52,245,139,.95)) drop-shadow(0 0 60px rgba(52,245,139,.4))}
   46%,48%{filter:drop-shadow(0 0 3px rgba(52,245,139,.3))}
 }
-@keyframes floaty{50%{transform:translateY(-8px)}}
-
 @media (prefers-reduced-motion:reduce){
   .h-title .glitch,.h-title .o{animation:none}
 }
 
-
-/* ===== v9: SCROLL DIVE + CYBER LAYER ===== */
+/* ===== v9: CYBER LAYER ===== */
 html,body{overflow-x:clip}
 .zoom{position:relative;height:420vh;width:100vw;margin-left:calc(50% - 50vw)}
 .stage{position:absolute;top:0;left:0;width:100%;height:100vh;overflow:hidden;display:grid;place-items:center}
-.stage.pin{position:fixed;width:100vw}
-.stage.end{top:auto;bottom:0}
 .zoom-hero{grid-area:1/1;width:100%;text-align:center;will-change:transform,opacity}
 .zoom-hero .h-eyebrow{margin:0 0 2vh}
 .zoom-hero .h-type{margin:0!important}
 .h-type::after{content:'scroll to dive in ↓'}
-.zoom-hero.zooming .glitch,.zoom-hero.zooming .o{animation-play-state:paused!important;filter:none!important}
-.zoom-hero.zooming .glitch::before,.zoom-hero.zooming .glitch::after{display:none}
 .q{font-style:normal}
 .stage .h-pane{grid-area:1/1;width:min(760px,92vw);max-width:none;margin:0!important;opacity:0;pointer-events:none;will-change:transform,opacity,filter}
-.zoom-glow{position:absolute;inset:0;pointer-events:none;opacity:var(--zg,0);
-  background:radial-gradient(circle,transparent 25%,rgba(52,245,139,.3) 100%)}
-.zoom-glow::after{content:'';position:absolute;inset:0;background:repeating-conic-gradient(from 0deg,rgba(52,245,139,.1) 0 1deg,transparent 1deg 7deg);
-  -webkit-mask-image:radial-gradient(circle,transparent 15%,#000 85%);mask-image:radial-gradient(circle,transparent 15%,#000 85%)}
-.zoom.nozoom{height:auto}.nozoom .stage{position:static;height:auto;display:block;padding:40px 0}
-.nozoom .stage .h-pane{opacity:1;pointer-events:auto;margin:40px auto!important}
-
-/* cyber background */
 .floor{position:fixed;left:-50%;right:-50%;bottom:0;height:60vh;z-index:0;pointer-events:none;opacity:.35;
   background:linear-gradient(rgba(52,245,139,.4) 1px,transparent 1px) 0 0/100% 60px,linear-gradient(90deg,rgba(52,245,139,.4) 1px,transparent 1px) 0 0/60px 100%;
   transform:perspective(420px) rotateX(64deg);transform-origin:50% 100%;animation:floor 2s linear infinite;
@@ -200,30 +164,26 @@ html,body{overflow-x:clip}
 .home.booting .h-title span,.home.booting .h-eyebrow{opacity:0;animation:none}
 @media(prefers-reduced-motion:reduce){.floor{animation:none}.bootscr{display:none}}
 
-
-/* ===== v10: CENTRED TITLE + SMOOTH PERFORMANCE ===== */
+/* ===== v10: PERFORMANCE ===== */
 .zt{position:relative;display:inline-block}
 .zoom-hero .h-title{margin:0}
-.zoom-hero .h-eyebrow{position:absolute;left:0;right:0;bottom:100%;margin:0 0 2.5vh;white-space:nowrap}
-.zoom-hero .h-type{position:absolute;left:0;right:0;top:100%;margin:3.5vh 0 0!important;white-space:nowrap}
 .zoom-hero{backface-visibility:hidden}
 .qbase{display:inline-block;width:0;height:0}
-/* animated layers: compositor-only, and paused while the page is scrolling */
 .floor{background:none;animation:none;overflow:hidden}
 .floor::before{content:'';position:absolute;left:0;right:0;top:-60px;bottom:0;will-change:transform;animation:floor2 2s linear infinite;
   background:linear-gradient(rgba(52,245,139,.4) 1px,transparent 1px) 0 0/100% 60px,linear-gradient(90deg,rgba(52,245,139,.4) 1px,transparent 1px) 0 0/60px 100%}
 @keyframes floor2{to{transform:translate3d(0,60px,0)}}
 .scrolling .floor::before,.scrolling .glitch,.scrolling .o,.scrolling .h-pane::after,.scrolling .h-caret{animation-play-state:paused}
 
-/* ===== v11: STATIC HERO + NORMAL SCROLL (zoom removed, glitch/shimmer/neon kept) ===== */
+/* ===== v11: STATIC HERO + NORMAL SCROLL ===== */
 .zoom{height:auto!important}
-.stage,.stage.pin,.stage.end{position:static;top:auto;bottom:auto;width:100%;height:auto;overflow:visible;display:block}
+.stage{position:static;top:auto;bottom:auto;width:100%;height:auto;overflow:visible;display:block}
 .zoom-glow{display:none}
 .zoom-hero{display:flex;align-items:center;justify-content:center;min-height:100vh;transform:none!important;opacity:1!important;visibility:visible!important;will-change:auto}
 .stage .h-pane{opacity:1;pointer-events:auto;transform:none;width:min(760px,92vw);margin:40px auto 70px!important}
 .h-type::after{content:'scroll down \2193'}
 
-/* ===== v12: HERO EXACTLY CENTRED IN THE SCREEN (both axes) ===== */
+/* ===== v12: HERO EXACTLY CENTRED ===== */
 .zoom{margin-top:-74px}
 .zoom-hero{position:relative;height:100vh;min-height:0;display:flex;align-items:center;justify-content:center;pointer-events:none}
 .zt{display:flex;flex-direction:column;align-items:center;text-align:center}
@@ -232,3 +192,45 @@ html,body{overflow-x:clip}
 .zoom-hero .h-type{margin-top:3.5vh!important}
 .zoom-hero .h-type::after{position:absolute;left:0;right:0;bottom:5vh;margin:0}
 .zoom-hero .h-title .o{position:relative;left:-.02em}
+
+/* ===== v13: MATCHED SIZES (rounds.sh + how it works) — scoped under .home ===== */
+.home .stage .h-pane{width:min(780px,92vw)}
+.home .h-sec{max-width:780px;font-size:16px}
+
+.home .h-bar{padding:12px 20px;font-size:13px}
+.home .h-boot{padding:18px 30px;font-size:14px;min-height:104px}
+.home .h-row{align-items:center;gap:22px;padding:26px 30px}
+.home .h-n{min-width:56px;font-size:40px;line-height:1}
+.home .h-row h3{margin:0 0 6px;font:700 clamp(20px,2.4vw,26px)/1.2 var(--sans)}
+.home .h-row p{font-size:15px}
+
+.home .h-steps{box-sizing:border-box;width:min(852px,100%);padding:6px 36px}
+.home .h-steps li{
+  display:flex;align-items:center;gap:22px;
+  min-height:0;margin-bottom:16px;padding:26px 30px;
+  border:1px solid #1d3a2b;border-radius:8px;background:#050a08;
+}
+.home .h-steps li:hover{transform:none;box-shadow:none;border-color:#34f58b;background:#0a1a11}
+.home .h-steps b{margin:0;min-width:56px;font:700 40px/1 var(--mono);color:#27b86a}
+.home .h-steps b::before{content:none}
+.home .h-steps li span{font:600 clamp(20px,2.4vw,26px)/1.3 var(--sans);color:#e3efe8}
+.home .h-steps li::before{top:calc(50% - 8px);left:-45px}
+
+@media(max-width:560px){
+  .home .h-n,.home .h-steps b{min-width:40px;font-size:30px}
+  .home .h-row,.home .h-steps li{gap:14px;padding:20px}
+}
+
+/* ===== v13: BINARY BACKGROUND ===== */
+.bitrain{position:fixed;inset:0;z-index:0;overflow:hidden;pointer-events:none}
+.bitrain i{
+  position:absolute;top:0;font:normal 14px/1.5 ui-monospace,Consolas,monospace;
+  color:#27b86a;opacity:.13;white-space:pre;
+  will-change:transform;animation:bitrise linear infinite;
+}
+@keyframes bitrise{
+  from{transform:translate3d(0,105vh,0)}
+  to{transform:translate3d(0,-110%,0)}
+}
+.scrolling .bitrain i{animation-play-state:paused}
+@media(prefers-reduced-motion:reduce){.bitrain{display:none}}
