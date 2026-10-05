@@ -87,7 +87,7 @@ async function dashboard(){
       if(s.remainingMs!=null)startTimer(s.remainingMs);else clearInterval(timerId);
     }
     pollId=setTimeout(dashboard,3000);
-  }catch(e){clearAdmin();location.href='/admin-login.html'}
+  }catch(e){if(/unauthorized/i.test(e.message)){clearAdmin();location.href='/admin-login.html'}else{pollId=setTimeout(dashboard,3000)}}
 }
 
 function startTimer(ms){clearInterval(timerId);let end=Date.now()+ms;timerId=setInterval(()=>{const el=$('#timer');if(!el)return;const left=Math.max(0,end-Date.now());el.textContent=fmt(left);el.classList.toggle('warn',left>0&&left<60000);if(left<=0)clearInterval(timerId)},500)}
@@ -117,11 +117,11 @@ function resetGate(){
       if(!pass.value){err.textContent='Enter the admin password.';return}
       go.disabled=true; go.textContent='VERIFYING…'; err.textContent='';
       try{
-        await api('/api/admin/login',{method:'POST',body:JSON.stringify({password:pass.value})});
-        close(true);
+        await api('/api/admin/verify',{method:'POST',body:JSON.stringify({password:pass.value})});
+        close(pass.value);
       }catch(x){
         go.disabled=false; go.textContent='RESET EVENT';
-        err.textContent='✗ Incorrect password';
+        err.textContent='✗ '+x.message;
         pass.select(); win.classList.remove('shake'); void win.offsetWidth; win.classList.add('shake');
       }
     }
@@ -131,9 +131,10 @@ function resetGate(){
   });
 }
 async function control(action){
-  if(action==='reset'&&!(await resetGate()))return;
+  let password;
+  if(action==='reset'){password=await resetGate();if(!password)return}
   if((action==='end1'||action==='end2')&&!confirm('End the round now for everyone?'))return;
-  try{await api('/api/admin/control',{method:'POST',body:JSON.stringify({action})});toast(action.toUpperCase()+' completed');lastSig='';dashboard()}catch(x){toast(x.message)}
+  try{await api('/api/admin/control',{method:'POST',body:JSON.stringify({action,password})});toast(action.toUpperCase()+' completed');lastSig='';dashboard()}catch(x){toast(x.message)}
 }
 async function exportCsv(){
 try{
@@ -143,5 +144,5 @@ const blob=await r.blob(),url=URL.createObjectURL(blob),a=document.createElement
 a.href=url;a.download='terminal-quiz-results.csv';document.body.appendChild(a);a.click();a.remove();URL.revokeObjectURL(url);
   }catch(e){toast(e.message)}
 }
-function logoutAdmin(){clearAdmin();location.href='/admin-login.html'}
+async function logoutAdmin(){try{await api('/api/admin/logout',{method:'POST',body:'{}'})}catch{}clearAdmin();location.href='/admin-login.html'}
 dashboard();
