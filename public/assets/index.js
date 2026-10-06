@@ -189,20 +189,6 @@ document.querySelectorAll('#app *').forEach((element) => {
 })();
 
 
-/* ---------- PRESS ENTER TO JOIN ---------- */
-window.addEventListener('keydown', (event) => {
-  const active = document.activeElement;
-
-  if (
-    event.key === 'Enter' &&
-    active &&
-    !/INPUT|TEXTAREA|A|BUTTON/.test(active.tagName)
-  ) {
-    window.location.href = '/participant-login.html';
-  }
-});
-
-
 /* ---------- STEPS: REVEAL ONE BY ONE ---------- */
 (function () {
   const box = document.getElementById('steps');

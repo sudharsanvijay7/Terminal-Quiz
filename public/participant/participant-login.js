@@ -1,4 +1,7 @@
-if(getToken()){location.href='/participant.html'}
+/* Only skip the login page if the saved token is still valid on the server */
+if(getToken()){
+  api('/api/me').then(()=>{location.href='/participant.html'}).catch(()=>{clearParticipant()});
+}
 $('#app').innerHTML=layout(`
 <main class="pl">
   <section class="pl-win">

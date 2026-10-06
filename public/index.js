@@ -1,189 +1,472 @@
-if(!requireParticipant()) throw new Error('participant auth required');
+/* =========================================================
+   TERMINAL QUIZ — HOME PAGE JAVASCRIPT (FULL REPLACEMENT)
+   ========================================================= */
 
-let termOut='',currentChallenge=1,timerId;
-const challengeInfo=[
- {title:'Ghost in the Directory',skill:'Hidden files',marks:5,description:'Some files may be hidden from a normal directory listing. Use the terminal to inspect the directory carefully and find the hidden clue. Once you discover the secret value, select it from the four options below and submit your answer.',hint:'Try checking directory contents with a command that can reveal hidden entries.'},
- {title:'Needle in the Logs',skill:'Searching text with grep',marks:5,description:'Several log files are stored inside the logs directory. One of them contains a special SECRET value. Search through the log files recursively, identify the value after SECRET=, then choose the matching option below.',hint:'A recursive text-search command is useful when the information may be inside multiple files.'},
- {title:'Lost in the Tree',skill:'cd, ls and cat',marks:10,description:'The clue is not in the starting directory. Navigate through the directory tree, locate the archive directory, and inspect the clue file inside it. Read the file carefully, then select the answer you found.',hint:'Move into directories, list their contents, and display the contents of the relevant text file.'},
- {title:'Pipe Dreams',skill:'grep, sort, uniq and head',marks:10,description:'The data file contains several repeated colour names. Your task is to determine which colour appears most frequently. Use the terminal pipeline to search, sort and count the entries, then select the colour with the highest count.',hint:'A pipeline using sort, uniq -c, sort -rn and head can help identify the most frequent entry.'},
- {title:'The Final Chain',skill:'grep, find and grep -c',marks:20,description:'This is the final and highest-value challenge. Several files contain TARGET entries, but only one contains the required final value. Use the terminal to locate the relevant file, inspect its TARGET line, and select the exact value from the options.',hint:'Use file searching and text searching together to locate the TARGET entry.'}
-];
-const options=[
- ['SECRET-GHOST-42','HIDDEN-GHOST-24','GHOST-SECRET-52','SECRET-FILE-42'],
- ['NEEDLE-731','NEEDLE-713','LOG-NEEDLE-731','SECRET-731'],
- ['TREE-908','TREE-809','ARCHIVE-908','TREE-980'],
- ['red','blue','green','yellow'],
- ['FINAL-2026','FINAL-2062','TARGET-2026','FINAL-2025']
-];
+/* ---------- MAIN HTML ---------- */
+document.getElementById('app').innerHTML = layout(`
 
-async function init(){
- try{
-  const d=await api('/api/me');
-  if(d.state.state!=='ROUND2_ACTIVE'){location.href='/participant.html';return}
-  currentChallenge=d.terminal.challenge||1;
-  if(currentChallenge>5){location.href='/participant.html';return}
-  render(d.participant,d.state,d.terminal);
-  startTimer(d.state.remainingMs,()=>location.href='/participant.html');
- }catch(e){toast(e.message)}
-}
+<main class="home">
 
-let results=[],cmdHistory=[],histPos=0;
+  <section class="zoom" id="zoom">
+    <div class="stage" id="stage">
 
-function render(p,s,t){
- const n=currentChallenge,info=challengeInfo[n-1],opts=options[n-1];
- const pad=x=>String(x).padStart(2,'0');
- const pipe=challengeInfo.map((x,i)=>{
-  const k=i+1,st=k<n?(results[i]||'done'):k===n?'now':'todo';
-  const mark=st==='ok'?'✓':st==='miss'?'✗':st==='done'?'✓':pad(k);
-  return `<li class="pn ${st}" title="${escapeHtml(x.title)}"><b>${mark}</b><span>${x.marks}</span></li>`;
- }).join('<li class="pl"></li>');
+      <div class="zoom-glow"></div>
 
- $('#app').innerHTML=`
- <header class="hud2">
-  <a class="hb" href="/index.html"><i>&gt;_</i> TERMINAL QUIZ</a>
-  <ol class="pipe" aria-label="Challenge progress">${pipe}</ol>
-  <div class="clock" id="clock"><small>T-MINUS</small><b class="timer" id="timer">${fmt(s.remainingMs)}</b></div>
- </header>
+      <div class="zoom-hero" id="zhero">
+        <div class="zt">
 
- <main class="ws">
-  <aside class="pane mission">
-   <div class="pbar"><i></i><i></i><i></i><span>mission_${pad(n)}.md</span></div>
-   <div class="mbody">
-    <div class="mtop"><span class="mnum">${pad(n)}</span><span class="mpts"><b>${info.marks}</b> PTS</span></div>
-    <p class="meye">/ challenge ${n} of 5 &middot; round 2 &middot; ${escapeHtml(p.id)}</p>
-    <h1 class="mtitle">${escapeHtml(info.title)}</h1>
-    <p class="mskill"><em>skill</em>${escapeHtml(info.skill)}</p>
-    <h3 class="mh">## objective</h3>
-    <p class="mdesc">${escapeHtml(info.description)}</p>
-    <p class="mhint"><b>// hint</b>${escapeHtml(info.hint)}</p>
-    <div class="mfoot"><span>round total <b>50</b></span><span>this one <b>${info.marks}</b></span></div>
-   </div>
-  </aside>
+          <p class="h-eyebrow" id="eyebrow">/ welcome to the</p>
 
-  <section class="work">
-   <div class="pane term">
-    <div class="pbar"><i></i><i></i><i></i><span>student@terminal-quiz:${escapeHtml(t.cwd)}</span></div>
-    <pre class="termout" id="out">${escapeHtml(termOut||'Welcome. Type help to see available commands.\n')}</pre>
-    <form class="termline" id="cmdForm"><span>student@terminal-quiz:~$</span><input id="cmd" autocomplete="off" spellcheck="false" autofocus></form>
-   </div>
+          <h1 class="h-title">
+            <span class="glitch" data-t="Terminal">Terminal</span>
+            <span class="o">
+              <i class="q" id="q">Q</i>
+              <b class="bl" id="bl"></b>
+              uiz
+            </span>
+          </h1>
 
-   <div class="pane flag">
-    <div class="pbar"><i></i><i></i><i></i><span>submit_flag.sh</span></div>
-    <div class="fbody">
-     <p class="fq">&gt; which value did you find?<em> one attempt only</em></p>
-     <div class="opts" id="answerOptions">
-      ${opts.map((o,i)=>`<label class="round2-option" for="answer-${i}"><input type="radio" name="round2Answer" id="answer-${i}" value="${escapeHtml(o)}"><span class="option-letter">${String.fromCharCode(65+i)}</span><span class="option-text">${escapeHtml(o)}</span></label>`).join('')}
-     </div>
-     <button class="btn" id="submitAnswer">SUBMIT ANSWER</button>
+          <p class="h-type">
+            <em>&gt;</em>
+            <span id="tw"></span>
+            <i class="h-caret"></i>
+          </p>
+
+        </div>
+      </div>
+
+      <aside class="h-pane" id="pane">
+
+        <div class="h-bar">
+          <b></b><b></b><b></b>
+          <span>rounds.sh</span>
+        </div>
+
+        <div class="h-boot" id="boot"></div>
+
+        <div class="h-row">
+          <span class="h-n">01</span>
+          <div>
+            <h3>Technical Quiz</h3>
+            <p>20 questions · 20 minutes · 20 marks</p>
+          </div>
+        </div>
+
+        <div class="h-row">
+          <span class="h-n">02</span>
+          <div>
+            <h3>Terminal Quiz</h3>
+            <p>5 challenges · 30 minutes · command-line investigation</p>
+          </div>
+        </div>
+
+      </aside>
+
     </div>
-   </div>
   </section>
- </main>`;
 
- $('#cmdForm').onsubmit=runCmd;
- $('#submitAnswer').onclick=submitAnswer;
- const cmd=$('#cmd'),out=$('#out');
- out.scrollTop=out.scrollHeight;
- cmd.addEventListener('keydown',e=>{
-  if(e.key==='ArrowUp'&&cmdHistory.length){e.preventDefault();histPos=Math.max(0,histPos-1);cmd.value=cmdHistory[histPos]}
-  else if(e.key==='ArrowDown'&&cmdHistory.length){e.preventDefault();histPos=Math.min(cmdHistory.length,histPos+1);cmd.value=cmdHistory[histPos]||''}
- });
- document.querySelectorAll('input[name="round2Answer"]').forEach(r=>{
-  r.addEventListener('change',()=>{document.querySelectorAll('.round2-option').forEach(x=>x.classList.remove('selected'));r.closest('.round2-option').classList.add('selected')});
- });
-}
+  <p class="h-sec">$ cat how_it_works.txt</p>
 
-async function runCmd(e){
- e.preventDefault();const c=$('#cmd').value;$('#cmd').value='';
- if(c.trim()){cmdHistory.push(c);histPos=cmdHistory.length}
- try{const d=await api('/api/terminal',{method:'POST',body:JSON.stringify({command:c})});termOut+=(termOut?'\n':'')+'$ '+c+'\n'+d.output;if(d.output==='__CLEAR__')termOut='';const o=$('#out');o.textContent=termOut;o.scrollTop=o.scrollHeight;$('#cmd').focus()}catch(x){toast(x.message)}
-}
+  <ol class="h-steps" id="steps">
+    <li><b>01</b><span>Join with your participant ID.</span></li>
+    <li><b>02</b><span>Complete the timed technical quiz.</span></li>
+    <li><b>03</b><span>Solve five terminal challenges.</span></li>
+    <li><b>04</b><span>View the final leaderboard when published.</span></li>
+  </ol>
 
-async function submitAnswer(){
-  const selected=document.querySelector('input[name="round2Answer"]:checked');
+  <div class="h-btns big">
+    <a class="h-btn" href="/participant-login.html">ENTER EVENT →</a>
+    <a class="h-btn ghost" href="/admin-login.html">ADMIN CONTROL</a>
+  </div>
 
-  if(!selected){
-    toast('Please select one answer before submitting.');
-    return;
+</main>
+`);
+
+
+/* ---------- REMOVE "COLLEGE SYMPOSIUM • LAN EVENT" ---------- */
+document.querySelectorAll('#app *').forEach((element) => {
+  if (!element.children.length && /symposium/i.test(element.textContent)) {
+    element.remove();
+  }
+});
+
+
+/* ---------- LOOPING TYPEWRITER ---------- */
+(function () {
+  const el = document.getElementById('tw');
+  if (!el) return;
+
+  const words = [
+    'Operating Systems.',
+    'Linux fundamentals.',
+    'Terminal problem solving.',
+    'Think. Type. Solve.'
+  ];
+
+  let wordIndex = 0;
+  let charIndex = 0;
+  let deleting = false;
+
+  function tick() {
+    const text = words[wordIndex];
+    el.textContent = text.slice(0, charIndex);
+
+    if (!deleting && charIndex === text.length) {
+      deleting = true;
+      return setTimeout(tick, 1400);
+    }
+
+    if (deleting && charIndex === 0) {
+      deleting = false;
+      wordIndex = (wordIndex + 1) % words.length;
+      return setTimeout(tick, 350);
+    }
+
+    charIndex += deleting ? -1 : 1;
+    setTimeout(tick, deleting ? 35 : 70);
   }
 
-  const button=$('#submitAnswer');
+  tick();
+})();
 
-  // Once SUBMIT is clicked, the participant gets only one attempt
-  // for this challenge. Disable every option immediately.
-  document.querySelectorAll('input[name="round2Answer"]').forEach(radio=>{
-    radio.disabled=true;
-  });
-  document.querySelectorAll('.round2-option').forEach(option=>{
-    option.style.pointerEvents='none';
-    option.style.opacity='0.65';
-  });
 
-  button.disabled=true;
-  button.textContent='SUBMITTED';
+/* ---------- BOOT LOG TYPING (rounds.sh) ---------- */
+(function () {
+  const el = document.getElementById('boot');
+  if (!el) return;
 
-  try{
-    const d=await api('/api/terminal',{
-      method:'POST',
-      body:JSON.stringify({
-        command:'',
-        answer:selected.value,
-        submit:true
-      })
+  const lines = [
+    '[<span class="ok"> OK </span>] mounting /dev/quiz',
+    '[<span class="ok"> OK </span>] LAN server online',
+    '[<span class="ok"> OK </span>] rounds loaded: 2',
+    '[<span class="ok"> OK </span>] awaiting participants_'
+  ];
+
+  let index = 0;
+
+  function next() {
+    if (index >= lines.length) return;
+    el.insertAdjacentHTML('beforeend', lines[index++] + '<br>');
+    setTimeout(next, 450);
+  }
+
+  next();
+})();
+
+
+/* ---------- LIVE CLOCK ---------- */
+(function () {
+  const clock = document.getElementById('clk');
+
+  function updateClock() {
+    if (clock) clock.textContent = new Date().toLocaleTimeString('en-GB');
+  }
+
+  updateClock();
+  setInterval(updateClock, 1000);
+})();
+
+
+/* ---------- CURSOR SPOTLIGHT (one update per frame) ---------- */
+(function () {
+  const pane = document.getElementById('pane');
+  if (!pane) return;
+
+  let x = 0, y = 0, queued = false;
+
+  pane.addEventListener('pointermove', (event) => {
+    const rect = pane.getBoundingClientRect();
+    x = event.clientX - rect.left;
+    y = event.clientY - rect.top;
+    if (queued) return;
+    queued = true;
+    requestAnimationFrame(() => {
+      queued = false;
+      pane.style.setProperty('--mx', x + 'px');
+      pane.style.setProperty('--my', y + 'px');
     });
+  }, { passive: true });
+})();
 
-    if(d.solved){
-      toast('Correct! Moving to the next challenge.');
-      results[currentChallenge-1]='ok';termOut+='\n✓ Correct! Challenge solved.';
-    }else{
-      toast('Incorrect answer. Moving to the next challenge.');
-      results[currentChallenge-1]='miss';termOut+='\n✗ Incorrect answer.';
+
+/* ---------- STEPS: REVEAL ONE BY ONE ---------- */
+(function () {
+  const box = document.getElementById('steps');
+  if (!box) return;
+
+  const items = [...box.children].map((li) => {
+    const span = li.querySelector('span');
+    const text = span.textContent;
+    span.textContent = '';
+    return { li, span, text };
+  });
+
+  let started = false;
+
+  box.classList.add('seq');
+
+  function run(index) {
+    if (index >= items.length) return;
+
+    const { li, span, text } = items[index];
+
+    li.classList.add('on');
+
+    let charIndex = 0;
+
+    function type() {
+      span.textContent = text.slice(0, ++charIndex);
+
+      if (charIndex < text.length) {
+        setTimeout(type, 28);
+      } else {
+        setTimeout(() => run(index + 1), 350);
+      }
     }
 
-    // The participant cannot change the submitted answer.
-    // init() loads the next challenge because the server advances
-    // the challenge after a correct submission; for an incorrect
-    // submission we explicitly advance the UI to the next challenge.
-    if(!d.solved){
-      await advanceAfterIncorrect();
-    }else{
-      await init();
+    type();
+  }
+
+  const observer = new IntersectionObserver(
+    (entries, obs) => {
+      if (entries[0].isIntersecting && !started) {
+        started = true;
+        obs.disconnect();
+        run(0);
+      }
+    },
+    { threshold: 0.35 }
+  );
+
+  observer.observe(box);
+})();
+
+
+/* ---------- CYBER LAYER ---------- */
+document.body.insertAdjacentHTML('beforeend', `
+  <div class="floor"></div>
+  <div class="hud tl">SYS // <b>ONLINE</b></div>
+  <div class="hud tr">DEPTH <b id="depth">000</b>%</div>
+  <div class="hud bl">NET // LAN · <b>${location.host}</b></div>
+  <div class="hud br">TERMINAL-QUIZ // v1.0</div>
+  <div class="hud-line"><i id="hprog"></i></div>
+`);
+
+
+/* ---------- TEXT SCRAMBLE EFFECT ---------- */
+function scramble(element, text, duration = 900) {
+  const characters = '!<>-_\\/[]{}=+*^?#01';
+  const frames = Math.ceil(duration / 30);
+  let frame = 0;
+
+  const interval = setInterval(() => {
+    element.textContent = text
+      .split('')
+      .map((character, index) => {
+        if (character === ' ') return ' ';
+        return index < text.length * frame / frames
+          ? character
+          : characters[Math.floor(Math.random() * characters.length)];
+      })
+      .join('');
+
+    frame++;
+
+    if (frame > frames) {
+      clearInterval(interval);
+      element.textContent = text;
+    }
+  }, 30);
+}
+
+
+/* ---------- SCRAMBLE EVENTS ---------- */
+(function () {
+  const eyebrow = document.getElementById('eyebrow');
+
+  if (eyebrow) {
+    setTimeout(() => scramble(eyebrow, '/ welcome to the'), 1700);
+    setInterval(() => scramble(eyebrow, '/ welcome to the', 700), 8000);
+  }
+
+  const section = document.querySelector('.h-sec');
+
+  if (section) {
+    const text = section.textContent;
+
+    const observer = new IntersectionObserver(
+      (entries, obs) => {
+        if (entries[0].isIntersecting) {
+          obs.disconnect();
+          scramble(section, text, 800);
+        }
+      },
+      { threshold: 0.6 }
+    );
+
+    observer.observe(section);
+  }
+
+  document.querySelectorAll('.h-btn').forEach((button) => {
+    const text = button.textContent;
+    button.addEventListener('mouseenter', () => scramble(button, text, 350));
+  });
+})();
+
+
+/* ---------- BOOT SCREEN ---------- */
+(function () {
+  const home = document.querySelector('.home');
+
+  if (sessionStorage.getItem('tqboot') || !home) return;
+
+  sessionStorage.setItem('tqboot', '1');
+
+  home.classList.add('booting');
+
+  const overlay = document.createElement('div');
+  overlay.className = 'bootscr';
+  document.body.appendChild(overlay);
+
+  const lines = [
+    '> connecting to ' + location.host + ' ...',
+    '> handshake ........ OK',
+    '> loading terminal_quiz ...',
+    '> ACCESS GRANTED'
+  ];
+
+  let index = 0;
+
+  function next() {
+    if (index < lines.length) {
+      overlay.insertAdjacentHTML('beforeend', '<div>' + lines[index++] + '</div>');
+      setTimeout(next, 380);
+    } else {
+      setTimeout(() => {
+        overlay.classList.add('out');
+        home.classList.remove('booting');
+        setTimeout(() => overlay.remove(), 600);
+      }, 450);
+    }
+  }
+
+  next();
+})();
+
+
+/* ---------- HUD DEPTH METER (cheap: no layout reads on scroll) ---------- */
+(function () {
+  const depth = document.getElementById('depth');
+  const progress = document.getElementById('hprog');
+
+  let max = 1;
+  let ticking = false;
+  let last = -1;
+
+  function measure() {
+    max = Math.max(1, document.documentElement.scrollHeight - window.innerHeight);
+    update();
+  }
+
+  function update() {
+    ticking = false;
+
+    const percentage = Math.min(1, Math.max(0, window.scrollY / max));
+    const value = Math.round(percentage * 100);
+
+    if (progress) progress.style.transform = 'scaleY(' + percentage + ')';
+
+    if (depth && value !== last) {
+      last = value;
+      depth.textContent = String(value).padStart(3, '0');
+    }
+  }
+
+  window.addEventListener(
+    'scroll',
+    () => {
+      if (!ticking) {
+        ticking = true;
+        requestAnimationFrame(update);
+      }
+    },
+    { passive: true }
+  );
+
+  window.addEventListener('resize', measure);
+  window.addEventListener('load', measure);
+  if ('ResizeObserver' in window) {
+    new ResizeObserver(measure).observe(document.body);
+  }
+
+  measure();
+})();
+
+
+/* =========================================================
+   BINARY BACKGROUND (CSS-animated columns, GPU only, no timers)
+   Wrapped in try/catch so it can never break the page.
+   ========================================================= */
+try {
+  (function () {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+    const layer = document.createElement('div');
+    layer.className = 'bitrain';
+    document.body.appendChild(layer);
+
+    const rand = (min, max) => min + Math.random() * (max - min);
+
+    const bits = (length) =>
+      Array.from({ length }, () => (Math.random() < 0.5 ? '0' : '1')).join('\n');
+
+    const count = Math.min(12, Math.max(6, Math.floor(window.innerWidth / 110)));
+    const fragment = document.createDocumentFragment();
+
+    for (let n = 0; n < count; n++) {
+      const col = document.createElement('i');
+      col.textContent = bits(Math.floor(rand(10, 20)));
+      col.style.left = (n / count) * 100 + rand(0, 3) + '%';
+      col.style.fontSize = rand(12, 18) + 'px';
+      col.style.animationDuration = rand(26, 44) + 's';
+      col.style.animationDelay = '-' + rand(0, 44) + 's';
+      fragment.appendChild(col);
     }
 
-  }catch(e){
-    // The answer has already been locked. Do not re-enable options.
-    toast(e.message);
-    button.textContent='SUBMITTED';
-  }
+    layer.appendChild(fragment);
+  })();
+} catch (error) {
+  console.warn('binary background skipped:', error);
 }
 
-async function advanceAfterIncorrect(){
-  // The server intentionally does not advance an incorrect challenge.
-  // For the one-submit-per-question rule, move the participant forward
-  // only in the client UI while preserving the server's scoring behavior.
-  currentChallenge++;
 
-  if(currentChallenge>5){
-    location.href='/participant.html';
-    return;
-  }
+/* =========================================================
+   AUTO LITE MODE
+   Measures real frame rate after the intro. If this PC is slow,
+   decorative effects switch off automatically (html.lite).
+   Force it with  ?lite=1   or turn it off with  ?lite=0
+   ========================================================= */
+(function () {
+  const root = document.documentElement;
+  const param = new URLSearchParams(location.search).get('lite');
 
-  try{
-    const d=await api('/api/me');
-    render(d.participant,d.state,{...d.terminal,challenge:currentChallenge,cwd:d.terminal.cwd});
-    startTimer(d.state.remainingMs,()=>location.href='/participant.html');
-  }catch(e){
-    toast(e.message);
-  }
-}
+  if (param === '1') return root.classList.add('lite');
+  if (param === '0') return;
 
-function startTimer(ms,done){
- clearInterval(timerId);let end=Date.now()+ms;
- timerId=setInterval(()=>{
-  const left=Math.max(0,end-Date.now()),el=$('#timer'),box=$('#clock');
-  if(el)el.textContent=fmt(left);
-  if(box){box.classList.toggle('low',left<300000&&left>=60000);box.classList.toggle('crit',left<60000)}
-  if(left<=0){clearInterval(timerId);done()}
- },500);
-}
-init();
+  setTimeout(() => {
+    let frames = 0;
+    let start = 0;
+
+    function sample(now) {
+      if (!start) start = now;
+      frames++;
+
+      if (now - start < 1500) return requestAnimationFrame(sample);
+
+      const fps = (frames * 1000) / (now - start);
+      if (fps < 42) root.classList.add('lite');
+    }
+
+    requestAnimationFrame(sample);
+  }, 3800);
+})();
