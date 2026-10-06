@@ -1,27 +1,173 @@
 {
   "event": {
     "name": "TERMINAL QUIZ",
-    "state": "WAITING",
-    "round": 0,
-    "startAt": null,
-    "endAt": null,
+    "state": "ROUND1_ACTIVE",
+    "round": 1,
+    "startAt": 1791267533551,
+    "endAt": 1791268733551,
     "paused": false,
     "remainingMs": null,
     "leaderboardPublished": false
   },
-  "participants": {},
-  "answers": {},
-  "terminal": {},
+  "participants": {
+    "303": {
+      "id": "303",
+      "name": "veera",
+      "registerNumber": "303",
+      "token": "a9ed0054dc6266ec92c128cc3adafd535e6a91552aeff7d9",
+      "online": true,
+      "round1Submitted": false,
+      "round1Score": 0,
+      "round2Score": 0,
+      "createdAt": "2026-10-06T06:18:48.562Z",
+      "lastSeen": 1791267596192
+    }
+  },
+  "answers": {
+    "303:1": {
+      "participantId": "303",
+      "questionId": 1,
+      "answer": 1,
+      "at": "2026-10-06T06:19:00.108Z"
+    },
+    "303:2": {
+      "participantId": "303",
+      "questionId": 2,
+      "answer": 3,
+      "at": "2026-10-06T06:19:03.410Z"
+    },
+    "303:3": {
+      "participantId": "303",
+      "questionId": 3,
+      "answer": 1,
+      "at": "2026-10-06T06:19:05.763Z"
+    },
+    "303:4": {
+      "participantId": "303",
+      "questionId": 4,
+      "answer": 1,
+      "at": "2026-10-06T06:19:08.427Z"
+    },
+    "303:5": {
+      "participantId": "303",
+      "questionId": 5,
+      "answer": 0,
+      "at": "2026-10-06T06:19:11.089Z"
+    },
+    "303:6": {
+      "participantId": "303",
+      "questionId": 6,
+      "answer": 3,
+      "at": "2026-10-06T06:19:14.684Z"
+    },
+    "303:7": {
+      "participantId": "303",
+      "questionId": 7,
+      "answer": 2,
+      "at": "2026-10-06T06:19:16.322Z"
+    },
+    "303:8": {
+      "participantId": "303",
+      "questionId": 8,
+      "answer": 2,
+      "at": "2026-10-06T06:19:18.889Z"
+    },
+    "303:9": {
+      "participantId": "303",
+      "questionId": 9,
+      "answer": 1,
+      "at": "2026-10-06T06:19:22.150Z"
+    },
+    "303:10": {
+      "participantId": "303",
+      "questionId": 10,
+      "answer": 3,
+      "at": "2026-10-06T06:19:25.221Z"
+    },
+    "303:11": {
+      "participantId": "303",
+      "questionId": 11,
+      "answer": 1,
+      "at": "2026-10-06T06:19:27.474Z"
+    },
+    "303:12": {
+      "participantId": "303",
+      "questionId": 12,
+      "answer": 3,
+      "at": "2026-10-06T06:19:30.545Z"
+    },
+    "303:13": {
+      "participantId": "303",
+      "questionId": 13,
+      "answer": 2,
+      "at": "2026-10-06T06:19:33.003Z"
+    },
+    "303:14": {
+      "participantId": "303",
+      "questionId": 14,
+      "answer": 1,
+      "at": "2026-10-06T06:19:35.665Z"
+    },
+    "303:15": {
+      "participantId": "303",
+      "questionId": 15,
+      "answer": 0,
+      "at": "2026-10-06T06:19:38.329Z"
+    },
+    "303:16": {
+      "participantId": "303",
+      "questionId": 16,
+      "answer": 2,
+      "at": "2026-10-06T06:19:40.629Z"
+    },
+    "303:17": {
+      "participantId": "303",
+      "questionId": 17,
+      "answer": 2,
+      "at": "2026-10-06T06:19:43.627Z"
+    },
+    "303:18": {
+      "participantId": "303",
+      "questionId": 18,
+      "answer": 0,
+      "at": "2026-10-06T06:19:46.929Z"
+    },
+    "303:19": {
+      "participantId": "303",
+      "questionId": 19,
+      "answer": 2,
+      "at": "2026-10-06T06:19:50.413Z"
+    },
+    "303:20": {
+      "participantId": "303",
+      "questionId": 20,
+      "answer": 1,
+      "at": "2026-10-06T06:19:52.971Z"
+    }
+  },
+  "terminal": {
+    "303": {
+      "cwd": "/",
+      "files": {},
+      "challenge": 1,
+      "attempts": {}
+    }
+  },
   "logs": [
     {
-      "time": "2026-10-06T06:20:56.417Z",
+      "time": "2026-10-06T06:17:03.171Z",
       "type": "RESET",
       "detail": "Event reset"
     },
     {
-      "time": "2026-10-06T06:31:07.643Z",
-      "type": "ADMIN_LOGIN",
-      "detail": "10.42.0.134 signed in"
+      "time": "2026-10-06T06:18:48.562Z",
+      "type": "LOGIN",
+      "detail": "303 veera"
+    },
+    {
+      "time": "2026-10-06T06:18:53.551Z",
+      "type": "ROUND_START",
+      "detail": "Round 1"
     }
   ],
   "questions": [
