@@ -1,6 +1,6 @@
 /* Only skip the login page if the saved token is still valid on the server */
 if(getToken()){
-  api('/api/me').then(()=>{location.href='/participant.html'}).catch(()=>{clearParticipant()});
+  api('/api/me').then(()=>{location.href='/participant.html'}).catch(e=>{if(isAuthError(e))clearParticipant()});
 }
 $('#app').innerHTML=layout(`
 <main class="pl">

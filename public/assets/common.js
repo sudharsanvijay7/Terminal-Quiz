@@ -5,7 +5,9 @@ function toast(s){const x=document.createElement('div');x.className='toast';x.te
 function layout(content, nav='') { return `<div class="wrap"><div class="nav"><a class="brand link" href="/index.html"><span class="green">&gt;_</span> TERMINAL QUIZ</a><div class="muted small">COLLEGE SYMPOSIUM • LAN EVENT</div>${nav}</div>${content}</div>`; }
 function getToken(){return localStorage.getItem('tq_token')}
 function getAdmin(){return localStorage.getItem('tq_admin')}
-async function api(url,opt={}){opt.headers={...(opt.headers||{}),'Content-Type':'application/json'};const t=getToken(),a=getAdmin();if(t&&!url.includes('/admin/'))opt.headers.Authorization='Bearer '+t;if(a&&url.includes('/admin/'))opt.headers.Authorization='Bearer '+a;const r=await fetch(url,opt);const d=await r.json().catch(()=>({}));if(!r.ok)throw Error(d.error||'Request failed');return d}
+async function api(url,opt={}){opt.headers={...(opt.headers||{}),'Content-Type':'application/json'};const t=getToken(),a=getAdmin();if(t&&!url.includes('/admin/'))opt.headers.Authorization='Bearer '+t;if(a&&url.includes('/admin/'))opt.headers.Authorization='Bearer '+a;let r;try{r=await fetch(url,opt)}catch(_){const e=new Error('Server unreachable - retrying...');e.status=0;e.network=true;throw e}const d=await r.json().catch(()=>({}));if(!r.ok){const e=new Error(d.error||'Request failed');e.status=r.status;throw e}return d}
+/* true ONLY when the server explicitly says the token is invalid (HTTP 401). Network errors / restarts / 409s are NOT auth errors. */
+function isAuthError(e){return !!e&&e.status===401}
 function clearParticipant(){localStorage.removeItem('tq_token')}
 function clearAdmin(){localStorage.removeItem('tq_admin')}
 function requireParticipant(){if(!getToken()){location.href='/participant-login.html';return false}return true}

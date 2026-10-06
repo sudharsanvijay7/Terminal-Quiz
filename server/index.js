@@ -12,8 +12,19 @@ const challenges=[
 {id:5,title:'The Final Chain',skill:'grep, find, grep -c',marks:20,files:{'/final/a.txt':'noise','/final/b.txt':'TARGET=FINAL-2026','/final/c.txt':'TARGET=OTHER'},answer:'FINAL-2026'}
 ];
 function fresh(){return {event:{name:'TERMINAL QUIZ',state:'WAITING',round:0,startAt:null,endAt:null,paused:false,remainingMs:null,leaderboardPublished:false},participants:{},answers:{},terminal:{},logs:[],questions:defaultQuestions,challenges};}
-let db;try{db=JSON.parse(fs.readFileSync(DATA,'utf8'))}catch{db=fresh();save()}
-function save(){fs.writeFileSync(DATA,JSON.stringify(db,null,2))}function log(type,detail){db.logs.push({time:new Date().toISOString(),type,detail});if(db.logs.length>2000)db.logs.shift();save()}
+function loadDb(){
+  if(!fs.existsSync(DATA))return fresh();            /* first run, or reset-event.bat deleted it */
+  const tryRead=f=>{try{const d=JSON.parse(fs.readFileSync(f,'utf8'));return d&&d.event&&d.participants?d:null}catch{return null}};
+  let d=tryRead(DATA);if(d)return d;
+  /* db.json exists but is unreadable: NEVER silently wipe the event */
+  try{fs.copyFileSync(DATA,DATA+'.corrupt-'+Date.now())}catch{}
+  try{for(const f of fs.readdirSync(BACKUPS).filter(f=>f.endsWith('.json')).sort().reverse()){d=tryRead(path.join(BACKUPS,f));if(d){console.warn('db.json was unreadable - restored from backups/'+f);return d}}}catch{}
+  return fresh();
+}
+let db=loadDb();let lastSaved='';
+if(!fs.existsSync(DATA))save();   /* write only when the file does not exist yet - never on every start */
+/* atomic write: a restart in the middle of a save can no longer leave a half-written db.json */
+function save(){const s=JSON.stringify(db,null,2),tmp=DATA+'.tmp';if(s===lastSaved)return;lastSaved=s;try{fs.writeFileSync(tmp,s);fs.renameSync(tmp,DATA)}catch{try{fs.writeFileSync(DATA,s)}catch(e){console.error('save failed',e.message)}}}function log(type,detail){db.logs.push({time:new Date().toISOString(),type,detail});if(db.logs.length>2000)db.logs.shift();save()}
 function token(){return crypto.randomBytes(24).toString('hex')}const SEC={'X-Content-Type-Options':'nosniff','X-Frame-Options':'DENY','Referrer-Policy':'no-referrer'};
 function json(res,status,obj,extra){const b=Buffer.from(JSON.stringify(obj));res.writeHead(status,{'Content-Type':'application/json','Content-Length':b.length,'Cache-Control':'no-store',...SEC,...(extra||{})});res.end(b)}
 function body(req){return new Promise((resolve,reject)=>{let s='';req.on('data',c=>{s+=c;if(s.length>1e6)req.destroy()});req.on('end',()=>{try{resolve(s?JSON.parse(s):{})}catch{reject()}})})}
@@ -38,6 +49,7 @@ log('TERMINAL_SOLVE',`${id} challenge ${c.id}`);
 }else if(!solved){
 log('TERMINAL_ATTEMPT',`${id} challenge ${c.id}`);
 }
+t.cwd='/';
 if(c.id<db.challenges.length)t.challenge=c.id+1;
 else {
   t.challenge=db.challenges.length+1;
