@@ -1,31 +1,31 @@
 {
   "event": {
     "name": "TERMINAL QUIZ",
-    "state": "ROUND2_ACTIVE",
-    "round": 2,
-    "startAt": 1791264009725,
-    "endAt": 1791265809725,
+    "state": "WAITING",
+    "round": 0,
+    "startAt": null,
+    "endAt": null,
     "paused": false,
     "remainingMs": null,
     "leaderboardPublished": false
   },
   "participants": {
-    "8084085": {
-      "id": "8084085",
-      "name": "kong",
-      "registerNumber": "8084085",
-      "token": "8f32cec44b849bfe49e9a76141ec0e66069b811de2ed83b2",
-      "online": true,
+    "353132123": {
+      "id": "353132123",
+      "name": "star",
+      "registerNumber": "353132123",
+      "token": "87f52b77dabdc5c32609e37706253f01a32fe268425bd10e",
+      "online": false,
       "round1Submitted": false,
       "round1Score": 0,
       "round2Score": 0,
-      "createdAt": "2026-10-06T05:19:57.318Z",
-      "lastSeen": 1791264310079
+      "createdAt": "2026-10-05T10:02:43.286Z",
+      "lastSeen": 1791194719756
     }
   },
   "answers": {},
   "terminal": {
-    "8084085": {
+    "353132123": {
       "cwd": "/",
       "files": {},
       "challenge": 1,
@@ -34,34 +34,24 @@
   },
   "logs": [
     {
-      "time": "2026-10-06T05:06:49.163Z",
+      "time": "2026-10-05T09:52:41.124Z",
       "type": "RESET",
       "detail": "Event reset"
     },
     {
-      "time": "2026-10-06T05:19:32.457Z",
+      "time": "2026-10-05T09:56:03.010Z",
       "type": "ADMIN_LOGIN",
-      "detail": "10.108.126.176 signed in"
+      "detail": "10.42.0.134 signed in"
     },
     {
-      "time": "2026-10-06T05:19:57.318Z",
+      "time": "2026-10-05T10:02:43.286Z",
       "type": "LOGIN",
-      "detail": "8084085 kong"
+      "detail": "353132123 star"
     },
     {
-      "time": "2026-10-06T05:20:05.172Z",
-      "type": "ROUND_START",
-      "detail": "Round 1"
-    },
-    {
-      "time": "2026-10-06T05:20:08.569Z",
-      "type": "ROUND_END",
-      "detail": "Round 1"
-    },
-    {
-      "time": "2026-10-06T05:20:09.725Z",
-      "type": "ROUND_START",
-      "detail": "Round 2"
+      "time": "2026-10-06T02:04:16.721Z",
+      "type": "ADMIN_LOGIN",
+      "detail": "172.20.10.4 signed in"
     }
   ],
   "questions": [

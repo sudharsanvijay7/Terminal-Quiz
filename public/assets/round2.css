@@ -1,45 +1,77 @@
 /* =========================================================
-   ROUND 2 OPTIONS
+   ROUND 2 — TERMINAL THEME (matches home page: green neon, mono, dark)
+   Only animates transform/opacity. Safe to drop in as a full replacement.
    ========================================================= */
 
+/* ===== OPTIONS ===== */
 .round2-option{
+  position:relative;
+  overflow:hidden;
   display:flex;
   align-items:center;
-  gap:12px;
+  gap:14px;
 
-  padding:13px 14px;
+  padding:15px 18px 15px 16px;
 
-  border:1px solid #263544;
-  border-radius:10px;
+  border:1px solid #1d3a2b;
+  border-left:3px solid #1d3a2b;
+  border-radius:6px;
 
-  background:#080d13;
-  color:#f4f7fa;
+  background:#050a08;
+  color:#cfe9da;
+
+  font:500 15px/1.5 ui-monospace,"JetBrains Mono","Fira Code",Consolas,monospace;
 
   cursor:pointer;
-
-  transition:all .18s ease;
-
-  line-height:1.4;
+  transition:transform .18s ease,border-color .18s ease,background .18s ease,color .18s ease;
 }
 
+/* terminal prompt marker */
+.round2-option::before{
+  content:'$';
+  flex:none;
+  min-width:14px;
+  font-weight:700;
+  color:#27b86a;
+  transition:color .18s ease;
+}
 
+/* soft scan shine on hover */
+.round2-option::after{
+  content:'';
+  position:absolute;
+  top:0;left:-60%;
+  width:40%;height:100%;
+  pointer-events:none;
+  background:linear-gradient(100deg,transparent,rgba(52,245,139,.14),transparent);
+  transform:skewX(-20deg);
+  transition:left .6s ease;
+}
 
 .round2-option:hover{
+  transform:translateX(4px);
   border-color:#34f58b;
-  background:#0b1512;
+  border-left-color:#34f58b;
+  background:#0a1a11;
+  color:#e9fff3;
 }
+.round2-option:hover::before{color:#34f58b}
+.round2-option:hover::after{left:130%}
 
-
-
+/* selected */
 .round2-option.selected{
+  transform:translateX(4px);
   border-color:#34f58b;
+  border-left-color:#34f58b;
   background:#0d2118;
-
-  box-shadow:
-    0 0 0 1px #34f58b55 inset;
+  color:#ffffff;
+  box-shadow:0 0 0 1px rgba(52,245,139,.35) inset,0 0 22px rgba(52,245,139,.18);
 }
-
-
+.round2-option.selected::before{
+  content:'>';
+  color:#34f58b;
+  text-shadow:0 0 10px rgba(52,245,139,.8);
+}
 
 .round2-option input{
   position:absolute;
@@ -47,12 +79,56 @@
   pointer-events:none;
 }
 
+.round2-option:focus-within{
+  outline:1px dashed #34f58b;
+  outline-offset:2px;
+}
 
+/* ===== SUBMIT BUTTON ===== */
+#submitAnswer{
+  position:relative;
+  overflow:hidden;
+  padding:16px 34px;
 
+  border:1px solid #34f58b;
+  border-radius:6px;
 
-/* ===== ROUND 2 SUBMIT BUTTON ===== */
+  background:#34f58b;
+  color:#03130a;
+
+  font:700 15px ui-monospace,"JetBrains Mono","Fira Code",Consolas,monospace;
+  letter-spacing:.1em;
+  text-transform:uppercase;
+
+  cursor:pointer;
+  box-shadow:0 0 22px rgba(52,245,139,.35);
+  transition:transform .2s ease,box-shadow .2s ease;
+}
+
+#submitAnswer:hover:not(:disabled){
+  transform:translate(-3px,-3px);
+  box-shadow:5px 5px 0 rgba(52,245,139,.35);
+}
+
+#submitAnswer:active:not(:disabled){
+  transform:translate(0,0);
+  box-shadow:0 0 14px rgba(52,245,139,.35);
+}
 
 #submitAnswer:disabled{
-  opacity:.6;
+  opacity:.45;
   cursor:not-allowed;
+  background:transparent;
+  color:#3f8f63;
+  border-color:#1d3a2b;
+  box-shadow:none;
 }
+
+@media(max-width:560px){
+  .round2-option{padding:13px 14px;font-size:14px}
+  #submitAnswer{width:100%}
+}
+
+@media(prefers-reduced-motion:reduce){
+  .round2-option,.round2-option::after,#submitAnswer{transition:none}
+} 

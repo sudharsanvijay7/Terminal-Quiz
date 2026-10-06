@@ -130,52 +130,6 @@ document.querySelectorAll('#app *').forEach((element) => {
 })();
 
 
-/* ---------- MATRIX RAIN BACKGROUND ---------- */
-(function () {
-  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-
-  const canvas = document.createElement('canvas');
-  canvas.id = 'rain';
-  document.body.prepend(canvas);
-
-  const ctx = canvas.getContext('2d');
-  const chars = '01$#>_/\\|{}[]<>=+*ABCDEF'.split('');
-  const fontSize = 16;
-
-  let columns;
-  let drops;
-
-  function resize() {
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
-    columns = Math.ceil(canvas.width / fontSize);
-    drops = Array.from({ length: columns }, () => Math.random() * -50);
-  }
-
-  resize();
-  window.addEventListener('resize', resize);
-
-  setInterval(() => {
-    if (document.body.classList.contains('scrolling')) return;
-
-    ctx.fillStyle = 'rgba(3,8,5,.12)';
-    ctx.fillRect(0, 0, canvas.width, canvas.height);
-    ctx.font = fontSize + 'px monospace';
-
-    drops.forEach((y, index) => {
-      ctx.fillStyle = Math.random() > 0.97 ? '#d6ffe8' : '#27b86a';
-      ctx.fillText(
-        chars[Math.floor(Math.random() * chars.length)],
-        index * fontSize,
-        y * fontSize
-      );
-      drops[index] =
-        (y * fontSize > canvas.height && Math.random() > 0.975) ? 0 : y + 1;
-    });
-  }, 50);
-})();
-
-
 /* ---------- BOOT LOG TYPING (rounds.sh) ---------- */
 (function () {
   const el = document.getElementById('boot');
@@ -213,16 +167,25 @@ document.querySelectorAll('#app *').forEach((element) => {
 })();
 
 
-/* ---------- CURSOR SPOTLIGHT ---------- */
+/* ---------- CURSOR SPOTLIGHT (one update per frame) ---------- */
 (function () {
   const pane = document.getElementById('pane');
   if (!pane) return;
 
+  let x = 0, y = 0, queued = false;
+
   pane.addEventListener('pointermove', (event) => {
     const rect = pane.getBoundingClientRect();
-    pane.style.setProperty('--mx', (event.clientX - rect.left) + 'px');
-    pane.style.setProperty('--my', (event.clientY - rect.top) + 'px');
-  });
+    x = event.clientX - rect.left;
+    y = event.clientY - rect.top;
+    if (queued) return;
+    queued = true;
+    requestAnimationFrame(() => {
+      queued = false;
+      pane.style.setProperty('--mx', x + 'px');
+      pane.style.setProperty('--my', y + 'px');
+    });
+  }, { passive: true });
 })();
 
 
@@ -405,44 +368,37 @@ function scramble(element, text, duration = 900) {
 })();
 
 
-/* ---------- NORMAL SCROLLING + HUD DEPTH METER ---------- */
+/* ---------- HUD DEPTH METER (cheap: no layout reads on scroll) ---------- */
 (function () {
   const depth = document.getElementById('depth');
   const progress = document.getElementById('hprog');
 
+  let max = 1;
   let ticking = false;
-  let scrollTimeout;
+  let last = -1;
+
+  function measure() {
+    max = Math.max(1, document.documentElement.scrollHeight - window.innerHeight);
+    update();
+  }
 
   function update() {
     ticking = false;
 
-    const max = Math.max(
-      1,
-      document.documentElement.scrollHeight - window.innerHeight
-    );
-
     const percentage = Math.min(1, Math.max(0, window.scrollY / max));
+    const value = Math.round(percentage * 100);
 
-    if (depth) {
-      depth.textContent = String(Math.round(percentage * 100)).padStart(3, '0');
-    }
+    if (progress) progress.style.transform = 'scaleY(' + percentage + ')';
 
-    if (progress) {
-      progress.style.transform = 'scaleY(' + percentage + ')';
+    if (depth && value !== last) {
+      last = value;
+      depth.textContent = String(value).padStart(3, '0');
     }
   }
 
   window.addEventListener(
     'scroll',
     () => {
-      document.body.classList.add('scrolling');
-
-      clearTimeout(scrollTimeout);
-
-      scrollTimeout = setTimeout(() => {
-        document.body.classList.remove('scrolling');
-      }, 140);
-
       if (!ticking) {
         ticking = true;
         requestAnimationFrame(update);
@@ -451,14 +407,18 @@ function scramble(element, text, duration = 900) {
     { passive: true }
   );
 
-  window.addEventListener('resize', update);
+  window.addEventListener('resize', measure);
+  window.addEventListener('load', measure);
+  if ('ResizeObserver' in window) {
+    new ResizeObserver(measure).observe(document.body);
+  }
 
-  update();
+  measure();
 })();
 
 
 /* =========================================================
-   BINARY BACKGROUND (light: CSS-animated columns, one timer)
+   BINARY BACKGROUND (CSS-animated columns, GPU only, no timers)
    Wrapped in try/catch so it can never break the page.
    ========================================================= */
 try {
@@ -474,26 +434,53 @@ try {
     const bits = (length) =>
       Array.from({ length }, () => (Math.random() < 0.5 ? '0' : '1')).join('\n');
 
-    const count = Math.min(20, Math.max(8, Math.floor(window.innerWidth / 70)));
-    const columns = [];
+    const count = Math.min(12, Math.max(6, Math.floor(window.innerWidth / 110)));
+    const fragment = document.createDocumentFragment();
 
     for (let n = 0; n < count; n++) {
       const col = document.createElement('i');
       col.textContent = bits(Math.floor(rand(10, 20)));
       col.style.left = (n / count) * 100 + rand(0, 3) + '%';
       col.style.fontSize = rand(12, 18) + 'px';
-      col.style.animationDuration = rand(22, 40) + 's';
-      col.style.animationDelay = '-' + rand(0, 40) + 's';
-      layer.appendChild(col);
-      columns.push(col);
+      col.style.animationDuration = rand(26, 44) + 's';
+      col.style.animationDelay = '-' + rand(0, 44) + 's';
+      fragment.appendChild(col);
     }
 
-    setInterval(() => {
-      if (document.body.classList.contains('scrolling') || document.hidden) return;
-      const col = columns[Math.floor(Math.random() * columns.length)];
-      col.textContent = bits(Math.floor(rand(10, 20)));
-    }, 700);
+    layer.appendChild(fragment);
   })();
 } catch (error) {
   console.warn('binary background skipped:', error);
 }
+
+
+/* =========================================================
+   AUTO LITE MODE
+   Measures real frame rate after the intro. If this PC is slow,
+   decorative effects switch off automatically (html.lite).
+   Force it with  ?lite=1   or turn it off with  ?lite=0
+   ========================================================= */
+(function () {
+  const root = document.documentElement;
+  const param = new URLSearchParams(location.search).get('lite');
+
+  if (param === '1') return root.classList.add('lite');
+  if (param === '0') return;
+
+  setTimeout(() => {
+    let frames = 0;
+    let start = 0;
+
+    function sample(now) {
+      if (!start) start = now;
+      frames++;
+
+      if (now - start < 1500) return requestAnimationFrame(sample);
+
+      const fps = (frames * 1000) / (now - start);
+      if (fps < 42) root.classList.add('lite');
+    }
+
+    requestAnimationFrame(sample);
+  }, 3800);
+})();

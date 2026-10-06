@@ -1,31 +1,31 @@
 {
   "event": {
     "name": "TERMINAL QUIZ",
-    "state": "ROUND2_ACTIVE",
-    "round": 2,
-    "startAt": 1791264009725,
-    "endAt": 1791265809725,
+    "state": "ROUND1_ACTIVE",
+    "round": 1,
+    "startAt": 1791252589287,
+    "endAt": 1791253789287,
     "paused": false,
     "remainingMs": null,
     "leaderboardPublished": false
   },
   "participants": {
-    "8084085": {
-      "id": "8084085",
-      "name": "kong",
-      "registerNumber": "8084085",
-      "token": "8f32cec44b849bfe49e9a76141ec0e66069b811de2ed83b2",
+    "628155262": {
+      "id": "628155262",
+      "name": "shaban",
+      "registerNumber": "628155262",
+      "token": "d53b4fe6e585ee907050440ca94767c0a2f30d1e38ba8410",
       "online": true,
       "round1Submitted": false,
       "round1Score": 0,
       "round2Score": 0,
-      "createdAt": "2026-10-06T05:19:57.318Z",
-      "lastSeen": 1791264310079
+      "createdAt": "2026-10-06T02:09:13.609Z",
+      "lastSeen": 1791252736575
     }
   },
   "answers": {},
   "terminal": {
-    "8084085": {
+    "628155262": {
       "cwd": "/",
       "files": {},
       "challenge": 1,
@@ -34,34 +34,19 @@
   },
   "logs": [
     {
-      "time": "2026-10-06T05:06:49.163Z",
+      "time": "2026-10-06T02:07:56.394Z",
       "type": "RESET",
       "detail": "Event reset"
     },
     {
-      "time": "2026-10-06T05:19:32.457Z",
-      "type": "ADMIN_LOGIN",
-      "detail": "10.108.126.176 signed in"
-    },
-    {
-      "time": "2026-10-06T05:19:57.318Z",
+      "time": "2026-10-06T02:09:13.609Z",
       "type": "LOGIN",
-      "detail": "8084085 kong"
+      "detail": "628155262 shaban"
     },
     {
-      "time": "2026-10-06T05:20:05.172Z",
+      "time": "2026-10-06T02:09:49.287Z",
       "type": "ROUND_START",
       "detail": "Round 1"
-    },
-    {
-      "time": "2026-10-06T05:20:08.569Z",
-      "type": "ROUND_END",
-      "detail": "Round 1"
-    },
-    {
-      "time": "2026-10-06T05:20:09.725Z",
-      "type": "ROUND_START",
-      "detail": "Round 2"
     }
   ],
   "questions": [
