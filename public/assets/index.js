@@ -19,7 +19,11 @@ document.getElementById('app').innerHTML = layout(`
 
           <h1 class="h-title">
             <span class="glitch" data-t="Terminal">Terminal</span>
-            <span class="o"><i class="q" id="q">Q</i>uiz</span>
+            <span class="o">
+              <i class="q" id="q">Q</i>
+              <b class="bl" id="bl"></b>
+              uiz
+            </span>
           </h1>
 
           <p class="h-type">
@@ -252,9 +256,11 @@ window.addEventListener('keydown', (event) => {
 })();
 
 
-/* ---------- CYBER LAYER (top-left / top-right labels removed) ---------- */
+/* ---------- CYBER LAYER ---------- */
 document.body.insertAdjacentHTML('beforeend', `
   <div class="floor"></div>
+  <div class="hud tl">SYS // <b>ONLINE</b></div>
+  <div class="hud tr">DEPTH <b id="depth">000</b>%</div>
   <div class="hud bl">NET // LAN · <b>${location.host}</b></div>
   <div class="hud br">TERMINAL-QUIZ // v1.0</div>
   <div class="hud-line"><i id="hprog"></i></div>
@@ -362,9 +368,9 @@ function scramble(element, text, duration = 900) {
 })();
 
 
-/* ---------- HUD PROGRESS BAR (depth label removed, bar kept) ---------- */
+/* ---------- HUD DEPTH METER (cheap: no layout reads on scroll) ---------- */
 (function () {
-  const depth = document.getElementById('depth'); // null now, safely ignored
+  const depth = document.getElementById('depth');
   const progress = document.getElementById('hprog');
 
   let max = 1;
@@ -413,6 +419,7 @@ function scramble(element, text, duration = 900) {
 
 /* =========================================================
    BINARY BACKGROUND (CSS-animated columns, GPU only, no timers)
+   Wrapped in try/catch so it can never break the page.
    ========================================================= */
 try {
   (function () {
@@ -449,7 +456,9 @@ try {
 
 /* =========================================================
    AUTO LITE MODE
-   Force with ?lite=1, disable with ?lite=0
+   Measures real frame rate after the intro. If this PC is slow,
+   decorative effects switch off automatically (html.lite).
+   Force it with  ?lite=1   or turn it off with  ?lite=0
    ========================================================= */
 (function () {
   const root = document.documentElement;
