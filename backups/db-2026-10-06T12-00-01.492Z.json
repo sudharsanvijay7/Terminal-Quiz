@@ -17,11 +17,6 @@
       "time": "2026-10-06T10:50:40.198Z",
       "type": "RESET",
       "detail": "Event reset"
-    },
-    {
-      "time": "2026-10-06T12:00:58.305Z",
-      "type": "ADMIN_LOGIN",
-      "detail": "172.20.10.4 signed in"
     }
   ],
   "questions": [

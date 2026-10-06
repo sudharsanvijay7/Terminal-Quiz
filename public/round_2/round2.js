@@ -146,8 +146,6 @@ async function submitAnswer(){
       body:JSON.stringify({command:'',answer:selected.value,submit:true})
     });
 
-    toast(d.solved?'Correct! Moving to the next challenge.':'Incorrect answer. Moving to the next challenge.');
-
     // The server already moves to the next challenge (correct or incorrect),
     // so just reload the state from the server.
     termOut='';
