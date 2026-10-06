@@ -37,7 +37,7 @@ function render(p,s,t){
  const total=challengeInfo.reduce((a,x)=>a+x.marks,0);
  const pipe=challengeInfo.map((x,i)=>{
   const n=i+1;
-  const st=n===currentChallenge?'now':(n<currentChallenge?(solved[n]?'ok':'miss'):'');
+  const st=n===currentChallenge?'now':(n<currentChallenge?'done':'');
   return (i?'<li class="pl"></li>':'')+`<li class="pn ${st}" title="${escapeHtml(x.title)}"><b>${n}</b></li>`;
  }).join('');
  const dots='<b></b><b></b><b></b>';

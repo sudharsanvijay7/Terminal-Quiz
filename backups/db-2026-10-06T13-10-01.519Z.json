@@ -1,22 +1,183 @@
 {
   "event": {
     "name": "TERMINAL QUIZ",
-    "state": "WAITING",
-    "round": 0,
+    "state": "ROUND1_COMPLETED",
+    "round": 1,
     "startAt": null,
     "endAt": null,
     "paused": false,
     "remainingMs": null,
     "leaderboardPublished": false
   },
-  "participants": {},
-  "answers": {},
-  "terminal": {},
+  "participants": {
+    "3508505": {
+      "id": "3508505",
+      "name": "mlkdkvk",
+      "registerNumber": "3508505",
+      "token": "da161928bea4db87b7cdbd8092ce753924e17841a4cb08c4",
+      "online": true,
+      "round1Submitted": true,
+      "round1Score": 2,
+      "round2Score": 0,
+      "createdAt": "2026-10-06T12:53:55.624Z",
+      "lastSeen": 1791292195092
+    }
+  },
+  "answers": {
+    "3508505:1": {
+      "participantId": "3508505",
+      "questionId": 1,
+      "answer": 1,
+      "at": "2026-10-06T12:54:02.468Z"
+    },
+    "3508505:2": {
+      "participantId": "3508505",
+      "questionId": 2,
+      "answer": 3,
+      "at": "2026-10-06T12:54:04.514Z"
+    },
+    "3508505:3": {
+      "participantId": "3508505",
+      "questionId": 3,
+      "answer": 2,
+      "at": "2026-10-06T12:54:06.261Z"
+    },
+    "3508505:4": {
+      "participantId": "3508505",
+      "questionId": 4,
+      "answer": 3,
+      "at": "2026-10-06T12:54:08.241Z"
+    },
+    "3508505:5": {
+      "participantId": "3508505",
+      "questionId": 5,
+      "answer": 2,
+      "at": "2026-10-06T12:54:10.105Z"
+    },
+    "3508505:6": {
+      "participantId": "3508505",
+      "questionId": 6,
+      "answer": 1,
+      "at": "2026-10-06T12:54:11.975Z"
+    },
+    "3508505:7": {
+      "participantId": "3508505",
+      "questionId": 7,
+      "answer": 3,
+      "at": "2026-10-06T12:54:14.287Z"
+    },
+    "3508505:8": {
+      "participantId": "3508505",
+      "questionId": 8,
+      "answer": 2,
+      "at": "2026-10-06T12:54:16.029Z"
+    },
+    "3508505:9": {
+      "participantId": "3508505",
+      "questionId": 9,
+      "answer": 0,
+      "at": "2026-10-06T12:54:18.214Z"
+    },
+    "3508505:10": {
+      "participantId": "3508505",
+      "questionId": 10,
+      "answer": 3,
+      "at": "2026-10-06T12:54:20.236Z"
+    },
+    "3508505:11": {
+      "participantId": "3508505",
+      "questionId": 11,
+      "answer": 3,
+      "at": "2026-10-06T12:54:22.993Z"
+    },
+    "3508505:12": {
+      "participantId": "3508505",
+      "questionId": 12,
+      "answer": 3,
+      "at": "2026-10-06T12:54:25.486Z"
+    },
+    "3508505:13": {
+      "participantId": "3508505",
+      "questionId": 13,
+      "answer": 2,
+      "at": "2026-10-06T12:54:28.130Z"
+    },
+    "3508505:14": {
+      "participantId": "3508505",
+      "questionId": 14,
+      "answer": 3,
+      "at": "2026-10-06T12:54:30.288Z"
+    },
+    "3508505:15": {
+      "participantId": "3508505",
+      "questionId": 15,
+      "answer": 1,
+      "at": "2026-10-06T12:54:32.916Z"
+    },
+    "3508505:16": {
+      "participantId": "3508505",
+      "questionId": 16,
+      "answer": 2,
+      "at": "2026-10-06T12:54:34.902Z"
+    },
+    "3508505:17": {
+      "participantId": "3508505",
+      "questionId": 17,
+      "answer": 3,
+      "at": "2026-10-06T12:54:37.807Z"
+    },
+    "3508505:18": {
+      "participantId": "3508505",
+      "questionId": 18,
+      "answer": 2,
+      "at": "2026-10-06T12:54:39.573Z"
+    },
+    "3508505:19": {
+      "participantId": "3508505",
+      "questionId": 19,
+      "answer": 3,
+      "at": "2026-10-06T12:54:42.537Z"
+    },
+    "3508505:20": {
+      "participantId": "3508505",
+      "questionId": 20,
+      "answer": 3,
+      "at": "2026-10-06T12:54:45.144Z"
+    }
+  },
+  "terminal": {
+    "3508505": {
+      "cwd": "/",
+      "files": {},
+      "challenge": 1,
+      "attempts": {}
+    }
+  },
   "logs": [
     {
-      "time": "2026-10-06T14:18:06.344Z",
+      "time": "2026-10-06T12:53:40.945Z",
       "type": "RESET",
       "detail": "Event reset"
+    },
+    {
+      "time": "2026-10-06T12:53:55.624Z",
+      "type": "LOGIN",
+      "detail": "3508505 mlkdkvk"
+    },
+    {
+      "time": "2026-10-06T12:53:59.653Z",
+      "type": "ROUND_START",
+      "detail": "Round 1"
+    },
+    {
+      "time": "2026-10-06T12:54:48.608Z",
+      "type": "ROUND1_SUBMIT",
+      "detail": "3508505"
+    },
+    {
+      "time": "2026-10-06T12:54:59.486Z",
+      "type": "ROUND_END",
+      "detail": "Round 1"
     }
   ],
   "questions": [

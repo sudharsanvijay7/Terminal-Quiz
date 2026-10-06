@@ -9,14 +9,39 @@
     "remainingMs": null,
     "leaderboardPublished": false
   },
-  "participants": {},
+  "participants": {
+    "3850580": {
+      "id": "3850580",
+      "name": "kjlkf",
+      "registerNumber": "3850580",
+      "token": "032942a13e7792c36be7e3fcd4a20feda66100aeace4e732",
+      "online": true,
+      "round1Submitted": false,
+      "round1Score": 0,
+      "round2Score": 0,
+      "createdAt": "2026-10-06T13:43:14.184Z",
+      "lastSeen": 1791294196640
+    }
+  },
   "answers": {},
-  "terminal": {},
+  "terminal": {
+    "3850580": {
+      "cwd": "/",
+      "files": {},
+      "challenge": 1,
+      "attempts": {}
+    }
+  },
   "logs": [
     {
-      "time": "2026-10-06T14:18:06.344Z",
+      "time": "2026-10-06T13:37:09.719Z",
       "type": "RESET",
       "detail": "Event reset"
+    },
+    {
+      "time": "2026-10-06T13:43:14.184Z",
+      "type": "LOGIN",
+      "detail": "3850580 kjlkf"
     }
   ],
   "questions": [

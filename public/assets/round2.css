@@ -34,13 +34,10 @@ body:has(.r2){background:#030806}
 /* challenge steps: circles like the admin phase tracker */
 .r2-pipe{display:flex;align-items:center;margin:0 auto}
 .pl{width:clamp(14px,3vw,46px);height:2px;background:var(--line)}
-.pn.ok+.pl,.pn.miss+.pl{background:#1d6b45}
+.pn.done+.pl{background:#1d6b45}
 .pn b{display:grid;place-items:center;width:32px;height:32px;border:1.5px solid var(--line);border-radius:50%;background:#050a08;font:700 12px var(--m);color:#3a5a4a}
-.pn.ok b,.pn.miss b{font-size:0}
-.pn.ok b::after{content:'✓';font-size:13px}
-.pn.miss b::after{content:'✕';font-size:12px}
-.pn.ok b{border-color:var(--g);color:var(--g);background:#07160e}
-.pn.miss b{border-color:#6b1d2a;color:#ff7c86;background:#190a0d}
+.pn.done b{font-size:0;border-color:#2f8a5c;color:#5fbf8a;background:#07160e}
+.pn.done b::after{content:'✓';font-size:13px}
 .pn.now b{border-color:var(--g);background:var(--g);color:#03130a;box-shadow:0 0 18px rgba(52,245,139,.6);animation:r2pulse 2s ease-in-out infinite}
 @keyframes r2pulse{50%{transform:scale(1.12)}}
 

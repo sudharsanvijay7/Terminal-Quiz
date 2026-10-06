@@ -1,22 +1,116 @@
 {
   "event": {
     "name": "TERMINAL QUIZ",
-    "state": "WAITING",
-    "round": 0,
+    "state": "ROUND2_COMPLETED",
+    "round": 2,
     "startAt": null,
     "endAt": null,
     "paused": false,
     "remainingMs": null,
-    "leaderboardPublished": false
+    "leaderboardPublished": true,
+    "round1StartedAt": 1791295901683,
+    "round1EndedAt": 1791295908065,
+    "round2StartedAt": 1791295910138
   },
-  "participants": {},
+  "participants": {
+    "3580885": {
+      "id": "3580885",
+      "name": "kdfkf",
+      "registerNumber": "3580885",
+      "token": "0ffb95c0ed205e8c6f741159c4f4febb08651b8f82b1359c",
+      "online": true,
+      "round1Submitted": false,
+      "round1Score": 0,
+      "round2Score": 5,
+      "createdAt": "2026-10-06T14:11:37.417Z",
+      "lastSeen": 1791295995084,
+      "round2Submitted": true,
+      "round2TimeMs": 21664
+    }
+  },
   "answers": {},
-  "terminal": {},
+  "terminal": {
+    "3580885": {
+      "cwd": "/",
+      "files": {},
+      "challenge": 6,
+      "attempts": {
+        "1": 1,
+        "2": 1,
+        "3": 1,
+        "4": 1,
+        "5": 1
+      },
+      "solved": {
+        "2": true
+      }
+    }
+  },
   "logs": [
     {
-      "time": "2026-10-06T14:18:06.344Z",
+      "time": "2026-10-06T14:11:22.021Z",
       "type": "RESET",
       "detail": "Event reset"
+    },
+    {
+      "time": "2026-10-06T14:11:37.417Z",
+      "type": "LOGIN",
+      "detail": "3580885 kdfkf"
+    },
+    {
+      "time": "2026-10-06T14:11:41.683Z",
+      "type": "ROUND_START",
+      "detail": "Round 1"
+    },
+    {
+      "time": "2026-10-06T14:11:48.065Z",
+      "type": "ROUND_END",
+      "detail": "Round 1"
+    },
+    {
+      "time": "2026-10-06T14:11:50.138Z",
+      "type": "ROUND_START",
+      "detail": "Round 2"
+    },
+    {
+      "time": "2026-10-06T14:11:57.818Z",
+      "type": "TERMINAL_ATTEMPT",
+      "detail": "3580885 challenge 1"
+    },
+    {
+      "time": "2026-10-06T14:12:00.984Z",
+      "type": "TERMINAL_SOLVE",
+      "detail": "3580885 challenge 2"
+    },
+    {
+      "time": "2026-10-06T14:12:03.748Z",
+      "type": "TERMINAL_ATTEMPT",
+      "detail": "3580885 challenge 3"
+    },
+    {
+      "time": "2026-10-06T14:12:06.400Z",
+      "type": "TERMINAL_ATTEMPT",
+      "detail": "3580885 challenge 4"
+    },
+    {
+      "time": "2026-10-06T14:12:11.800Z",
+      "type": "TERMINAL_ATTEMPT",
+      "detail": "3580885 challenge 5"
+    },
+    {
+      "time": "2026-10-06T14:12:11.802Z",
+      "type": "ROUND2_SUBMIT",
+      "detail": "3580885 completed Round 2"
+    },
+    {
+      "time": "2026-10-06T14:12:21.116Z",
+      "type": "ROUND_END",
+      "detail": "Round 2"
+    },
+    {
+      "time": "2026-10-06T14:12:23.064Z",
+      "type": "LEADERBOARD",
+      "detail": "Published"
     }
   ],
   "questions": [

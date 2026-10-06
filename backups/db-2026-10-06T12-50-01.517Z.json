@@ -1,22 +1,183 @@
 {
   "event": {
     "name": "TERMINAL QUIZ",
-    "state": "WAITING",
-    "round": 0,
+    "state": "ROUND1_COMPLETED",
+    "round": 1,
     "startAt": null,
     "endAt": null,
     "paused": false,
     "remainingMs": null,
     "leaderboardPublished": false
   },
-  "participants": {},
-  "answers": {},
-  "terminal": {},
+  "participants": {
+    "951753": {
+      "id": "951753",
+      "name": "mario",
+      "registerNumber": "951753",
+      "token": "56c33548204011d2db2410a2de2af9de263518ffb56a6f4a",
+      "online": true,
+      "round1Submitted": true,
+      "round1Score": 4,
+      "round2Score": 0,
+      "createdAt": "2026-10-06T12:47:18.859Z",
+      "lastSeen": 1791290995091
+    }
+  },
+  "answers": {
+    "951753:1": {
+      "participantId": "951753",
+      "questionId": 1,
+      "answer": 3,
+      "at": "2026-10-06T12:47:25.813Z"
+    },
+    "951753:2": {
+      "participantId": "951753",
+      "questionId": 2,
+      "answer": 2,
+      "at": "2026-10-06T12:47:28.408Z"
+    },
+    "951753:3": {
+      "participantId": "951753",
+      "questionId": 3,
+      "answer": 1,
+      "at": "2026-10-06T12:47:30.499Z"
+    },
+    "951753:4": {
+      "participantId": "951753",
+      "questionId": 4,
+      "answer": 1,
+      "at": "2026-10-06T12:47:32.781Z"
+    },
+    "951753:5": {
+      "participantId": "951753",
+      "questionId": 5,
+      "answer": 1,
+      "at": "2026-10-06T12:47:35.607Z"
+    },
+    "951753:6": {
+      "participantId": "951753",
+      "questionId": 6,
+      "answer": 3,
+      "at": "2026-10-06T12:47:38.440Z"
+    },
+    "951753:7": {
+      "participantId": "951753",
+      "questionId": 7,
+      "answer": 1,
+      "at": "2026-10-06T12:47:41.352Z"
+    },
+    "951753:8": {
+      "participantId": "951753",
+      "questionId": 8,
+      "answer": 1,
+      "at": "2026-10-06T12:47:44.565Z"
+    },
+    "951753:9": {
+      "participantId": "951753",
+      "questionId": 9,
+      "answer": 2,
+      "at": "2026-10-06T12:47:47.453Z"
+    },
+    "951753:10": {
+      "participantId": "951753",
+      "questionId": 10,
+      "answer": 0,
+      "at": "2026-10-06T12:47:50.128Z"
+    },
+    "951753:11": {
+      "participantId": "951753",
+      "questionId": 11,
+      "answer": 1,
+      "at": "2026-10-06T12:47:53.267Z"
+    },
+    "951753:12": {
+      "participantId": "951753",
+      "questionId": 12,
+      "answer": 3,
+      "at": "2026-10-06T12:47:55.934Z"
+    },
+    "951753:13": {
+      "participantId": "951753",
+      "questionId": 13,
+      "answer": 3,
+      "at": "2026-10-06T12:47:58.527Z"
+    },
+    "951753:14": {
+      "participantId": "951753",
+      "questionId": 14,
+      "answer": 1,
+      "at": "2026-10-06T12:48:01.426Z"
+    },
+    "951753:15": {
+      "participantId": "951753",
+      "questionId": 15,
+      "answer": 1,
+      "at": "2026-10-06T12:48:04.480Z"
+    },
+    "951753:16": {
+      "participantId": "951753",
+      "questionId": 16,
+      "answer": 0,
+      "at": "2026-10-06T12:48:07.356Z"
+    },
+    "951753:17": {
+      "participantId": "951753",
+      "questionId": 17,
+      "answer": 0,
+      "at": "2026-10-06T12:48:10.725Z"
+    },
+    "951753:18": {
+      "participantId": "951753",
+      "questionId": 18,
+      "answer": 1,
+      "at": "2026-10-06T12:48:13.042Z"
+    },
+    "951753:19": {
+      "participantId": "951753",
+      "questionId": 19,
+      "answer": 3,
+      "at": "2026-10-06T12:48:15.617Z"
+    },
+    "951753:20": {
+      "participantId": "951753",
+      "questionId": 20,
+      "answer": 2,
+      "at": "2026-10-06T12:48:17.895Z"
+    }
+  },
+  "terminal": {
+    "951753": {
+      "cwd": "/",
+      "files": {},
+      "challenge": 1,
+      "attempts": {}
+    }
+  },
   "logs": [
     {
-      "time": "2026-10-06T14:18:06.344Z",
+      "time": "2026-10-06T12:46:55.129Z",
       "type": "RESET",
       "detail": "Event reset"
+    },
+    {
+      "time": "2026-10-06T12:47:18.859Z",
+      "type": "LOGIN",
+      "detail": "951753 mario"
+    },
+    {
+      "time": "2026-10-06T12:47:23.590Z",
+      "type": "ROUND_START",
+      "detail": "Round 1"
+    },
+    {
+      "time": "2026-10-06T12:48:22.401Z",
+      "type": "ROUND1_SUBMIT",
+      "detail": "951753"
+    },
+    {
+      "time": "2026-10-06T12:48:31.694Z",
+      "type": "ROUND_END",
+      "detail": "Round 1"
     }
   ],
   "questions": [

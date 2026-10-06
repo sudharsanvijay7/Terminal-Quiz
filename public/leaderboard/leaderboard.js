@@ -1,3 +1,6 @@
+/* time taken to finish a round: 754000 -> '12m 34s'; '—' if the participant did not finish it */
+const taken = ms => { if (ms == null) return '—'; const t = Math.round(ms / 1000); return Math.floor(t / 60) + 'm ' + String(t % 60).padStart(2, '0') + 's' };
+
 async function init() {
     try {
         const s = await api('/api/state');
@@ -10,15 +13,15 @@ async function init() {
         <div class="lb-who">${cls === 'p1' ? '<span class="lb-crown">♛</span>' : ''}<span class="lb-medal">${label}</span>
           <h3>${escapeHtml(x.name)}</h3>
           <div class="lb-score"><b data-n="${x.total}">0</b><small>pts</small></div>
-          <p>R1 ${x.round1} · R2 ${x.round2}</p></div>
+          <p>R1 ${x.round1} (${taken(x.round1TimeMs)}) · R2 ${x.round2} (${taken(x.round2TimeMs)})</p></div>
         <div class="lb-ped"><span>#${x.rank}</span></div></div>` : '<div class="lb-pod empty"></div>';
         const podium = a.length ? `<div class="lb-podium">${pod(a[1], 'p2', '2ND')}${pod(a[0], 'p1', 'CHAMPION')}${pod(a[2], 'p3', '3RD')}</div>` : '';
 
         const rest = a.slice(3);
         const table = rest.length ? `<section class="lb-pane">
       <div class="lb-bar"><b></b><b></b><b></b><span>ranks_4_and_below.log</span></div>
-      <div style="overflow:auto"><table class="lb-table"><thead><tr><th>Rank</th><th>Participant</th><th>R1</th><th>R2</th><th>Total</th></tr></thead><tbody>
-      ${rest.map((x, i) => `<tr style="--d:${(2.9 + i * .09).toFixed(2)}s;--w:${Math.round(x.total / max * 100)}%"><td><b>#${x.rank}</b></td><td>${escapeHtml(x.name)}</td><td>${x.round1}</td><td>${x.round2}</td><td><b>${x.total}</b></td></tr>`).join('')}
+      <div style="overflow:auto"><table class="lb-table"><thead><tr><th>Rank</th><th>Participant</th><th>R1</th><th>R1 Time</th><th>R2</th><th>R2 Time</th><th>Total</th></tr></thead><tbody>
+      ${rest.map((x, i) => `<tr style="--d:${(2.9 + i * .09).toFixed(2)}s;--w:${Math.round(x.total / max * 100)}%"><td><b>#${x.rank}</b></td><td>${escapeHtml(x.name)}</td><td>${x.round1}</td><td>${taken(x.round1TimeMs)}</td><td>${x.round2}</td><td>${taken(x.round2TimeMs)}</td><td><b>${x.total}</b></td></tr>`).join('')}
       </tbody></table></div></section>`: '';
 
         $('#app').innerHTML = layout(`

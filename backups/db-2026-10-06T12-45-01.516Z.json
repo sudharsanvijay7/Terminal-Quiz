@@ -1,22 +1,243 @@
 {
   "event": {
     "name": "TERMINAL QUIZ",
-    "state": "WAITING",
-    "round": 0,
+    "state": "ROUND2_COMPLETED",
+    "round": 2,
     "startAt": null,
     "endAt": null,
     "paused": false,
     "remainingMs": null,
-    "leaderboardPublished": false
+    "leaderboardPublished": true
   },
-  "participants": {},
-  "answers": {},
-  "terminal": {},
+  "participants": {
+    "948505": {
+      "id": "948505",
+      "name": "jfljlfk",
+      "registerNumber": "948505",
+      "token": "d6d189dda1c653269c196b24f1b86a340e2a939d3dbfadb0",
+      "online": true,
+      "round1Submitted": true,
+      "round1Score": 10,
+      "round2Score": 20,
+      "createdAt": "2026-10-06T12:42:27.054Z",
+      "lastSeen": 1791290700082,
+      "round2Submitted": true
+    }
+  },
+  "answers": {
+    "948505:1": {
+      "participantId": "948505",
+      "questionId": 1,
+      "answer": 1,
+      "at": "2026-10-06T12:42:39.601Z"
+    },
+    "948505:2": {
+      "participantId": "948505",
+      "questionId": 2,
+      "answer": 3,
+      "at": "2026-10-06T12:42:42.293Z"
+    },
+    "948505:3": {
+      "participantId": "948505",
+      "questionId": 3,
+      "answer": 2,
+      "at": "2026-10-06T12:42:45.620Z"
+    },
+    "948505:4": {
+      "participantId": "948505",
+      "questionId": 4,
+      "answer": 1,
+      "at": "2026-10-06T12:42:48.798Z"
+    },
+    "948505:5": {
+      "participantId": "948505",
+      "questionId": 5,
+      "answer": 1,
+      "at": "2026-10-06T12:42:51.420Z"
+    },
+    "948505:6": {
+      "participantId": "948505",
+      "questionId": 6,
+      "answer": 2,
+      "at": "2026-10-06T12:42:53.901Z"
+    },
+    "948505:7": {
+      "participantId": "948505",
+      "questionId": 7,
+      "answer": 1,
+      "at": "2026-10-06T12:42:56.175Z"
+    },
+    "948505:8": {
+      "participantId": "948505",
+      "questionId": 8,
+      "answer": 1,
+      "at": "2026-10-06T12:42:59.261Z"
+    },
+    "948505:9": {
+      "participantId": "948505",
+      "questionId": 9,
+      "answer": 1,
+      "at": "2026-10-06T12:43:02.721Z"
+    },
+    "948505:10": {
+      "participantId": "948505",
+      "questionId": 10,
+      "answer": 0,
+      "at": "2026-10-06T12:43:05.384Z"
+    },
+    "948505:11": {
+      "participantId": "948505",
+      "questionId": 11,
+      "answer": 0,
+      "at": "2026-10-06T12:43:07.817Z"
+    },
+    "948505:12": {
+      "participantId": "948505",
+      "questionId": 12,
+      "answer": 0,
+      "at": "2026-10-06T12:43:10.896Z"
+    },
+    "948505:13": {
+      "participantId": "948505",
+      "questionId": 13,
+      "answer": 0,
+      "at": "2026-10-06T12:43:13.243Z"
+    },
+    "948505:14": {
+      "participantId": "948505",
+      "questionId": 14,
+      "answer": 0,
+      "at": "2026-10-06T12:43:16.006Z"
+    },
+    "948505:15": {
+      "participantId": "948505",
+      "questionId": 15,
+      "answer": 0,
+      "at": "2026-10-06T12:43:18.421Z"
+    },
+    "948505:16": {
+      "participantId": "948505",
+      "questionId": 16,
+      "answer": 0,
+      "at": "2026-10-06T12:43:20.959Z"
+    },
+    "948505:17": {
+      "participantId": "948505",
+      "questionId": 17,
+      "answer": 1,
+      "at": "2026-10-06T12:43:23.492Z"
+    },
+    "948505:18": {
+      "participantId": "948505",
+      "questionId": 18,
+      "answer": 0,
+      "at": "2026-10-06T12:43:26.197Z"
+    },
+    "948505:19": {
+      "participantId": "948505",
+      "questionId": 19,
+      "answer": 2,
+      "at": "2026-10-06T12:43:30.129Z"
+    },
+    "948505:20": {
+      "participantId": "948505",
+      "questionId": 20,
+      "answer": 1,
+      "at": "2026-10-06T12:43:33.119Z"
+    }
+  },
+  "terminal": {
+    "948505": {
+      "cwd": "/",
+      "files": {},
+      "challenge": 6,
+      "attempts": {
+        "1": 1,
+        "2": 1,
+        "3": 1,
+        "4": 1,
+        "5": 1
+      },
+      "solved": {
+        "5": true
+      }
+    }
+  },
   "logs": [
     {
-      "time": "2026-10-06T14:18:06.344Z",
+      "time": "2026-10-06T10:50:40.198Z",
       "type": "RESET",
       "detail": "Event reset"
+    },
+    {
+      "time": "2026-10-06T12:00:58.305Z",
+      "type": "ADMIN_LOGIN",
+      "detail": "172.20.10.4 signed in"
+    },
+    {
+      "time": "2026-10-06T12:42:27.054Z",
+      "type": "LOGIN",
+      "detail": "948505 jfljlfk"
+    },
+    {
+      "time": "2026-10-06T12:42:34.603Z",
+      "type": "ROUND_START",
+      "detail": "Round 1"
+    },
+    {
+      "time": "2026-10-06T12:43:40.807Z",
+      "type": "ROUND1_SUBMIT",
+      "detail": "948505"
+    },
+    {
+      "time": "2026-10-06T12:43:47.940Z",
+      "type": "ROUND_END",
+      "detail": "Round 1"
+    },
+    {
+      "time": "2026-10-06T12:44:06.516Z",
+      "type": "ROUND_START",
+      "detail": "Round 2"
+    },
+    {
+      "time": "2026-10-06T12:44:14.246Z",
+      "type": "TERMINAL_ATTEMPT",
+      "detail": "948505 challenge 1"
+    },
+    {
+      "time": "2026-10-06T12:44:16.522Z",
+      "type": "TERMINAL_ATTEMPT",
+      "detail": "948505 challenge 2"
+    },
+    {
+      "time": "2026-10-06T12:44:19.490Z",
+      "type": "TERMINAL_ATTEMPT",
+      "detail": "948505 challenge 3"
+    },
+    {
+      "time": "2026-10-06T12:44:21.996Z",
+      "type": "TERMINAL_ATTEMPT",
+      "detail": "948505 challenge 4"
+    },
+    {
+      "time": "2026-10-06T12:44:25.529Z",
+      "type": "TERMINAL_SOLVE",
+      "detail": "948505 challenge 5"
+    },
+    {
+      "time": "2026-10-06T12:44:25.531Z",
+      "type": "ROUND2_SUBMIT",
+      "detail": "948505 completed Round 2"
+    },
+    {
+      "time": "2026-10-06T12:44:37.146Z",
+      "type": "ROUND_END",
+      "detail": "Round 2"
+    },
+    {
+      "time": "2026-10-06T12:44:47.233Z",
+      "type": "LEADERBOARD",
+      "detail": "Published"
     }
   ],
   "questions": [

@@ -18,6 +18,9 @@ function phase(s,p){
   }
 }
 
+/* time taken to finish a round: 754000 -> '12m 34s'; '—' if the participant has not finished it */
+function fmtTaken(ms){if(ms==null)return '<span class="empty">—</span>';const t=Math.round(ms/1000),m=Math.floor(t/60),sec=String(t%60).padStart(2,'0');return m+'m '+sec+'s'}
+
 async function dashboard(){
   clearTimeout(pollId);
   try{
@@ -63,7 +66,7 @@ async function dashboard(){
   <section class="ad-cols">
     <div class="ad-panel">
       <div class="ad-ph"><h2>Participants</h2><span>${p.length}</span></div>
-      <div class="ad-scroll"><table class="ad-table"><thead><tr><th>#</th><th>Name</th><th>ID</th><th>Status</th><th>R1</th><th>R2</th><th>Total</th></tr></thead><tbody>${p.map((x,i)=>`<tr class="${i<3&&x.total>0?'top'+(i+1):''}"><td class="rk">${i+1}</td><td>${escapeHtml(x.name)}</td><td class="id">${escapeHtml(x.id)}</td><td class="${x.online?'on':'off'}"><span class="status-dot ${x.online?'is-online':'is-offline'}"></span>${x.online?'Online':'Offline'}</td><td>${x.round1Score}</td><td>${x.round2Score}</td><td><b>${x.total}</b></td></tr>`).join('')||'<tr><td colspan="7" class="empty">Waiting for participants to join…</td></tr>'}</tbody></table></div>
+      <div class="ad-scroll"><table class="ad-table"><thead><tr><th>#</th><th>Name</th><th>ID</th><th>Status</th><th>R1</th><th>R1 Time</th><th>R2</th><th>R2 Time</th><th>Total</th></tr></thead><tbody>${p.map((x,i)=>`<tr class="${i<3&&x.total>0?'top'+(i+1):''}"><td class="rk">${i+1}</td><td>${escapeHtml(x.name)}</td><td class="id">${escapeHtml(x.id)}</td><td class="${x.online?'on':'off'}"><span class="status-dot ${x.online?'is-online':'is-offline'}"></span>${x.online?'Online':'Offline'}</td><td>${x.round1Score}</td><td>${fmtTaken(x.round1TimeMs)}</td><td>${x.round2Score}</td><td>${fmtTaken(x.round2TimeMs)}</td><td><b>${x.total}</b></td></tr>`).join('')||'<tr><td colspan="9" class="empty">Waiting for participants to join…</td></tr>'}</tbody></table></div>
     </div>
     <div class="ad-panel">
       <div class="ad-ph"><h2>Activity</h2><span>latest ${Math.min(20,l.length)}</span></div>
