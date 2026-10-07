@@ -72,3 +72,23 @@ body::after{content:'';position:fixed;inset:0;z-index:50;pointer-events:none;bac
 @media(prefers-reduced-motion:reduce){
   .lb *{animation:none!important}.lb-pod,.lb-pane,.lb-table tbody tr{opacity:1;transform:none}#lbrain,#lbconf{display:none}
 }
+/* ===== static, no page scrollbar: whole leaderboard fits the screen ===== */
+html,body{height:100%;margin:0;overflow:hidden}
+*{scrollbar-width:none;-ms-overflow-style:none}
+*::-webkit-scrollbar{display:none;width:0;height:0}
+#app{height:100%;overflow:hidden}
+.lb{height:100vh;max-width:980px;padding:2.5vh 16px 2vh;box-sizing:border-box;display:flex;flex-direction:column;overflow:hidden}
+.lb-badge{align-self:center;padding:5px 14px;font-size:11px}
+.lb-title{margin:1.5vh 0 1vh;font-size:clamp(30px,8vh,80px)}
+.lb-sub{margin:0 0 2vh;font-size:clamp(12px,1.8vh,16px)}
+.lb-podium{margin-bottom:2.5vh;flex:0 0 auto}
+.p1 .lb-ped{height:12vh}.p2 .lb-ped{height:8.5vh}.p3 .lb-ped{height:6.5vh}
+.lb-crown{font-size:3.4vh}
+.lb-who{padding-bottom:1vh}
+.lb-score b{font-size:clamp(24px,5vh,46px)}
+.lb-pane{flex:1 1 auto;min-height:0;display:flex;flex-direction:column}
+.lb-pane>div:not(.lb-bar){flex:1;min-height:0;overflow-y:auto!important}
+.lb-table td{padding:1.1vh 18px;font-size:clamp(12px,1.9vh,15px)}
+.lb-actions{margin-top:1.5vh;flex:0 0 auto}
+.lb-btn{padding:1.4vh 32px;font-size:clamp(12px,1.9vh,16px)}
+@media(max-width:640px){.lb-podium{grid-template-columns:1fr 1fr 1fr;gap:8px}.lb-podium .p1{order:0}}

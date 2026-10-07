@@ -1,26 +1,166 @@
 {
   "event": {
     "name": "TERMINAL QUIZ",
-    "state": "WAITING",
-    "round": 0,
+    "state": "ROUND1_COMPLETED",
+    "round": 1,
     "startAt": null,
     "endAt": null,
     "paused": false,
     "remainingMs": null,
     "leaderboardPublished": false,
     "r1Batch": null,
-    "r1Done": {},
-    "finalLoginOpen": false,
-    "batch2LoginOpen": false
+    "r1Done": {
+      "Batch 1": true,
+      "Batch 2": true
+    },
+    "finalLoginOpen": true,
+    "batch2LoginOpen": true,
+    "round1StartedAt": 1791386510532,
+    "round1EndedAt": 1791386513467
   },
-  "participants": {},
+  "participants": {
+    "285025": {
+      "id": "285025",
+      "name": "cena",
+      "registerNumber": "285025",
+      "batch": "Batch 2",
+      "joinNo": 2,
+      "token": "db659b2c0e2c2fb73bc19ddd17662a91cf75935dd6efb1a6",
+      "online": false,
+      "round1Submitted": true,
+      "round1Score": 0,
+      "round2Score": 0,
+      "createdAt": "2026-10-07T15:21:44.662Z",
+      "lastSeen": 1791386530090,
+      "exitAttempts": 2,
+      "round1StartAt": 1791386510633,
+      "round1TimeMs": 2835,
+      "sessionOver": true
+    },
+    "935085": {
+      "id": "935085",
+      "name": "john",
+      "registerNumber": "935085",
+      "batch": "Batch 1",
+      "joinNo": 1,
+      "token": "ff2308277b6e5486838ad314826873380a9bbdef28e0c22f",
+      "online": false,
+      "round1Submitted": true,
+      "round1Score": 0,
+      "round2Score": 0,
+      "createdAt": "2026-10-07T15:21:17.872Z",
+      "lastSeen": 1791386483419,
+      "exitAttempts": 1,
+      "round1StartAt": 1791386483439,
+      "round1TimeMs": 2921,
+      "sessionOver": true
+    }
+  },
   "answers": {},
-  "terminal": {},
+  "terminal": {
+    "285025": {
+      "cwd": "/",
+      "files": {},
+      "challenge": 1,
+      "attempts": {}
+    },
+    "935085": {
+      "cwd": "/",
+      "files": {},
+      "challenge": 1,
+      "attempts": {}
+    }
+  },
   "logs": [
     {
-      "time": "2026-10-07T15:39:15.873Z",
+      "time": "2026-10-07T15:20:55.903Z",
       "type": "RESET",
       "detail": "Event reset"
+    },
+    {
+      "time": "2026-10-07T15:21:17.872Z",
+      "type": "LOGIN",
+      "detail": "935085 john #1 Batch 1"
+    },
+    {
+      "time": "2026-10-07T15:21:20.311Z",
+      "type": "FULLSCREEN_EXIT",
+      "detail": "935085 john left fullscreen (warning 1 of 3)"
+    },
+    {
+      "time": "2026-10-07T15:21:23.313Z",
+      "type": "ROUND_START",
+      "detail": "Round 1 - Batch 1"
+    },
+    {
+      "time": "2026-10-07T15:21:23.439Z",
+      "type": "ROUND1_BEGIN",
+      "detail": "935085 john started their Round 1 timer"
+    },
+    {
+      "time": "2026-10-07T15:21:26.360Z",
+      "type": "ROUND1_SUBMIT",
+      "detail": "935085"
+    },
+    {
+      "time": "2026-10-07T15:21:26.365Z",
+      "type": "ROUND_END",
+      "detail": "Round 1 - Batch 1 (results saved to its own CSV)"
+    },
+    {
+      "time": "2026-10-07T15:21:31.407Z",
+      "type": "FULLSCREEN_EXIT",
+      "detail": "device 8C19D3 left fullscreen before joining (warning 1 of 3)"
+    },
+    {
+      "time": "2026-10-07T15:21:34.429Z",
+      "type": "BATCH2_LOGIN",
+      "detail": "Batch 2 login opened - Batch 2 participants can now log in"
+    },
+    {
+      "time": "2026-10-07T15:21:44.662Z",
+      "type": "LOGIN",
+      "detail": "285025 cena #2 Batch 2"
+    },
+    {
+      "time": "2026-10-07T15:21:47.690Z",
+      "type": "FULLSCREEN_EXIT",
+      "detail": "285025 cena left fullscreen (warning 1 of 3)"
+    },
+    {
+      "time": "2026-10-07T15:21:50.532Z",
+      "type": "ROUND_START",
+      "detail": "Round 1 - Batch 2"
+    },
+    {
+      "time": "2026-10-07T15:21:50.633Z",
+      "type": "ROUND1_BEGIN",
+      "detail": "285025 cena started their Round 1 timer"
+    },
+    {
+      "time": "2026-10-07T15:21:53.468Z",
+      "type": "ROUND1_SUBMIT",
+      "detail": "285025"
+    },
+    {
+      "time": "2026-10-07T15:21:53.471Z",
+      "type": "ROUND_END",
+      "detail": "Round 1 - Batch 2 (results saved to its own CSV)"
+    },
+    {
+      "time": "2026-10-07T15:22:06.416Z",
+      "type": "FULLSCREEN_EXIT",
+      "detail": "285025 cena left fullscreen (warning 2 of 3)"
+    },
+    {
+      "time": "2026-10-07T15:22:10.836Z",
+      "type": "FINAL_LOGIN",
+      "detail": "Final round login opened - everyone who played Round 1 must log in again"
+    },
+    {
+      "time": "2026-10-07T15:23:00.651Z",
+      "type": "FULLSCREEN_EXIT",
+      "detail": "device 8C19D3 left fullscreen before joining (warning 2 of 3)"
     }
   ],
   "questions": [
@@ -324,5 +464,15 @@
       },
       "answer": "FINAL-2026"
     }
-  ]
+  ],
+  "devices": {
+    "8c19d36ed0f7d05a92e5bf0a": {
+      "attempts": 2,
+      "blocked": false,
+      "firstSeen": "2026-10-07T15:21:31.407Z",
+      "ip": "172.20.10.4",
+      "ua": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/154.0.0.0 Safari/537.36",
+      "lastAt": "2026-10-07T15:23:00.651Z"
+    }
+  }
 }
