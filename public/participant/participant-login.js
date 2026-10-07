@@ -92,11 +92,15 @@ async function loadSeats(){
   try{
     const r=await fetch('/api/batch-status',{cache:'no-store'}); if(!r.ok) return; const d=await r.json();
     const b1=$('#plb1'), b2=$('#plb2');
+    /* final round: no batches - hide the batch selector and any batch wording */
+    document.querySelector('.pl-batch').style.display=d.finalRound?'none':'';
     b1.querySelector('input').checked=d.batch1Open; b2.querySelector('input').checked=d.batch2Open;
     b1.classList.toggle('off',!d.batch1Open); b2.classList.toggle('off',!d.batch2Open);
     $('#plSeats').innerHTML=d.full
       ? '<b class="bad">// all '+d.seatLimit+' computers are in use - new participants wait for a free seat</b>'
-      : '// you will be <b>#'+d.nextNo+'</b> · Batch '+d.nextBatch+' · '+d.seatsFree+' of '+d.seatLimit+' seats free';
+      : d.finalRound
+        ? '// final round · '+d.seatsFree+' of '+d.seatLimit+' seats free'
+        : '// you will be <b>#'+d.nextNo+'</b> · Batch '+d.nextBatch+' · '+d.seatsFree+' of '+d.seatLimit+' seats free';
   }catch(e){}
 }
 loadSeats(); setInterval(loadSeats,3000);

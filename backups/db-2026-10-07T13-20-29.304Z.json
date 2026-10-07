@@ -1,10 +1,10 @@
 {
   "event": {
     "name": "TERMINAL QUIZ",
-    "state": "ROUND2_ACTIVE",
-    "round": 2,
-    "startAt": 1791379701021,
-    "endAt": 1791381501021,
+    "state": "ROUND1_COMPLETED",
+    "round": 1,
+    "startAt": null,
+    "endAt": null,
     "paused": false,
     "remainingMs": null,
     "leaderboardPublished": false,
@@ -13,63 +13,60 @@
       "Batch 1": true,
       "Batch 2": true
     },
-    "shortlistDone": true,
-    "finalLoginOpen": true,
-    "shortlistCount": 20,
-    "round1StartedAt": 1791379632005,
-    "round1EndedAt": 1791379640206,
-    "round2StartedAt": 1791379701021
+    "shortlistDone": false,
+    "shortlistCount": null,
+    "round1StartedAt": 1791379179841,
+    "round1EndedAt": 1791379187959
   },
   "participants": {
-    "38505": {
-      "id": "38505",
-      "name": "shaban 2",
-      "registerNumber": "38505",
-      "batch": "Batch 2",
-      "joinNo": 2,
-      "token": "0e741545a7b180449423997b4e4c7588d0b2ee5e91eb18a5",
-      "online": false,
-      "round1Submitted": true,
-      "round1Score": 0,
-      "round2Score": 0,
-      "createdAt": "2026-10-07T13:27:05.031Z",
-      "lastSeen": 1791379652324,
-      "exitAttempts": 0,
-      "shortlisted": true,
-      "round1StartAt": 1791379632122,
-      "round1TimeMs": 8085,
-      "exited": false,
-      "sessionOver": true
-    },
-    "LAFLKLF": {
-      "id": "LAFLKLF",
-      "name": "shaban 1",
-      "registerNumber": "LAFLKLF",
+    "957058": {
+      "id": "957058",
+      "name": "shaban1",
+      "registerNumber": "957058",
       "batch": "Batch 1",
       "joinNo": 1,
-      "token": "ae9166f6af51c5d6550c40a123c9f2b4344fb8b768be5ecb",
+      "token": "b7b8ab2ab217c4ecd5776a41f2ced320a7dc21b2cee93756",
       "online": false,
       "round1Submitted": true,
       "round1Score": 0,
       "round2Score": 0,
-      "createdAt": "2026-10-07T13:26:20.535Z",
-      "lastSeen": 1791379595085,
+      "createdAt": "2026-10-07T13:19:06.275Z",
+      "lastSeen": 1791379161085,
       "exitAttempts": 2,
-      "shortlisted": true,
-      "round1StartAt": 1791379588607,
-      "round1TimeMs": 7712,
+      "shortlisted": false,
+      "round1StartAt": 1791379152006,
+      "round1TimeMs": 9216,
+      "sessionOver": true
+    },
+    "3975009": {
+      "id": "3975009",
+      "name": "shaban2",
+      "registerNumber": "3975009",
+      "batch": "Batch 2",
+      "joinNo": 2,
+      "token": "db076c983e2aedebd8b8f29a03024d61d5e878b0967de3a6",
+      "online": false,
+      "round1Submitted": true,
+      "round1Score": 0,
+      "round2Score": 0,
+      "createdAt": "2026-10-07T13:19:33.171Z",
+      "lastSeen": 1791379186084,
+      "exitAttempts": 2,
+      "shortlisted": false,
+      "round1StartAt": 1791379179953,
+      "round1TimeMs": 8007,
       "sessionOver": true
     }
   },
   "answers": {},
   "terminal": {
-    "38505": {
+    "957058": {
       "cwd": "/",
       "files": {},
       "challenge": 1,
       "attempts": {}
     },
-    "LAFLKLF": {
+    "3975009": {
       "cwd": "/",
       "files": {},
       "challenge": 1,
@@ -78,119 +75,84 @@
   },
   "logs": [
     {
-      "time": "2026-10-07T13:26:03.910Z",
+      "time": "2026-10-07T13:18:47.873Z",
       "type": "RESET",
       "detail": "Event reset"
     },
     {
-      "time": "2026-10-07T13:26:20.535Z",
+      "time": "2026-10-07T13:19:06.275Z",
       "type": "LOGIN",
-      "detail": "LAFLKLF shaban 1 #1 Batch 1"
+      "detail": "957058 shaban1 #1 Batch 1"
     },
     {
-      "time": "2026-10-07T13:26:22.982Z",
+      "time": "2026-10-07T13:19:08.738Z",
       "type": "FULLSCREEN_EXIT",
-      "detail": "LAFLKLF shaban 1 left fullscreen (warning 1 of 3)"
+      "detail": "957058 shaban1 left fullscreen (warning 1 of 3)"
     },
     {
-      "time": "2026-10-07T13:26:28.480Z",
+      "time": "2026-10-07T13:19:11.886Z",
       "type": "ROUND_START",
       "detail": "Round 1 - Batch 1"
     },
     {
-      "time": "2026-10-07T13:26:28.607Z",
+      "time": "2026-10-07T13:19:12.006Z",
       "type": "ROUND1_BEGIN",
-      "detail": "LAFLKLF shaban 1 started their Round 1 timer"
+      "detail": "957058 shaban1 started their Round 1 timer"
     },
     {
-      "time": "2026-10-07T13:26:32.485Z",
+      "time": "2026-10-07T13:19:17.270Z",
       "type": "FULLSCREEN_EXIT",
-      "detail": "LAFLKLF shaban 1 left fullscreen (warning 2 of 3)"
+      "detail": "957058 shaban1 left fullscreen (warning 2 of 3)"
     },
     {
-      "time": "2026-10-07T13:26:36.319Z",
+      "time": "2026-10-07T13:19:21.222Z",
       "type": "ROUND1_SUBMIT",
-      "detail": "LAFLKLF"
+      "detail": "957058"
     },
     {
-      "time": "2026-10-07T13:26:36.324Z",
+      "time": "2026-10-07T13:19:21.223Z",
       "type": "ROUND_END",
       "detail": "Round 1 - Batch 1 (results saved to its own CSV)"
     },
     {
-      "time": "2026-10-07T13:27:05.031Z",
+      "time": "2026-10-07T13:19:33.171Z",
       "type": "LOGIN",
-      "detail": "38505 shaban 2 #2 Batch 2"
+      "detail": "3975009 shaban2 #2 Batch 2"
     },
     {
-      "time": "2026-10-07T13:27:06.970Z",
+      "time": "2026-10-07T13:19:36.210Z",
       "type": "FULLSCREEN_EXIT",
-      "detail": "38505 shaban 2 left fullscreen (warning 1 of 3)"
+      "detail": "3975009 shaban2 left fullscreen (warning 1 of 3)"
     },
     {
-      "time": "2026-10-07T13:27:12.005Z",
+      "time": "2026-10-07T13:19:39.841Z",
       "type": "ROUND_START",
       "detail": "Round 1 - Batch 2"
     },
     {
-      "time": "2026-10-07T13:27:12.122Z",
+      "time": "2026-10-07T13:19:39.953Z",
       "type": "ROUND1_BEGIN",
-      "detail": "38505 shaban 2 started their Round 1 timer"
+      "detail": "3975009 shaban2 started their Round 1 timer"
     },
     {
-      "time": "2026-10-07T13:27:16.181Z",
+      "time": "2026-10-07T13:19:44.429Z",
       "type": "FULLSCREEN_EXIT",
-      "detail": "38505 shaban 2 left fullscreen (warning 2 of 3)"
+      "detail": "3975009 shaban2 left fullscreen (warning 2 of 3)"
     },
     {
-      "time": "2026-10-07T13:27:20.207Z",
+      "time": "2026-10-07T13:19:47.960Z",
       "type": "ROUND1_SUBMIT",
-      "detail": "38505"
+      "detail": "3975009"
     },
     {
-      "time": "2026-10-07T13:27:20.209Z",
+      "time": "2026-10-07T13:19:47.961Z",
       "type": "ROUND_END",
       "detail": "Round 1 - Batch 2 (results saved to its own CSV)"
     },
     {
-      "time": "2026-10-07T13:27:34.149Z",
-      "type": "FULLSCREEN_EXIT",
-      "detail": "38505 shaban 2 left fullscreen (warning 3 of 3)"
-    },
-    {
-      "time": "2026-10-07T13:27:34.149Z",
-      "type": "PARTICIPANT_EXITED",
-      "detail": "38505 shaban 2 locked out after 3 fullscreen exits"
-    },
-    {
-      "time": "2026-10-07T13:27:41.164Z",
-      "type": "SHORTLIST",
-      "detail": "Top 2 of 2 shortlisted for Round 2"
-    },
-    {
-      "time": "2026-10-07T13:27:45.108Z",
-      "type": "FINAL_LOGIN",
-      "detail": "Final round login opened - finalists must log in again"
-    },
-    {
-      "time": "2026-10-07T13:27:53.750Z",
-      "type": "PARTICIPANT_REINSTATED",
-      "detail": "38505 shaban 2 allowed to rejoin"
-    },
-    {
-      "time": "2026-10-07T13:28:15.691Z",
+      "time": "2026-10-07T13:20:07.997Z",
       "type": "FULLSCREEN_EXIT",
       "detail": "device 8C19D3 left fullscreen before joining (warning 1 of 3)"
-    },
-    {
-      "time": "2026-10-07T13:28:21.021Z",
-      "type": "ROUND_START",
-      "detail": "Round 2"
-    },
-    {
-      "time": "2026-10-07T13:28:47.716Z",
-      "type": "FULLSCREEN_EXIT",
-      "detail": "device 8C19D3 left fullscreen before joining (warning 2 of 3)"
     }
   ],
   "questions": [
@@ -497,12 +459,12 @@
   ],
   "devices": {
     "8c19d36ed0f7d05a92e5bf0a": {
-      "attempts": 2,
+      "attempts": 1,
       "blocked": false,
-      "firstSeen": "2026-10-07T13:28:15.691Z",
+      "firstSeen": "2026-10-07T13:20:07.997Z",
       "ip": "172.20.10.4",
       "ua": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/154.0.0.0 Safari/537.36",
-      "lastAt": "2026-10-07T13:28:47.716Z"
+      "lastAt": "2026-10-07T13:20:07.997Z"
     }
   }
 }

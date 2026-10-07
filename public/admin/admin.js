@@ -15,7 +15,8 @@ function phase(s,p){
       const pend=s.r1Next&&inB(s.r1Next).length>0;
       if(pend) return {t:`Round 1 finished · ${done}`,h:`${s.r1Next} has ${inB(s.r1Next).length} participants waiting. Seat them, then start their Round 1. (To skip it, use the shortlist panel below.)`,a:'start1',l:'START ROUND 1 — '+String(s.r1Next).toUpperCase()};
       if(!s.shortlistDone) return {t:'Round 1 finished for all batches',h:'Choose how many participants go to the final round and press SHORTLIST below.'};
-      return {t:'Finalists selected',h:`${s.shortlistedCount} participants are shortlisted for Round 2. Start the final round when they are seated.`,a:'start2',l:'START ROUND 2 (FINAL)'};
+      if(!s.finalLoginOpen) return {t:'Finalists selected',h:`${s.shortlistedCount} participants are shortlisted for Round 2. Press OPEN FINAL ROUND LOGIN - everyone is logged out and only the finalists can log in again.`,a:'openfinal',l:'OPEN FINAL ROUND LOGIN'};
+      return {t:'Final round login is open',h:`${s.shortlistedCount} finalists are shortlisted. Start the final round when they have all logged in and are seated.`,a:'start2',l:'START ROUND 2 (FINAL)'};
     }
     case 'ROUND2_ACTIVE': return {t:'Round 2 (final) is live',h:'The shortlisted participants are solving the terminal challenges.',a:'end2',l:'END ROUND 2',danger:1};
     case 'ROUND2_COMPLETED': return s.leaderboardPublished
@@ -107,6 +108,7 @@ async function dashboard(){
     <div class="ad-advrow">
       <button class="ad-btn" onclick="control('start1')">START R1</button>
       <button class="ad-btn" onclick="control('end1')">END R1</button>
+      <button class="ad-btn" onclick="control('openfinal')">OPEN FINAL LOGIN</button>
       <button class="ad-btn" onclick="control('start2')">START R2</button>
       <button class="ad-btn" onclick="control('end2')">END R2</button>
       <button class="ad-btn" onclick="control('publish')">PUBLISH</button>
@@ -165,6 +167,7 @@ async function control(action){
   let password;
   if(action==='reset'){password=await resetGate();if(!password)return}
   if((action==='end1'||action==='end2')&&!confirm('End this Round 1 batch now? Anyone still answering is submitted automatically.'))return;
+  if(action==='openfinal'&&!confirm('Open the final round login? Everyone still logged in will be logged out; only shortlisted participants can log in again.'))return;
   const endedBatch=action==='end1'?window.curBatch:null;
   try{await api('/api/admin/control',{method:'POST',body:JSON.stringify({action,password})});toast(action.toUpperCase()+' completed');lastSig='';dashboard();if(endedBatch)exportCsv(endedBatch==='Batch 2'?'2':'1')}catch(x){toast(x.message)}
 }

@@ -22,7 +22,8 @@ function waiting(s,p){
     else if(done){ttl='Round 1 Submitted';msg='Your Round 1 submission has been recorded. The coordinator will announce the shortlist for the final round.'}
   }
   else if(s.state==='ROUND1_COMPLETED'){
-    if(s.shortlistDone){ if(p.shortlisted){ttl='You are shortlisted!';msg='Congratulations - you qualified for the final round (Round 2). Stay here, or come back to this page when the coordinator calls the finalists.'}else{ttl='Round 1 Complete';msg='Thank you for taking part. You were not shortlisted for the final round this time.'}}
+    if(s.shortlistDone){ if(p.shortlisted){ttl='You are shortlisted!';msg='Congratulations - you qualified for the final round (Round 2). Stay on this page; the coordinator will open the final round login shortly.'}else{ttl='Round 1 Complete';msg='Thank you for taking part. You were not shortlisted for the final round this time.'}}
+    else if(!s.r1Next){ttl='Round 1 Complete';msg='Round 1 is complete for all batches. Your answers are saved - we will shortlist soon. Please stay on this page; finalists will be asked to log in again for the final round.'}
     else if(done){ttl='Round 1 Submitted';msg='Your Round 1 submission has been recorded. The coordinator will announce the shortlist for the final round.'}
     else{ttl='Round 1 Complete';msg=`Round 1 is finished for the other batch. ${escapeHtml(mine)} will be started by the coordinator shortly - stay on this page.`}
   }
@@ -36,7 +37,7 @@ function waiting(s,p){
     <section class="pw-win">
       <div class="pw-bar"><b></b><b></b><b></b><span>waiting_room.sh</span></div>
       <div class="pw-body">
-        <span class="pw-badge"><i></i>CONNECTED • ${escapeHtml(p.id)}${p.joinNo?' • #'+p.joinNo+' • '+escapeHtml(p.batch||''):''}</span>
+        <span class="pw-badge"><i></i>CONNECTED • ${escapeHtml(p.id)}${p.joinNo?' • #'+p.joinNo+(s.shortlistDone?'':' • '+escapeHtml(p.batch||'')):''}</span>
         <h2 class="pw-hi">Welcome,<br><span>${escapeHtml(p.name)}</span></h2>
         <ol class="pw-stages">${stages}</ol>
         <div class="pw-card">
