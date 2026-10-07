@@ -20,6 +20,10 @@
   var started = false;      // boot finished and event is on screen
   var armed = false;        // currently counted as "in fullscreen"
   var locked = false;       // participant confirmed leaving
+  var blocked = false;      // device used its 3 fullscreen exits before joining: admin must allow
+  var DEV = 'tq_device', PRE = 'tq_pre_strikes', PREB = 'tq_pre_blocked';
+  var pollT = null;
+  var bootDone = false;     // boot animation + iframe finished, waiting for fullscreen to reveal the event
   var modal, pill, els = {};
 
   var boot = document.getElementById('tq-boot');
@@ -35,6 +39,23 @@
   function isFull(){
     if (apiFull()) return true;
     return window.innerHeight >= screen.height - 2 && window.innerWidth >= screen.width - 2;
+  }
+  function deviceId(){
+    try {
+      var d = localStorage.getItem(DEV);
+      if (d && /^[a-zA-Z0-9]{8,64}$/.test(d)) return d;
+      var a = new Uint8Array(12), h = '';
+      (window.crypto || window.msCrypto).getRandomValues(a);
+      for (var i = 0; i < a.length; i++) h += ('0' + a[i].toString(16)).slice(-2);
+      localStorage.setItem(DEV, h);
+      return h;
+    } catch(e){ return 'nostorage' + Math.random().toString(36).slice(2, 12); }
+  }
+  function preStrikes(){ try { return parseInt(localStorage.getItem(PRE) || '0', 10) || 0; } catch(e){ return 0; } }
+  function postDev(url){
+    return fetch(url, { method:'POST', headers:{ 'Content-Type':'application/json' }, body: JSON.stringify({ deviceId: deviceId() }), keepalive:true })
+      .then(function(r){ return r.json(); })
+      .catch(function(){ return null; });
   }
   function strikes(){ return parseInt(sessionStorage.getItem(KEY) || '0', 10) || 0; }
   function lastPage(){
@@ -62,6 +83,7 @@
     var p;
     try { p = fn.call(el); } catch(e){ return Promise.resolve(); }
     return Promise.resolve(p).then(function(){
+      if (isFull()) armed = true;
       // make Esc "hold to exit" where supported (secure contexts only)
       try { if (navigator.keyboard && navigator.keyboard.lock) navigator.keyboard.lock(['Escape']); } catch(e){}
     }).catch(function(){});
@@ -141,7 +163,11 @@
         '<div class="dim">[' + time + '] fullscreen is needed for the event</div>' +
         '<div><span class="bad">&gt;</span> Return to fullscreen to continue<span class="cur"></span></div>';
       els.exit.style.display = 'none';
-      els.foot.textContent = 'Fullscreen is required for the whole event.';
+      els.strikes.innerHTML = '<span>WARNINGS</span>' + pips(Math.min(n, 3)) + '<span>' + n + ' of 3</span>';
+      els.log.innerHTML +=
+        '<div class="dim">[..] warnings ......... <span class="bad">' + n + ' / 3</span></div>' +
+        '<div class="dim">[..] 3 warnings = blocked until the admin allows you</div>';
+      els.foot.textContent = 'Fullscreen is required for the whole event. After 3 exits only the admin can let you in.';
     }
   }
 
@@ -160,6 +186,40 @@
     els.foot.textContent = 'You can close this tab.';
   }
 
+  function showDeviceBlocked(code){
+    modal.className = 'show warn';
+    els.tag.textContent = 'ENTRY BLOCKED';
+    els.title.innerHTML = 'Ask the <b>admin</b> to let you in';
+    els.log.innerHTML =
+      '<div><span class="bad">!</span> event: <span class="bad">FULLSCREEN_EXIT_LIMIT</span></div>' +
+      '<div class="dim">[..] exits before joining . <span class="bad">3 / 3</span></div>' +
+      '<div class="dim">[..] device code ........ <span class="bad">' + (code || deviceId().slice(0, 6).toUpperCase()) + '</span></div>' +
+      '<div class="dim">[..] entry ............... <span class="bad">BLOCKED</span></div>' +
+      '<div><span class="bad">&gt;</span> Show this code to the event coordinator<span class="cur"></span></div>';
+    els.strikes.style.display = 'none';
+    els.actions.style.display = 'none';
+    pill.style.display = 'none';
+    els.foot.textContent = 'This screen unlocks by itself once the admin allows you.';
+  }
+
+  function blockDevice(code){
+    blocked = true;
+    try { localStorage.setItem(PREB, '1'); } catch(e){}
+    try { frame.src = 'about:blank'; } catch(e){}
+    frame.hidden = true;
+    showDeviceBlocked(code);
+    clearInterval(pollT);
+    pollT = setInterval(function(){
+      postDev('/api/device-status').then(function(r){
+        if (r && r.blocked === false) {            // admin allowed this device: start fresh
+          clearInterval(pollT);
+          try { localStorage.removeItem(PRE); localStorage.removeItem(PREB); } catch(e){}
+          location.reload();
+        }
+      });
+    }, 3000);
+  }
+
   function lockNow(reason){
     locked = true;
     try { localStorage.removeItem('tq_token'); } catch(e){}
@@ -175,15 +235,28 @@
   }
 
   function check(){
-    if (!started || locked) return;
+    if (locked || blocked) return;
     if (isFull()) {
       armed = true;
       modal.className = '';
       pill.style.display = 'none';
+      if (bootDone && !started) finishStart();            // came back to fullscreen after leaving during loading
     } else if (armed) {
       armed = false;
       if (inAdmin()) { pill.style.display = 'block'; return; }   // admins are never locked out
       var joined = !!token();
+      if (!joined) {                                              // before entering the event: only 3 exits allowed
+        var n = preStrikes() + 1;
+        try { localStorage.setItem(PRE, String(n)); } catch(e){}
+        if (n >= 3) blockDevice();
+        else showExitPopup(false, n);
+        postDev('/api/prejoin-violation').then(function(r){
+          if (!r || blocked) return;
+          if (r.blocked) blockDevice(r.code);
+          else if (modal.className && r.attempts > preStrikes()) { try { localStorage.setItem(PRE, String(r.attempts)); } catch(e){} showExitPopup(false, r.attempts); }
+        });
+        return;
+      }
       sessionStorage.setItem(KEY, String(strikes() + 1));
       showExitPopup(joined, strikes());
       if (joined) {
@@ -235,21 +308,40 @@
     Promise.all([minWait, loaded]).then(function(){
       bootFill.style.width = '100%';
       setTimeout(function(){
-        frame.hidden = false;
-        boot.style.display = 'none';
-        started = true;
-        check();
-        frame.focus();
+        bootDone = true;
+        if (isFull()) { finishStart(); return; }
+        // fullscreen was left (or refused) while loading: keep the event hidden until the participant is back in fullscreen
+        if (!modal.className) showExitPopup(!!token(), token() ? strikes() : preStrikes());
       }, 250);
     });
   }
 
+  function finishStart(){
+    if (started || locked || blocked) return;
+    started = true;
+    frame.hidden = false;
+    boot.style.display = 'none';
+    armed = true;
+    check();
+    frame.focus();
+  }
+
   function init(){
     buildModal();
+    // a blocked device stays blocked after refresh / reopening the tab until the admin allows it
+    var wasBlocked = false;
+    try { wasBlocked = localStorage.getItem(PREB) === '1' || preStrikes() >= 3; } catch(e){}
+    postDev('/api/device-status').then(function(r){
+      if (r && r.blocked) blockDevice(r.code);
+      else if (r && !r.blocked) { try { localStorage.removeItem(PREB); if (r.attempts) localStorage.setItem(PRE, String(r.attempts)); else localStorage.removeItem(PRE); } catch(e){} if (blocked) location.reload(); }
+      else if (wasBlocked) blockDevice();               // server unreachable: stay blocked
+    });
+    if (wasBlocked) blockDevice();
     if (lastPage()) {
       bootBtn.textContent = '[ RESUME EVENT ]';
     }
     bootBtn.addEventListener('click', function(){
+      if (blocked) return;
       enter().then(runBoot);
     });
 

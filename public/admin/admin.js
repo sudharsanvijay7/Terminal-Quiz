@@ -24,9 +24,9 @@ function fmtTaken(ms){if(ms==null)return '<span class="empty">—</span>';const 
 async function dashboard(){
   clearTimeout(pollId);
   try{
-    const [s,p,l]=await Promise.all([api('/api/state'),api('/api/admin/participants'),api('/api/admin/logs')]);
+    const [s,p,l,dv]=await Promise.all([api('/api/state'),api('/api/admin/participants'),api('/api/admin/logs'),api('/api/admin/devices').catch(()=>[])]);
     /* redraw only when data changed (timer excluded): no flicker */
-    const sig=JSON.stringify([{...s,remainingMs:null},p,l.slice(0,20)]);
+    const sig=JSON.stringify([{...s,remainingMs:null},p,l.slice(0,20),dv]);
     if(sig!==lastSig){
       lastSig=sig;
       const wasOpen=document.querySelector('.ad-adv')?.open;
@@ -63,6 +63,10 @@ async function dashboard(){
     <div><small>TOP SCORE</small><b>${p[0]?.total||0}</b></div>
   </section>
 
+  ${dv.length?`<section class="ad-panel" style="margin-bottom:18px;border-color:#6b2630">
+    <div class="ad-ph"><h2 style="color:#ff7d89">Blocked devices (left fullscreen 3 times before joining)</h2><span>${dv.length}</span></div>
+    <div class="ad-scroll"><table class="ad-table"><thead><tr><th>Code</th><th>IP</th><th>Browser</th><th>Blocked at</th><th></th></tr></thead><tbody>${dv.map(x=>`<tr><td class="id"><b>${escapeHtml(x.code)}</b></td><td>${escapeHtml(x.ip||'-')}</td><td style="max-width:260px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap" title="${escapeHtml(x.ua||'')}">${escapeHtml(x.ua||'-')}</td><td>${x.blockedAt?new Date(x.blockedAt).toLocaleTimeString():'-'}</td><td><button class="ad-btn allowdev" style="padding:4px 10px;font-size:11px" data-id="${escapeHtml(x.id)}" data-code="${escapeHtml(x.code)}">ALLOW ENTRY</button></td></tr>`).join('')}</tbody></table></div>
+  </section>`:''}
   <section class="ad-cols">
     <div class="ad-panel">
       <div class="ad-ph"><h2>Participants</h2><span>${p.length}</span></div>
@@ -152,3 +156,6 @@ async function logoutAdmin(){try{await api('/api/admin/logout',{method:'POST',bo
 async function reinstate(id){if(!confirm('Allow '+id+' to rejoin the event?'))return;try{await api('/api/admin/reinstate',{method:'POST',body:JSON.stringify({id})});toast(id+' can rejoin');lastSig='';dashboard()}catch(x){toast(x.message)}}
 document.addEventListener('click',e=>{const b=e.target.closest&&e.target.closest('.rein');if(b)reinstate(b.dataset.id)});
 dashboard();
+/* let a blocked device (3 fullscreen exits before joining) enter the event again */
+async function allowDevice(id,code){if(!confirm('Allow device '+code+' to enter the event?'))return;try{await api('/api/admin/allow-device',{method:'POST',body:JSON.stringify({id})});toast('Device '+code+' allowed');lastSig='';dashboard()}catch(x){toast(x.message)}}
+document.addEventListener('click',e=>{const b=e.target.closest&&e.target.closest('.allowdev');if(b)allowDevice(b.dataset.id,b.dataset.code)});
