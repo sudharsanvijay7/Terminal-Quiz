@@ -66,7 +66,7 @@ async function dashboard(){
   <section class="ad-cols">
     <div class="ad-panel">
       <div class="ad-ph"><h2>Participants</h2><span>${p.length}</span></div>
-      <div class="ad-scroll"><table class="ad-table"><thead><tr><th>#</th><th>Name</th><th>ID</th><th>Status</th><th>R1</th><th>R1 Time</th><th>R2</th><th>R2 Time</th><th>Total</th></tr></thead><tbody>${p.map((x,i)=>`<tr class="${i<3&&x.total>0?'top'+(i+1):''}"><td class="rk">${i+1}</td><td>${escapeHtml(x.name)}</td><td class="id">${escapeHtml(x.id)}</td><td class="${x.online?'on':'off'}"><span class="status-dot ${x.online?'is-online':'is-offline'}"></span>${x.online?'Online':'Offline'}</td><td>${x.round1Score}</td><td>${fmtTaken(x.round1TimeMs)}</td><td>${x.round2Score}</td><td>${fmtTaken(x.round2TimeMs)}</td><td><b>${x.total}</b></td></tr>`).join('')||'<tr><td colspan="9" class="empty">Waiting for participants to join…</td></tr>'}</tbody></table></div>
+      <div class="ad-scroll"><table class="ad-table"><thead><tr><th>#</th><th>Name</th><th>ID</th><th>Batch</th><th>Status</th><th>R1</th><th>R1 Time</th><th>R2</th><th>R2 Time</th><th>Total</th></tr></thead><tbody>${p.map((x,i)=>`<tr class="${i<3&&x.total>0?'top'+(i+1):''}"><td class="rk">${i+1}</td><td>${escapeHtml(x.name)}</td><td class="id">${escapeHtml(x.id)}</td><td>${escapeHtml(x.batch||'-')}</td><td class="${x.online&&!x.exited?'on':'off'}"><span class="status-dot ${x.online&&!x.exited?'is-online':'is-offline'}"></span>${x.exited?'<b style="color:#ff5f6d">EXITED</b> <button class="ad-btn rein" style="padding:3px 8px;font-size:11px;margin-left:6px" data-id="'+escapeHtml(x.id)+'">REINSTATE</button>':(x.online?'Online':'Offline')}${x.exitAttempts?' <span title="Fullscreen exits" style="color:#ff7d89;font-size:12px">&#9888;'+x.exitAttempts+'</span>':''}</td><td>${x.round1Score}</td><td>${fmtTaken(x.round1TimeMs)}</td><td>${x.round2Score}</td><td>${fmtTaken(x.round2TimeMs)}</td><td><b>${x.total}</b></td></tr>`).join('')||'<tr><td colspan="10" class="empty">Waiting for participants to join…</td></tr>'}</tbody></table></div>
     </div>
     <div class="ad-panel">
       <div class="ad-ph"><h2>Activity</h2><span>latest ${Math.min(20,l.length)}</span></div>
@@ -148,4 +148,7 @@ a.href=url;a.download='terminal-quiz-results.csv';document.body.appendChild(a);a
   }catch(e){toast(e.message)}
 }
 async function logoutAdmin(){try{await api('/api/admin/logout',{method:'POST',body:'{}'})}catch{}clearAdmin();location.href='/admin-login.html'}
+/* let an exited participant rejoin (data-id + delegated click: no inline JS with user data) */
+async function reinstate(id){if(!confirm('Allow '+id+' to rejoin the event?'))return;try{await api('/api/admin/reinstate',{method:'POST',body:JSON.stringify({id})});toast(id+' can rejoin');lastSig='';dashboard()}catch(x){toast(x.message)}}
+document.addEventListener('click',e=>{const b=e.target.closest&&e.target.closest('.rein');if(b)reinstate(b.dataset.id)});
 dashboard();

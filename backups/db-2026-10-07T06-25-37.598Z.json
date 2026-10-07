@@ -9,14 +9,61 @@
     "remainingMs": null,
     "leaderboardPublished": false
   },
-  "participants": {},
+  "participants": {
+    "93853085005": {
+      "id": "93853085005",
+      "name": "veera god",
+      "registerNumber": "93853085005",
+      "batch": "Batch 1",
+      "token": "de246de9e829b3aba28853c0e0d9f69ad836eb7af2240bab",
+      "online": true,
+      "round1Submitted": false,
+      "round1Score": 0,
+      "round2Score": 0,
+      "createdAt": "2026-10-07T06:22:05.055Z",
+      "lastSeen": 1791354313492,
+      "exitAttempts": 3
+    }
+  },
   "answers": {},
-  "terminal": {},
+  "terminal": {
+    "93853085005": {
+      "cwd": "/",
+      "files": {},
+      "challenge": 1,
+      "attempts": {}
+    }
+  },
   "logs": [
     {
-      "time": "2026-10-07T06:37:21.985Z",
+      "time": "2026-10-07T06:20:07.371Z",
       "type": "RESET",
       "detail": "Event reset"
+    },
+    {
+      "time": "2026-10-07T06:21:41.928Z",
+      "type": "ADMIN_LOGIN",
+      "detail": "10.1.25.49 signed in"
+    },
+    {
+      "time": "2026-10-07T06:22:05.055Z",
+      "type": "LOGIN",
+      "detail": "93853085005 veera god"
+    },
+    {
+      "time": "2026-10-07T06:22:08.657Z",
+      "type": "FULLSCREEN_EXIT",
+      "detail": "93853085005 veera god left fullscreen (warning 1)"
+    },
+    {
+      "time": "2026-10-07T06:22:32.482Z",
+      "type": "FULLSCREEN_EXIT",
+      "detail": "93853085005 veera god left fullscreen (warning 2)"
+    },
+    {
+      "time": "2026-10-07T06:22:40.447Z",
+      "type": "FULLSCREEN_EXIT",
+      "detail": "93853085005 veera god left fullscreen (warning 3)"
     }
   ],
   "questions": [

@@ -16,6 +16,12 @@ $('#app').innerHTML=layout(`
           <input id="name" placeholder="Full name" required maxlength="80"></label>
         <label class="pl-field"><span>$ id</span>
           <input id="reg" placeholder="Register number / Participant ID" required maxlength="30"></label>
+        <div class="pl-batch" role="radiogroup" aria-label="Batch"><span>$ batch</span>
+          <div class="pl-opts">
+            <label class="pl-opt"><input type="radio" name="batch" value="Batch 1"><i>BATCH 1</i></label>
+            <label class="pl-opt"><input type="radio" name="batch" value="Batch 2"><i>BATCH 2</i></label>
+          </div>
+        </div>
         <button class="pl-btn" id="plBtn">JOIN EVENT →</button>
       </form>
 
@@ -29,9 +35,15 @@ $('#app').innerHTML=layout(`
 $('#loginForm').onsubmit=async e=>{
   e.preventDefault();
   const btn=$('#plBtn'), win=document.querySelector('.pl-win');
+  const batch=document.querySelector('input[name=batch]:checked')?.value;
+  if(!batch){
+    toast('Select your batch');
+    win.classList.remove('shake'); void win.offsetWidth; win.classList.add('shake');
+    return;
+  }
   btn.disabled=true; btn.textContent='AUTHENTICATING…';
   try{
-    const d=await api('/api/login',{method:'POST',body:JSON.stringify({name:$('#name').value,registerNumber:$('#reg').value})});
+    const d=await api('/api/login',{method:'POST',body:JSON.stringify({name:$('#name').value,registerNumber:$('#reg').value,batch})});
     localStorage.setItem('tq_token',d.token);
     btn.textContent='ACCESS GRANTED ✓';
     setTimeout(()=>location.href='/participant.html',350);

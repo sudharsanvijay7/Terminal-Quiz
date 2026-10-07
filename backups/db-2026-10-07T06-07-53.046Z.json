@@ -9,14 +9,44 @@
     "remainingMs": null,
     "leaderboardPublished": false
   },
-  "participants": {},
+  "participants": {
+    "118": {
+      "id": "118",
+      "name": "vishnu",
+      "registerNumber": "118",
+      "token": "dd17b2cc3a588906f5547495f5f13fbf63a38d7003d40f52",
+      "online": true,
+      "round1Submitted": false,
+      "round1Score": 0,
+      "round2Score": 0,
+      "createdAt": "2026-10-07T06:07:22.041Z",
+      "lastSeen": 1791353272593
+    }
+  },
   "answers": {},
-  "terminal": {},
+  "terminal": {
+    "118": {
+      "cwd": "/",
+      "files": {},
+      "challenge": 1,
+      "attempts": {}
+    }
+  },
   "logs": [
     {
-      "time": "2026-10-07T06:37:21.985Z",
+      "time": "2026-10-07T02:33:27.119Z",
       "type": "RESET",
       "detail": "Event reset"
+    },
+    {
+      "time": "2026-10-07T06:03:35.180Z",
+      "type": "ADMIN_LOGIN",
+      "detail": "10.1.25.49 signed in"
+    },
+    {
+      "time": "2026-10-07T06:07:22.041Z",
+      "type": "LOGIN",
+      "detail": "118 vishnu"
     }
   ],
   "questions": [

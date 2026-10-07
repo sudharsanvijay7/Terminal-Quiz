@@ -1,22 +1,247 @@
 {
   "event": {
     "name": "TERMINAL QUIZ",
-    "state": "WAITING",
-    "round": 0,
-    "startAt": null,
-    "endAt": null,
+    "state": "ROUND2_ACTIVE",
+    "round": 2,
+    "startAt": 1791353360552,
+    "endAt": 1791355160553,
     "paused": false,
     "remainingMs": null,
-    "leaderboardPublished": false
+    "leaderboardPublished": false,
+    "round1StartedAt": 1791353321700,
+    "round1EndedAt": 1791353358637,
+    "round2StartedAt": 1791353360552
   },
-  "participants": {},
-  "answers": {},
-  "terminal": {},
+  "participants": {
+    "118": {
+      "id": "118",
+      "name": "vishnu",
+      "registerNumber": "118",
+      "token": "dd17b2cc3a588906f5547495f5f13fbf63a38d7003d40f52",
+      "online": false,
+      "round1Submitted": true,
+      "round1Score": 17,
+      "round2Score": 50,
+      "createdAt": "2026-10-07T06:07:22.041Z",
+      "lastSeen": 1791353533970,
+      "round1TimeMs": 20411,
+      "round2Submitted": true,
+      "round2TimeMs": 167063
+    }
+  },
+  "answers": {
+    "118:1": {
+      "participantId": "118",
+      "questionId": 1,
+      "answer": 0,
+      "at": "2026-10-07T06:08:47.031Z"
+    },
+    "118:2": {
+      "participantId": "118",
+      "questionId": 2,
+      "answer": 0,
+      "at": "2026-10-07T06:08:50.279Z"
+    },
+    "118:3": {
+      "participantId": "118",
+      "questionId": 3,
+      "answer": 0,
+      "at": "2026-10-07T06:08:50.714Z"
+    },
+    "118:4": {
+      "participantId": "118",
+      "questionId": 4,
+      "answer": 0,
+      "at": "2026-10-07T06:08:51.130Z"
+    },
+    "118:5": {
+      "participantId": "118",
+      "questionId": 5,
+      "answer": 0,
+      "at": "2026-10-07T06:08:51.510Z"
+    },
+    "118:6": {
+      "participantId": "118",
+      "questionId": 6,
+      "answer": 0,
+      "at": "2026-10-07T06:08:51.871Z"
+    },
+    "118:7": {
+      "participantId": "118",
+      "questionId": 7,
+      "answer": 0,
+      "at": "2026-10-07T06:08:52.225Z"
+    },
+    "118:8": {
+      "participantId": "118",
+      "questionId": 8,
+      "answer": 0,
+      "at": "2026-10-07T06:08:52.593Z"
+    },
+    "118:9": {
+      "participantId": "118",
+      "questionId": 9,
+      "answer": 0,
+      "at": "2026-10-07T06:08:52.942Z"
+    },
+    "118:10": {
+      "participantId": "118",
+      "questionId": 10,
+      "answer": 0,
+      "at": "2026-10-07T06:08:53.300Z"
+    },
+    "118:11": {
+      "participantId": "118",
+      "questionId": 11,
+      "answer": 0,
+      "at": "2026-10-07T06:08:53.694Z"
+    },
+    "118:12": {
+      "participantId": "118",
+      "questionId": 12,
+      "answer": 0,
+      "at": "2026-10-07T06:08:54.042Z"
+    },
+    "118:13": {
+      "participantId": "118",
+      "questionId": 13,
+      "answer": 0,
+      "at": "2026-10-07T06:08:54.391Z"
+    },
+    "118:14": {
+      "participantId": "118",
+      "questionId": 14,
+      "answer": 0,
+      "at": "2026-10-07T06:08:54.732Z"
+    },
+    "118:15": {
+      "participantId": "118",
+      "questionId": 15,
+      "answer": 0,
+      "at": "2026-10-07T06:08:55.062Z"
+    },
+    "118:16": {
+      "participantId": "118",
+      "questionId": 16,
+      "answer": 0,
+      "at": "2026-10-07T06:08:55.402Z"
+    },
+    "118:17": {
+      "participantId": "118",
+      "questionId": 17,
+      "answer": 0,
+      "at": "2026-10-07T06:08:55.720Z"
+    },
+    "118:18": {
+      "participantId": "118",
+      "questionId": 18,
+      "answer": 0,
+      "at": "2026-10-07T06:08:56.059Z"
+    },
+    "118:20": {
+      "participantId": "118",
+      "questionId": 20,
+      "answer": 0,
+      "at": "2026-10-07T06:08:56.751Z"
+    },
+    "118:19": {
+      "participantId": "118",
+      "questionId": 19,
+      "answer": 0,
+      "at": "2026-10-07T06:08:58.539Z"
+    }
+  },
+  "terminal": {
+    "118": {
+      "cwd": "/",
+      "files": {},
+      "challenge": 6,
+      "attempts": {
+        "1": 6,
+        "2": 9,
+        "3": 7,
+        "4": 1,
+        "5": 1
+      },
+      "solved": {
+        "1": true,
+        "2": true,
+        "3": true,
+        "4": true,
+        "5": true
+      }
+    }
+  },
   "logs": [
     {
-      "time": "2026-10-07T06:37:21.985Z",
+      "time": "2026-10-07T02:33:27.119Z",
       "type": "RESET",
       "detail": "Event reset"
+    },
+    {
+      "time": "2026-10-07T06:03:35.180Z",
+      "type": "ADMIN_LOGIN",
+      "detail": "10.1.25.49 signed in"
+    },
+    {
+      "time": "2026-10-07T06:07:22.041Z",
+      "type": "LOGIN",
+      "detail": "118 vishnu"
+    },
+    {
+      "time": "2026-10-07T06:08:38.931Z",
+      "type": "ADMIN_LOGIN",
+      "detail": "10.1.25.14 signed in"
+    },
+    {
+      "time": "2026-10-07T06:08:41.700Z",
+      "type": "ROUND_START",
+      "detail": "Round 1"
+    },
+    {
+      "time": "2026-10-07T06:09:02.111Z",
+      "type": "ROUND1_SUBMIT",
+      "detail": "118"
+    },
+    {
+      "time": "2026-10-07T06:09:18.637Z",
+      "type": "ROUND_END",
+      "detail": "Round 1"
+    },
+    {
+      "time": "2026-10-07T06:09:20.553Z",
+      "type": "ROUND_START",
+      "detail": "Round 2"
+    },
+    {
+      "time": "2026-10-07T06:10:30.790Z",
+      "type": "TERMINAL_SOLVE",
+      "detail": "118 challenge 1"
+    },
+    {
+      "time": "2026-10-07T06:11:17.482Z",
+      "type": "TERMINAL_SOLVE",
+      "detail": "118 challenge 2"
+    },
+    {
+      "time": "2026-10-07T06:12:03.064Z",
+      "type": "TERMINAL_SOLVE",
+      "detail": "118 challenge 3"
+    },
+    {
+      "time": "2026-10-07T06:12:05.462Z",
+      "type": "TERMINAL_SOLVE",
+      "detail": "118 challenge 4"
+    },
+    {
+      "time": "2026-10-07T06:12:07.615Z",
+      "type": "TERMINAL_SOLVE",
+      "detail": "118 challenge 5"
+    },
+    {
+      "time": "2026-10-07T06:12:07.615Z",
+      "type": "ROUND2_SUBMIT",
+      "detail": "118 completed Round 2"
     }
   ],
   "questions": [

@@ -153,11 +153,12 @@
 }
 #fsg-toggle:hover{border-color:#34f58b;color:#34f58b}
 
+
 /* ===== SHELL (start page + iframe) ===== */
 
 body.shell{margin:0;overflow:hidden;height:100vh}
 
-#frame{
+#tq-frame{
   position:fixed;
   inset:0;
   width:100%;
@@ -165,9 +166,9 @@ body.shell{margin:0;overflow:hidden;height:100vh}
   border:0;
   background:#05070b;
 }
-#frame[hidden]{display:none}
+#tq-frame[hidden]{display:none}
 
-#boot{
+#tq-boot{
   position:fixed;
   inset:0;
   z-index:2147482500;
@@ -178,7 +179,7 @@ body.shell{margin:0;overflow:hidden;height:100vh}
   background:#05070b;
   font-family:var(--mono,Consolas,monospace);
 }
-#boot::before{
+#tq-boot::before{
   content:'';
   position:absolute;
   inset:0;
