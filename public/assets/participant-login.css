@@ -61,3 +61,10 @@ body::after{content:'';position:fixed;inset:0;z-index:50;pointer-events:none;bac
 .pl-opt:hover i{border-color:var(--pg);color:#e9fff3}
 .pl-opt input:checked+i{background:var(--pg);border-color:var(--pg);color:#03130a;box-shadow:0 0 18px rgba(52,245,139,.45)}
 @media(max-width:520px){.pl-batch{flex-direction:column;align-items:stretch;gap:8px}}
+/* batch pills are read-only (auto-assigned by the server) */
+.pl-opt input:disabled{cursor:default}
+.pl-opt.off i{opacity:.35;border-style:dashed}
+.pl-opt input:disabled:checked+i{opacity:1}
+.pl-seats{margin:2px 0 4px;font:12px var(--pm);color:#8fb4a0;letter-spacing:.04em}
+.pl-seats b{color:#e9fff3}.pl-seats b.bad{color:#ff7d89}
+.pl-btn:disabled{opacity:.5;cursor:not-allowed}

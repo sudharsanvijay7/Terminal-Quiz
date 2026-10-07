@@ -1,0 +1,735 @@
+{
+  "event": {
+    "name": "TERMINAL QUIZ",
+    "state": "ROUND2_ACTIVE",
+    "round": 2,
+    "startAt": 1791361759896,
+    "endAt": 1791363559896,
+    "paused": false,
+    "remainingMs": null,
+    "leaderboardPublished": false,
+    "round1StartedAt": 1791361531494,
+    "round1EndedAt": 1791361752001,
+    "round2StartedAt": 1791361759896
+  },
+  "participants": {
+    "118": {
+      "id": "118",
+      "name": "vishnu",
+      "registerNumber": "118",
+      "batch": "Batch 2",
+      "token": "897765a8c2a96ce1f2571790d6b26640b4290a846f74371c",
+      "online": true,
+      "round1Submitted": true,
+      "round1Score": 17,
+      "round2Score": 50,
+      "createdAt": "2026-10-07T08:13:15.165Z",
+      "lastSeen": 1791361876321,
+      "round1TimeMs": 20182,
+      "round2Submitted": true,
+      "round2TimeMs": 19820
+    },
+    "104132": {
+      "id": "104132",
+      "name": "rajesh",
+      "registerNumber": "104132",
+      "batch": "Batch 1",
+      "token": "c4fc12ea9d1dfd29bba7c92511f1550dc3ce184b4f3f611e",
+      "online": true,
+      "round1Submitted": false,
+      "round1Score": 0,
+      "round2Score": 0,
+      "createdAt": "2026-10-07T08:28:32.187Z",
+      "lastSeen": 1791361875759
+    }
+  },
+  "answers": {
+    "118:1": {
+      "participantId": "118",
+      "questionId": 1,
+      "answer": 0,
+      "at": "2026-10-07T08:25:38.727Z"
+    },
+    "118:2": {
+      "participantId": "118",
+      "questionId": 2,
+      "answer": 0,
+      "at": "2026-10-07T08:25:39.193Z"
+    },
+    "118:3": {
+      "participantId": "118",
+      "questionId": 3,
+      "answer": 0,
+      "at": "2026-10-07T08:25:39.650Z"
+    },
+    "118:4": {
+      "participantId": "118",
+      "questionId": 4,
+      "answer": 0,
+      "at": "2026-10-07T08:25:40.117Z"
+    },
+    "118:5": {
+      "participantId": "118",
+      "questionId": 5,
+      "answer": 0,
+      "at": "2026-10-07T08:25:40.633Z"
+    },
+    "118:6": {
+      "participantId": "118",
+      "questionId": 6,
+      "answer": 0,
+      "at": "2026-10-07T08:25:41.142Z"
+    },
+    "118:7": {
+      "participantId": "118",
+      "questionId": 7,
+      "answer": 0,
+      "at": "2026-10-07T08:25:41.645Z"
+    },
+    "118:8": {
+      "participantId": "118",
+      "questionId": 8,
+      "answer": 0,
+      "at": "2026-10-07T08:25:42.206Z"
+    },
+    "118:9": {
+      "participantId": "118",
+      "questionId": 9,
+      "answer": 0,
+      "at": "2026-10-07T08:25:42.735Z"
+    },
+    "118:10": {
+      "participantId": "118",
+      "questionId": 10,
+      "answer": 0,
+      "at": "2026-10-07T08:25:43.234Z"
+    },
+    "118:11": {
+      "participantId": "118",
+      "questionId": 11,
+      "answer": 0,
+      "at": "2026-10-07T08:25:43.747Z"
+    },
+    "118:12": {
+      "participantId": "118",
+      "questionId": 12,
+      "answer": 0,
+      "at": "2026-10-07T08:25:44.247Z"
+    },
+    "118:13": {
+      "participantId": "118",
+      "questionId": 13,
+      "answer": 0,
+      "at": "2026-10-07T08:25:44.722Z"
+    },
+    "118:14": {
+      "participantId": "118",
+      "questionId": 14,
+      "answer": 0,
+      "at": "2026-10-07T08:25:45.205Z"
+    },
+    "118:15": {
+      "participantId": "118",
+      "questionId": 15,
+      "answer": 0,
+      "at": "2026-10-07T08:25:45.678Z"
+    },
+    "118:16": {
+      "participantId": "118",
+      "questionId": 16,
+      "answer": 0,
+      "at": "2026-10-07T08:25:46.156Z"
+    },
+    "118:17": {
+      "participantId": "118",
+      "questionId": 17,
+      "answer": 0,
+      "at": "2026-10-07T08:25:46.678Z"
+    },
+    "118:18": {
+      "participantId": "118",
+      "questionId": 18,
+      "answer": 0,
+      "at": "2026-10-07T08:25:47.132Z"
+    },
+    "118:19": {
+      "participantId": "118",
+      "questionId": 19,
+      "answer": 0,
+      "at": "2026-10-07T08:25:47.616Z"
+    },
+    "118:20": {
+      "participantId": "118",
+      "questionId": 20,
+      "answer": 0,
+      "at": "2026-10-07T08:25:48.113Z"
+    }
+  },
+  "terminal": {
+    "118": {
+      "cwd": "/",
+      "files": {},
+      "challenge": 6,
+      "attempts": {
+        "1": 1,
+        "2": 1,
+        "3": 1,
+        "4": 1,
+        "5": 1
+      },
+      "solved": {
+        "1": true,
+        "2": true,
+        "3": true,
+        "4": true,
+        "5": true
+      }
+    },
+    "104132": {
+      "cwd": "/",
+      "files": {},
+      "challenge": 1,
+      "attempts": {}
+    }
+  },
+  "logs": [
+    {
+      "time": "2026-10-07T06:37:21.985Z",
+      "type": "RESET",
+      "detail": "Event reset"
+    },
+    {
+      "time": "2026-10-07T06:54:57.328Z",
+      "type": "FULLSCREEN_EXIT",
+      "detail": "device 90C98F left fullscreen before joining (warning 1 of 3)"
+    },
+    {
+      "time": "2026-10-07T06:55:00.775Z",
+      "type": "FULLSCREEN_EXIT",
+      "detail": "device 90C98F left fullscreen before joining (warning 2 of 3)"
+    },
+    {
+      "time": "2026-10-07T06:55:04.229Z",
+      "type": "FULLSCREEN_EXIT",
+      "detail": "device 90C98F left fullscreen before joining (warning 3 of 3)"
+    },
+    {
+      "time": "2026-10-07T06:55:04.229Z",
+      "type": "DEVICE_BLOCKED",
+      "detail": "device 90C98F blocked after 3 fullscreen exits before joining - admin must allow it"
+    },
+    {
+      "time": "2026-10-07T06:55:50.060Z",
+      "type": "ADMIN_LOGIN",
+      "detail": "127.0.0.1 signed in"
+    },
+    {
+      "time": "2026-10-07T06:55:56.263Z",
+      "type": "DEVICE_ALLOWED",
+      "detail": "device 90C98F allowed to enter the event"
+    },
+    {
+      "time": "2026-10-07T06:56:18.646Z",
+      "type": "FULLSCREEN_EXIT",
+      "detail": "device 90C98F left fullscreen before joining (warning 1 of 3)"
+    },
+    {
+      "time": "2026-10-07T06:56:22.351Z",
+      "type": "FULLSCREEN_EXIT",
+      "detail": "device 90C98F left fullscreen before joining (warning 2 of 3)"
+    },
+    {
+      "time": "2026-10-07T06:56:24.653Z",
+      "type": "FULLSCREEN_EXIT",
+      "detail": "device 90C98F left fullscreen before joining (warning 3 of 3)"
+    },
+    {
+      "time": "2026-10-07T06:56:24.654Z",
+      "type": "DEVICE_BLOCKED",
+      "detail": "device 90C98F blocked after 3 fullscreen exits before joining - admin must allow it"
+    },
+    {
+      "time": "2026-10-07T06:56:33.151Z",
+      "type": "DEVICE_ALLOWED",
+      "detail": "device 90C98F allowed to enter the event"
+    },
+    {
+      "time": "2026-10-07T06:56:56.767Z",
+      "type": "FULLSCREEN_EXIT",
+      "detail": "device 90C98F left fullscreen before joining (warning 1 of 3)"
+    },
+    {
+      "time": "2026-10-07T07:00:01.617Z",
+      "type": "FULLSCREEN_EXIT",
+      "detail": "device 90C98F left fullscreen before joining (warning 2 of 3)"
+    },
+    {
+      "time": "2026-10-07T07:00:03.931Z",
+      "type": "FULLSCREEN_EXIT",
+      "detail": "device 90C98F left fullscreen before joining (warning 3 of 3)"
+    },
+    {
+      "time": "2026-10-07T07:00:03.932Z",
+      "type": "DEVICE_BLOCKED",
+      "detail": "device 90C98F blocked after 3 fullscreen exits before joining - admin must allow it"
+    },
+    {
+      "time": "2026-10-07T07:00:09.026Z",
+      "type": "DEVICE_ALLOWED",
+      "detail": "device 90C98F allowed to enter the event"
+    },
+    {
+      "time": "2026-10-07T07:01:06.349Z",
+      "type": "FULLSCREEN_EXIT",
+      "detail": "device 90C98F left fullscreen before joining (warning 1 of 3)"
+    },
+    {
+      "time": "2026-10-07T08:13:15.165Z",
+      "type": "LOGIN",
+      "detail": "118 vishnu"
+    },
+    {
+      "time": "2026-10-07T08:13:37.706Z",
+      "type": "FULLSCREEN_EXIT",
+      "detail": "device E30E81 left fullscreen before joining (warning 1 of 3)"
+    },
+    {
+      "time": "2026-10-07T08:13:49.932Z",
+      "type": "FULLSCREEN_EXIT",
+      "detail": "device E30E81 left fullscreen before joining (warning 2 of 3)"
+    },
+    {
+      "time": "2026-10-07T08:23:23.723Z",
+      "type": "FULLSCREEN_EXIT",
+      "detail": "device E30E81 left fullscreen before joining (warning 3 of 3)"
+    },
+    {
+      "time": "2026-10-07T08:23:23.725Z",
+      "type": "DEVICE_BLOCKED",
+      "detail": "device E30E81 blocked after 3 fullscreen exits before joining - admin must allow it"
+    },
+    {
+      "time": "2026-10-07T08:24:32.669Z",
+      "type": "ADMIN_LOGIN",
+      "detail": "10.1.25.14 signed in"
+    },
+    {
+      "time": "2026-10-07T08:24:44.174Z",
+      "type": "DEVICE_ALLOWED",
+      "detail": "device E30E81 allowed to enter the event"
+    },
+    {
+      "time": "2026-10-07T08:24:52.000Z",
+      "type": "FULLSCREEN_EXIT",
+      "detail": "device E30E81 left fullscreen before joining (warning 1 of 3)"
+    },
+    {
+      "time": "2026-10-07T08:24:54.541Z",
+      "type": "FULLSCREEN_EXIT",
+      "detail": "device E30E81 left fullscreen before joining (warning 2 of 3)"
+    },
+    {
+      "time": "2026-10-07T08:24:56.181Z",
+      "type": "FULLSCREEN_EXIT",
+      "detail": "device E30E81 left fullscreen before joining (warning 3 of 3)"
+    },
+    {
+      "time": "2026-10-07T08:24:56.184Z",
+      "type": "DEVICE_BLOCKED",
+      "detail": "device E30E81 blocked after 3 fullscreen exits before joining - admin must allow it"
+    },
+    {
+      "time": "2026-10-07T08:25:01.541Z",
+      "type": "DEVICE_ALLOWED",
+      "detail": "device E30E81 allowed to enter the event"
+    },
+    {
+      "time": "2026-10-07T08:25:31.494Z",
+      "type": "ROUND_START",
+      "detail": "Round 1"
+    },
+    {
+      "time": "2026-10-07T08:25:51.676Z",
+      "type": "ROUND1_SUBMIT",
+      "detail": "118"
+    },
+    {
+      "time": "2026-10-07T08:28:32.187Z",
+      "type": "LOGIN",
+      "detail": "104132 rajesh"
+    },
+    {
+      "time": "2026-10-07T08:28:47.479Z",
+      "type": "FULLSCREEN_EXIT",
+      "detail": "device 012F60 left fullscreen before joining (warning 1 of 3)"
+    },
+    {
+      "time": "2026-10-07T08:29:12.001Z",
+      "type": "ROUND_END",
+      "detail": "Round 1"
+    },
+    {
+      "time": "2026-10-07T08:29:19.896Z",
+      "type": "ROUND_START",
+      "detail": "Round 2"
+    },
+    {
+      "time": "2026-10-07T08:29:28.481Z",
+      "type": "TERMINAL_SOLVE",
+      "detail": "118 challenge 1"
+    },
+    {
+      "time": "2026-10-07T08:29:30.038Z",
+      "type": "TERMINAL_SOLVE",
+      "detail": "118 challenge 2"
+    },
+    {
+      "time": "2026-10-07T08:29:36.182Z",
+      "type": "TERMINAL_SOLVE",
+      "detail": "118 challenge 3"
+    },
+    {
+      "time": "2026-10-07T08:29:38.111Z",
+      "type": "TERMINAL_SOLVE",
+      "detail": "118 challenge 4"
+    },
+    {
+      "time": "2026-10-07T08:29:39.715Z",
+      "type": "TERMINAL_SOLVE",
+      "detail": "118 challenge 5"
+    },
+    {
+      "time": "2026-10-07T08:29:39.716Z",
+      "type": "ROUND2_SUBMIT",
+      "detail": "118 completed Round 2"
+    }
+  ],
+  "questions": [
+    {
+      "id": 1,
+      "text": "Which component is responsible for process scheduling?",
+      "options": [
+        "CPU",
+        "Operating System",
+        "Compiler",
+        "RAM"
+      ],
+      "correct": 1,
+      "marks": 1
+    },
+    {
+      "id": 2,
+      "text": "Which Linux command prints the current working directory?",
+      "options": [
+        "cd",
+        "pwd",
+        "ls",
+        "whoami"
+      ],
+      "correct": 1,
+      "marks": 1
+    },
+    {
+      "id": 3,
+      "text": "Which memory technique uses pages?",
+      "options": [
+        "Paging",
+        "Spooling",
+        "Polling",
+        "Batching"
+      ],
+      "correct": 0,
+      "marks": 1
+    },
+    {
+      "id": 4,
+      "text": "A process in execution is represented by a…",
+      "options": [
+        "PCB",
+        "DNS",
+        "BIOS",
+        "URI"
+      ],
+      "correct": 0,
+      "marks": 1
+    },
+    {
+      "id": 5,
+      "text": "Which scheduling algorithm uses a time quantum?",
+      "options": [
+        "FCFS",
+        "Round Robin",
+        "SJF",
+        "FIFO"
+      ],
+      "correct": 1,
+      "marks": 1
+    },
+    {
+      "id": 6,
+      "text": "Which command lists directory contents?",
+      "options": [
+        "ls",
+        "cat",
+        "pwd",
+        "grep"
+      ],
+      "correct": 0,
+      "marks": 1
+    },
+    {
+      "id": 7,
+      "text": "Virtual memory allows a system to…",
+      "options": [
+        "Use disk as memory extension",
+        "Disable RAM",
+        "Remove processes",
+        "Increase CPU cores"
+      ],
+      "correct": 0,
+      "marks": 1
+    },
+    {
+      "id": 8,
+      "text": "Which is a Linux file permission command?",
+      "options": [
+        "chmod",
+        "mkdir",
+        "ping",
+        "top"
+      ],
+      "correct": 0,
+      "marks": 1
+    },
+    {
+      "id": 9,
+      "text": "A thread is best described as…",
+      "options": [
+        "Smallest unit of CPU execution within a process",
+        "A disk partition",
+        "A file system",
+        "A compiler"
+      ],
+      "correct": 0,
+      "marks": 1
+    },
+    {
+      "id": 10,
+      "text": "Which command searches text patterns?",
+      "options": [
+        "grep",
+        "cd",
+        "date",
+        "clear"
+      ],
+      "correct": 0,
+      "marks": 1
+    },
+    {
+      "id": 11,
+      "text": "Deadlock requires mutual exclusion, hold-and-wait, no preemption and…",
+      "options": [
+        "Circular wait",
+        "Paging",
+        "Caching",
+        "Compilation"
+      ],
+      "correct": 0,
+      "marks": 1
+    },
+    {
+      "id": 12,
+      "text": "Which component translates virtual addresses?",
+      "options": [
+        "MMU",
+        "ALU",
+        "BIOS",
+        "NIC"
+      ],
+      "correct": 0,
+      "marks": 1
+    },
+    {
+      "id": 13,
+      "text": "Which command displays running processes?",
+      "options": [
+        "ps",
+        "mkdir",
+        "touch",
+        "mv"
+      ],
+      "correct": 0,
+      "marks": 1
+    },
+    {
+      "id": 14,
+      "text": "What does chmod 755 commonly grant to the owner?",
+      "options": [
+        "rwx",
+        "r--",
+        "rw-",
+        "---"
+      ],
+      "correct": 0,
+      "marks": 1
+    },
+    {
+      "id": 15,
+      "text": "Which architecture separates user and kernel privilege levels?",
+      "options": [
+        "Protected-mode OS architecture",
+        "Spreadsheet architecture",
+        "Markup architecture",
+        "CSS architecture"
+      ],
+      "correct": 0,
+      "marks": 1
+    },
+    {
+      "id": 16,
+      "text": "Which command can display file contents?",
+      "options": [
+        "cat",
+        "cd",
+        "pwd",
+        "whoami"
+      ],
+      "correct": 0,
+      "marks": 1
+    },
+    {
+      "id": 17,
+      "text": "CPU cache is primarily used to…",
+      "options": [
+        "Reduce memory access latency",
+        "Store passwords",
+        "Replace the OS",
+        "Format disks"
+      ],
+      "correct": 0,
+      "marks": 1
+    },
+    {
+      "id": 18,
+      "text": "What is context switching?",
+      "options": [
+        "Switching CPU from one process/thread to another",
+        "Changing a file extension",
+        "Restarting BIOS",
+        "Changing IP"
+      ],
+      "correct": 0,
+      "marks": 1
+    },
+    {
+      "id": 19,
+      "text": "Which Linux command identifies the current user?",
+      "options": [
+        "whoami",
+        "grep",
+        "find",
+        "head"
+      ],
+      "correct": 0,
+      "marks": 1
+    },
+    {
+      "id": 20,
+      "text": "What is a system call?",
+      "options": [
+        "Interface for a program to request OS services",
+        "A CPU instruction cache",
+        "A file extension",
+        "A network cable"
+      ],
+      "correct": 0,
+      "marks": 1
+    }
+  ],
+  "challenges": [
+    {
+      "id": 1,
+      "title": "Ghost in the Directory",
+      "skill": "Hidden files",
+      "marks": 5,
+      "files": {
+        "/README.txt": "Look carefully at hidden entries.",
+        "/.ghost.txt": "SECRET-GHOST-42",
+        "/notes.txt": "Nothing useful here."
+      },
+      "answer": "SECRET-GHOST-42"
+    },
+    {
+      "id": 2,
+      "title": "Needle in the Logs",
+      "skill": "grep -r",
+      "marks": 5,
+      "files": {
+        "/logs/a.log": "INFO start\nINFO ready",
+        "/logs/b.log": "INFO idle\nSECRET=NEEDLE-731",
+        "/logs/c.log": "INFO end"
+      },
+      "answer": "NEEDLE-731"
+    },
+    {
+      "id": 3,
+      "title": "Lost in the Tree",
+      "skill": "cd, ls, cat",
+      "marks": 10,
+      "files": {
+        "/README.txt": "Travel to the archive directory.",
+        "/archive/clue.txt": "The answer is TREE-908",
+        "/archive/old.txt": "ignore"
+      },
+      "answer": "TREE-908"
+    },
+    {
+      "id": 4,
+      "title": "Pipe Dreams",
+      "skill": "grep | sort | uniq -c | sort -rn | head",
+      "marks": 10,
+      "files": {
+        "/data/events.txt": "red\nblue\nred\ngreen\nred\nblue\nyellow\nblue"
+      },
+      "answer": "red"
+    },
+    {
+      "id": 5,
+      "title": "The Final Chain",
+      "skill": "grep, find, grep -c",
+      "marks": 20,
+      "files": {
+        "/final/a.txt": "noise",
+        "/final/b.txt": "TARGET=FINAL-2026",
+        "/final/c.txt": "TARGET=OTHER"
+      },
+      "answer": "FINAL-2026"
+    }
+  ],
+  "devices": {
+    "90c98f2d5aeb0b7838327740": {
+      "attempts": 1,
+      "blocked": false,
+      "firstSeen": "2026-10-07T06:54:57.328Z",
+      "ip": "10.1.25.49",
+      "ua": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/154.0.0.0 Safari/537.36",
+      "lastAt": "2026-10-07T07:01:06.349Z"
+    },
+    "e30e813056008cb7775e3b40": {
+      "attempts": 0,
+      "blocked": false,
+      "firstSeen": "2026-10-07T08:13:37.705Z",
+      "ip": "10.1.25.14",
+      "ua": "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:149.0) Gecko/20100101 Firefox/149.0",
+      "lastAt": "2026-10-07T08:24:56.181Z"
+    },
+    "012f60d3ef56614bbb165fb8": {
+      "attempts": 1,
+      "blocked": false,
+      "firstSeen": "2026-10-07T08:28:47.479Z",
+      "ip": "10.42.0.208",
+      "ua": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/154.0.0.0 Safari/537.36",
+      "lastAt": "2026-10-07T08:28:47.479Z"
+    }
+  }
+}

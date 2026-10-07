@@ -9,14 +9,41 @@
     "remainingMs": null,
     "leaderboardPublished": false
   },
-  "participants": {},
+  "participants": {
+    "63": {
+      "id": "63",
+      "name": "Mari😎",
+      "registerNumber": "63",
+      "batch": "Batch 1",
+      "joinNo": 1,
+      "token": "40230c1f0024f5eda5ad6bf525e1594029715cb342293f2a",
+      "online": true,
+      "round1Submitted": false,
+      "round1Score": 0,
+      "round2Score": 0,
+      "createdAt": "2026-10-07T08:45:53.096Z",
+      "lastSeen": 1791362759549
+    }
+  },
   "answers": {},
-  "terminal": {},
+  "terminal": {
+    "63": {
+      "cwd": "/",
+      "files": {},
+      "challenge": 1,
+      "attempts": {}
+    }
+  },
   "logs": [
     {
-      "time": "2026-10-07T09:52:28.396Z",
+      "time": "2026-10-07T08:45:50.175Z",
       "type": "RESET",
       "detail": "Event reset"
+    },
+    {
+      "time": "2026-10-07T08:45:53.096Z",
+      "type": "LOGIN",
+      "detail": "63 Mari😎 #1 Batch 1"
     }
   ],
   "questions": [

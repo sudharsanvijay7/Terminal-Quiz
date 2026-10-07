@@ -9,14 +9,135 @@
     "remainingMs": null,
     "leaderboardPublished": false
   },
-  "participants": {},
+  "participants": {
+    "118": {
+      "id": "118",
+      "name": "vishnu",
+      "registerNumber": "118",
+      "batch": "Batch 2",
+      "token": "897765a8c2a96ce1f2571790d6b26640b4290a846f74371c",
+      "online": false,
+      "round1Submitted": false,
+      "round1Score": 0,
+      "round2Score": 0,
+      "createdAt": "2026-10-07T08:13:15.165Z",
+      "lastSeen": 1791360805659
+    }
+  },
   "answers": {},
-  "terminal": {},
+  "terminal": {
+    "118": {
+      "cwd": "/",
+      "files": {},
+      "challenge": 1,
+      "attempts": {}
+    }
+  },
   "logs": [
     {
-      "time": "2026-10-07T09:52:28.396Z",
+      "time": "2026-10-07T06:37:21.985Z",
       "type": "RESET",
       "detail": "Event reset"
+    },
+    {
+      "time": "2026-10-07T06:54:57.328Z",
+      "type": "FULLSCREEN_EXIT",
+      "detail": "device 90C98F left fullscreen before joining (warning 1 of 3)"
+    },
+    {
+      "time": "2026-10-07T06:55:00.775Z",
+      "type": "FULLSCREEN_EXIT",
+      "detail": "device 90C98F left fullscreen before joining (warning 2 of 3)"
+    },
+    {
+      "time": "2026-10-07T06:55:04.229Z",
+      "type": "FULLSCREEN_EXIT",
+      "detail": "device 90C98F left fullscreen before joining (warning 3 of 3)"
+    },
+    {
+      "time": "2026-10-07T06:55:04.229Z",
+      "type": "DEVICE_BLOCKED",
+      "detail": "device 90C98F blocked after 3 fullscreen exits before joining - admin must allow it"
+    },
+    {
+      "time": "2026-10-07T06:55:50.060Z",
+      "type": "ADMIN_LOGIN",
+      "detail": "127.0.0.1 signed in"
+    },
+    {
+      "time": "2026-10-07T06:55:56.263Z",
+      "type": "DEVICE_ALLOWED",
+      "detail": "device 90C98F allowed to enter the event"
+    },
+    {
+      "time": "2026-10-07T06:56:18.646Z",
+      "type": "FULLSCREEN_EXIT",
+      "detail": "device 90C98F left fullscreen before joining (warning 1 of 3)"
+    },
+    {
+      "time": "2026-10-07T06:56:22.351Z",
+      "type": "FULLSCREEN_EXIT",
+      "detail": "device 90C98F left fullscreen before joining (warning 2 of 3)"
+    },
+    {
+      "time": "2026-10-07T06:56:24.653Z",
+      "type": "FULLSCREEN_EXIT",
+      "detail": "device 90C98F left fullscreen before joining (warning 3 of 3)"
+    },
+    {
+      "time": "2026-10-07T06:56:24.654Z",
+      "type": "DEVICE_BLOCKED",
+      "detail": "device 90C98F blocked after 3 fullscreen exits before joining - admin must allow it"
+    },
+    {
+      "time": "2026-10-07T06:56:33.151Z",
+      "type": "DEVICE_ALLOWED",
+      "detail": "device 90C98F allowed to enter the event"
+    },
+    {
+      "time": "2026-10-07T06:56:56.767Z",
+      "type": "FULLSCREEN_EXIT",
+      "detail": "device 90C98F left fullscreen before joining (warning 1 of 3)"
+    },
+    {
+      "time": "2026-10-07T07:00:01.617Z",
+      "type": "FULLSCREEN_EXIT",
+      "detail": "device 90C98F left fullscreen before joining (warning 2 of 3)"
+    },
+    {
+      "time": "2026-10-07T07:00:03.931Z",
+      "type": "FULLSCREEN_EXIT",
+      "detail": "device 90C98F left fullscreen before joining (warning 3 of 3)"
+    },
+    {
+      "time": "2026-10-07T07:00:03.932Z",
+      "type": "DEVICE_BLOCKED",
+      "detail": "device 90C98F blocked after 3 fullscreen exits before joining - admin must allow it"
+    },
+    {
+      "time": "2026-10-07T07:00:09.026Z",
+      "type": "DEVICE_ALLOWED",
+      "detail": "device 90C98F allowed to enter the event"
+    },
+    {
+      "time": "2026-10-07T07:01:06.349Z",
+      "type": "FULLSCREEN_EXIT",
+      "detail": "device 90C98F left fullscreen before joining (warning 1 of 3)"
+    },
+    {
+      "time": "2026-10-07T08:13:15.165Z",
+      "type": "LOGIN",
+      "detail": "118 vishnu"
+    },
+    {
+      "time": "2026-10-07T08:13:37.706Z",
+      "type": "FULLSCREEN_EXIT",
+      "detail": "device E30E81 left fullscreen before joining (warning 1 of 3)"
+    },
+    {
+      "time": "2026-10-07T08:13:49.932Z",
+      "type": "FULLSCREEN_EXIT",
+      "detail": "device E30E81 left fullscreen before joining (warning 2 of 3)"
     }
   ],
   "questions": [
@@ -320,5 +441,23 @@
       },
       "answer": "FINAL-2026"
     }
-  ]
+  ],
+  "devices": {
+    "90c98f2d5aeb0b7838327740": {
+      "attempts": 1,
+      "blocked": false,
+      "firstSeen": "2026-10-07T06:54:57.328Z",
+      "ip": "10.1.25.49",
+      "ua": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/154.0.0.0 Safari/537.36",
+      "lastAt": "2026-10-07T07:01:06.349Z"
+    },
+    "e30e813056008cb7775e3b40": {
+      "attempts": 2,
+      "blocked": false,
+      "firstSeen": "2026-10-07T08:13:37.705Z",
+      "ip": "10.1.25.14",
+      "ua": "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:149.0) Gecko/20100101 Firefox/149.0",
+      "lastAt": "2026-10-07T08:13:49.932Z"
+    }
+  }
 }

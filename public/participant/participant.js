@@ -7,7 +7,7 @@ const STAGE_LABELS=['Lobby','Round 1','R1 done','Round 2','Finish'];
 
 function waiting(s,p){
   /* the page polls every 2s: only redraw when something actually changed (keeps animations smooth) */
-  const sig=[s.state,p?.round1Submitted,p?.round2Submitted,s.leaderboardPublished,p.id,p.name].join('|');
+  const sig=[s.state,p?.round1Submitted,p?.round2Submitted,s.leaderboardPublished,p.id,p.name,p.joinNo,p.batch].join('|');
   if(sig===lastSig) return; lastSig=sig;
 
   const submitted=s.state==='ROUND1_ACTIVE'&&p?.round1Submitted;
@@ -23,7 +23,7 @@ function waiting(s,p){
     <section class="pw-win">
       <div class="pw-bar"><b></b><b></b><b></b><span>waiting_room.sh</span></div>
       <div class="pw-body">
-        <span class="pw-badge"><i></i>CONNECTED • ${escapeHtml(p.id)}</span>
+        <span class="pw-badge"><i></i>CONNECTED • ${escapeHtml(p.id)}${p.joinNo?' • #'+p.joinNo+' • '+escapeHtml(p.batch||''):''}</span>
         <h2 class="pw-hi">Welcome,<br><span>${escapeHtml(p.name)}</span></h2>
         <ol class="pw-stages">${stages}</ol>
         <div class="pw-card">
@@ -58,6 +58,6 @@ function initFx(){
 }
 setInterval(()=>{const t=document.getElementById('pwt'); if(!t) return; const s=Math.floor((Date.now()-waitStart)/1000); t.textContent=String(Math.floor(s/60)).padStart(2,'0')+':'+String(s%60).padStart(2,'0')},1000);
 
-function logout(){clearParticipant();location.href='/participant-login.html'}
+function logout(){api('/api/logout',{method:'POST',body:'{}'}).catch(()=>{}).finally(()=>{clearParticipant();location.href='/participant-login.html'})}
 async function refresh(){try{const d=await api('/api/me');const s=d.state;if(s.state==='ROUND1_ACTIVE'&&!d.participant?.round1Submitted){location.href='/round1.html';return}if(s.state==='ROUND2_ACTIVE'&&!d.participant?.round2Submitted){location.href='/round2.html';return}if(s.state==='ROUND2_COMPLETED'&&s.leaderboardPublished){location.href='/leaderboard.html';return}waiting(s,d.participant)}catch(e){if(isAuthError(e)){clearParticipant();location.href='/participant-login.html'}/* any other error (server restart, network blip): stay on the page, next poll retries */}}
 refresh();poll=setInterval(refresh,2000);

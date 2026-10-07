@@ -1,0 +1,1231 @@
+{
+  "event": {
+    "name": "TERMINAL QUIZ",
+    "state": "ROUND2_ACTIVE",
+    "round": 2,
+    "startAt": 1791365989139,
+    "endAt": 1791367789139,
+    "paused": false,
+    "remainingMs": null,
+    "leaderboardPublished": false,
+    "round1StartedAt": 1791365950522,
+    "round1EndedAt": 1791365973311,
+    "round2StartedAt": 1791365989139
+  },
+  "participants": {
+    "99": {
+      "id": "99",
+      "name": "Siddhu",
+      "registerNumber": "99",
+      "batch": "Batch 1",
+      "joinNo": 17,
+      "token": "a041baeb57c8ea6b128c89aafab0977155fefbf4d9510285",
+      "online": true,
+      "round1Submitted": true,
+      "round1Score": 0,
+      "round2Score": 0,
+      "createdAt": "2026-10-07T09:32:11.589Z",
+      "lastSeen": 1791366025271,
+      "round1StartAt": 1791365952130,
+      "round1TimeMs": 21182
+    },
+    "119": {
+      "id": "119",
+      "name": "VTG",
+      "registerNumber": "119",
+      "batch": "Batch 1",
+      "joinNo": 18,
+      "token": "911945e33ad78056e54559117f563d4c09108c0b3621bed8",
+      "online": true,
+      "round1Submitted": true,
+      "round1Score": 0,
+      "round2Score": 0,
+      "createdAt": "2026-10-07T09:32:35.449Z",
+      "lastSeen": 1791366025146,
+      "round1StartAt": 1791365951966,
+      "round1TimeMs": 21349
+    },
+    "2026": {
+      "id": "2026",
+      "name": "JosephV",
+      "registerNumber": "2026",
+      "batch": "Batch 1",
+      "joinNo": 14,
+      "token": "585c63de128f5383e793df3639dae7516014640d8025d0dc",
+      "online": true,
+      "round1Submitted": true,
+      "round1Score": 0,
+      "round2Score": 0,
+      "createdAt": "2026-10-07T09:31:23.949Z",
+      "lastSeen": 1791366025601,
+      "round1StartAt": 1791365952421,
+      "round1TimeMs": 20898
+    },
+    "4463": {
+      "id": "4463",
+      "name": "Mari",
+      "registerNumber": "4463",
+      "batch": "Batch 1",
+      "joinNo": 20,
+      "token": "bb906a2e013dba5469b8f364e480f8a60c28414f938d756b",
+      "online": true,
+      "round1Submitted": true,
+      "round1Score": 0,
+      "round2Score": 50,
+      "createdAt": "2026-10-07T09:34:55.870Z",
+      "lastSeen": 1791366027111,
+      "round1StartAt": 1791365952450,
+      "round1TimeMs": 20872,
+      "round2Submitted": true,
+      "round2TimeMs": 12903
+    },
+    "5466": {
+      "id": "5466",
+      "name": "fhffd",
+      "registerNumber": "5466",
+      "batch": "Batch 1",
+      "joinNo": 21,
+      "token": "2a2ffecf5d6910157f3e2930de6a3b61ff989b6529851760",
+      "online": true,
+      "round1Submitted": true,
+      "round1Score": 0,
+      "round2Score": 0,
+      "createdAt": "2026-10-07T09:35:59.999Z",
+      "lastSeen": 1791366025571,
+      "round1StartAt": 1791365952434,
+      "round1TimeMs": 20890
+    },
+    "5656": {
+      "id": "5656",
+      "name": "Scene",
+      "registerNumber": "5656",
+      "batch": "Batch 1",
+      "joinNo": 12,
+      "token": "7c338628b8bff8b9a2ade88dafd2756164e38f43c9deeb74",
+      "online": true,
+      "round1Submitted": true,
+      "round1Score": 0,
+      "round2Score": 0,
+      "createdAt": "2026-10-07T09:30:27.247Z",
+      "lastSeen": 1791366024796,
+      "round1StartAt": 1791365951594,
+      "round1TimeMs": 21733
+    },
+    "9565": {
+      "id": "9565",
+      "name": "Dragon",
+      "registerNumber": "9565",
+      "batch": "Batch 1",
+      "joinNo": 22,
+      "token": "7dbec2687dae11b8b0705dc7dca045f257e3ed27ccec8b12",
+      "online": true,
+      "round1Submitted": true,
+      "round1Score": 0,
+      "round2Score": 0,
+      "createdAt": "2026-10-07T09:38:29.570Z",
+      "lastSeen": 1791366025253,
+      "round1StartAt": 1791365952086,
+      "round1TimeMs": 21243
+    },
+    "46543": {
+      "id": "46543",
+      "name": "Me",
+      "registerNumber": "46543",
+      "batch": "Batch 1",
+      "joinNo": 1,
+      "token": "7ea56480d61ca41e2e2cb596a6d118d73b0158243e2f17f1",
+      "online": true,
+      "round1Submitted": true,
+      "round1Score": 0,
+      "round2Score": 0,
+      "createdAt": "2026-10-07T09:27:06.233Z",
+      "lastSeen": 1791366024473,
+      "round1StartAt": 1791365951237,
+      "round1TimeMs": 22094
+    },
+    "76878": {
+      "id": "76878",
+      "name": "vasu",
+      "registerNumber": "76878",
+      "batch": "Batch 1",
+      "joinNo": 19,
+      "token": "4853f645e2660d6dfed97aa9463be0bec2ea5535794c6caa",
+      "online": true,
+      "round1Submitted": true,
+      "round1Score": 0,
+      "round2Score": 0,
+      "createdAt": "2026-10-07T09:32:42.451Z",
+      "lastSeen": 1791366025346,
+      "round1StartAt": 1791365951723,
+      "round1TimeMs": 21612
+    },
+    "565677": {
+      "id": "565677",
+      "name": "Karl",
+      "registerNumber": "565677",
+      "batch": "Batch 1",
+      "joinNo": 16,
+      "token": "744c888536fa0d60e20c9ee52d1eaa57e74f3f278eff437c",
+      "online": true,
+      "round1Submitted": true,
+      "round1Score": 0,
+      "round2Score": 0,
+      "createdAt": "2026-10-07T09:31:51.815Z",
+      "lastSeen": 1791366025472,
+      "round1StartAt": 1791365952285,
+      "round1TimeMs": 21053
+    },
+    "54655464": {
+      "id": "54655464",
+      "name": "vishnu",
+      "registerNumber": "54655464",
+      "batch": "Batch 1",
+      "joinNo": 2,
+      "token": "1bd235fa5b1bcb05116f748b9df1bf20043c4bc32b59b817",
+      "online": true,
+      "round1Submitted": true,
+      "round1Score": 0,
+      "round2Score": 0,
+      "createdAt": "2026-10-07T09:27:27.734Z",
+      "lastSeen": 1791366025395,
+      "round1StartAt": 1791365952187,
+      "round1TimeMs": 21154
+    },
+    "67121132": {
+      "id": "67121132",
+      "name": "Leo",
+      "registerNumber": "67121132",
+      "batch": "Batch 1",
+      "joinNo": 9,
+      "token": "f503ebd26e2e038fdee7b72f72192c0486ef480e7dedc0b1",
+      "online": true,
+      "round1Submitted": true,
+      "round1Score": 0,
+      "round2Score": 0,
+      "createdAt": "2026-10-07T09:29:42.739Z",
+      "lastSeen": 1791366024963,
+      "round1StartAt": 1791365951808,
+      "round1TimeMs": 21535
+    },
+    "524312113.": {
+      "id": "524312113.",
+      "name": "Don",
+      "registerNumber": "524312113.",
+      "batch": "Batch 1",
+      "joinNo": 3,
+      "token": "9070062891ab27ebee539e07c977a6b69ac9b5039af4fee7",
+      "online": true,
+      "round1Submitted": true,
+      "round1Score": 0,
+      "round2Score": 0,
+      "createdAt": "2026-10-07T09:27:55.521Z",
+      "lastSeen": 1791366024545,
+      "round1StartAt": 1791365951430,
+      "round1TimeMs": 21915
+    },
+    "AKJFHNKJHFN": {
+      "id": "AKJFHNKJHFN",
+      "name": "god uh mode uh",
+      "registerNumber": "AKJFHNKJHFN",
+      "batch": "Batch 1",
+      "joinNo": 4,
+      "token": "899301fc0d54e475a0e80cf475a3054f0e34fe3faa3e9bc9",
+      "online": true,
+      "round1Submitted": true,
+      "round1Score": 0,
+      "round2Score": 0,
+      "createdAt": "2026-10-07T09:28:07.240Z",
+      "lastSeen": 1791366024923,
+      "round1StartAt": 1791365951737,
+      "round1TimeMs": 21610
+    },
+    "9875R8990852": {
+      "id": "9875R8990852",
+      "name": "mental",
+      "registerNumber": "9875R8990852",
+      "batch": "Batch 1",
+      "joinNo": 5,
+      "token": "db238e5abbab671525c4698cedba2fcf9318bb7c0dceaf2d",
+      "online": true,
+      "round1Submitted": true,
+      "round1Score": 0,
+      "round2Score": 0,
+      "createdAt": "2026-10-07T09:28:41.007Z",
+      "lastSeen": 1791366024489,
+      "round1StartAt": 1791365951398,
+      "round1TimeMs": 21951
+    },
+    "8I7876688": {
+      "id": "8I7876688",
+      "name": "God Mode",
+      "registerNumber": "8I7876688",
+      "batch": "Batch 1",
+      "joinNo": 6,
+      "token": "d88eac89f4f3aea297b7324387787922959cd84071074752",
+      "online": true,
+      "round1Submitted": true,
+      "round1Score": 0,
+      "round2Score": 0,
+      "createdAt": "2026-10-07T09:28:47.884Z",
+      "lastSeen": 1791366025516,
+      "round1StartAt": 1791365952389,
+      "round1TimeMs": 20964
+    },
+    "8902750989052": {
+      "id": "8902750989052",
+      "name": "king",
+      "registerNumber": "8902750989052",
+      "batch": "Batch 1",
+      "joinNo": 7,
+      "token": "bcea941695b76edf68f7e60457838da5e46c31dae2d8e658",
+      "online": true,
+      "round1Submitted": true,
+      "round1Score": 0,
+      "round2Score": 0,
+      "createdAt": "2026-10-07T09:28:55.034Z",
+      "lastSeen": 1791366024695,
+      "round1StartAt": 1791365951534,
+      "round1TimeMs": 21820
+    },
+    "0983409848": {
+      "id": "0983409848",
+      "name": "looser",
+      "registerNumber": "0983409848",
+      "batch": "Batch 1",
+      "joinNo": 8,
+      "token": "712b78939ca15a8f5fa235817be7f4921b9f10bafde4b5f5",
+      "online": true,
+      "round1Submitted": true,
+      "round1Score": 0,
+      "round2Score": 0,
+      "createdAt": "2026-10-07T09:29:20.873Z",
+      "lastSeen": 1791366025612,
+      "round1StartAt": 1791365952518,
+      "round1TimeMs": 20838
+    },
+    "085098059": {
+      "id": "085098059",
+      "name": "baththa",
+      "registerNumber": "085098059",
+      "batch": "Batch 1",
+      "joinNo": 10,
+      "token": "ec36adeb5381f3d16ae32259788141ac90d88649057577b2",
+      "online": true,
+      "round1Submitted": true,
+      "round1Score": 0,
+      "round2Score": 0,
+      "createdAt": "2026-10-07T09:29:53.734Z",
+      "lastSeen": 1791366025356,
+      "round1StartAt": 1791365952200,
+      "round1TimeMs": 21158
+    },
+    "894758090259": {
+      "id": "894758090259",
+      "name": "dude",
+      "registerNumber": "894758090259",
+      "batch": "Batch 1",
+      "joinNo": 11,
+      "token": "58343c8dd44d7ae1035a592a2040f913f66726de4dd03912",
+      "online": true,
+      "round1Submitted": true,
+      "round1Score": 0,
+      "round2Score": 0,
+      "createdAt": "2026-10-07T09:30:09.666Z",
+      "lastSeen": 1791366025624,
+      "round1StartAt": 1791365952166,
+      "round1TimeMs": 21194
+    },
+    "8588908590": {
+      "id": "8588908590",
+      "name": "agan",
+      "registerNumber": "8588908590",
+      "batch": "Batch 1",
+      "joinNo": 13,
+      "token": "05b998f7acebfd852f30866429323748c02f89f04b7a5959",
+      "online": false,
+      "round1Submitted": false,
+      "round1Score": 0,
+      "round2Score": 0,
+      "createdAt": "2026-10-07T09:31:17.629Z",
+      "lastSeen": 1791365828451
+    },
+    "897748390487": {
+      "id": "897748390487",
+      "name": "khkfh",
+      "registerNumber": "897748390487",
+      "batch": "Batch 1",
+      "joinNo": 15,
+      "token": "98030a04f6ecfed70e0d82322680880b1fa5be4fe3c89a49",
+      "online": true,
+      "round1Submitted": true,
+      "round1Score": 0,
+      "round2Score": 0,
+      "createdAt": "2026-10-07T09:31:36.812Z",
+      "lastSeen": 1791366024428,
+      "round1StartAt": 1791365951283,
+      "round1TimeMs": 22079
+    }
+  },
+  "answers": {
+    "4463:1": {
+      "participantId": "4463",
+      "questionId": 1,
+      "answer": 0,
+      "at": "2026-10-07T09:39:33.081Z"
+    }
+  },
+  "terminal": {
+    "99": {
+      "cwd": "/",
+      "files": {},
+      "challenge": 1,
+      "attempts": {}
+    },
+    "119": {
+      "cwd": "/",
+      "files": {},
+      "challenge": 1,
+      "attempts": {}
+    },
+    "2026": {
+      "cwd": "/",
+      "files": {},
+      "challenge": 1,
+      "attempts": {}
+    },
+    "4463": {
+      "cwd": "/",
+      "files": {},
+      "challenge": 6,
+      "attempts": {
+        "1": 1,
+        "2": 1,
+        "3": 1,
+        "4": 1,
+        "5": 1
+      },
+      "solved": {
+        "1": true,
+        "2": true,
+        "3": true,
+        "4": true,
+        "5": true
+      }
+    },
+    "5466": {
+      "cwd": "/",
+      "files": {},
+      "challenge": 1,
+      "attempts": {}
+    },
+    "5656": {
+      "cwd": "/",
+      "files": {},
+      "challenge": 1,
+      "attempts": {}
+    },
+    "9565": {
+      "cwd": "/",
+      "files": {},
+      "challenge": 1,
+      "attempts": {}
+    },
+    "46543": {
+      "cwd": "/",
+      "files": {},
+      "challenge": 1,
+      "attempts": {}
+    },
+    "76878": {
+      "cwd": "/",
+      "files": {},
+      "challenge": 1,
+      "attempts": {}
+    },
+    "565677": {
+      "cwd": "/",
+      "files": {},
+      "challenge": 1,
+      "attempts": {}
+    },
+    "54655464": {
+      "cwd": "/",
+      "files": {},
+      "challenge": 1,
+      "attempts": {}
+    },
+    "67121132": {
+      "cwd": "/",
+      "files": {},
+      "challenge": 1,
+      "attempts": {}
+    },
+    "524312113.": {
+      "cwd": "/",
+      "files": {},
+      "challenge": 1,
+      "attempts": {}
+    },
+    "AKJFHNKJHFN": {
+      "cwd": "/",
+      "files": {},
+      "challenge": 1,
+      "attempts": {}
+    },
+    "9875R8990852": {
+      "cwd": "/",
+      "files": {},
+      "challenge": 1,
+      "attempts": {}
+    },
+    "8I7876688": {
+      "cwd": "/",
+      "files": {},
+      "challenge": 1,
+      "attempts": {}
+    },
+    "8902750989052": {
+      "cwd": "/",
+      "files": {},
+      "challenge": 1,
+      "attempts": {}
+    },
+    "0983409848": {
+      "cwd": "/",
+      "files": {},
+      "challenge": 1,
+      "attempts": {}
+    },
+    "085098059": {
+      "cwd": "/",
+      "files": {},
+      "challenge": 1,
+      "attempts": {}
+    },
+    "894758090259": {
+      "cwd": "/",
+      "files": {},
+      "challenge": 1,
+      "attempts": {}
+    },
+    "8588908590": {
+      "cwd": "/",
+      "files": {},
+      "challenge": 1,
+      "attempts": {}
+    },
+    "897748390487": {
+      "cwd": "/",
+      "files": {},
+      "challenge": 1,
+      "attempts": {}
+    }
+  },
+  "logs": [
+    {
+      "time": "2026-10-07T09:01:40.898Z",
+      "type": "RESET",
+      "detail": "Event reset"
+    },
+    {
+      "time": "2026-10-07T09:18:50.862Z",
+      "type": "FULLSCREEN_EXIT",
+      "detail": "device FF2BF7 left fullscreen before joining (warning 1 of 3)"
+    },
+    {
+      "time": "2026-10-07T09:25:47.377Z",
+      "type": "ADMIN_LOGIN",
+      "detail": "10.1.25.49 signed in"
+    },
+    {
+      "time": "2026-10-07T09:27:06.191Z",
+      "type": "FULLSCREEN_EXIT",
+      "detail": "device 86DD81 left fullscreen before joining (warning 1 of 3)"
+    },
+    {
+      "time": "2026-10-07T09:27:06.233Z",
+      "type": "LOGIN",
+      "detail": "46543 Me #1 Batch 1"
+    },
+    {
+      "time": "2026-10-07T09:27:27.734Z",
+      "type": "LOGIN",
+      "detail": "54655464 vishnu #2 Batch 1"
+    },
+    {
+      "time": "2026-10-07T09:27:55.521Z",
+      "type": "LOGIN",
+      "detail": "524312113. Don #3 Batch 1"
+    },
+    {
+      "time": "2026-10-07T09:28:07.240Z",
+      "type": "LOGIN",
+      "detail": "AKJFHNKJHFN god uh mode uh #4 Batch 1"
+    },
+    {
+      "time": "2026-10-07T09:28:41.007Z",
+      "type": "LOGIN",
+      "detail": "9875R8990852 mental #5 Batch 1"
+    },
+    {
+      "time": "2026-10-07T09:28:47.884Z",
+      "type": "LOGIN",
+      "detail": "8I7876688 God Mode #6 Batch 1"
+    },
+    {
+      "time": "2026-10-07T09:28:55.034Z",
+      "type": "LOGIN",
+      "detail": "8902750989052 king #7 Batch 1"
+    },
+    {
+      "time": "2026-10-07T09:29:20.873Z",
+      "type": "LOGIN",
+      "detail": "0983409848 looser #8 Batch 1"
+    },
+    {
+      "time": "2026-10-07T09:29:42.739Z",
+      "type": "LOGIN",
+      "detail": "67121132 Leo #9 Batch 1"
+    },
+    {
+      "time": "2026-10-07T09:29:53.734Z",
+      "type": "LOGIN",
+      "detail": "085098059 baththa #10 Batch 1"
+    },
+    {
+      "time": "2026-10-07T09:30:09.666Z",
+      "type": "LOGIN",
+      "detail": "894758090259 dude #11 Batch 1"
+    },
+    {
+      "time": "2026-10-07T09:30:27.247Z",
+      "type": "LOGIN",
+      "detail": "5656 Scene #12 Batch 1"
+    },
+    {
+      "time": "2026-10-07T09:31:17.629Z",
+      "type": "LOGIN",
+      "detail": "8588908590 agan #13 Batch 1"
+    },
+    {
+      "time": "2026-10-07T09:31:23.949Z",
+      "type": "LOGIN",
+      "detail": "2026 JosephV #14 Batch 1"
+    },
+    {
+      "time": "2026-10-07T09:31:36.812Z",
+      "type": "LOGIN",
+      "detail": "897748390487 khkfh #15 Batch 1"
+    },
+    {
+      "time": "2026-10-07T09:31:51.815Z",
+      "type": "LOGIN",
+      "detail": "565677 Karl #16 Batch 1"
+    },
+    {
+      "time": "2026-10-07T09:32:11.589Z",
+      "type": "LOGIN",
+      "detail": "99 Siddhu #17 Batch 1"
+    },
+    {
+      "time": "2026-10-07T09:32:35.449Z",
+      "type": "LOGIN",
+      "detail": "119 VTG #18 Batch 1"
+    },
+    {
+      "time": "2026-10-07T09:32:42.451Z",
+      "type": "LOGIN",
+      "detail": "76878 vasu #19 Batch 1"
+    },
+    {
+      "time": "2026-10-07T09:34:55.870Z",
+      "type": "LOGIN",
+      "detail": "4463 Mari #20 Batch 1"
+    },
+    {
+      "time": "2026-10-07T09:35:59.999Z",
+      "type": "LOGIN",
+      "detail": "5466 fhffd #21 Batch 1"
+    },
+    {
+      "time": "2026-10-07T09:38:29.570Z",
+      "type": "LOGIN",
+      "detail": "9565 Dragon #22 Batch 1"
+    },
+    {
+      "time": "2026-10-07T09:39:10.522Z",
+      "type": "ROUND_START",
+      "detail": "Round 1"
+    },
+    {
+      "time": "2026-10-07T09:39:11.237Z",
+      "type": "ROUND1_BEGIN",
+      "detail": "46543 Me started their Round 1 timer"
+    },
+    {
+      "time": "2026-10-07T09:39:11.283Z",
+      "type": "ROUND1_BEGIN",
+      "detail": "897748390487 khkfh started their Round 1 timer"
+    },
+    {
+      "time": "2026-10-07T09:39:11.398Z",
+      "type": "ROUND1_BEGIN",
+      "detail": "9875R8990852 mental started their Round 1 timer"
+    },
+    {
+      "time": "2026-10-07T09:39:11.430Z",
+      "type": "ROUND1_BEGIN",
+      "detail": "524312113. Don started their Round 1 timer"
+    },
+    {
+      "time": "2026-10-07T09:39:11.534Z",
+      "type": "ROUND1_BEGIN",
+      "detail": "8902750989052 king started their Round 1 timer"
+    },
+    {
+      "time": "2026-10-07T09:39:11.594Z",
+      "type": "ROUND1_BEGIN",
+      "detail": "5656 Scene started their Round 1 timer"
+    },
+    {
+      "time": "2026-10-07T09:39:11.723Z",
+      "type": "ROUND1_BEGIN",
+      "detail": "76878 vasu started their Round 1 timer"
+    },
+    {
+      "time": "2026-10-07T09:39:11.737Z",
+      "type": "ROUND1_BEGIN",
+      "detail": "AKJFHNKJHFN god uh mode uh started their Round 1 timer"
+    },
+    {
+      "time": "2026-10-07T09:39:11.808Z",
+      "type": "ROUND1_BEGIN",
+      "detail": "67121132 Leo started their Round 1 timer"
+    },
+    {
+      "time": "2026-10-07T09:39:11.966Z",
+      "type": "ROUND1_BEGIN",
+      "detail": "119 VTG started their Round 1 timer"
+    },
+    {
+      "time": "2026-10-07T09:39:12.086Z",
+      "type": "ROUND1_BEGIN",
+      "detail": "9565 Dragon started their Round 1 timer"
+    },
+    {
+      "time": "2026-10-07T09:39:12.130Z",
+      "type": "ROUND1_BEGIN",
+      "detail": "99 Siddhu started their Round 1 timer"
+    },
+    {
+      "time": "2026-10-07T09:39:12.166Z",
+      "type": "ROUND1_BEGIN",
+      "detail": "894758090259 dude started their Round 1 timer"
+    },
+    {
+      "time": "2026-10-07T09:39:12.187Z",
+      "type": "ROUND1_BEGIN",
+      "detail": "54655464 vishnu started their Round 1 timer"
+    },
+    {
+      "time": "2026-10-07T09:39:12.200Z",
+      "type": "ROUND1_BEGIN",
+      "detail": "085098059 baththa started their Round 1 timer"
+    },
+    {
+      "time": "2026-10-07T09:39:12.285Z",
+      "type": "ROUND1_BEGIN",
+      "detail": "565677 Karl started their Round 1 timer"
+    },
+    {
+      "time": "2026-10-07T09:39:12.389Z",
+      "type": "ROUND1_BEGIN",
+      "detail": "8I7876688 God Mode started their Round 1 timer"
+    },
+    {
+      "time": "2026-10-07T09:39:12.421Z",
+      "type": "ROUND1_BEGIN",
+      "detail": "2026 JosephV started their Round 1 timer"
+    },
+    {
+      "time": "2026-10-07T09:39:12.434Z",
+      "type": "ROUND1_BEGIN",
+      "detail": "5466 fhffd started their Round 1 timer"
+    },
+    {
+      "time": "2026-10-07T09:39:12.450Z",
+      "type": "ROUND1_BEGIN",
+      "detail": "4463 Mari started their Round 1 timer"
+    },
+    {
+      "time": "2026-10-07T09:39:12.518Z",
+      "type": "ROUND1_BEGIN",
+      "detail": "0983409848 looser started their Round 1 timer"
+    },
+    {
+      "time": "2026-10-07T09:39:33.312Z",
+      "type": "ROUND1_SUBMIT",
+      "detail": "99"
+    },
+    {
+      "time": "2026-10-07T09:39:33.315Z",
+      "type": "ROUND1_SUBMIT",
+      "detail": "119"
+    },
+    {
+      "time": "2026-10-07T09:39:33.319Z",
+      "type": "ROUND1_SUBMIT",
+      "detail": "2026"
+    },
+    {
+      "time": "2026-10-07T09:39:33.322Z",
+      "type": "ROUND1_SUBMIT",
+      "detail": "4463"
+    },
+    {
+      "time": "2026-10-07T09:39:33.324Z",
+      "type": "ROUND1_SUBMIT",
+      "detail": "5466"
+    },
+    {
+      "time": "2026-10-07T09:39:33.327Z",
+      "type": "ROUND1_SUBMIT",
+      "detail": "5656"
+    },
+    {
+      "time": "2026-10-07T09:39:33.329Z",
+      "type": "ROUND1_SUBMIT",
+      "detail": "9565"
+    },
+    {
+      "time": "2026-10-07T09:39:33.331Z",
+      "type": "ROUND1_SUBMIT",
+      "detail": "46543"
+    },
+    {
+      "time": "2026-10-07T09:39:33.335Z",
+      "type": "ROUND1_SUBMIT",
+      "detail": "76878"
+    },
+    {
+      "time": "2026-10-07T09:39:33.338Z",
+      "type": "ROUND1_SUBMIT",
+      "detail": "565677"
+    },
+    {
+      "time": "2026-10-07T09:39:33.341Z",
+      "type": "ROUND1_SUBMIT",
+      "detail": "54655464"
+    },
+    {
+      "time": "2026-10-07T09:39:33.343Z",
+      "type": "ROUND1_SUBMIT",
+      "detail": "67121132"
+    },
+    {
+      "time": "2026-10-07T09:39:33.345Z",
+      "type": "ROUND1_SUBMIT",
+      "detail": "524312113."
+    },
+    {
+      "time": "2026-10-07T09:39:33.347Z",
+      "type": "ROUND1_SUBMIT",
+      "detail": "AKJFHNKJHFN"
+    },
+    {
+      "time": "2026-10-07T09:39:33.349Z",
+      "type": "ROUND1_SUBMIT",
+      "detail": "9875R8990852"
+    },
+    {
+      "time": "2026-10-07T09:39:33.353Z",
+      "type": "ROUND1_SUBMIT",
+      "detail": "8I7876688"
+    },
+    {
+      "time": "2026-10-07T09:39:33.354Z",
+      "type": "ROUND1_SUBMIT",
+      "detail": "8902750989052"
+    },
+    {
+      "time": "2026-10-07T09:39:33.356Z",
+      "type": "ROUND1_SUBMIT",
+      "detail": "0983409848"
+    },
+    {
+      "time": "2026-10-07T09:39:33.358Z",
+      "type": "ROUND1_SUBMIT",
+      "detail": "085098059"
+    },
+    {
+      "time": "2026-10-07T09:39:33.360Z",
+      "type": "ROUND1_SUBMIT",
+      "detail": "894758090259"
+    },
+    {
+      "time": "2026-10-07T09:39:33.362Z",
+      "type": "ROUND1_SUBMIT",
+      "detail": "897748390487"
+    },
+    {
+      "time": "2026-10-07T09:39:33.363Z",
+      "type": "ROUND_END",
+      "detail": "Round 1"
+    },
+    {
+      "time": "2026-10-07T09:39:49.139Z",
+      "type": "ROUND_START",
+      "detail": "Round 2"
+    },
+    {
+      "time": "2026-10-07T09:39:55.208Z",
+      "type": "TERMINAL_SOLVE",
+      "detail": "4463 challenge 1"
+    },
+    {
+      "time": "2026-10-07T09:39:56.680Z",
+      "type": "TERMINAL_SOLVE",
+      "detail": "4463 challenge 2"
+    },
+    {
+      "time": "2026-10-07T09:39:58.601Z",
+      "type": "TERMINAL_SOLVE",
+      "detail": "4463 challenge 3"
+    },
+    {
+      "time": "2026-10-07T09:40:00.068Z",
+      "type": "TERMINAL_SOLVE",
+      "detail": "4463 challenge 4"
+    },
+    {
+      "time": "2026-10-07T09:40:02.039Z",
+      "type": "TERMINAL_SOLVE",
+      "detail": "4463 challenge 5"
+    },
+    {
+      "time": "2026-10-07T09:40:02.042Z",
+      "type": "ROUND2_SUBMIT",
+      "detail": "4463 completed Round 2"
+    }
+  ],
+  "questions": [
+    {
+      "id": 1,
+      "text": "Which component is responsible for process scheduling?",
+      "options": [
+        "CPU",
+        "Operating System",
+        "Compiler",
+        "RAM"
+      ],
+      "correct": 1,
+      "marks": 1
+    },
+    {
+      "id": 2,
+      "text": "Which Linux command prints the current working directory?",
+      "options": [
+        "cd",
+        "pwd",
+        "ls",
+        "whoami"
+      ],
+      "correct": 1,
+      "marks": 1
+    },
+    {
+      "id": 3,
+      "text": "Which memory technique uses pages?",
+      "options": [
+        "Paging",
+        "Spooling",
+        "Polling",
+        "Batching"
+      ],
+      "correct": 0,
+      "marks": 1
+    },
+    {
+      "id": 4,
+      "text": "A process in execution is represented by a…",
+      "options": [
+        "PCB",
+        "DNS",
+        "BIOS",
+        "URI"
+      ],
+      "correct": 0,
+      "marks": 1
+    },
+    {
+      "id": 5,
+      "text": "Which scheduling algorithm uses a time quantum?",
+      "options": [
+        "FCFS",
+        "Round Robin",
+        "SJF",
+        "FIFO"
+      ],
+      "correct": 1,
+      "marks": 1
+    },
+    {
+      "id": 6,
+      "text": "Which command lists directory contents?",
+      "options": [
+        "ls",
+        "cat",
+        "pwd",
+        "grep"
+      ],
+      "correct": 0,
+      "marks": 1
+    },
+    {
+      "id": 7,
+      "text": "Virtual memory allows a system to…",
+      "options": [
+        "Use disk as memory extension",
+        "Disable RAM",
+        "Remove processes",
+        "Increase CPU cores"
+      ],
+      "correct": 0,
+      "marks": 1
+    },
+    {
+      "id": 8,
+      "text": "Which is a Linux file permission command?",
+      "options": [
+        "chmod",
+        "mkdir",
+        "ping",
+        "top"
+      ],
+      "correct": 0,
+      "marks": 1
+    },
+    {
+      "id": 9,
+      "text": "A thread is best described as…",
+      "options": [
+        "Smallest unit of CPU execution within a process",
+        "A disk partition",
+        "A file system",
+        "A compiler"
+      ],
+      "correct": 0,
+      "marks": 1
+    },
+    {
+      "id": 10,
+      "text": "Which command searches text patterns?",
+      "options": [
+        "grep",
+        "cd",
+        "date",
+        "clear"
+      ],
+      "correct": 0,
+      "marks": 1
+    },
+    {
+      "id": 11,
+      "text": "Deadlock requires mutual exclusion, hold-and-wait, no preemption and…",
+      "options": [
+        "Circular wait",
+        "Paging",
+        "Caching",
+        "Compilation"
+      ],
+      "correct": 0,
+      "marks": 1
+    },
+    {
+      "id": 12,
+      "text": "Which component translates virtual addresses?",
+      "options": [
+        "MMU",
+        "ALU",
+        "BIOS",
+        "NIC"
+      ],
+      "correct": 0,
+      "marks": 1
+    },
+    {
+      "id": 13,
+      "text": "Which command displays running processes?",
+      "options": [
+        "ps",
+        "mkdir",
+        "touch",
+        "mv"
+      ],
+      "correct": 0,
+      "marks": 1
+    },
+    {
+      "id": 14,
+      "text": "What does chmod 755 commonly grant to the owner?",
+      "options": [
+        "rwx",
+        "r--",
+        "rw-",
+        "---"
+      ],
+      "correct": 0,
+      "marks": 1
+    },
+    {
+      "id": 15,
+      "text": "Which architecture separates user and kernel privilege levels?",
+      "options": [
+        "Protected-mode OS architecture",
+        "Spreadsheet architecture",
+        "Markup architecture",
+        "CSS architecture"
+      ],
+      "correct": 0,
+      "marks": 1
+    },
+    {
+      "id": 16,
+      "text": "Which command can display file contents?",
+      "options": [
+        "cat",
+        "cd",
+        "pwd",
+        "whoami"
+      ],
+      "correct": 0,
+      "marks": 1
+    },
+    {
+      "id": 17,
+      "text": "CPU cache is primarily used to…",
+      "options": [
+        "Reduce memory access latency",
+        "Store passwords",
+        "Replace the OS",
+        "Format disks"
+      ],
+      "correct": 0,
+      "marks": 1
+    },
+    {
+      "id": 18,
+      "text": "What is context switching?",
+      "options": [
+        "Switching CPU from one process/thread to another",
+        "Changing a file extension",
+        "Restarting BIOS",
+        "Changing IP"
+      ],
+      "correct": 0,
+      "marks": 1
+    },
+    {
+      "id": 19,
+      "text": "Which Linux command identifies the current user?",
+      "options": [
+        "whoami",
+        "grep",
+        "find",
+        "head"
+      ],
+      "correct": 0,
+      "marks": 1
+    },
+    {
+      "id": 20,
+      "text": "What is a system call?",
+      "options": [
+        "Interface for a program to request OS services",
+        "A CPU instruction cache",
+        "A file extension",
+        "A network cable"
+      ],
+      "correct": 0,
+      "marks": 1
+    }
+  ],
+  "challenges": [
+    {
+      "id": 1,
+      "title": "Ghost in the Directory",
+      "skill": "Hidden files",
+      "marks": 5,
+      "files": {
+        "/README.txt": "Look carefully at hidden entries.",
+        "/.ghost.txt": "SECRET-GHOST-42",
+        "/notes.txt": "Nothing useful here."
+      },
+      "answer": "SECRET-GHOST-42"
+    },
+    {
+      "id": 2,
+      "title": "Needle in the Logs",
+      "skill": "grep -r",
+      "marks": 5,
+      "files": {
+        "/logs/a.log": "INFO start\nINFO ready",
+        "/logs/b.log": "INFO idle\nSECRET=NEEDLE-731",
+        "/logs/c.log": "INFO end"
+      },
+      "answer": "NEEDLE-731"
+    },
+    {
+      "id": 3,
+      "title": "Lost in the Tree",
+      "skill": "cd, ls, cat",
+      "marks": 10,
+      "files": {
+        "/README.txt": "Travel to the archive directory.",
+        "/archive/clue.txt": "The answer is TREE-908",
+        "/archive/old.txt": "ignore"
+      },
+      "answer": "TREE-908"
+    },
+    {
+      "id": 4,
+      "title": "Pipe Dreams",
+      "skill": "grep | sort | uniq -c | sort -rn | head",
+      "marks": 10,
+      "files": {
+        "/data/events.txt": "red\nblue\nred\ngreen\nred\nblue\nyellow\nblue"
+      },
+      "answer": "red"
+    },
+    {
+      "id": 5,
+      "title": "The Final Chain",
+      "skill": "grep, find, grep -c",
+      "marks": 20,
+      "files": {
+        "/final/a.txt": "noise",
+        "/final/b.txt": "TARGET=FINAL-2026",
+        "/final/c.txt": "TARGET=OTHER"
+      },
+      "answer": "FINAL-2026"
+    }
+  ],
+  "devices": {
+    "ff2bf7739b7a3b4ac7e3aea6": {
+      "attempts": 1,
+      "blocked": false,
+      "firstSeen": "2026-10-07T09:18:50.862Z",
+      "ip": "10.1.25.81",
+      "ua": "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:157.0) Gecko/20100101 Firefox/157.0",
+      "lastAt": "2026-10-07T09:18:50.862Z"
+    },
+    "86dd81150436989d5c3633db": {
+      "attempts": 1,
+      "blocked": false,
+      "firstSeen": "2026-10-07T09:27:06.190Z",
+      "ip": "10.1.25.13",
+      "ua": "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:157.0) Gecko/20100101 Firefox/157.0",
+      "lastAt": "2026-10-07T09:27:06.191Z"
+    }
+  }
+}

@@ -23,7 +23,9 @@ async function init(){
     questions.forEach(x=>{const v=saved[x.id];if(v!=null&&v>=0&&v<x.options.length)answers[x.id]=v});
     const first=questions.findIndex(x=>answers[x.id]==null);
     qi=first<0?0:first;
-    endAt=Date.now()+d.state.remainingMs;
+    /* the timer starts now, for this participant only */
+    const st=await api('/api/round1-start',{method:'POST',body:'{}'});
+    endAt=Date.now()+st.remainingMs;
     shell(); draw(true); startTimer();
     setInterval(resync,10000);
   }catch(e){
@@ -38,7 +40,7 @@ async function resync(){
   try{
     const d=await api('/api/me');
     if(d.participant?.round1Submitted||d.state.state!=='ROUND1_ACTIVE'){location.href='/participant.html';return}
-    if(d.state.remainingMs!=null)endAt=Date.now()+d.state.remainingMs;
+    if(d.myRemainingMs!=null)endAt=Date.now()+d.myRemainingMs;
   }catch(e){if(/unauthorized/i.test(e.message))location.href='/participant-login.html'}
 }
 

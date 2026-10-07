@@ -1,0 +1,950 @@
+{
+  "event": {
+    "name": "TERMINAL QUIZ",
+    "state": "ROUND2_COMPLETED",
+    "round": 2,
+    "startAt": null,
+    "endAt": null,
+    "paused": false,
+    "remainingMs": null,
+    "leaderboardPublished": true,
+    "round1StartedAt": 1791363340764,
+    "round1EndedAt": 1791363527716,
+    "round2StartedAt": 1791363532462
+  },
+  "participants": {
+    "63": {
+      "id": "63",
+      "name": "Mariiii😎",
+      "registerNumber": "63",
+      "batch": "Batch 1",
+      "joinNo": 2,
+      "token": "69aa8f04729fdf8d15dd504ce13e1aec304611a3b6d7e995",
+      "online": true,
+      "round1Submitted": true,
+      "round1Score": 3,
+      "round2Score": 15,
+      "createdAt": "2026-10-07T08:55:34.428Z",
+      "lastSeen": 1791363593299,
+      "round1StartAt": 1791363341018,
+      "round1TimeMs": 134674,
+      "round2Submitted": true,
+      "round2TimeMs": 20588
+    },
+    "12345": {
+      "id": "12345",
+      "name": "raj",
+      "registerNumber": "12345",
+      "batch": "Batch 1",
+      "joinNo": 1,
+      "token": "692c3263693666b4eb37b1fe61c38b2c7759d95df28f7e2e",
+      "online": true,
+      "round1Submitted": true,
+      "round1Score": 2,
+      "round2Score": 20,
+      "createdAt": "2026-10-07T08:55:22.332Z",
+      "lastSeen": 1791363591186,
+      "round1StartAt": 1791363342793,
+      "round1TimeMs": 159214
+    },
+    "209458098599": {
+      "id": "209458098599",
+      "name": "donn",
+      "registerNumber": "209458098599",
+      "batch": "Batch 1",
+      "joinNo": 3,
+      "token": "9a0a8b70b18402829b275af7572617ac4d4a45325609e0ef",
+      "online": true,
+      "round1Submitted": true,
+      "round1Score": 6,
+      "round2Score": 0,
+      "createdAt": "2026-10-07T08:57:03.471Z",
+      "lastSeen": 1791363592049,
+      "round1StartAt": 1791363423942,
+      "round1TimeMs": 73510,
+      "round2Submitted": true,
+      "round2TimeMs": 23116
+    }
+  },
+  "answers": {
+    "63:1": {
+      "participantId": "63",
+      "questionId": 1,
+      "answer": 1,
+      "at": "2026-10-07T08:55:43.082Z"
+    },
+    "63:2": {
+      "participantId": "63",
+      "questionId": 2,
+      "answer": 2,
+      "at": "2026-10-07T08:55:45.870Z"
+    },
+    "63:3": {
+      "participantId": "63",
+      "questionId": 3,
+      "answer": 1,
+      "at": "2026-10-07T08:55:48.616Z"
+    },
+    "63:4": {
+      "participantId": "63",
+      "questionId": 4,
+      "answer": 1,
+      "at": "2026-10-07T08:55:51.682Z"
+    },
+    "63:5": {
+      "participantId": "63",
+      "questionId": 5,
+      "answer": 1,
+      "at": "2026-10-07T08:55:54.227Z"
+    },
+    "63:6": {
+      "participantId": "63",
+      "questionId": 6,
+      "answer": 2,
+      "at": "2026-10-07T08:55:56.541Z"
+    },
+    "63:7": {
+      "participantId": "63",
+      "questionId": 7,
+      "answer": 1,
+      "at": "2026-10-07T08:55:59.114Z"
+    },
+    "63:8": {
+      "participantId": "63",
+      "questionId": 8,
+      "answer": 1,
+      "at": "2026-10-07T08:56:01.761Z"
+    },
+    "12345:1": {
+      "participantId": "12345",
+      "questionId": 1,
+      "answer": 0,
+      "at": "2026-10-07T08:56:04.938Z"
+    },
+    "12345:2": {
+      "participantId": "12345",
+      "questionId": 2,
+      "answer": 1,
+      "at": "2026-10-07T08:56:19.904Z"
+    },
+    "12345:3": {
+      "participantId": "12345",
+      "questionId": 3,
+      "answer": 0,
+      "at": "2026-10-07T08:56:24.103Z"
+    },
+    "63:9": {
+      "participantId": "63",
+      "questionId": 9,
+      "answer": 1,
+      "at": "2026-10-07T08:56:29.007Z"
+    },
+    "12345:4": {
+      "participantId": "12345",
+      "questionId": 4,
+      "answer": 1,
+      "at": "2026-10-07T08:56:42.040Z"
+    },
+    "12345:5": {
+      "participantId": "12345",
+      "questionId": 5,
+      "answer": 0,
+      "at": "2026-10-07T08:56:44.688Z"
+    },
+    "63:11": {
+      "participantId": "63",
+      "questionId": 11,
+      "answer": 1,
+      "at": "2026-10-07T08:56:51.826Z"
+    },
+    "12345:6": {
+      "participantId": "12345",
+      "questionId": 6,
+      "answer": 1,
+      "at": "2026-10-07T08:57:04.366Z"
+    },
+    "12345:7": {
+      "participantId": "12345",
+      "questionId": 7,
+      "answer": 1,
+      "at": "2026-10-07T08:57:11.831Z"
+    },
+    "63:12": {
+      "participantId": "63",
+      "questionId": 12,
+      "answer": 1,
+      "at": "2026-10-07T08:57:13.712Z"
+    },
+    "12345:8": {
+      "participantId": "12345",
+      "questionId": 8,
+      "answer": 1,
+      "at": "2026-10-07T08:57:15.864Z"
+    },
+    "63:13": {
+      "participantId": "63",
+      "questionId": 13,
+      "answer": 1,
+      "at": "2026-10-07T08:57:20.546Z"
+    },
+    "12345:9": {
+      "participantId": "12345",
+      "questionId": 9,
+      "answer": 2,
+      "at": "2026-10-07T08:57:21.239Z"
+    },
+    "63:14": {
+      "participantId": "63",
+      "questionId": 14,
+      "answer": 0,
+      "at": "2026-10-07T08:57:24.842Z"
+    },
+    "12345:10": {
+      "participantId": "12345",
+      "questionId": 10,
+      "answer": 1,
+      "at": "2026-10-07T08:57:26.343Z"
+    },
+    "63:15": {
+      "participantId": "63",
+      "questionId": 15,
+      "answer": 1,
+      "at": "2026-10-07T08:57:29.005Z"
+    },
+    "12345:11": {
+      "participantId": "12345",
+      "questionId": 11,
+      "answer": 2,
+      "at": "2026-10-07T08:57:30.591Z"
+    },
+    "63:16": {
+      "participantId": "63",
+      "questionId": 16,
+      "answer": 2,
+      "at": "2026-10-07T08:57:32.609Z"
+    },
+    "12345:12": {
+      "participantId": "12345",
+      "questionId": 12,
+      "answer": 1,
+      "at": "2026-10-07T08:57:33.359Z"
+    },
+    "63:17": {
+      "participantId": "63",
+      "questionId": 17,
+      "answer": 1,
+      "at": "2026-10-07T08:57:35.716Z"
+    },
+    "12345:13": {
+      "participantId": "12345",
+      "questionId": 13,
+      "answer": 1,
+      "at": "2026-10-07T08:57:41.799Z"
+    },
+    "63:18": {
+      "participantId": "63",
+      "questionId": 18,
+      "answer": 1,
+      "at": "2026-10-07T08:57:41.325Z"
+    },
+    "209458098599:1": {
+      "participantId": "209458098599",
+      "questionId": 1,
+      "answer": 2,
+      "at": "2026-10-07T08:57:43.174Z"
+    },
+    "63:19": {
+      "participantId": "63",
+      "questionId": 19,
+      "answer": 1,
+      "at": "2026-10-07T08:57:44.892Z"
+    },
+    "209458098599:2": {
+      "participantId": "209458098599",
+      "questionId": 2,
+      "answer": 3,
+      "at": "2026-10-07T08:57:45.885Z"
+    },
+    "12345:14": {
+      "participantId": "12345",
+      "questionId": 14,
+      "answer": 2,
+      "at": "2026-10-07T08:57:46.878Z"
+    },
+    "63:20": {
+      "participantId": "63",
+      "questionId": 20,
+      "answer": 1,
+      "at": "2026-10-07T08:57:47.996Z"
+    },
+    "12345:15": {
+      "participantId": "12345",
+      "questionId": 15,
+      "answer": 1,
+      "at": "2026-10-07T08:57:49.377Z"
+    },
+    "209458098599:3": {
+      "participantId": "209458098599",
+      "questionId": 3,
+      "answer": 2,
+      "at": "2026-10-07T08:57:51.810Z"
+    },
+    "12345:16": {
+      "participantId": "12345",
+      "questionId": 16,
+      "answer": 1,
+      "at": "2026-10-07T08:57:56.359Z"
+    },
+    "209458098599:4": {
+      "participantId": "209458098599",
+      "questionId": 4,
+      "answer": 0,
+      "at": "2026-10-07T08:57:53.498Z"
+    },
+    "209458098599:5": {
+      "participantId": "209458098599",
+      "questionId": 5,
+      "answer": 2,
+      "at": "2026-10-07T08:57:54.894Z"
+    },
+    "209458098599:6": {
+      "participantId": "209458098599",
+      "questionId": 6,
+      "answer": 3,
+      "at": "2026-10-07T08:57:56.322Z"
+    },
+    "12345:17": {
+      "participantId": "12345",
+      "questionId": 17,
+      "answer": 1,
+      "at": "2026-10-07T08:57:59.175Z"
+    },
+    "209458098599:7": {
+      "participantId": "209458098599",
+      "questionId": 7,
+      "answer": 1,
+      "at": "2026-10-07T08:58:00.536Z"
+    },
+    "12345:18": {
+      "participantId": "12345",
+      "questionId": 18,
+      "answer": 1,
+      "at": "2026-10-07T08:58:04.709Z"
+    },
+    "209458098599:8": {
+      "participantId": "209458098599",
+      "questionId": 8,
+      "answer": 2,
+      "at": "2026-10-07T08:58:02.049Z"
+    },
+    "209458098599:9": {
+      "participantId": "209458098599",
+      "questionId": 9,
+      "answer": 0,
+      "at": "2026-10-07T08:58:03.078Z"
+    },
+    "209458098599:10": {
+      "participantId": "209458098599",
+      "questionId": 10,
+      "answer": 0,
+      "at": "2026-10-07T08:58:03.788Z"
+    },
+    "209458098599:11": {
+      "participantId": "209458098599",
+      "questionId": 11,
+      "answer": 0,
+      "at": "2026-10-07T08:58:04.320Z"
+    },
+    "209458098599:12": {
+      "participantId": "209458098599",
+      "questionId": 12,
+      "answer": 2,
+      "at": "2026-10-07T08:58:05.064Z"
+    },
+    "209458098599:13": {
+      "participantId": "209458098599",
+      "questionId": 13,
+      "answer": 3,
+      "at": "2026-10-07T08:58:06.235Z"
+    },
+    "209458098599:14": {
+      "participantId": "209458098599",
+      "questionId": 14,
+      "answer": 3,
+      "at": "2026-10-07T08:58:07.749Z"
+    },
+    "209458098599:15": {
+      "participantId": "209458098599",
+      "questionId": 15,
+      "answer": 1,
+      "at": "2026-10-07T08:58:08.643Z"
+    },
+    "209458098599:16": {
+      "participantId": "209458098599",
+      "questionId": 16,
+      "answer": 1,
+      "at": "2026-10-07T08:58:09.314Z"
+    },
+    "12345:19": {
+      "participantId": "12345",
+      "questionId": 19,
+      "answer": 3,
+      "at": "2026-10-07T08:58:09.494Z"
+    },
+    "209458098599:17": {
+      "participantId": "209458098599",
+      "questionId": 17,
+      "answer": 1,
+      "at": "2026-10-07T08:58:09.930Z"
+    },
+    "209458098599:18": {
+      "participantId": "209458098599",
+      "questionId": 18,
+      "answer": 0,
+      "at": "2026-10-07T08:58:10.652Z"
+    },
+    "209458098599:19": {
+      "participantId": "209458098599",
+      "questionId": 19,
+      "answer": 0,
+      "at": "2026-10-07T08:58:11.300Z"
+    },
+    "209458098599:20": {
+      "participantId": "209458098599",
+      "questionId": 20,
+      "answer": 2,
+      "at": "2026-10-07T08:58:12.415Z"
+    },
+    "12345:20": {
+      "participantId": "12345",
+      "questionId": 20,
+      "answer": 2,
+      "at": "2026-10-07T08:58:13.614Z"
+    }
+  },
+  "terminal": {
+    "63": {
+      "cwd": "/",
+      "files": {},
+      "challenge": 6,
+      "attempts": {
+        "1": 1,
+        "2": 1,
+        "3": 1,
+        "4": 1,
+        "5": 1
+      },
+      "solved": {
+        "1": true,
+        "4": true
+      }
+    },
+    "12345": {
+      "cwd": "/",
+      "files": {},
+      "challenge": 5,
+      "attempts": {
+        "1": 1,
+        "2": 1,
+        "3": 1,
+        "4": 1
+      },
+      "solved": {
+        "1": true,
+        "2": true,
+        "4": true
+      }
+    },
+    "209458098599": {
+      "cwd": "/",
+      "files": {},
+      "challenge": 6,
+      "attempts": {
+        "1": 1,
+        "2": 1,
+        "3": 1,
+        "4": 1,
+        "5": 1
+      }
+    }
+  },
+  "logs": [
+    {
+      "time": "2026-10-07T08:49:19.475Z",
+      "type": "RESET",
+      "detail": "Event reset"
+    },
+    {
+      "time": "2026-10-07T08:51:35.677Z",
+      "type": "FULLSCREEN_EXIT",
+      "detail": "device F6E201 left fullscreen before joining (warning 1 of 3)"
+    },
+    {
+      "time": "2026-10-07T08:55:14.690Z",
+      "type": "ADMIN_LOGIN",
+      "detail": "127.0.0.1 signed in"
+    },
+    {
+      "time": "2026-10-07T08:55:22.333Z",
+      "type": "LOGIN",
+      "detail": "12345 raj #1 Batch 1"
+    },
+    {
+      "time": "2026-10-07T08:55:34.428Z",
+      "type": "LOGIN",
+      "detail": "63 Mariiii😎 #2 Batch 1"
+    },
+    {
+      "time": "2026-10-07T08:55:40.764Z",
+      "type": "ROUND_START",
+      "detail": "Round 1"
+    },
+    {
+      "time": "2026-10-07T08:55:41.018Z",
+      "type": "ROUND1_BEGIN",
+      "detail": "63 Mariiii😎 started their Round 1 timer"
+    },
+    {
+      "time": "2026-10-07T08:55:42.793Z",
+      "type": "ROUND1_BEGIN",
+      "detail": "12345 raj started their Round 1 timer"
+    },
+    {
+      "time": "2026-10-07T08:57:03.471Z",
+      "type": "LOGIN",
+      "detail": "209458098599 donn #3 Batch 1"
+    },
+    {
+      "time": "2026-10-07T08:57:03.942Z",
+      "type": "ROUND1_BEGIN",
+      "detail": "209458098599 donn started their Round 1 timer"
+    },
+    {
+      "time": "2026-10-07T08:57:55.692Z",
+      "type": "ROUND1_SUBMIT",
+      "detail": "63"
+    },
+    {
+      "time": "2026-10-07T08:58:17.452Z",
+      "type": "ROUND1_SUBMIT",
+      "detail": "209458098599"
+    },
+    {
+      "time": "2026-10-07T08:58:22.007Z",
+      "type": "ROUND1_SUBMIT",
+      "detail": "12345"
+    },
+    {
+      "time": "2026-10-07T08:58:47.716Z",
+      "type": "ROUND_END",
+      "detail": "Round 1"
+    },
+    {
+      "time": "2026-10-07T08:58:52.462Z",
+      "type": "ROUND_START",
+      "detail": "Round 2"
+    },
+    {
+      "time": "2026-10-07T08:58:58.182Z",
+      "type": "TERMINAL_SOLVE",
+      "detail": "63 challenge 1"
+    },
+    {
+      "time": "2026-10-07T08:59:00.630Z",
+      "type": "TERMINAL_ATTEMPT",
+      "detail": "209458098599 challenge 1"
+    },
+    {
+      "time": "2026-10-07T08:59:01.041Z",
+      "type": "TERMINAL_ATTEMPT",
+      "detail": "63 challenge 2"
+    },
+    {
+      "time": "2026-10-07T08:59:03.506Z",
+      "type": "TERMINAL_SOLVE",
+      "detail": "12345 challenge 1"
+    },
+    {
+      "time": "2026-10-07T08:59:04.468Z",
+      "type": "TERMINAL_ATTEMPT",
+      "detail": "209458098599 challenge 2"
+    },
+    {
+      "time": "2026-10-07T08:59:05.422Z",
+      "type": "TERMINAL_ATTEMPT",
+      "detail": "63 challenge 3"
+    },
+    {
+      "time": "2026-10-07T08:59:05.975Z",
+      "type": "TERMINAL_SOLVE",
+      "detail": "12345 challenge 2"
+    },
+    {
+      "time": "2026-10-07T08:59:06.440Z",
+      "type": "TERMINAL_ATTEMPT",
+      "detail": "209458098599 challenge 3"
+    },
+    {
+      "time": "2026-10-07T08:59:07.870Z",
+      "type": "TERMINAL_ATTEMPT",
+      "detail": "12345 challenge 3"
+    },
+    {
+      "time": "2026-10-07T08:59:08.231Z",
+      "type": "TERMINAL_SOLVE",
+      "detail": "63 challenge 4"
+    },
+    {
+      "time": "2026-10-07T08:59:09.178Z",
+      "type": "TERMINAL_ATTEMPT",
+      "detail": "209458098599 challenge 4"
+    },
+    {
+      "time": "2026-10-07T08:59:12.614Z",
+      "type": "TERMINAL_SOLVE",
+      "detail": "12345 challenge 4"
+    },
+    {
+      "time": "2026-10-07T08:59:13.049Z",
+      "type": "TERMINAL_ATTEMPT",
+      "detail": "63 challenge 5"
+    },
+    {
+      "time": "2026-10-07T08:59:13.050Z",
+      "type": "ROUND2_SUBMIT",
+      "detail": "63 completed Round 2"
+    },
+    {
+      "time": "2026-10-07T08:59:15.576Z",
+      "type": "TERMINAL_ATTEMPT",
+      "detail": "209458098599 challenge 5"
+    },
+    {
+      "time": "2026-10-07T08:59:15.578Z",
+      "type": "ROUND2_SUBMIT",
+      "detail": "209458098599 completed Round 2"
+    },
+    {
+      "time": "2026-10-07T08:59:28.810Z",
+      "type": "ROUND_END",
+      "detail": "Round 2"
+    },
+    {
+      "time": "2026-10-07T08:59:32.484Z",
+      "type": "LEADERBOARD",
+      "detail": "Published"
+    }
+  ],
+  "questions": [
+    {
+      "id": 1,
+      "text": "Which component is responsible for process scheduling?",
+      "options": [
+        "CPU",
+        "Operating System",
+        "Compiler",
+        "RAM"
+      ],
+      "correct": 1,
+      "marks": 1
+    },
+    {
+      "id": 2,
+      "text": "Which Linux command prints the current working directory?",
+      "options": [
+        "cd",
+        "pwd",
+        "ls",
+        "whoami"
+      ],
+      "correct": 1,
+      "marks": 1
+    },
+    {
+      "id": 3,
+      "text": "Which memory technique uses pages?",
+      "options": [
+        "Paging",
+        "Spooling",
+        "Polling",
+        "Batching"
+      ],
+      "correct": 0,
+      "marks": 1
+    },
+    {
+      "id": 4,
+      "text": "A process in execution is represented by a…",
+      "options": [
+        "PCB",
+        "DNS",
+        "BIOS",
+        "URI"
+      ],
+      "correct": 0,
+      "marks": 1
+    },
+    {
+      "id": 5,
+      "text": "Which scheduling algorithm uses a time quantum?",
+      "options": [
+        "FCFS",
+        "Round Robin",
+        "SJF",
+        "FIFO"
+      ],
+      "correct": 1,
+      "marks": 1
+    },
+    {
+      "id": 6,
+      "text": "Which command lists directory contents?",
+      "options": [
+        "ls",
+        "cat",
+        "pwd",
+        "grep"
+      ],
+      "correct": 0,
+      "marks": 1
+    },
+    {
+      "id": 7,
+      "text": "Virtual memory allows a system to…",
+      "options": [
+        "Use disk as memory extension",
+        "Disable RAM",
+        "Remove processes",
+        "Increase CPU cores"
+      ],
+      "correct": 0,
+      "marks": 1
+    },
+    {
+      "id": 8,
+      "text": "Which is a Linux file permission command?",
+      "options": [
+        "chmod",
+        "mkdir",
+        "ping",
+        "top"
+      ],
+      "correct": 0,
+      "marks": 1
+    },
+    {
+      "id": 9,
+      "text": "A thread is best described as…",
+      "options": [
+        "Smallest unit of CPU execution within a process",
+        "A disk partition",
+        "A file system",
+        "A compiler"
+      ],
+      "correct": 0,
+      "marks": 1
+    },
+    {
+      "id": 10,
+      "text": "Which command searches text patterns?",
+      "options": [
+        "grep",
+        "cd",
+        "date",
+        "clear"
+      ],
+      "correct": 0,
+      "marks": 1
+    },
+    {
+      "id": 11,
+      "text": "Deadlock requires mutual exclusion, hold-and-wait, no preemption and…",
+      "options": [
+        "Circular wait",
+        "Paging",
+        "Caching",
+        "Compilation"
+      ],
+      "correct": 0,
+      "marks": 1
+    },
+    {
+      "id": 12,
+      "text": "Which component translates virtual addresses?",
+      "options": [
+        "MMU",
+        "ALU",
+        "BIOS",
+        "NIC"
+      ],
+      "correct": 0,
+      "marks": 1
+    },
+    {
+      "id": 13,
+      "text": "Which command displays running processes?",
+      "options": [
+        "ps",
+        "mkdir",
+        "touch",
+        "mv"
+      ],
+      "correct": 0,
+      "marks": 1
+    },
+    {
+      "id": 14,
+      "text": "What does chmod 755 commonly grant to the owner?",
+      "options": [
+        "rwx",
+        "r--",
+        "rw-",
+        "---"
+      ],
+      "correct": 0,
+      "marks": 1
+    },
+    {
+      "id": 15,
+      "text": "Which architecture separates user and kernel privilege levels?",
+      "options": [
+        "Protected-mode OS architecture",
+        "Spreadsheet architecture",
+        "Markup architecture",
+        "CSS architecture"
+      ],
+      "correct": 0,
+      "marks": 1
+    },
+    {
+      "id": 16,
+      "text": "Which command can display file contents?",
+      "options": [
+        "cat",
+        "cd",
+        "pwd",
+        "whoami"
+      ],
+      "correct": 0,
+      "marks": 1
+    },
+    {
+      "id": 17,
+      "text": "CPU cache is primarily used to…",
+      "options": [
+        "Reduce memory access latency",
+        "Store passwords",
+        "Replace the OS",
+        "Format disks"
+      ],
+      "correct": 0,
+      "marks": 1
+    },
+    {
+      "id": 18,
+      "text": "What is context switching?",
+      "options": [
+        "Switching CPU from one process/thread to another",
+        "Changing a file extension",
+        "Restarting BIOS",
+        "Changing IP"
+      ],
+      "correct": 0,
+      "marks": 1
+    },
+    {
+      "id": 19,
+      "text": "Which Linux command identifies the current user?",
+      "options": [
+        "whoami",
+        "grep",
+        "find",
+        "head"
+      ],
+      "correct": 0,
+      "marks": 1
+    },
+    {
+      "id": 20,
+      "text": "What is a system call?",
+      "options": [
+        "Interface for a program to request OS services",
+        "A CPU instruction cache",
+        "A file extension",
+        "A network cable"
+      ],
+      "correct": 0,
+      "marks": 1
+    }
+  ],
+  "challenges": [
+    {
+      "id": 1,
+      "title": "Ghost in the Directory",
+      "skill": "Hidden files",
+      "marks": 5,
+      "files": {
+        "/README.txt": "Look carefully at hidden entries.",
+        "/.ghost.txt": "SECRET-GHOST-42",
+        "/notes.txt": "Nothing useful here."
+      },
+      "answer": "SECRET-GHOST-42"
+    },
+    {
+      "id": 2,
+      "title": "Needle in the Logs",
+      "skill": "grep -r",
+      "marks": 5,
+      "files": {
+        "/logs/a.log": "INFO start\nINFO ready",
+        "/logs/b.log": "INFO idle\nSECRET=NEEDLE-731",
+        "/logs/c.log": "INFO end"
+      },
+      "answer": "NEEDLE-731"
+    },
+    {
+      "id": 3,
+      "title": "Lost in the Tree",
+      "skill": "cd, ls, cat",
+      "marks": 10,
+      "files": {
+        "/README.txt": "Travel to the archive directory.",
+        "/archive/clue.txt": "The answer is TREE-908",
+        "/archive/old.txt": "ignore"
+      },
+      "answer": "TREE-908"
+    },
+    {
+      "id": 4,
+      "title": "Pipe Dreams",
+      "skill": "grep | sort | uniq -c | sort -rn | head",
+      "marks": 10,
+      "files": {
+        "/data/events.txt": "red\nblue\nred\ngreen\nred\nblue\nyellow\nblue"
+      },
+      "answer": "red"
+    },
+    {
+      "id": 5,
+      "title": "The Final Chain",
+      "skill": "grep, find, grep -c",
+      "marks": 20,
+      "files": {
+        "/final/a.txt": "noise",
+        "/final/b.txt": "TARGET=FINAL-2026",
+        "/final/c.txt": "TARGET=OTHER"
+      },
+      "answer": "FINAL-2026"
+    }
+  ],
+  "devices": {
+    "f6e2017d8af12cfd600559b5": {
+      "attempts": 1,
+      "blocked": false,
+      "firstSeen": "2026-10-07T08:51:35.676Z",
+      "ip": "10.1.25.25",
+      "ua": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/154.0.0.0 Safari/537.36",
+      "lastAt": "2026-10-07T08:51:35.677Z"
+    }
+  }
+}

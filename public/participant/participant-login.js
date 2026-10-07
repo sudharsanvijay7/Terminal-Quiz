@@ -18,10 +18,11 @@ $('#app').innerHTML=layout(`
           <input id="reg" placeholder="Register number / Participant ID" required maxlength="30"></label>
         <div class="pl-batch" role="radiogroup" aria-label="Batch"><span>$ batch</span>
           <div class="pl-opts">
-            <label class="pl-opt"><input type="radio" name="batch" value="Batch 1"><i>BATCH 1</i></label>
-            <label class="pl-opt"><input type="radio" name="batch" value="Batch 2"><i>BATCH 2</i></label>
+            <label class="pl-opt" id="plb1"><input type="radio" name="batch" value="Batch 1" disabled><i>BATCH 1</i></label>
+            <label class="pl-opt" id="plb2"><input type="radio" name="batch" value="Batch 2" disabled><i>BATCH 2</i></label>
           </div>
         </div>
+        <p class="pl-seats" id="plSeats">// checking seats…</p>
         <button class="pl-btn" id="plBtn">JOIN EVENT →</button>
       </form>
 
@@ -35,21 +36,15 @@ $('#app').innerHTML=layout(`
 $('#loginForm').onsubmit=async e=>{
   e.preventDefault();
   const btn=$('#plBtn'), win=document.querySelector('.pl-win');
-  const batch=document.querySelector('input[name=batch]:checked')?.value;
-  if(!batch){
-    toast('Select your batch');
-    win.classList.remove('shake'); void win.offsetWidth; win.classList.add('shake');
-    return;
-  }
-  btn.disabled=true; btn.textContent='AUTHENTICATING…';
+  btn.disabled=true; btn.dataset.busy='1'; btn.textContent='AUTHENTICATING…';
   try{
-    const d=await api('/api/login',{method:'POST',body:JSON.stringify({name:$('#name').value,registerNumber:$('#reg').value,batch})});
+    const d=await api('/api/login',{method:'POST',body:JSON.stringify({name:$('#name').value,registerNumber:$('#reg').value})});
     localStorage.setItem('tq_token',d.token);
     btn.textContent='ACCESS GRANTED ✓';
     setTimeout(()=>location.href='/participant.html',350);
   }catch(x){
     toast(x.message);
-    btn.disabled=false; btn.textContent='JOIN EVENT →';
+    btn.disabled=false; delete btn.dataset.busy; btn.textContent='JOIN EVENT →'; loadSeats();
     win.classList.remove('shake'); void win.offsetWidth; win.classList.add('shake');
   }
 };
@@ -90,3 +85,17 @@ $('#loginForm').onsubmit=async e=>{
   p.addEventListener('pointermove',e=>{const r=p.getBoundingClientRect();p.style.setProperty('--mx',(e.clientX-r.left)+'px');p.style.setProperty('--my',(e.clientY-r.top)+'px')});
   setTimeout(()=>document.getElementById('name')?.focus(),900);
 })();
+
+/* batch + seat status: Batch 1 = first 60 to join, Batch 2 unlocks once 60 have joined; max 60 computers in use at once */
+async function loadSeats(){
+  try{
+    const r=await fetch('/api/batch-status',{cache:'no-store'}); if(!r.ok) return; const d=await r.json();
+    const b1=$('#plb1'), b2=$('#plb2');
+    b1.querySelector('input').checked=d.batch1Open; b2.querySelector('input').checked=d.batch2Open;
+    b1.classList.toggle('off',!d.batch1Open); b2.classList.toggle('off',!d.batch2Open);
+    $('#plSeats').innerHTML=d.full
+      ? '<b class="bad">// all '+d.seatLimit+' computers are in use - new participants wait for a free seat</b>'
+      : '// you will be <b>#'+d.nextNo+'</b> · Batch '+d.nextBatch+' · '+d.seatsFree+' of '+d.seatLimit+' seats free';
+  }catch(e){}
+}
+loadSeats(); setInterval(loadSeats,3000);

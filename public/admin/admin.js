@@ -8,7 +8,7 @@ function phase(s,p){
   const n=s.participantCount, on=s.onlineCount, sub=p.filter(x=>x.round1Submitted).length;
   switch(s.state){
     case 'WAITING': return {t:'Lobby is open',h:`${on} of ${n} participants are online. Start Round 1 when everyone is in.`,a:'start1',l:'START ROUND 1'};
-    case 'ROUND1_ACTIVE': return {t:'Round 1 is live',h:`${sub} of ${n} have submitted. The round ends automatically when the timer hits zero.`,a:'end1',l:'END ROUND 1',danger:1};
+    case 'ROUND1_ACTIVE': return {t:'Round 1 is live',h:`${sub} of ${n} have submitted. Each participant has their own 20-minute timer that starts when their quiz opens. Press END ROUND 1 once everyone has finished.`,a:'end1',l:'END ROUND 1',danger:1};
     case 'ROUND1_COMPLETED': return {t:'Round 1 finished',h:'Check the scores below, then open Round 2.',a:'start2',l:'START ROUND 2'};
     case 'ROUND2_ACTIVE': return {t:'Round 2 is live',h:'Participants are solving the terminal challenges.',a:'end2',l:'END ROUND 2',danger:1};
     case 'ROUND2_COMPLETED': return s.leaderboardPublished
@@ -24,9 +24,9 @@ function fmtTaken(ms){if(ms==null)return '<span class="empty">—</span>';const 
 async function dashboard(){
   clearTimeout(pollId);
   try{
-    const [s,p,l,dv]=await Promise.all([api('/api/state'),api('/api/admin/participants'),api('/api/admin/logs'),api('/api/admin/devices').catch(()=>[])]);
+    const [s,p,l,dv,bi]=await Promise.all([api('/api/state'),api('/api/admin/participants'),api('/api/admin/logs'),api('/api/admin/devices').catch(()=>[]),api('/api/batch-status').catch(()=>null)]);
     /* redraw only when data changed (timer excluded): no flicker */
-    const sig=JSON.stringify([{...s,remainingMs:null},p,l.slice(0,20),dv]);
+    const sig=JSON.stringify([{...s,remainingMs:null},p,l.slice(0,20),dv,bi]);
     if(sig!==lastSig){
       lastSig=sig;
       const wasOpen=document.querySelector('.ad-adv')?.open;
@@ -62,6 +62,12 @@ async function dashboard(){
     <div><small>SUBMITTED R1</small><b>${p.filter(x=>x.round1Submitted).length}</b></div>
     <div><small>TOP SCORE</small><b>${p[0]?.total||0}</b></div>
   </section>
+  ${bi?`<section class="ad-stats">
+    <div><small>SEATS IN USE</small><b class="${bi.full?'':'g'}"${bi.full?' style="color:#ff7d89"':''}>${bi.seatsInUse} / ${bi.seatLimit}</b></div>
+    <div><small>BATCH 1 JOINED</small><b>${bi.batch1Count} / ${bi.batch1Size}</b></div>
+    <div><small>BATCH 2</small><b>${bi.batch2Open||bi.batch2Count?bi.batch2Count+' (active)':'locked'}</b></div>
+    <div><small>NEXT JOINER</small><b>#${bi.nextNo}</b></div>
+  </section>`:''}
 
   ${dv.length?`<section class="ad-panel" style="margin-bottom:18px;border-color:#6b2630">
     <div class="ad-ph"><h2 style="color:#ff7d89">Blocked devices (left fullscreen 3 times before joining)</h2><span>${dv.length}</span></div>
@@ -70,7 +76,7 @@ async function dashboard(){
   <section class="ad-cols">
     <div class="ad-panel">
       <div class="ad-ph"><h2>Participants</h2><span>${p.length}</span></div>
-      <div class="ad-scroll"><table class="ad-table"><thead><tr><th>#</th><th>Name</th><th>ID</th><th>Batch</th><th>Status</th><th>R1</th><th>R1 Time</th><th>R2</th><th>R2 Time</th><th>Total</th></tr></thead><tbody>${p.map((x,i)=>`<tr class="${i<3&&x.total>0?'top'+(i+1):''}"><td class="rk">${i+1}</td><td>${escapeHtml(x.name)}</td><td class="id">${escapeHtml(x.id)}</td><td>${escapeHtml(x.batch||'-')}</td><td class="${x.online&&!x.exited?'on':'off'}"><span class="status-dot ${x.online&&!x.exited?'is-online':'is-offline'}"></span>${x.exited?'<b style="color:#ff5f6d">EXITED</b> <button class="ad-btn rein" style="padding:3px 8px;font-size:11px;margin-left:6px" data-id="'+escapeHtml(x.id)+'">REINSTATE</button>':(x.online?'Online':'Offline')}${x.exitAttempts?' <span title="Fullscreen exits" style="color:#ff7d89;font-size:12px">&#9888;'+x.exitAttempts+'</span>':''}</td><td>${x.round1Score}</td><td>${fmtTaken(x.round1TimeMs)}</td><td>${x.round2Score}</td><td>${fmtTaken(x.round2TimeMs)}</td><td><b>${x.total}</b></td></tr>`).join('')||'<tr><td colspan="10" class="empty">Waiting for participants to join…</td></tr>'}</tbody></table></div>
+      <div class="ad-scroll"><table class="ad-table"><thead><tr><th>#</th><th>Join #</th><th>Name</th><th>ID</th><th>Batch</th><th>Status</th><th>R1</th><th>R1 Time</th><th>R2</th><th>R2 Time</th><th>Total</th></tr></thead><tbody>${p.map((x,i)=>`<tr class="${i<3&&x.total>0?'top'+(i+1):''}"><td class="rk">${i+1}</td><td>${x.joinNo||'-'}</td><td>${escapeHtml(x.name)}</td><td class="id">${escapeHtml(x.id)}</td><td>${escapeHtml(x.batch||'-')}</td><td class="${x.online&&!x.exited?'on':'off'}"><span class="status-dot ${x.online&&!x.exited?'is-online':'is-offline'}"></span>${x.exited?'<b style="color:#ff5f6d">EXITED</b> <button class="ad-btn rein" style="padding:3px 8px;font-size:11px;margin-left:6px" data-id="'+escapeHtml(x.id)+'">REINSTATE</button>':(x.online?'Online':'Offline')}${x.exitAttempts?' <span title="Fullscreen exits" style="color:#ff7d89;font-size:12px">&#9888;'+x.exitAttempts+'</span>':''}</td><td>${x.round1Score}</td><td>${fmtTaken(x.round1TimeMs)}</td><td>${x.round2Score}</td><td>${fmtTaken(x.round2TimeMs)}</td><td><b>${x.total}</b></td></tr>`).join('')||'<tr><td colspan="11" class="empty">Waiting for participants to join…</td></tr>'}</tbody></table></div>
     </div>
     <div class="ad-panel">
       <div class="ad-ph"><h2>Activity</h2><span>latest ${Math.min(20,l.length)}</span></div>
