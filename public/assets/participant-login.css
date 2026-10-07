@@ -71,3 +71,27 @@ body::after{content:'';position:fixed;inset:0;z-index:50;pointer-events:none;bac
 .pl-note{margin:2px 0 6px;font:12px var(--pm);color:#8fb4a0;line-height:1.5}
 .pl-note:not(:empty){padding:10px 12px;border:1px solid #1f6b43;border-radius:6px;background:rgba(55,214,122,.07)}
 .pl-note b{color:#37d67a}
+/* WAITING ROOM - "Batch 1 completed" (shown instead of the form until Batch 2 login is opened) */
+.plw[hidden]{display:none}
+.plw{display:grid;gap:16px;animation:plwIn .6s cubic-bezier(.2,.8,.2,1) backwards}
+@keyframes plwIn{from{opacity:0;transform:translateY(14px)}}
+.plw-badge{display:inline-flex;align-items:center;gap:9px;justify-self:start;margin:0;padding:7px 12px;border:1px solid #1f6b43;border-radius:999px;background:rgba(55,214,122,.08);font:700 12px var(--pm);letter-spacing:.14em;color:#37d67a}
+.plw-badge i{width:8px;height:8px;border-radius:50%;background:#37d67a;box-shadow:0 0 10px #37d67a;animation:plwBlink 1.4s infinite}
+@keyframes plwBlink{50%{opacity:.25}}
+.plw-steps{list-style:none;margin:2px 0;padding:0;display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.plw-steps li{display:flex;flex-direction:column;align-items:center;gap:8px;padding:12px 6px;border:1px solid #1d3a2b;border-radius:6px;background:#06100b;font:11px/1.35 var(--pm);letter-spacing:.06em;text-align:center;color:#6f7d8c}
+.plw-steps li i{display:grid;place-items:center;width:26px;height:26px;border:1px solid #1d3a2b;border-radius:50%;font:700 12px var(--pm);font-style:normal}
+.plw-steps li.done{color:#8fb4a0}.plw-steps li.done i{background:var(--pg);border-color:var(--pg);color:#03130a}
+.plw-steps li.now{color:#e9fff3;border-color:var(--pg);box-shadow:0 0 22px rgba(52,245,139,.22)}
+.plw-steps li.now i{border-color:var(--pg);color:var(--pg);animation:plwBlink 1.4s infinite}
+.plw-msg{margin:0;font:500 15px/1.6 var(--pm);color:#cfe9da}
+.plw-msg b{color:#e9fff3}
+.plw-msg.dim{font-size:13px;color:#8fb4a0}
+.plw-msg[hidden]{display:none}
+.plw-wait{margin:4px 0 0;font:13px var(--pm);color:#8fb4a0}
+.plw-wait em{font-style:normal;color:var(--pg)}
+.plw-wait b{margin-left:8px;color:#e9fff3}
+.plw-dots i{display:inline-block;width:4px;height:4px;margin:0 1px;border-radius:50%;background:var(--pg);animation:plwBlink 1.2s infinite}
+.plw-dots i:nth-child(2){animation-delay:.2s}.plw-dots i:nth-child(3){animation-delay:.4s}
+.plw-hint{margin:0;font:12px var(--pm);color:#6f7d8c}
+@media(prefers-reduced-motion:reduce){.plw,.plw-badge i,.plw-steps li.now i,.plw-dots i{animation:none}}

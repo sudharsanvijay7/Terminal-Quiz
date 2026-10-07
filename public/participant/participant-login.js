@@ -27,7 +27,20 @@ $('#app').innerHTML=layout(`
         <button class="pl-btn" id="plBtn">JOIN EVENT →</button>
       </form>
 
-      <p class="pl-note">// use the same participant ID throughout the event</p>
+      <section class="plw" id="plWait" hidden>
+        <p class="plw-badge"><i></i> BATCH 1 · COMPLETED</p>
+        <ol class="plw-steps">
+          <li class="done"><i>✓</i><span>Batch 1<br>Round 1</span></li>
+          <li class="now"><i>2</i><span>Batch 2<br>login</span></li>
+          <li><i>3</i><span>Batch 2<br>Round 1</span></li>
+        </ol>
+        <p class="plw-msg">Round 1 for <b>Batch 1</b> is over. The coordinator is getting the computers ready for <b>Batch 2</b>.</p>
+        <p class="plw-msg dim" id="plwThanks" hidden>Your Round 1 answers are saved - thank you! Finalists will be called to log in again for Round 2.</p>
+        <p class="plw-wait"><em>&gt;</em> waiting for coordinator to open Batch 2 login <span class="plw-dots"><i></i><i></i><i></i></span> <b id="plwT">00:00</b></p>
+        <p class="plw-hint">// stay on this page - the login form appears automatically</p>
+      </section>
+
+      <p class="pl-note" id="plHint">// use the same participant ID throughout the event</p>
       <a class="pl-back" href="/index.html">← back to event home</a>
     </div>
   </section>
@@ -94,6 +107,7 @@ async function loadSeats(){
     const b1=$('#plb1'), b2=$('#plb2');
     /* final round: no batches - hide the batch selector and any batch wording */
     document.querySelector('.pl-batch').style.display=d.finalRound?'none':'';
+    setWaitingRoom(!!d.waitingRoom);
     b1.querySelector('input').checked=d.batch1Open; b2.querySelector('input').checked=d.batch2Open;
     b1.classList.toggle('off',!d.batch1Open); b2.classList.toggle('off',!d.batch2Open);
     $('#plSeats').innerHTML=d.full
@@ -103,6 +117,21 @@ async function loadSeats(){
         : '// you will be <b>#'+d.nextNo+'</b> · Batch '+d.nextBatch+' · '+d.seatsFree+' of '+d.seatLimit+' seats free';
   }catch(e){}
 }
-loadSeats(); setInterval(loadSeats,3000);
+loadSeats(); setInterval(loadSeats,3000); liveUpdates(loadSeats);
+
+/* WAITING ROOM: Batch 1 is finished, Batch 2 login not opened yet -> hide the form until the coordinator opens it */
+let wrOn=null, wrSince=Date.now();
+function setWaitingRoom(on){
+  if(wrOn===on) return;
+  const first=wrOn===null; wrOn=on;
+  $('#loginForm').style.display=on?'none':'';
+  $('#plWait').hidden=!on;
+  $('#plHint').style.display=on?'none':'';
+  const t=document.querySelector('.pl-title'); if(t) t.innerHTML=on?'Batch 1<br><span>completed</span>':'Enter the<br><span>competition</span>';
+  const ty=document.querySelector('.pl-type'); if(ty) ty.style.display=on?'none':'';
+  if(on){ wrSince=Date.now(); $('#plwThanks').hidden=!new URLSearchParams(location.search).get('done'); }
+  else if(!first){ toast('Batch 2 login is now open'); setTimeout(()=>document.getElementById('name')?.focus(),200); }
+}
+setInterval(()=>{const t=document.getElementById('plwT'); if(!t||$('#plWait').hidden) return; const s=Math.floor((Date.now()-wrSince)/1000); t.textContent=String(Math.floor(s/60)).padStart(2,'0')+':'+String(s%60).padStart(2,'0')},1000);
 /* shown after a round ends and the participant was logged out automatically */
 if(new URLSearchParams(location.search).get('done')){ const n=document.getElementById('plNote'); if(n) n.innerHTML='<b>Round finished - you have been logged out.</b><br>Thank you for taking part! If you are shortlisted for the final round, log in again when the coordinator calls the finalists.'; }

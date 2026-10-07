@@ -25,7 +25,7 @@ function waiting(s,p){
     if(s.shortlistDone){ if(p.shortlisted){ttl='You are shortlisted!';msg='Congratulations - you qualified for the final round (Round 2). Stay on this page; the coordinator will open the final round login shortly.'}else{ttl='Round 1 Complete';msg='Thank you for taking part. You were not shortlisted for the final round this time.'}}
     else if(!s.r1Next){ttl='Round 1 Complete';msg='Round 1 is complete for all batches. Your answers are saved - we will shortlist soon. Please stay on this page; finalists will be asked to log in again for the final round.'}
     else if(done){ttl='Round 1 Submitted';msg='Your Round 1 submission has been recorded. The coordinator will announce the shortlist for the final round.'}
-    else{ttl='Round 1 Complete';msg=`Round 1 is finished for the other batch. ${escapeHtml(mine)} will be started by the coordinator shortly - stay on this page.`}
+    else{ttl=mine==='Batch 2'?'Batch 1 Completed':'Round 1 Complete';msg=mine==='Batch 2'?`Batch 1 has completed Round 1. <b>Batch 2</b> will be started by the coordinator shortly - stay on this page.`:`Round 1 is finished for the other batch. ${escapeHtml(mine)} will be started by the coordinator shortly - stay on this page.`}
   }
   else if(s.state==='ROUND2_ACTIVE'){
     if(p.shortlisted&&p.round2Submitted){ttl='Round 2 Submitted';msg='Your Round 2 submission has been recorded. Wait for the coordinator to finish the event.'}

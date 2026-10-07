@@ -1,10 +1,10 @@
 {
   "event": {
     "name": "TERMINAL QUIZ",
-    "state": "ROUND2_ACTIVE",
-    "round": 2,
-    "startAt": 1791385524809,
-    "endAt": 1791387324809,
+    "state": "ROUND1_COMPLETED",
+    "round": 1,
+    "startAt": null,
+    "endAt": null,
     "paused": false,
     "remainingMs": null,
     "leaderboardPublished": false,
@@ -14,12 +14,11 @@
       "Batch 2": true
     },
     "shortlistDone": true,
-    "finalLoginOpen": true,
+    "finalLoginOpen": false,
     "batch2LoginOpen": true,
     "shortlistCount": 2,
     "round1StartedAt": 1791385442771,
-    "round1EndedAt": 1791385445927,
-    "round2StartedAt": 1791385524809
+    "round1EndedAt": 1791385445927
   },
   "participants": {
     "3857952": {
@@ -39,8 +38,7 @@
       "shortlisted": true,
       "round1StartAt": 1791385442901,
       "round1TimeMs": 3026,
-      "exited": false,
-      "sessionOver": true
+      "exited": false
     },
     "095380": {
       "id": "095380",
@@ -177,31 +175,6 @@
       "time": "2026-10-07T15:04:45.073Z",
       "type": "PARTICIPANT_REINSTATED",
       "detail": "3857952 cena allowed to rejoin"
-    },
-    {
-      "time": "2026-10-07T15:04:51.590Z",
-      "type": "FINAL_LOGIN",
-      "detail": "Final round login opened - finalists must log in again"
-    },
-    {
-      "time": "2026-10-07T15:05:20.749Z",
-      "type": "FULLSCREEN_EXIT",
-      "detail": "device 8C19D3 left fullscreen before joining (warning 2 of 3)"
-    },
-    {
-      "time": "2026-10-07T15:05:24.809Z",
-      "type": "ROUND_START",
-      "detail": "Round 2"
-    },
-    {
-      "time": "2026-10-07T15:05:30.969Z",
-      "type": "FULLSCREEN_EXIT",
-      "detail": "device 8C19D3 left fullscreen before joining (warning 3 of 3)"
-    },
-    {
-      "time": "2026-10-07T15:05:30.969Z",
-      "type": "DEVICE_BLOCKED",
-      "detail": "device 8C19D3 blocked after 3 fullscreen exits before joining - admin must allow it"
     }
   ],
   "questions": [
@@ -508,13 +481,12 @@
   ],
   "devices": {
     "8c19d36ed0f7d05a92e5bf0a": {
-      "attempts": 3,
-      "blocked": true,
+      "attempts": 1,
+      "blocked": false,
       "firstSeen": "2026-10-07T15:03:44.561Z",
       "ip": "172.20.10.4",
       "ua": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/154.0.0.0 Safari/537.36",
-      "lastAt": "2026-10-07T15:05:30.969Z",
-      "blockedAt": "2026-10-07T15:05:30.969Z"
+      "lastAt": "2026-10-07T15:03:44.561Z"
     }
   }
 }

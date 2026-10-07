@@ -12,8 +12,8 @@ function phase(s,p){
     case 'ROUND1_ACTIVE': {const b=inB(s.r1Batch),sub=b.filter(x=>x.round1Submitted).length;return {t:`Round 1 · ${s.r1Batch} is live`,h:`${sub} of ${b.length} in ${s.r1Batch} have submitted. Each participant has their own 20-minute timer that starts when their quiz opens. Press END once everyone in this batch has finished - their results are saved to a separate CSV.`,a:'end1',l:'END ROUND 1 — '+String(s.r1Batch).toUpperCase(),danger:1}}
     case 'ROUND1_COMPLETED': {
       const done=Object.keys(s.r1Done||{}).filter(k=>s.r1Done[k]).join(' + ')||'Round 1';
-      const pend=s.r1Next&&inB(s.r1Next).length>0;
-      if(pend) return {t:`Round 1 finished · ${done}`,h:`${s.r1Next} has ${inB(s.r1Next).length} participants waiting. Seat them, then start their Round 1. (To skip it, use the shortlist panel below.)`,a:'start1',l:'START ROUND 1 — '+String(s.r1Next).toUpperCase()};
+      if(s.r1Next&&!s.shortlistDone&&!s.batch2LoginOpen) return {t:`${done} completed`,h:`Participants of ${done} are logged out and anyone opening the login page sees the "Batch 1 completed" waiting room. Press OPEN ${String(s.r1Next).toUpperCase()} LOGIN when ${s.r1Next} should come in and sit down. (To skip ${s.r1Next}, use the shortlist panel below.)`,a:'openb2',l:'OPEN '+String(s.r1Next).toUpperCase()+' LOGIN'};
+      if(s.r1Next&&!s.shortlistDone) return {t:`${s.r1Next} login is open`,h:`${inB(s.r1Next).length} participants of ${s.r1Next} have logged in so far (${on} online). Start their Round 1 when they are all seated. (To skip it, use the shortlist panel below.)`,a:'start1',l:'START ROUND 1 — '+String(s.r1Next).toUpperCase()};
       if(!s.shortlistDone) return {t:'Round 1 finished for all batches',h:'Choose how many participants go to the final round and press SHORTLIST below.'};
       if(!s.finalLoginOpen) return {t:'Finalists selected',h:`${s.shortlistedCount} participants are shortlisted for Round 2. Press OPEN FINAL ROUND LOGIN - everyone is logged out and only the finalists can log in again.`,a:'openfinal',l:'OPEN FINAL ROUND LOGIN'};
       return {t:'Final round login is open',h:`${s.shortlistedCount} finalists are shortlisted. Start the final round when they have all logged in and are seated.`,a:'start2',l:'START ROUND 2 (FINAL)'};
@@ -37,7 +37,7 @@ async function dashboard(){
     const sig=JSON.stringify([{...s,remainingMs:null},p,l.slice(0,20),dv,bi]);
     if(sig!==lastSig){
       lastSig=sig;
-      const wasOpen=document.querySelector('.ad-adv')?.open; const keepN=document.getElementById('slN')?.value; window.curBatch=s.state==='ROUND1_ACTIVE'?s.r1Batch:null; window.pendingBatch=(s.state==='ROUND1_COMPLETED'&&s.r1Next&&p.filter(x=>(x.batch||'Batch 1')===s.r1Next).length>0)?s.r1Next:null;
+      const wasOpen=document.querySelector('.ad-adv')?.open; const keepN=document.getElementById('slN')?.value; window.curBatch=s.state==='ROUND1_ACTIVE'?s.r1Batch:null; window.pendingBatch=(s.state==='ROUND1_COMPLETED'&&s.r1Next)?s.r1Next:null;
       const ph=phase(s,p), cur=Math.max(0,STAGES.indexOf(s.state));
       const steps=STAGE_LABELS.map((t,i)=>`<li class="${i<cur?'done':i===cur?'now':''}"><i>${i<cur?'✓':i+1}</i><span>${t}</span></li>`).join('');
       const action=ph.done?`<div class="ad-ok">✓ All done</div>`:!ph.a?'':`<button class="ad-go${ph.danger?' danger':''}" onclick="control('${ph.a}')">${ph.l}</button>`;
@@ -84,7 +84,7 @@ async function dashboard(){
   ${bi?`<section class="ad-stats">
     <div><small>SEATS IN USE</small><b class="${bi.full?'':'g'}"${bi.full?' style="color:#ff7d89"':''}>${bi.seatsInUse} / ${bi.seatLimit}</b></div>
     <div><small>BATCH 1 JOINED</small><b>${bi.batch1Count} / ${bi.batch1Size}</b></div>
-    <div><small>BATCH 2</small><b>${bi.batch2Open||bi.batch2Count?bi.batch2Count+' (active)':'locked'}</b></div>
+    <div><small>BATCH 2</small><b>${bi.waitingRoom?'login closed':(bi.batch2Open||bi.batch2Count?bi.batch2Count+' (active)':'locked')}</b></div>
     <div><small>NEXT JOINER</small><b>#${bi.nextNo}</b></div>
   </section>`:''}
 
@@ -108,6 +108,7 @@ async function dashboard(){
     <div class="ad-advrow">
       <button class="ad-btn" onclick="control('start1')">START R1</button>
       <button class="ad-btn" onclick="control('end1')">END R1</button>
+      <button class="ad-btn" onclick="control('openb2')">OPEN BATCH 2 LOGIN</button>
       <button class="ad-btn" onclick="control('openfinal')">OPEN FINAL LOGIN</button>
       <button class="ad-btn" onclick="control('start2')">START R2</button>
       <button class="ad-btn" onclick="control('end2')">END R2</button>
@@ -169,7 +170,7 @@ async function control(action){
   if((action==='end1'||action==='end2')&&!confirm('End this Round 1 batch now? Anyone still answering is submitted automatically.'))return;
   if(action==='openfinal'&&!confirm('Open the final round login? Everyone still logged in will be logged out; only shortlisted participants can log in again.'))return;
   const endedBatch=action==='end1'?window.curBatch:null;
-  try{await api('/api/admin/control',{method:'POST',body:JSON.stringify({action,password})});toast(action.toUpperCase()+' completed');lastSig='';dashboard();if(endedBatch)exportCsv(endedBatch==='Batch 2'?'2':'1')}catch(x){toast(x.message)}
+  try{await api('/api/admin/control',{method:'POST',body:JSON.stringify({action,password})});toast(({openb2:'Batch 2 login is now open',openfinal:'Final round login is now open'})[action]||action.toUpperCase()+' completed');lastSig='';dashboard();if(endedBatch)exportCsv(endedBatch==='Batch 2'?'2':'1')}catch(x){toast(x.message)}
 }
 async function exportCsv(kind){
 try{
