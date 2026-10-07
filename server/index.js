@@ -25,7 +25,7 @@ let db=loadDb();let lastSaved='';
 if(!fs.existsSync(DATA))save();   /* write only when the file does not exist yet - never on every start */
 /* atomic write: a restart in the middle of a save can no longer leave a half-written db.json */
 function save(){const s=JSON.stringify(db,null,2),tmp=DATA+'.tmp';if(s===lastSaved)return;lastSaved=s;try{fs.writeFileSync(tmp,s);fs.renameSync(tmp,DATA)}catch{try{fs.writeFileSync(DATA,s)}catch(e){console.error('save failed',e.message)}}}function log(type,detail){db.logs.push({time:new Date().toISOString(),type,detail});if(db.logs.length>2000)db.logs.shift();save()}
-function token(){return crypto.randomBytes(24).toString('hex')}const SEC={'X-Content-Type-Options':'nosniff','X-Frame-Options':'DENY','Referrer-Policy':'no-referrer'};
+function token(){return crypto.randomBytes(24).toString('hex')}const SEC={'X-Content-Type-Options':'nosniff','X-Frame-Options':'SAMEORIGIN','Referrer-Policy':'no-referrer'};
 function json(res,status,obj,extra){const b=Buffer.from(JSON.stringify(obj));res.writeHead(status,{'Content-Type':'application/json','Content-Length':b.length,'Cache-Control':'no-store',...SEC,...(extra||{})});res.end(b)}
 function body(req){return new Promise((resolve,reject)=>{let s='';req.on('data',c=>{s+=c;if(s.length>1e6)req.destroy()});req.on('end',()=>{try{resolve(s?JSON.parse(s):{})}catch{reject()}})})}
 function auth(req){const t=(req.headers.authorization||'').replace('Bearer ','');const p=Object.values(db.participants).find(x=>x.token===t);return p&&p.id}
@@ -97,7 +97,7 @@ const assetAliases={
 async function handler(req,res){
   let u=new URL(req.url,`http://${req.headers.host}`);
   if(req.method==='GET'){
-    if(u.pathname==='/'||u.pathname==='/index.html')return serve('index.html',res);
+    if(u.pathname==='/')return serve('start.html',res);if(u.pathname==='/index.html')return serve('index.html',res);
     if(pageAliases[u.pathname])return serve(pageAliases[u.pathname],res);
     if(assetAliases[u.pathname])return serve(assetAliases[u.pathname],res);
     if(u.pathname.startsWith('/assets/'))return serve(u.pathname.slice(1),res);

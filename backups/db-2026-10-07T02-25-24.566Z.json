@@ -9,14 +9,39 @@
     "remainingMs": null,
     "leaderboardPublished": false
   },
-  "participants": {},
+  "participants": {
+    "83058": {
+      "id": "83058",
+      "name": "mojf",
+      "registerNumber": "83058",
+      "token": "c140a7a8064f5aa9cb6b16dcd13dddc307a22b2cb5fc89a9",
+      "online": false,
+      "round1Submitted": false,
+      "round1Score": 0,
+      "round2Score": 0,
+      "createdAt": "2026-10-07T02:20:40.644Z",
+      "lastSeen": 1791339647121
+    }
+  },
   "answers": {},
-  "terminal": {},
+  "terminal": {
+    "83058": {
+      "cwd": "/",
+      "files": {},
+      "challenge": 1,
+      "attempts": {}
+    }
+  },
   "logs": [
     {
-      "time": "2026-10-07T02:33:27.119Z",
+      "time": "2026-10-06T14:18:06.344Z",
       "type": "RESET",
       "detail": "Event reset"
+    },
+    {
+      "time": "2026-10-07T02:20:40.645Z",
+      "type": "LOGIN",
+      "detail": "83058 mojf"
     }
   ],
   "questions": [
