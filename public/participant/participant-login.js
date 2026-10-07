@@ -22,6 +22,7 @@ $('#app').innerHTML=layout(`
             <label class="pl-opt" id="plb2"><input type="radio" name="batch" value="Batch 2" disabled><i>BATCH 2</i></label>
           </div>
         </div>
+        <p class="pl-note" id="plNote"></p>
         <p class="pl-seats" id="plSeats">// checking seats…</p>
         <button class="pl-btn" id="plBtn">JOIN EVENT →</button>
       </form>
@@ -99,3 +100,5 @@ async function loadSeats(){
   }catch(e){}
 }
 loadSeats(); setInterval(loadSeats,3000);
+/* shown after a round ends and the participant was logged out automatically */
+if(new URLSearchParams(location.search).get('done')){ const n=document.getElementById('plNote'); if(n) n.innerHTML='<b>Round finished - you have been logged out.</b><br>Thank you for taking part! If you are shortlisted for the final round, log in again when the coordinator calls the finalists.'; }

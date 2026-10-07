@@ -19,7 +19,7 @@ const options=[
 async function init(){
  try{
   const d=await api('/api/me');
-  if(d.state.state!=='ROUND2_ACTIVE'){location.href='/participant.html';return}
+  if(!d.can?.round2){location.href='/participant.html';return}
   currentChallenge=d.terminal.challenge||1;
   if(currentChallenge>5){location.href='/participant.html';return}
   render(d.participant,d.state,d.terminal);
@@ -30,6 +30,11 @@ async function init(){
   toast(e.message);setTimeout(init,2000);
  }
 }
+
+async function watchRound(){
+ try{const d=await api('/api/me');if(!d.can?.round2)location.href='/participant.html'}catch(e){if(isAuthError(e)){clearParticipant();location.href='/participant-login.html'}}
+}
+setInterval(watchRound,3000);liveUpdates(watchRound);
 
 function render(p,s,t){
  const info=challengeInfo[currentChallenge-1],opts=options[currentChallenge-1];

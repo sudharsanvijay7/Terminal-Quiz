@@ -21,3 +21,9 @@ function startParticipantHeartbeat(){
   participantHeartbeatId=setInterval(beat,5000);
 }
 if(getToken() && !location.pathname.includes('/admin/')) startParticipantHeartbeat();
+/* instant updates: the server pushes a message the moment the admin starts/ends a round; `fn` re-checks the state. Polling stays as a fallback. */
+function liveUpdates(fn){
+  try{const es=new EventSource('/api/events');es.onmessage=()=>fn()}catch(e){}
+  document.addEventListener('visibilitychange',()=>{if(!document.hidden)fn()});
+  window.addEventListener('focus',()=>fn());
+}

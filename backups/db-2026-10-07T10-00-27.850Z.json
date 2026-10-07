@@ -7,18 +7,14 @@
     "endAt": null,
     "paused": false,
     "remainingMs": null,
-    "leaderboardPublished": false,
-    "r1Batch": null,
-    "r1Done": {},
-    "shortlistDone": false,
-    "shortlistCount": null
+    "leaderboardPublished": false
   },
   "participants": {},
   "answers": {},
   "terminal": {},
   "logs": [
     {
-      "time": "2026-10-07T10:47:28.902Z",
+      "time": "2026-10-07T09:52:28.396Z",
       "type": "RESET",
       "detail": "Event reset"
     }

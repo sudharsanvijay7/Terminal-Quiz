@@ -68,3 +68,6 @@ body::after{content:'';position:fixed;inset:0;z-index:50;pointer-events:none;bac
 .pl-seats{margin:2px 0 4px;font:12px var(--pm);color:#8fb4a0;letter-spacing:.04em}
 .pl-seats b{color:#e9fff3}.pl-seats b.bad{color:#ff7d89}
 .pl-btn:disabled{opacity:.5;cursor:not-allowed}
+.pl-note{margin:2px 0 6px;font:12px var(--pm);color:#8fb4a0;line-height:1.5}
+.pl-note:not(:empty){padding:10px 12px;border:1px solid #1f6b43;border-radius:6px;background:rgba(55,214,122,.07)}
+.pl-note b{color:#37d67a}

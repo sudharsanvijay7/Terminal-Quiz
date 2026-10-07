@@ -17,7 +17,7 @@ const answeredCount=()=>questions.filter(q=>answers[q.id]!=null).length;
 async function init(){
   try{
     const [d,q]=await Promise.all([api('/api/me'),api('/api/questions')]);
-    if(d.participant?.round1Submitted||d.state.state!=='ROUND1_ACTIVE'){location.href='/participant.html';return}
+    if(!d.can?.round1){location.href='/participant.html';return}
     me=d.participant; questions=q;
     const saved=loadLocal();
     questions.forEach(x=>{const v=saved[x.id];if(v!=null&&v>=0&&v<x.options.length)answers[x.id]=v});
@@ -27,7 +27,7 @@ async function init(){
     const st=await api('/api/round1-start',{method:'POST',body:'{}'});
     endAt=Date.now()+st.remainingMs;
     shell(); draw(true); startTimer();
-    setInterval(resync,10000);
+    setInterval(resync,3000); liveUpdates(resync);
   }catch(e){
     toast(e.message);
     setTimeout(()=>location.href='/participant.html',1000);
@@ -39,7 +39,7 @@ async function resync(){
   if(submitting)return;
   try{
     const d=await api('/api/me');
-    if(d.participant?.round1Submitted||d.state.state!=='ROUND1_ACTIVE'){location.href='/participant.html';return}
+    if(!d.can?.round1){location.href='/participant.html';return}
     if(d.myRemainingMs!=null)endAt=Date.now()+d.myRemainingMs;
   }catch(e){if(/unauthorized/i.test(e.message))location.href='/participant-login.html'}
 }

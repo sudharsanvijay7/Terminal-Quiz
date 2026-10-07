@@ -1,26 +1,164 @@
 {
   "event": {
     "name": "TERMINAL QUIZ",
-    "state": "WAITING",
-    "round": 0,
+    "state": "ROUND1_COMPLETED",
+    "round": 1,
     "startAt": null,
     "endAt": null,
     "paused": false,
     "remainingMs": null,
     "leaderboardPublished": false,
+    "r1Done": {
+      "Batch 1": true
+    },
     "r1Batch": null,
-    "r1Done": {},
+    "round1StartedAt": 1791368980266,
+    "round1EndedAt": 1791369012067,
     "shortlistDone": false,
     "shortlistCount": null
   },
-  "participants": {},
-  "answers": {},
-  "terminal": {},
+  "participants": {
+    "104": {
+      "id": "104",
+      "name": "CM2046",
+      "registerNumber": "104",
+      "batch": "Batch 1",
+      "joinNo": 1,
+      "token": "0b276b419295905b8f9ccd593e996238c40befce8db5ee17",
+      "online": false,
+      "round1Submitted": true,
+      "round1Score": 1,
+      "round2Score": 0,
+      "createdAt": "2026-10-07T10:29:32.895Z",
+      "lastSeen": 1791369047159,
+      "shortlisted": false,
+      "round1StartAt": 1791368980354,
+      "round1TimeMs": 31714
+    }
+  },
+  "answers": {
+    "104:1": {
+      "participantId": "104",
+      "questionId": 1,
+      "answer": 0,
+      "at": "2026-10-07T10:29:43.448Z"
+    },
+    "104:2": {
+      "participantId": "104",
+      "questionId": 2,
+      "answer": 1,
+      "at": "2026-10-07T10:29:46.716Z"
+    },
+    "104:3": {
+      "participantId": "104",
+      "questionId": 3,
+      "answer": 3,
+      "at": "2026-10-07T10:29:48.841Z"
+    },
+    "104:4": {
+      "participantId": "104",
+      "questionId": 4,
+      "answer": 3,
+      "at": "2026-10-07T10:29:51.845Z"
+    },
+    "104:5": {
+      "participantId": "104",
+      "questionId": 5,
+      "answer": 2,
+      "at": "2026-10-07T10:29:53.778Z"
+    },
+    "104:6": {
+      "participantId": "104",
+      "questionId": 6,
+      "answer": 2,
+      "at": "2026-10-07T10:29:56.439Z"
+    },
+    "104:7": {
+      "participantId": "104",
+      "questionId": 7,
+      "answer": 3,
+      "at": "2026-10-07T10:29:58.526Z"
+    },
+    "104:8": {
+      "participantId": "104",
+      "questionId": 8,
+      "answer": 1,
+      "at": "2026-10-07T10:30:00.556Z"
+    },
+    "104:9": {
+      "participantId": "104",
+      "questionId": 9,
+      "answer": 3,
+      "at": "2026-10-07T10:30:02.682Z"
+    },
+    "104:10": {
+      "participantId": "104",
+      "questionId": 10,
+      "answer": 3,
+      "at": "2026-10-07T10:30:04.555Z"
+    },
+    "104:11": {
+      "participantId": "104",
+      "questionId": 11,
+      "answer": 2,
+      "at": "2026-10-07T10:30:06.730Z"
+    },
+    "104:12": {
+      "participantId": "104",
+      "questionId": 12,
+      "answer": 2,
+      "at": "2026-10-07T10:30:09.348Z"
+    },
+    "104:13": {
+      "participantId": "104",
+      "questionId": 13,
+      "answer": 3,
+      "at": "2026-10-07T10:30:11.592Z"
+    }
+  },
+  "terminal": {
+    "104": {
+      "cwd": "/",
+      "files": {},
+      "challenge": 1,
+      "attempts": {}
+    }
+  },
   "logs": [
     {
-      "time": "2026-10-07T10:47:28.902Z",
+      "time": "2026-10-07T10:06:17.388Z",
       "type": "RESET",
       "detail": "Event reset"
+    },
+    {
+      "time": "2026-10-07T10:28:52.883Z",
+      "type": "ADMIN_LOGIN",
+      "detail": "10.1.25.49 signed in"
+    },
+    {
+      "time": "2026-10-07T10:29:32.895Z",
+      "type": "LOGIN",
+      "detail": "104 CM2046 #1 Batch 1"
+    },
+    {
+      "time": "2026-10-07T10:29:40.266Z",
+      "type": "ROUND_START",
+      "detail": "Round 1 - Batch 1"
+    },
+    {
+      "time": "2026-10-07T10:29:40.354Z",
+      "type": "ROUND1_BEGIN",
+      "detail": "104 CM2046 started their Round 1 timer"
+    },
+    {
+      "time": "2026-10-07T10:30:12.068Z",
+      "type": "ROUND1_SUBMIT",
+      "detail": "104"
+    },
+    {
+      "time": "2026-10-07T10:30:12.072Z",
+      "type": "ROUND_END",
+      "detail": "Round 1 - Batch 1 (results saved to its own CSV)"
     }
   ],
   "questions": [
