@@ -7,7 +7,7 @@ const STAGE_LABELS=['Lobby','Round 1','R1 done','Round 2','Finish'];
 
 function waiting(s,p){
   /* the page polls every 2s: only redraw when something actually changed (keeps animations smooth) */
-  const sig=[s.state,p?.round1Submitted,p?.round2Submitted,s.leaderboardPublished,p.id,p.name,p.joinNo,p.batch,p.shortlisted,s.r1Batch,s.shortlistDone].join('|');
+  const sig=[s.state,p?.round1Submitted,p?.round2Submitted,s.leaderboardPublished,p.id,p.name,p.joinNo,p.batch,s.r1Batch,s.finalLoginOpen].join('|');
   if(sig===lastSig) return; lastSig=sig;
 
   const submitted=s.state==='ROUND1_ACTIVE'&&p?.round1Submitted;
@@ -19,17 +19,16 @@ function waiting(s,p){
   if(s.state==='WAITING'){ttl='Waiting Room';msg=`The coordinator will start Round 1 shortly. You are in <b>${escapeHtml(mine)}</b>${mine==='Batch 2'?' - Batch 1 goes first, then it is your turn.':'.'}`}
   else if(s.state==='ROUND1_ACTIVE'){
     if(s.r1Batch!==mine&&!done){ttl='Waiting for your batch';msg=`Round 1 for <b>${escapeHtml(s.r1Batch||'')}</b> is in progress. <b>${escapeHtml(mine)}</b> will be started next - please stay on this page.`}
-    else if(done){ttl='Round 1 Submitted';msg='Your Round 1 submission has been recorded. The coordinator will announce the shortlist for the final round.'}
+    else if(done){ttl='Round 1 Submitted';msg='Your Round 1 submission has been recorded. Please stay on this page - the coordinator will open the final round login after Round 1 ends.'}
   }
   else if(s.state==='ROUND1_COMPLETED'){
-    if(s.shortlistDone){ if(p.shortlisted){ttl='You are shortlisted!';msg='Congratulations - you qualified for the final round (Round 2). Stay on this page; the coordinator will open the final round login shortly.'}else{ttl='Round 1 Complete';msg='Thank you for taking part. You were not shortlisted for the final round this time.'}}
-    else if(!s.r1Next){ttl='Round 1 Complete';msg='Round 1 is complete for all batches. Your answers are saved - we will shortlist soon. Please stay on this page; finalists will be asked to log in again for the final round.'}
-    else if(done){ttl='Round 1 Submitted';msg='Your Round 1 submission has been recorded. The coordinator will announce the shortlist for the final round.'}
+    if(s.finalLoginOpen){ttl='Final round login is open';msg='Round 1 is over. The coordinator has opened the final round login - log in again to take part in Round 2.'}
+    else if(!s.r1Next){ttl='Round 1 Complete';msg='Round 1 is complete for all batches. Your answers are saved. Please stay on this page - the coordinator will open the final round login shortly and you will log in again for Round 2.'}
+    else if(done){ttl='Round 1 Submitted';msg='Your Round 1 submission has been recorded. Please stay on this page - the coordinator will open the final round login after Round 1 ends.'}
     else{ttl=mine==='Batch 2'?'Batch 1 Completed':'Round 1 Complete';msg=mine==='Batch 2'?`Batch 1 has completed Round 1. <b>Batch 2</b> will be started by the coordinator shortly - stay on this page.`:`Round 1 is finished for the other batch. ${escapeHtml(mine)} will be started by the coordinator shortly - stay on this page.`}
   }
   else if(s.state==='ROUND2_ACTIVE'){
-    if(p.shortlisted&&p.round2Submitted){ttl='Round 2 Submitted';msg='Your Round 2 submission has been recorded. Wait for the coordinator to finish the event.'}
-    else if(!p.shortlisted){ttl='Final Round in progress';msg='The final round is being played by the shortlisted participants. Thank you for taking part!'}
+    if(p.round2Submitted){ttl='Round 2 Submitted';msg='Your Round 2 submission has been recorded. Wait for the coordinator to finish the event.'}
   }
   else if(s.state==='ROUND2_COMPLETED'){extra=s.leaderboardPublished?'<a class="pw-btn" href="/leaderboard.html">VIEW LEADERBOARD →</a>':'<p class="pw-extra">The coordinator has not published the leaderboard yet.</p>'}
   $('#app').innerHTML=layout(`
@@ -37,7 +36,7 @@ function waiting(s,p){
     <section class="pw-win">
       <div class="pw-bar"><b></b><b></b><b></b><span>waiting_room.sh</span></div>
       <div class="pw-body">
-        <span class="pw-badge"><i></i>CONNECTED • ${escapeHtml(p.id)}${p.joinNo?' • #'+p.joinNo+(s.shortlistDone?'':' • '+escapeHtml(p.batch||'')):''}</span>
+        <span class="pw-badge"><i></i>CONNECTED • ${escapeHtml(p.id)}${p.joinNo?' • #'+p.joinNo+(s.finalLoginOpen?'':' • '+escapeHtml(p.batch||'')):''}</span>
         <h2 class="pw-hi">Welcome,<br><span>${escapeHtml(p.name)}</span></h2>
         <ol class="pw-stages">${stages}</ol>
         <div class="pw-card">

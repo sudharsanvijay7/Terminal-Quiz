@@ -35,7 +35,7 @@ $('#app').innerHTML=layout(`
           <li><i>3</i><span>Batch 2<br>Round 1</span></li>
         </ol>
         <p class="plw-msg">Round 1 for <b>Batch 1</b> is over. The coordinator is getting the computers ready for <b>Batch 2</b>.</p>
-        <p class="plw-msg dim" id="plwThanks" hidden>Your Round 1 answers are saved - thank you! Finalists will be called to log in again for Round 2.</p>
+        <p class="plw-msg dim" id="plwThanks" hidden>Your Round 1 answers are saved - thank you! You will be asked to log in again for the final round (Round 2).</p>
         <p class="plw-wait"><em>&gt;</em> waiting for coordinator to open Batch 2 login <span class="plw-dots"><i></i><i></i><i></i></span> <b id="plwT">00:00</b></p>
         <p class="plw-hint">// stay on this page - the login form appears automatically</p>
       </section>
@@ -134,4 +134,4 @@ function setWaitingRoom(on){
 }
 setInterval(()=>{const t=document.getElementById('plwT'); if(!t||$('#plWait').hidden) return; const s=Math.floor((Date.now()-wrSince)/1000); t.textContent=String(Math.floor(s/60)).padStart(2,'0')+':'+String(s%60).padStart(2,'0')},1000);
 /* shown after a round ends and the participant was logged out automatically */
-if(new URLSearchParams(location.search).get('done')){ const n=document.getElementById('plNote'); if(n) n.innerHTML='<b>Round finished - you have been logged out.</b><br>Thank you for taking part! If you are shortlisted for the final round, log in again when the coordinator calls the finalists.'; }
+if(new URLSearchParams(location.search).get('done')){ const n=document.getElementById('plNote'); if(n) n.innerHTML='<b>Round finished - you have been logged out.</b><br>Thank you for taking part! Log in again for the final round when the coordinator opens the final round login.'; }

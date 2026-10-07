@@ -12,13 +12,12 @@ function phase(s,p){
     case 'ROUND1_ACTIVE': {const b=inB(s.r1Batch),sub=b.filter(x=>x.round1Submitted).length;return {t:`Round 1 · ${s.r1Batch} is live`,h:`${sub} of ${b.length} in ${s.r1Batch} have submitted. Each participant has their own 20-minute timer that starts when their quiz opens. Press END once everyone in this batch has finished - their results are saved to a separate CSV.`,a:'end1',l:'END ROUND 1 — '+String(s.r1Batch).toUpperCase(),danger:1}}
     case 'ROUND1_COMPLETED': {
       const done=Object.keys(s.r1Done||{}).filter(k=>s.r1Done[k]).join(' + ')||'Round 1';
-      if(s.r1Next&&!s.shortlistDone&&!s.batch2LoginOpen) return {t:`${done} completed`,h:`Participants of ${done} are logged out and anyone opening the login page sees the "Batch 1 completed" waiting room. Press OPEN ${String(s.r1Next).toUpperCase()} LOGIN when ${s.r1Next} should come in and sit down. (To skip ${s.r1Next}, use the shortlist panel below.)`,a:'openb2',l:'OPEN '+String(s.r1Next).toUpperCase()+' LOGIN'};
-      if(s.r1Next&&!s.shortlistDone) return {t:`${s.r1Next} login is open`,h:`${inB(s.r1Next).length} participants of ${s.r1Next} have logged in so far (${on} online). Start their Round 1 when they are all seated. (To skip it, use the shortlist panel below.)`,a:'start1',l:'START ROUND 1 — '+String(s.r1Next).toUpperCase()};
-      if(!s.shortlistDone) return {t:'Round 1 finished for all batches',h:'Choose how many participants go to the final round and press SHORTLIST below.'};
-      if(!s.finalLoginOpen) return {t:'Finalists selected',h:`${s.shortlistedCount} participants are shortlisted for Round 2. Press OPEN FINAL ROUND LOGIN - everyone is logged out and only the finalists can log in again.`,a:'openfinal',l:'OPEN FINAL ROUND LOGIN'};
-      return {t:'Final round login is open',h:`${s.shortlistedCount} finalists are shortlisted. Start the final round when they have all logged in and are seated.`,a:'start2',l:'START ROUND 2 (FINAL)'};
+      if(!s.finalLoginOpen&&s.r1Next&&!s.batch2LoginOpen) return {t:`${done} completed`,h:`Participants of ${done} are logged out and anyone opening the login page sees the "Batch 1 completed" waiting room. Press OPEN ${String(s.r1Next).toUpperCase()} LOGIN when ${s.r1Next} should come in and sit down. (To skip ${s.r1Next}, use the skip panel below.)`,a:'openb2',l:'OPEN '+String(s.r1Next).toUpperCase()+' LOGIN'};
+      if(!s.finalLoginOpen&&s.r1Next) return {t:`${s.r1Next} login is open`,h:`${inB(s.r1Next).length} participants of ${s.r1Next} have logged in so far (${on} online). Start their Round 1 when they are all seated. (To skip it, use the skip panel below.)`,a:'start1',l:'START ROUND 1 — '+String(s.r1Next).toUpperCase()};
+      if(!s.finalLoginOpen) return {t:'Round 1 finished for all batches',h:'Press OPEN FINAL ROUND LOGIN - everyone is logged out and the participants who played Round 1 log in again for the final round.',a:'openfinal',l:'OPEN FINAL ROUND LOGIN'};
+      return {t:'Final round login is open',h:'Participants are logging in for the final round. Press START ROUND 2 (FINAL) when they have all logged in and are seated - the final round starts only when you press it.',a:'start2',l:'START ROUND 2 (FINAL)'};
     }
-    case 'ROUND2_ACTIVE': return {t:'Round 2 (final) is live',h:'The shortlisted participants are solving the terminal challenges.',a:'end2',l:'END ROUND 2',danger:1};
+    case 'ROUND2_ACTIVE': return {t:'Round 2 (final) is live',h:'The finalists are solving the terminal challenges.',a:'end2',l:'END ROUND 2',danger:1};
     case 'ROUND2_COMPLETED': return s.leaderboardPublished
       ? {t:'Event finished',h:'The leaderboard is published and visible to participants.',done:1}
       : {t:'Event finished',h:'Publish the leaderboard when you are ready to reveal it.',a:'publish',l:'PUBLISH LEADERBOARD'};
@@ -37,7 +36,7 @@ async function dashboard(){
     const sig=JSON.stringify([{...s,remainingMs:null},p,l.slice(0,20),dv,bi]);
     if(sig!==lastSig){
       lastSig=sig;
-      const wasOpen=document.querySelector('.ad-adv')?.open; const keepN=document.getElementById('slN')?.value; window.curBatch=s.state==='ROUND1_ACTIVE'?s.r1Batch:null; window.pendingBatch=(s.state==='ROUND1_COMPLETED'&&s.r1Next)?s.r1Next:null;
+      const wasOpen=document.querySelector('.ad-adv')?.open; const keepN=document.getElementById('slN')?.value; window.curBatch=s.state==='ROUND1_ACTIVE'?s.r1Batch:null;
       const ph=phase(s,p), cur=Math.max(0,STAGES.indexOf(s.state));
       const steps=STAGE_LABELS.map((t,i)=>`<li class="${i<cur?'done':i===cur?'now':''}"><i>${i<cur?'✓':i+1}</i><span>${t}</span></li>`).join('');
       const action=ph.done?`<div class="ad-ok">✓ All done</div>`:!ph.a?'':`<button class="ad-go${ph.danger?' danger':''}" onclick="control('${ph.a}')">${ph.l}</button>`;
@@ -48,7 +47,6 @@ async function dashboard(){
   <div class="ad-topbtns">
     <button class="ad-btn" onclick="exportCsv('1')">BATCH 1 CSV</button>
     <button class="ad-btn" onclick="exportCsv('2')">BATCH 2 CSV</button>
-    ${s.shortlistDone?`<button class="ad-btn" onclick="exportCsv('shortlist')">SHORTLIST CSV</button>`:''}
     <button class="ad-btn" onclick="exportCsv()">FINAL CSV</button>
     <button class="ad-btn" onclick="logoutAdmin()">LOGOUT</button>
   </div>
@@ -67,12 +65,11 @@ async function dashboard(){
     </div>
   </section>
 
-  ${s.state==='ROUND1_COMPLETED'?`<section class="ad-panel" style="margin-bottom:18px">
-    <div class="ad-ph"><h2>Shortlist for the final round</h2><span>${s.shortlistDone?s.shortlistedCount+' selected':'not done yet'}</span></div>
+  ${s.state==='ROUND1_COMPLETED'&&s.r1Next&&!s.finalLoginOpen?`<section class="ad-panel" style="margin-bottom:18px">
+    <div class="ad-ph"><h2>Skip ${escapeHtml(s.r1Next)}</h2><span>optional</span></div>
     <div style="padding:14px 16px;display:flex;gap:12px;align-items:center;flex-wrap:wrap">
-      <span>Top</span><input id="slN" type="number" min="1" value="${keepN||s.shortlistCount||20}" style="width:90px;padding:8px 10px;background:#04100a;color:#d6ffe8;border:1px solid #1f6b43;border-radius:6px;font:inherit">
-      <span style="opacity:.75">from both batches combined - highest Round 1 score first, faster time wins a tie</span>
-      <button class="ad-btn" onclick="shortlist()">${s.shortlistDone?'RE-SHORTLIST':'SHORTLIST'}</button>
+      <span style="opacity:.75">${escapeHtml(s.r1Next)} has not played Round 1. You can skip it and go straight to the final round login.</span>
+      <button class="ad-btn" onclick="control('openfinal')">SKIP ${escapeHtml(String(s.r1Next).toUpperCase())} · OPEN FINAL LOGIN</button>
     </div></section>`:''}
 
   <section class="ad-stats">
@@ -95,7 +92,7 @@ async function dashboard(){
   <section class="ad-cols">
     <div class="ad-panel">
       <div class="ad-ph"><h2>Participants</h2><span>${p.length}</span></div>
-      <div class="ad-scroll"><table class="ad-table"><thead><tr><th>#</th><th>Join #</th><th>Name</th><th>ID</th><th>Batch</th><th>Status</th><th>R1</th><th>R1 Time</th><th>R2</th><th>R2 Time</th><th>Total</th><th>Final</th></tr></thead><tbody>${p.map((x,i)=>`<tr class="${i<3&&x.total>0?'top'+(i+1):''}"><td class="rk">${i+1}</td><td>${x.joinNo||'-'}</td><td>${escapeHtml(x.name)}</td><td class="id">${escapeHtml(x.id)}</td><td>${escapeHtml(x.batch||'-')}</td><td class="${x.online&&!x.exited?'on':'off'}"><span class="status-dot ${x.online&&!x.exited?'is-online':'is-offline'}"></span>${x.exited?'<b style="color:#ff5f6d">EXITED</b> <button class="ad-btn rein" style="padding:3px 8px;font-size:11px;margin-left:6px" data-id="'+escapeHtml(x.id)+'">REINSTATE</button>':(x.online?'Online':'Offline')}${x.exitAttempts?' <span title="Fullscreen exits" style="color:#ff7d89;font-size:12px">&#9888;'+x.exitAttempts+'</span>':''}</td><td>${x.round1Score}</td><td>${fmtTaken(x.round1TimeMs)}</td><td>${x.round2Score}</td><td>${fmtTaken(x.round2TimeMs)}</td><td><b>${x.total}</b></td><td>${x.shortlisted?'<b style="color:#37d67a">★ YES</b>':(s.shortlistDone?'<span class="empty">—</span>':'')}</td></tr>`).join('')||'<tr><td colspan="12" class="empty">Waiting for participants to join…</td></tr>'}</tbody></table></div>
+      <div class="ad-scroll"><table class="ad-table"><thead><tr><th>#</th><th>Join #</th><th>Name</th><th>ID</th><th>Batch</th><th>Status</th><th>R1</th><th>R1 Time</th><th>R2</th><th>R2 Time</th><th>Total</th></tr></thead><tbody>${p.map((x,i)=>`<tr class="${i<3&&x.total>0?'top'+(i+1):''}"><td class="rk">${i+1}</td><td>${x.joinNo||'-'}</td><td>${escapeHtml(x.name)}</td><td class="id">${escapeHtml(x.id)}</td><td>${escapeHtml(x.batch||'-')}</td><td class="${x.online&&!x.exited?'on':'off'}"><span class="status-dot ${x.online&&!x.exited?'is-online':'is-offline'}"></span>${x.exited?'<b style="color:#ff5f6d">EXITED</b> <button class="ad-btn rein" style="padding:3px 8px;font-size:11px;margin-left:6px" data-id="'+escapeHtml(x.id)+'">REINSTATE</button>':(x.online?'Online':'Offline')}${x.exitAttempts?' <span title="Fullscreen exits" style="color:#ff7d89;font-size:12px">&#9888;'+x.exitAttempts+'</span>':''}</td><td>${x.round1Score}</td><td>${fmtTaken(x.round1TimeMs)}</td><td>${x.round2Score}</td><td>${fmtTaken(x.round2TimeMs)}</td><td><b>${x.total}</b></td></tr>`).join('')||'<tr><td colspan="12" class="empty">Waiting for participants to join…</td></tr>'}</tbody></table></div>
     </div>
     <div class="ad-panel">
       <div class="ad-ph"><h2>Activity</h2><span>latest ${Math.min(20,l.length)}</span></div>
@@ -168,7 +165,7 @@ async function control(action){
   let password;
   if(action==='reset'){password=await resetGate();if(!password)return}
   if((action==='end1'||action==='end2')&&!confirm('End this Round 1 batch now? Anyone still answering is submitted automatically.'))return;
-  if(action==='openfinal'&&!confirm('Open the final round login? Everyone still logged in will be logged out; only shortlisted participants can log in again.'))return;
+  if(action==='openfinal'&&!confirm('Open the final round login? Everyone still logged in will be logged out; participants who played Round 1 log in again, and the final round starts only when you press START ROUND 2.'))return;
   const endedBatch=action==='end1'?window.curBatch:null;
   try{await api('/api/admin/control',{method:'POST',body:JSON.stringify({action,password})});toast(({openb2:'Batch 2 login is now open',openfinal:'Final round login is now open'})[action]||action.toUpperCase()+' completed');lastSig='';dashboard();if(endedBatch)exportCsv(endedBatch==='Batch 2'?'2':'1')}catch(x){toast(x.message)}
 }
@@ -176,16 +173,10 @@ async function exportCsv(kind){
 try{
 const r=await fetch('/api/admin/export'+(kind?'?batch='+kind:''),{headers:{Authorization:'Bearer '+getAdmin()}});
 if(!r.ok){const d=await r.json().catch(()=>({}));throw Error(d.error||'Export failed')}
-const name=kind==='1'||kind==='2'?'terminal-quiz-batch'+kind+'-round1.csv':kind==='shortlist'?'terminal-quiz-shortlist-round2.csv':'terminal-quiz-results.csv';
+const name=kind==='1'||kind==='2'?'terminal-quiz-batch'+kind+'-round1.csv':'terminal-quiz-results.csv';
 const blob=await r.blob(),url=URL.createObjectURL(blob),a=document.createElement('a');
 a.href=url;a.download=name;document.body.appendChild(a);a.click();a.remove();URL.revokeObjectURL(url);
   }catch(e){toast(e.message)}
-}
-async function shortlist(){
-  const n=Math.floor(Number(document.getElementById('slN').value));
-  if(!(n>=1)){toast('Enter how many go to the final round');return}
-  if(window.pendingBatch&&!confirm(window.pendingBatch+' has not played Round 1 yet. Shortlist without them?'))return;
-  try{await api('/api/admin/control',{method:'POST',body:JSON.stringify({action:'shortlist',count:n})});toast('Top '+n+' shortlisted');lastSig='';dashboard()}catch(x){toast(x.message)}
 }
 async function logoutAdmin(){try{await api('/api/admin/logout',{method:'POST',body:'{}'})}catch{}clearAdmin();location.href='/admin-login.html'}
 /* let an exited participant rejoin (data-id + delegated click: no inline JS with user data) */
