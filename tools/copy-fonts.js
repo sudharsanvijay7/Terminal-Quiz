@@ -1,37 +1,95 @@
 /* copy-fonts.js - run once on the coordinator laptop:   node tools/copy-fonts.js
-   The site's headings/body text use the "Inter" font. If it is installed on this laptop it looks right here,
-   but the lab computers do not have it. This script finds Inter on this laptop and copies it into
-   public/assets/fonts/ so the server sends it to every computer. (JetBrains Mono and Outfit are already bundled.) */
+   WHY: the site text uses the "Inter" font name. A laptop that does not have Inter shows its own default font
+   (e.g. Noto Sans on Linux), while the other computers on the LAN show a different one.
+   WHAT THIS DOES: copies a font file set into public/assets/fonts/ and registers it under the name "Inter",
+   so the server sends the SAME font to every computer. No CSS changes needed.
+   It picks the font in this order:
+     1. Inter, if found on this laptop (or in a folder you pass)
+     2. the font THIS laptop really uses for its normal text (so the look you see now = the look everywhere)
+   Usage:
+     node tools/copy-fonts.js                      (automatic)
+     node tools/copy-fonts.js <folder-with-fonts>  (look for Inter in that folder too)
+     node tools/copy-fonts.js --family "Noto Sans" (force a specific installed font family)
+   (JetBrains Mono and Outfit are already bundled.) */
 const fs = require('fs'), path = require('path'), os = require('os');
+const { execFileSync } = require('child_process');
+
 const OUT = path.join(__dirname, '..', 'public', 'assets', 'fonts');
 const home = os.homedir();
+const args = process.argv.slice(2);
+const famIdx = args.indexOf('--family');
+const forcedFamily = famIdx >= 0 ? args[famIdx + 1] : null;
+const extraDir = args.find((a, i) => !a.startsWith('--') && i !== famIdx + 1) || '';
+
+const weights = { thin: 100, extralight: 200, light: 300, regular: 400, medium: 500, semibold: 600, bold: 700, extrabold: 800, black: 900 };
+const fmt = f => ({ '.ttf': 'truetype', '.otf': 'opentype', '.woff': 'woff', '.woff2': 'woff2' })[path.extname(f).toLowerCase()];
+const okExt = f => /\.(ttf|otf|woff2?)$/i.test(f);   // (.ttc collections can't be used by browsers)
+const run = (cmd, a) => { try { return execFileSync(cmd, a, { encoding: 'utf8', stdio: ['ignore', 'pipe', 'ignore'] }).trim(); } catch { return ''; } };
+
 const roots = [
   path.join(home, '.fonts'), path.join(home, '.local', 'share', 'fonts'), '/usr/share/fonts', '/usr/local/share/fonts',
   '/Library/Fonts', path.join(home, 'Library', 'Fonts'), '/System/Library/Fonts',
   'C:\\Windows\\Fonts', path.join(process.env.LOCALAPPDATA || '', 'Microsoft', 'Windows', 'Fonts'),
-  process.argv[2] || ''
+  extraDir
 ].filter(Boolean);
-const found = [];
-function walk(d, depth = 0) {
-  if (depth > 6) return;
-  let ents; try { ents = fs.readdirSync(d, { withFileTypes: true }); } catch { return; }
+
+function walk(d, test, out, depth = 0) {
+  if (depth > 6) return out;
+  let ents; try { ents = fs.readdirSync(d, { withFileTypes: true }); } catch { return out; }
   for (const e of ents) {
     const p = path.join(d, e.name);
-    if (e.isDirectory()) walk(p, depth + 1);
-    else if (/^inter/i.test(e.name) && /\.(ttf|otf|woff2?)$/i.test(e.name) && !/display|italic|tight|mono/i.test(e.name)) found.push(p);
+    if (e.isDirectory()) walk(p, test, out, depth + 1);
+    else if (okExt(e.name) && test(e.name)) out.push(p);
+  }
+  return out;
+}
+
+/* ---- 1. find font files for a family ---- */
+function findInter() {
+  const test = n => /^inter/i.test(n) && !/display|italic|tight|mono/i.test(n);
+  return roots.reduce((acc, r) => walk(r, test, acc), []);
+}
+function findFamily(family) {
+  // ask fontconfig (Linux/macOS with fc-list) for the real files of this family
+  let files = run('fc-list', [family, 'file']).split('\n')
+    .map(l => l.replace(/:\s*$/, '').trim()).filter(f => f && okExt(f));
+  if (!files.length) {   // fallback: search by file name, e.g. "Noto Sans" -> NotoSans*
+    const key = family.replace(/\s+/g, '').toLowerCase();
+    files = roots.reduce((acc, r) => walk(r, n => n.toLowerCase().replace(/[-_\s]/g, '').startsWith(key), acc), []);
+  }
+  return [...new Set(files)];
+}
+function systemDefaultFamily() {
+  for (const q of ['system-ui', 'sans-serif', 'Arial'])
+    { const f = run('fc-match', [q, '-f', '%{family[0]}']); if (f) return f; }
+  return '';
+}
+
+/* ---- 2. decide which font to use ---- */
+let source = '', found = [];
+if (forcedFamily) { source = forcedFamily; found = findFamily(forcedFamily); }
+else {
+  found = findInter();
+  if (found.length) source = 'Inter';
+  else {
+    const fam = systemDefaultFamily();
+    if (fam) { source = fam; found = findFamily(fam); console.log(`Inter is not installed here, so using this laptop's own text font: "${fam}"`); }
   }
 }
-roots.forEach(r => walk(r));
 if (!found.length) {
-  console.log('Inter was not found on this computer, so nothing was copied.');
-  console.log('Fix: download Inter (https://rsms.me/inter/) and run:  node tools/copy-fonts.js <folder-with-the-font-files>');
-  process.exit(0);
+  console.log('Could not find a usable font file (.ttf/.otf/.woff/.woff2) on this computer.');
+  console.log('Fix: run   node tools/copy-fonts.js <folder-with-any-font-files>');
+  console.log('  or force a family:   node tools/copy-fonts.js --family "Noto Sans"');
+  console.log('  (Inter download: https://rsms.me/inter/)');
+  process.exit(1);
 }
+
+/* ---- 3. copy + write the css (always registered as "Inter") ---- */
 fs.mkdirSync(OUT, { recursive: true });
-const fmt = f => ({ '.ttf': 'truetype', '.otf': 'opentype', '.woff': 'woff', '.woff2': 'woff2' })[path.extname(f).toLowerCase()];
-const weights = { thin: 100, extralight: 200, light: 300, regular: 400, medium: 500, semibold: 600, bold: 700, extrabold: 800, black: 900 };
-let css = '/* generated by tools/copy-fonts.js */\n';
-const variable = found.find(f => /variable|\[/i.test(path.basename(f)));
+for (const old of fs.readdirSync(OUT)) if (/^inter-/i.test(old)) fs.unlinkSync(path.join(OUT, old));   // clear older copies
+let css = `/* generated by tools/copy-fonts.js - source font: ${source} (served to all computers as "Inter") */\n`;
+const familyKey = source.replace(/\s+/g, '').toLowerCase();
+const variable = found.find(f => /variable|\[/i.test(path.basename(f)) && !/italic/i.test(path.basename(f)));
 if (variable) {
   const n = 'inter-variable' + path.extname(variable).toLowerCase();
   fs.copyFileSync(variable, path.join(OUT, n));
@@ -40,16 +98,19 @@ if (variable) {
 } else {
   const done = new Set();
   for (const f of found) {
-    const base = path.basename(f).toLowerCase().replace(/\.[a-z0-9]+$/, '');
-    const key = Object.keys(weights).find(k => base === 'inter-' + k || base === 'inter' + k) || (base === 'inter' ? 'regular' : null);
+    const base = path.basename(f).toLowerCase().replace(/\.[a-z0-9]+$/, '').replace(/[_\s]/g, '-');
+    if (/italic|oblique|condensed|display|mono/.test(base)) continue;
+    const style = base.replace(new RegExp('^' + familyKey.replace(/[^a-z0-9]/g, '') + '-?'), '').replace(/^-/, '');
+    const key = Object.keys(weights).find(k => style === k || style === k.replace('semi', 'semi-').replace('extra', 'extra-')) || (style === '' ? 'regular' : null);
     if (!key || done.has(key)) continue;
     done.add(key);
     const n = `inter-${key}` + path.extname(f).toLowerCase();
     fs.copyFileSync(f, path.join(OUT, n));
     css += `@font-face{font-family:'Inter';font-weight:${weights[key]};font-style:normal;font-display:block;src:url('/assets/fonts/${n}') format('${fmt(f)}')}\n`;
-    console.log('Copied', f);
+    console.log('Copied', key.padEnd(10), f);
   }
-  if (!done.size) { console.log('Found Inter files but not in a recognised style (Regular/Bold...).'); process.exit(0); }
+  if (!done.size) { console.log('Found font files but not in a recognised style (Regular/Bold...). Files seen:\n  ' + found.join('\n  ')); process.exit(1); }
+  if (!done.has('regular')) { console.log('Warning: no Regular weight found - text may look odd.'); }
 }
 fs.writeFileSync(path.join(OUT, 'fonts-inter.css'), css);
-console.log('\nDone. Restart the server and hard-refresh the lab computers (Ctrl+F5).');
+console.log('\nDone. Restart the server and hard-refresh the other computers (Ctrl+F5).');

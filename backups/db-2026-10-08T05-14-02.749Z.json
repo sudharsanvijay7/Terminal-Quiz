@@ -27,12 +27,12 @@
       "batch": "Batch 1",
       "joinNo": 1,
       "token": "84f406d8709e98b2dbdfe2ae409562a359adb85da11f62ab",
-      "online": true,
+      "online": false,
       "round1Submitted": true,
       "round1Score": 2,
       "round2Score": 7,
       "createdAt": "2026-10-08T03:53:33.789Z",
-      "lastSeen": 1791436492249,
+      "lastSeen": 1791431815348,
       "r1Set": [
         {
           "id": 39,
