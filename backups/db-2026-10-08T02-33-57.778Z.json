@@ -15,382 +15,94 @@
     },
     "finalLoginOpen": true,
     "batch2LoginOpen": true,
-    "round1StartedAt": 1791430846500,
-    "round1EndedAt": 1791430870957,
-    "round2StartedAt": 1791430902896
+    "round1StartedAt": 1791426318686,
+    "round1EndedAt": 1791426321576,
+    "round2StartedAt": 1791426362662
   },
   "participants": {
-    "13": {
-      "id": "13",
-      "name": "naan dhan da leo",
-      "registerNumber": "13",
+    "898304": {
+      "id": "898304",
+      "name": "shaban",
+      "registerNumber": "898304",
       "batch": "Batch 2",
       "joinNo": 2,
-      "token": "70fa7808f0a4b2c49fb8efc756d00e705382836b50c2db69",
+      "token": "140fd0a245d1634355b6f706d62ccf1f7e02aaa8cf5de69e",
       "online": false,
       "round1Submitted": true,
-      "round1Score": 2,
+      "round1Score": 0,
       "round2Score": 0,
-      "createdAt": "2026-10-08T03:40:42.619Z",
-      "lastSeen": 1791430877338,
+      "createdAt": "2026-10-08T02:25:11.367Z",
+      "lastSeen": 1791426333908,
+      "exitAttempts": 2,
       "r1Set": [
         {
-          "id": 12,
+          "id": 2,
           "perm": [
+            0,
             3,
-            1,
             2,
+            1
+          ]
+        },
+        {
+          "id": 17,
+          "perm": [
+            2,
+            1,
+            3,
             0
           ]
         },
         {
-          "id": 30,
+          "id": 34,
           "perm": [
             1,
             2,
-            3,
-            0
+            0,
+            3
           ]
         },
         {
           "id": 40,
           "perm": [
-            0,
             2,
             3,
+            0,
             1
+          ]
+        },
+        {
+          "id": 27,
+          "perm": [
+            1,
+            0,
+            2,
+            3
           ]
         },
         {
           "id": 3,
           "perm": [
-            1,
             2,
             3,
+            1,
             0
-          ]
-        },
-        {
-          "id": 29,
-          "perm": [
-            1,
-            2,
-            3,
-            0
-          ]
-        },
-        {
-          "id": 21,
-          "perm": [
-            3,
-            1,
-            0,
-            2
-          ]
-        },
-        {
-          "id": 39,
-          "perm": [
-            1,
-            3,
-            0,
-            2
-          ]
-        },
-        {
-          "id": 23,
-          "perm": [
-            3,
-            1,
-            2,
-            0
-          ]
-        },
-        {
-          "id": 16,
-          "perm": [
-            0,
-            2,
-            1,
-            3
-          ]
-        },
-        {
-          "id": 5,
-          "perm": [
-            0,
-            1,
-            2,
-            3
-          ]
-        },
-        {
-          "id": 26,
-          "perm": [
-            0,
-            3,
-            1,
-            2
-          ]
-        },
-        {
-          "id": 6,
-          "perm": [
-            1,
-            2,
-            3,
-            0
-          ]
-        },
-        {
-          "id": 15,
-          "perm": [
-            3,
-            0,
-            1,
-            2
-          ]
-        },
-        {
-          "id": 37,
-          "perm": [
-            2,
-            3,
-            0,
-            1
-          ]
-        },
-        {
-          "id": 24,
-          "perm": [
-            3,
-            2,
-            0,
-            1
-          ]
-        },
-        {
-          "id": 32,
-          "perm": [
-            1,
-            2,
-            3,
-            0
-          ]
-        },
-        {
-          "id": 19,
-          "perm": [
-            0,
-            3,
-            1,
-            2
-          ]
-        },
-        {
-          "id": 9,
-          "perm": [
-            2,
-            0,
-            3,
-            1
           ]
         },
         {
           "id": 10,
           "perm": [
             0,
-            2,
-            3,
-            1
-          ]
-        },
-        {
-          "id": 11,
-          "perm": [
-            3,
-            0,
-            2,
-            1
-          ]
-        }
-      ],
-      "round1StartAt": 1791430846562,
-      "round1TimeMs": 12722,
-      "sessionOver": true
-    },
-    "104": {
-      "id": "104",
-      "name": "unga vijay",
-      "registerNumber": "104",
-      "batch": "Batch 1",
-      "joinNo": 1,
-      "token": "7fd17075c32f1f3049cdff66fd71709419050ef7c9788ce9",
-      "online": true,
-      "round1Submitted": true,
-      "round1Score": 6,
-      "round2Score": 7,
-      "createdAt": "2026-10-08T03:39:27.788Z",
-      "lastSeen": 1791431158193,
-      "r1Set": [
-        {
-          "id": 1,
-          "perm": [
-            0,
-            3,
-            2,
-            1
-          ]
-        },
-        {
-          "id": 31,
-          "perm": [
-            2,
-            3,
             1,
-            0
-          ]
-        },
-        {
-          "id": 14,
-          "perm": [
-            0,
-            3,
-            2,
-            1
-          ]
-        },
-        {
-          "id": 20,
-          "perm": [
-            0,
-            2,
-            1,
-            3
-          ]
-        },
-        {
-          "id": 34,
-          "perm": [
-            2,
-            1,
-            0,
-            3
-          ]
-        },
-        {
-          "id": 16,
-          "perm": [
-            1,
-            3,
-            0,
-            2
-          ]
-        },
-        {
-          "id": 7,
-          "perm": [
-            2,
-            1,
-            0,
-            3
-          ]
-        },
-        {
-          "id": 22,
-          "perm": [
-            3,
-            1,
-            0,
-            2
-          ]
-        },
-        {
-          "id": 9,
-          "perm": [
-            0,
-            2,
-            3,
-            1
-          ]
-        },
-        {
-          "id": 28,
-          "perm": [
-            3,
-            1,
-            2,
-            0
-          ]
-        },
-        {
-          "id": 4,
-          "perm": [
-            0,
-            2,
-            3,
-            1
-          ]
-        },
-        {
-          "id": 5,
-          "perm": [
-            2,
-            0,
-            1,
-            3
-          ]
-        },
-        {
-          "id": 24,
-          "perm": [
-            3,
-            1,
-            2,
-            0
-          ]
-        },
-        {
-          "id": 29,
-          "perm": [
-            0,
-            2,
-            3,
-            1
-          ]
-        },
-        {
-          "id": 25,
-          "perm": [
-            2,
-            3,
-            0,
-            1
-          ]
-        },
-        {
-          "id": 11,
-          "perm": [
-            1,
-            0,
             3,
             2
           ]
         },
         {
-          "id": 33,
+          "id": 18,
           "perm": [
-            2,
-            3,
-            0,
-            1
-          ]
-        },
-        {
-          "id": 3,
-          "perm": [
-            0,
             1,
+            0,
             3,
             2
           ]
@@ -405,30 +117,6 @@
           ]
         },
         {
-          "id": 10,
-          "perm": [
-            3,
-            1,
-            2,
-            0
-          ]
-        }
-      ],
-      "round1StartAt": 1791430773406,
-      "round1TimeMs": 36845,
-      "sessionOver": false,
-      "finalist": true,
-      "r2Set": [
-        {
-          "id": 20,
-          "perm": [
-            0,
-            1,
-            3,
-            2
-          ]
-        },
-        {
           "id": 16,
           "perm": [
             3,
@@ -438,328 +126,553 @@
           ]
         },
         {
-          "id": 1,
+          "id": 12,
+          "perm": [
+            0,
+            1,
+            2,
+            3
+          ]
+        },
+        {
+          "id": 30,
           "perm": [
             0,
             2,
             1,
             3
+          ]
+        },
+        {
+          "id": 29,
+          "perm": [
+            2,
+            1,
+            3,
+            0
+          ]
+        },
+        {
+          "id": 14,
+          "perm": [
+            1,
+            2,
+            3,
+            0
+          ]
+        },
+        {
+          "id": 35,
+          "perm": [
+            3,
+            2,
+            1,
+            0
           ]
         },
         {
           "id": 15,
           "perm": [
             1,
+            3,
+            2,
+            0
+          ]
+        },
+        {
+          "id": 24,
+          "perm": [
+            2,
+            1,
+            3,
+            0
+          ]
+        },
+        {
+          "id": 13,
+          "perm": [
+            0,
+            3,
+            2,
+            1
+          ]
+        },
+        {
+          "id": 1,
+          "perm": [
+            0,
+            1,
+            3,
+            2
+          ]
+        },
+        {
+          "id": 31,
+          "perm": [
+            3,
+            1,
+            2,
+            0
+          ]
+        }
+      ],
+      "round1StartAt": 1791426318797,
+      "round1TimeMs": 2780,
+      "sessionOver": true
+    },
+    "938095": {
+      "id": "938095",
+      "name": "mohammed",
+      "registerNumber": "938095",
+      "batch": "Batch 1",
+      "joinNo": 1,
+      "token": "73701e823338f0451e3ed65624a8e3fc6187f9e96896b467",
+      "online": false,
+      "round1Submitted": true,
+      "round1Score": 0,
+      "round2Score": 0,
+      "createdAt": "2026-10-08T02:24:40.578Z",
+      "lastSeen": 1791426290909,
+      "exitAttempts": 1,
+      "r1Set": [
+        {
+          "id": 37,
+          "perm": [
+            2,
+            3,
+            0,
+            1
+          ]
+        },
+        {
+          "id": 15,
+          "perm": [
+            1,
+            2,
+            3,
+            0
+          ]
+        },
+        {
+          "id": 21,
+          "perm": [
+            3,
+            2,
+            0,
+            1
+          ]
+        },
+        {
+          "id": 38,
+          "perm": [
+            2,
+            0,
+            3,
+            1
+          ]
+        },
+        {
+          "id": 25,
+          "perm": [
+            1,
+            3,
+            0,
+            2
+          ]
+        },
+        {
+          "id": 23,
+          "perm": [
+            0,
+            2,
+            1,
+            3
+          ]
+        },
+        {
+          "id": 10,
+          "perm": [
+            1,
+            2,
+            3,
+            0
+          ]
+        },
+        {
+          "id": 12,
+          "perm": [
+            0,
+            2,
+            3,
+            1
+          ]
+        },
+        {
+          "id": 7,
+          "perm": [
+            0,
+            3,
+            1,
+            2
+          ]
+        },
+        {
+          "id": 30,
+          "perm": [
+            0,
+            2,
+            1,
+            3
+          ]
+        },
+        {
+          "id": 14,
+          "perm": [
+            1,
             0,
             2,
             3
           ]
         },
         {
-          "id": 11,
+          "id": 18,
+          "perm": [
+            0,
+            1,
+            3,
+            2
+          ]
+        },
+        {
+          "id": 17,
+          "perm": [
+            3,
+            2,
+            0,
+            1
+          ]
+        },
+        {
+          "id": 31,
+          "perm": [
+            3,
+            0,
+            1,
+            2
+          ]
+        },
+        {
+          "id": 19,
+          "perm": [
+            2,
+            1,
+            3,
+            0
+          ]
+        },
+        {
+          "id": 32,
+          "perm": [
+            0,
+            2,
+            3,
+            1
+          ]
+        },
+        {
+          "id": 29,
           "perm": [
             3,
             1,
             0,
             2
           ]
+        },
+        {
+          "id": 5,
+          "perm": [
+            1,
+            2,
+            3,
+            0
+          ]
+        },
+        {
+          "id": 40,
+          "perm": [
+            1,
+            3,
+            0,
+            2
+          ]
+        },
+        {
+          "id": 26,
+          "perm": [
+            0,
+            3,
+            2,
+            1
+          ]
+        }
+      ],
+      "round1StartAt": 1791426287528,
+      "round1TimeMs": 3806,
+      "sessionOver": true
+    },
+    "2385095": {
+      "id": "2385095",
+      "name": "Mohammed Shaban",
+      "registerNumber": "2385095",
+      "batch": "Batch 2",
+      "joinNo": 3,
+      "token": "0ee70408f88ecea5913dd94610807537707e945d27e8f01d",
+      "online": false,
+      "round1Submitted": false,
+      "round1Score": 0,
+      "round2Score": 5,
+      "createdAt": "2026-10-08T02:25:58.217Z",
+      "lastSeen": 1791426577860,
+      "finalist": true,
+      "exitAttempts": 3,
+      "r2Set": [
+        {
+          "id": 14,
+          "perm": [
+            3,
+            2,
+            0,
+            1
+          ]
+        },
+        {
+          "id": 13,
+          "perm": [
+            3,
+            0,
+            2,
+            1
+          ]
+        },
+        {
+          "id": 17,
+          "perm": [
+            0,
+            3,
+            2,
+            1
+          ]
+        },
+        {
+          "id": 8,
+          "perm": [
+            1,
+            0,
+            3,
+            2
+          ]
+        },
+        {
+          "id": 18,
+          "perm": [
+            0,
+            3,
+            2,
+            1
+          ]
         }
       ],
       "round2Submitted": true,
-      "round2TimeMs": 15908
+      "round2TimeMs": 92157,
+      "exited": true,
+      "exitedAt": "2026-10-08T02:29:39.594Z"
     }
   },
-  "answers": {
-    "104:1": {
-      "participantId": "104",
-      "questionId": 1,
-      "answer": 0,
-      "at": "2026-10-08T03:39:38.483Z"
-    },
-    "104:31": {
-      "participantId": "104",
-      "questionId": 31,
-      "answer": 2,
-      "at": "2026-10-08T03:39:40.618Z"
-    },
-    "104:14": {
-      "participantId": "104",
-      "questionId": 14,
-      "answer": 0,
-      "at": "2026-10-08T03:39:43.689Z"
-    },
-    "104:20": {
-      "participantId": "104",
-      "questionId": 20,
-      "answer": 0,
-      "at": "2026-10-08T03:39:45.361Z"
-    },
-    "104:34": {
-      "participantId": "104",
-      "questionId": 34,
-      "answer": 2,
-      "at": "2026-10-08T03:39:47.034Z"
-    },
-    "104:16": {
-      "participantId": "104",
-      "questionId": 16,
-      "answer": 0,
-      "at": "2026-10-08T03:39:52.578Z"
-    },
-    "104:7": {
-      "participantId": "104",
-      "questionId": 7,
-      "answer": 2,
-      "at": "2026-10-08T03:39:54.753Z"
-    },
-    "104:22": {
-      "participantId": "104",
-      "questionId": 22,
-      "answer": 3,
-      "at": "2026-10-08T03:39:59.330Z"
-    },
-    "104:9": {
-      "participantId": "104",
-      "questionId": 9,
-      "answer": 0,
-      "at": "2026-10-08T03:40:00.554Z"
-    },
-    "104:28": {
-      "participantId": "104",
-      "questionId": 28,
-      "answer": 3,
-      "at": "2026-10-08T03:40:00.980Z"
-    },
-    "104:4": {
-      "participantId": "104",
-      "questionId": 4,
-      "answer": 0,
-      "at": "2026-10-08T03:40:01.386Z"
-    },
-    "104:24": {
-      "participantId": "104",
-      "questionId": 24,
-      "answer": 3,
-      "at": "2026-10-08T03:40:02.178Z"
-    },
-    "104:25": {
-      "participantId": "104",
-      "questionId": 25,
-      "answer": 2,
-      "at": "2026-10-08T03:40:04.505Z"
-    },
-    "104:11": {
-      "participantId": "104",
-      "questionId": 11,
-      "answer": 1,
-      "at": "2026-10-08T03:40:05.058Z"
-    },
-    "104:3": {
-      "participantId": "104",
-      "questionId": 3,
-      "answer": 0,
-      "at": "2026-10-08T03:40:06.418Z"
-    },
-    "104:36": {
-      "participantId": "104",
-      "questionId": 36,
-      "answer": 3,
-      "at": "2026-10-08T03:40:07.153Z"
-    },
-    "13:12": {
-      "participantId": "13",
-      "questionId": 12,
-      "answer": 3,
-      "at": "2026-10-08T03:40:47.754Z"
-    },
-    "13:30": {
-      "participantId": "13",
-      "questionId": 30,
-      "answer": 1,
-      "at": "2026-10-08T03:40:49.658Z"
-    },
-    "13:40": {
-      "participantId": "13",
-      "questionId": 40,
-      "answer": 0,
-      "at": "2026-10-08T03:40:50.011Z"
-    },
-    "13:3": {
-      "participantId": "13",
-      "questionId": 3,
-      "answer": 1,
-      "at": "2026-10-08T03:40:50.307Z"
-    },
-    "13:29": {
-      "participantId": "13",
-      "questionId": 29,
-      "answer": 1,
-      "at": "2026-10-08T03:40:50.563Z"
-    },
-    "13:23": {
-      "participantId": "13",
-      "questionId": 23,
-      "answer": 3,
-      "at": "2026-10-08T03:40:51.118Z"
-    },
-    "13:5": {
-      "participantId": "13",
-      "questionId": 5,
-      "answer": 0,
-      "at": "2026-10-08T03:40:51.482Z"
-    },
-    "13:10": {
-      "participantId": "13",
-      "questionId": 10,
-      "answer": 2,
-      "at": "2026-10-08T03:40:55.027Z"
-    },
-    "13:11": {
-      "participantId": "13",
-      "questionId": 11,
-      "answer": 3,
-      "at": "2026-10-08T03:40:55.275Z"
-    }
-  },
+  "answers": {},
   "terminal": {
-    "13": {
+    "898304": {
       "cwd": "/",
       "files": {},
       "challenge": 1,
       "attempts": {}
     },
-    "104": {
+    "938095": {
+      "cwd": "/",
+      "files": {},
+      "challenge": 1,
+      "attempts": {}
+    },
+    "2385095": {
       "cwd": "/",
       "files": {},
       "challenge": 6,
       "attempts": {
-        "1": 1,
-        "11": 1,
-        "15": 1,
-        "16": 1,
-        "20": 1
+        "8": 1,
+        "13": 1,
+        "14": 1,
+        "17": 1,
+        "18": 1
       },
       "solved": {
-        "1": true,
-        "20": true
+        "18": true
       }
     }
   },
   "logs": [
     {
-      "time": "2026-10-08T03:39:25.456Z",
+      "time": "2026-10-08T02:24:20.200Z",
       "type": "RESET",
       "detail": "Event reset"
     },
     {
-      "time": "2026-10-08T03:39:27.788Z",
+      "time": "2026-10-08T02:24:40.579Z",
       "type": "LOGIN",
-      "detail": "104 unga vijay #1 Batch 1"
+      "detail": "938095 mohammed #1 Batch 1"
     },
     {
-      "time": "2026-10-08T03:39:33.335Z",
+      "time": "2026-10-08T02:24:42.325Z",
+      "type": "FULLSCREEN_EXIT",
+      "detail": "938095 mohammed left fullscreen (warning 1 of 3)"
+    },
+    {
+      "time": "2026-10-08T02:24:47.398Z",
       "type": "ROUND_START",
       "detail": "Round 1 - Batch 1"
     },
     {
-      "time": "2026-10-08T03:39:33.406Z",
+      "time": "2026-10-08T02:24:47.528Z",
       "type": "ROUND1_BEGIN",
-      "detail": "104 unga vijay started their Round 1 timer"
+      "detail": "938095 mohammed started their Round 1 timer"
     },
     {
-      "time": "2026-10-08T03:40:10.251Z",
+      "time": "2026-10-08T02:24:51.334Z",
       "type": "ROUND1_SUBMIT",
-      "detail": "104"
+      "detail": "938095"
     },
     {
-      "time": "2026-10-08T03:40:19.305Z",
+      "time": "2026-10-08T02:24:51.338Z",
       "type": "ROUND_END",
       "detail": "Round 1 - Batch 1 (results saved to its own CSV)"
     },
     {
-      "time": "2026-10-08T03:40:31.157Z",
+      "time": "2026-10-08T02:24:56.122Z",
+      "type": "FULLSCREEN_EXIT",
+      "detail": "device 864DE5 left fullscreen before joining (warning 1 of 3)"
+    },
+    {
+      "time": "2026-10-08T02:24:58.818Z",
       "type": "BATCH2_LOGIN",
       "detail": "Batch 2 login opened - Batch 2 participants can now log in"
     },
     {
-      "time": "2026-10-08T03:40:42.619Z",
+      "time": "2026-10-08T02:25:11.367Z",
       "type": "LOGIN",
-      "detail": "13 naan dhan da leo #2 Batch 2"
+      "detail": "898304 shaban #2 Batch 2"
     },
     {
-      "time": "2026-10-08T03:40:46.501Z",
+      "time": "2026-10-08T02:25:14.257Z",
+      "type": "FULLSCREEN_EXIT",
+      "detail": "898304 shaban left fullscreen (warning 1 of 3)"
+    },
+    {
+      "time": "2026-10-08T02:25:18.686Z",
       "type": "ROUND_START",
       "detail": "Round 1 - Batch 2"
     },
     {
-      "time": "2026-10-08T03:40:46.562Z",
+      "time": "2026-10-08T02:25:18.797Z",
       "type": "ROUND1_BEGIN",
-      "detail": "13 naan dhan da leo started their Round 1 timer"
+      "detail": "898304 shaban started their Round 1 timer"
     },
     {
-      "time": "2026-10-08T03:40:59.285Z",
+      "time": "2026-10-08T02:25:21.577Z",
       "type": "ROUND1_SUBMIT",
-      "detail": "13"
+      "detail": "898304"
     },
     {
-      "time": "2026-10-08T03:41:10.960Z",
+      "time": "2026-10-08T02:25:21.580Z",
       "type": "ROUND_END",
       "detail": "Round 1 - Batch 2 (results saved to its own CSV)"
     },
     {
-      "time": "2026-10-08T03:41:17.989Z",
+      "time": "2026-10-08T02:25:31.225Z",
+      "type": "FULLSCREEN_EXIT",
+      "detail": "898304 shaban left fullscreen (warning 2 of 3)"
+    },
+    {
+      "time": "2026-10-08T02:25:35.266Z",
       "type": "FINAL_LOGIN",
       "detail": "Final round login opened - everyone who played Round 1 must log in again"
     },
     {
-      "time": "2026-10-08T03:41:34.760Z",
+      "time": "2026-10-08T02:25:58.217Z",
       "type": "LOGIN",
-      "detail": "104 unga vijay logged in again for the final round"
+      "detail": "2385095 Mohammed Shaban #3 Batch 2"
     },
     {
-      "time": "2026-10-08T03:41:42.896Z",
+      "time": "2026-10-08T02:25:59.758Z",
+      "type": "FULLSCREEN_EXIT",
+      "detail": "2385095 Mohammed Shaban left fullscreen (warning 1 of 3)"
+    },
+    {
+      "time": "2026-10-08T02:26:02.662Z",
       "type": "ROUND_START",
       "detail": "Round 2"
     },
     {
-      "time": "2026-10-08T03:41:47.383Z",
+      "time": "2026-10-08T02:27:23.003Z",
+      "type": "TERMINAL_ATTEMPT",
+      "detail": "2385095 challenge 14"
+    },
+    {
+      "time": "2026-10-08T02:27:25.249Z",
+      "type": "TERMINAL_ATTEMPT",
+      "detail": "2385095 challenge 13"
+    },
+    {
+      "time": "2026-10-08T02:27:27.907Z",
+      "type": "TERMINAL_ATTEMPT",
+      "detail": "2385095 challenge 17"
+    },
+    {
+      "time": "2026-10-08T02:27:31.062Z",
+      "type": "TERMINAL_ATTEMPT",
+      "detail": "2385095 challenge 8"
+    },
+    {
+      "time": "2026-10-08T02:27:34.819Z",
       "type": "TERMINAL_SOLVE",
-      "detail": "104 challenge 20"
+      "detail": "2385095 challenge 18"
     },
     {
-      "time": "2026-10-08T03:41:53.274Z",
-      "type": "TERMINAL_ATTEMPT",
-      "detail": "104 challenge 16"
-    },
-    {
-      "time": "2026-10-08T03:41:55.403Z",
-      "type": "TERMINAL_SOLVE",
-      "detail": "104 challenge 1"
-    },
-    {
-      "time": "2026-10-08T03:41:57.250Z",
-      "type": "TERMINAL_ATTEMPT",
-      "detail": "104 challenge 15"
-    },
-    {
-      "time": "2026-10-08T03:41:58.804Z",
-      "type": "TERMINAL_ATTEMPT",
-      "detail": "104 challenge 11"
-    },
-    {
-      "time": "2026-10-08T03:41:58.804Z",
+      "time": "2026-10-08T02:27:34.819Z",
       "type": "ROUND2_SUBMIT",
-      "detail": "104 completed Round 2"
+      "detail": "2385095 completed Round 2"
     },
     {
-      "time": "2026-10-08T03:42:34.400Z",
+      "time": "2026-10-08T02:27:36.593Z",
+      "type": "FULLSCREEN_EXIT",
+      "detail": "2385095 Mohammed Shaban left fullscreen (warning 2 of 3)"
+    },
+    {
+      "time": "2026-10-08T02:27:46.947Z",
       "type": "ROUND_END",
       "detail": "Round 2"
     },
     {
-      "time": "2026-10-08T03:42:38.063Z",
+      "time": "2026-10-08T02:28:47.766Z",
       "type": "LEADERBOARD",
       "detail": "Published"
+    },
+    {
+      "time": "2026-10-08T02:29:39.594Z",
+      "type": "FULLSCREEN_EXIT",
+      "detail": "2385095 Mohammed Shaban left fullscreen (warning 3 of 3)"
+    },
+    {
+      "time": "2026-10-08T02:29:39.594Z",
+      "type": "PARTICIPANT_EXITED",
+      "detail": "2385095 Mohammed Shaban locked out after 3 fullscreen exits"
     }
   ],
   "questions": [
@@ -1303,5 +1216,15 @@
       },
       "answer": "FINAL-2026"
     }
-  ]
+  ],
+  "devices": {
+    "864de5425db41a5f33e91ad3": {
+      "attempts": 1,
+      "blocked": false,
+      "firstSeen": "2026-10-08T02:24:56.122Z",
+      "ip": "172.20.10.4",
+      "ua": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/154.0.0.0 Safari/537.36",
+      "lastAt": "2026-10-08T02:24:56.122Z"
+    }
+  }
 }

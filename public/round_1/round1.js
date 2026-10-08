@@ -19,7 +19,7 @@ async function init(){
     const [d,q]=await Promise.all([api('/api/me'),api('/api/questions')]);
     if(!d.can?.round1){location.href='/participant.html';return}
     me=d.participant; questions=q;
-    const saved={...loadLocal(),...(d.myAnswers||{})}; /* server copy wins - resume works even on another PC */
+    const saved=d.myAnswers||{}; /* server copy only - the question set/order is per participant */
     questions.forEach(x=>{const v=saved[x.id];if(v!=null&&v>=0&&v<x.options.length)answers[x.id]=v});
     const first=questions.findIndex(x=>answers[x.id]==null);
     qi=first<0?0:first;

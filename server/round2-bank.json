@@ -1,0 +1,437 @@
+[
+ {
+  "id": 1,
+  "level": "easy",
+  "title": "The Ghost File",
+  "skill": "Hidden files",
+  "marks": 2,
+  "description": "You have entered a directory containing several normal files. However, the system administrator has hidden one important file from the normal directory listing. Use the terminal to investigate the directory and identify the hidden file. You may need to use a directory-listing command that also displays files normally hidden from view. Once you find the hidden file, open it and read the secret code stored inside it.",
+  "hint": "A normal directory listing skips names that start with a dot. Try ls with an option that shows all files, then cat the hidden one.",
+  "files": {
+   "/README.txt": "Look carefully. Not every file is shown by a plain ls.",
+   "/notes.txt": "Nothing useful here.",
+   "/report.txt": "Quarterly report - nothing to see.",
+   "/.ghost.txt": "SECRET-GHOST-42"
+  },
+  "options": [
+   "SECRET-GHOST-42",
+   "GHOST-FILE-24",
+   "HIDDEN-OS-42",
+   "SECRET-LINUX-24"
+  ],
+  "answer": "SECRET-GHOST-42"
+ },
+ {
+  "id": 2,
+  "level": "easy",
+  "title": "The Username File",
+  "skill": "cat",
+  "marks": 2,
+  "description": "A username has been stored inside a file named user.txt in the current directory. Use the terminal to locate the file and display its contents. Do not guess the username from the filename; actually read the file using an appropriate terminal command.",
+  "hint": "Use cat to display the contents of a file.",
+  "files": {
+   "/README.txt": "The username is stored in a file in this directory.",
+   "/user.txt": "terminal_user",
+   "/notes.txt": "Remember to change your password.",
+   "/todo.txt": "1. finish lab\n2. submit report"
+  },
+  "options": [
+   "terminal_user",
+   "linux_admin",
+   "system_user",
+   "quiz_user"
+  ],
+  "answer": "terminal_user"
+ },
+ {
+  "id": 3,
+  "level": "easy",
+  "title": "The Lost Clue",
+  "skill": "find -name",
+  "marks": 2,
+  "description": "A file named clue.txt has been placed somewhere inside the current directory. It may not be directly visible because it could be located inside one of the subdirectories. Use a command that searches through the directory structure and locates a file based on its filename. Which filename should you search for to locate the required clue?",
+  "hint": "find . -name \"*.txt\" lists every text file in the tree. Look for the file that holds the clue.",
+  "files": {
+   "/README.txt": "A file holding the clue is buried somewhere in this tree. Search by filename with find.",
+   "/docs/guide.txt": "General guide.",
+   "/docs/archive/2025/old.txt": "Old stuff.",
+   "/docs/archive/2026/clue.txt": "CLUE FOUND - you located the right file.",
+   "/data/numbers.txt": "1\n2\n3"
+  },
+  "options": [
+   "clue.txt",
+   "secret.txt",
+   "answer.txt",
+   "hidden.txt"
+  ],
+  "answer": "clue.txt"
+ },
+ {
+  "id": 4,
+  "level": "easy",
+  "title": "The Message Room",
+  "skill": "cd and cat",
+  "marks": 2,
+  "description": "You are currently outside a directory named messages. Inside that directory is a file named message.txt. First, navigate into the correct directory. Then use the terminal to display the contents of the file. What message is stored inside message.txt?",
+  "hint": "cd messages  then  cat message.txt  (or cat messages/message.txt).",
+  "files": {
+   "/README.txt": "Open the messages directory to read the message.",
+   "/messages/message.txt": "ACCESS-GRANTED",
+   "/archive/message.txt": "ACCESS-DENIED",
+   "/archive/readme.txt": "Old messages are stored here."
+  },
+  "options": [
+   "ACCESS-GRANTED",
+   "ACCESS-DENIED",
+   "MESSAGE-READY",
+   "SYSTEM-GRANTED"
+  ],
+  "answer": "ACCESS-GRANTED"
+ },
+ {
+  "id": 5,
+  "level": "easy",
+  "title": "System Log Investigation",
+  "skill": "ls and cat",
+  "marks": 2,
+  "description": "The current directory contains several files, including a system log. Your task is to inspect the directory, identify system.log, and then read the contents of that file. Do not assume the answer from the filename. Use the terminal to display the actual contents. What message is stored in system.log?",
+  "hint": "Run ls to see the files, then cat system.log.",
+  "files": {
+   "/README.txt": "Check the logs.",
+   "/error.log": "SYSTEM-ERROR",
+   "/boot.log": "kernel loaded\nservices started",
+   "/system.log": "SYSTEM-ONLINE",
+   "/notes.txt": "Do not assume the answer."
+  },
+  "options": [
+   "SYSTEM-ONLINE",
+   "SYSTEM-OFFLINE",
+   "SYSTEM-READY",
+   "SYSTEM-ERROR"
+  ],
+  "answer": "SYSTEM-ONLINE"
+ },
+ {
+  "id": 6,
+  "level": "easy",
+  "title": "Search the Terminal Notes",
+  "skill": "grep -r",
+  "marks": 2,
+  "description": "Several files are present in the directory tree. Somewhere in those files, the word TERMINAL has been written. Instead of opening every file manually, use a recursive search command to look through the available files. When you locate the matching line, identify the code associated with it. What code is revealed by the matching line?",
+  "hint": "grep -r TERMINAL . searches every file below the current directory for the word.",
+  "files": {
+   "/notes/day1.txt": "terminal basics\nlearn the shell",
+   "/notes/day2.txt": "term guide\nTerminal tips (lowercase mix)",
+   "/notes/day3.txt": "TERMINAL code: TERM-2026\nend of notes",
+   "/notes/day4.txt": "homework: practise commands"
+  },
+  "options": [
+   "TERM-2026",
+   "TERMINAL-2026",
+   "TERM-2602",
+   "LINUX-2026"
+  ],
+  "answer": "TERM-2026"
+ },
+ {
+  "id": 7,
+  "level": "easy",
+  "title": "Explore the Directory Tree",
+  "skill": "cd, ls, cat",
+  "marks": 2,
+  "description": "A clue is stored several levels deep inside the directory structure. Starting from the current location, navigate through project → linux → clues. Once you reach the clues directory, locate answer.txt and display its contents. What value is stored inside answer.txt?",
+  "hint": "cd project  ->  cd linux  ->  cd clues  ->  cat answer.txt. Use ls at every step.",
+  "files": {
+   "/project/README.txt": "Two folders here: linux and web.",
+   "/project/linux/notes.txt": "The clues folder holds the answer.",
+   "/project/linux/clues/answer.txt": "LINUX-CLUE-17",
+   "/project/web/clues/answer.txt": "PROJECT-CLUE-17",
+   "/project/web/index.html": "<h1>demo</h1>"
+  },
+  "options": [
+   "LINUX-CLUE-17",
+   "LINUX-ANSWER-71",
+   "CLUE-LINUX-17",
+   "PROJECT-CLUE-17"
+  ],
+  "answer": "LINUX-CLUE-17"
+ },
+ {
+  "id": 8,
+  "level": "easy",
+  "title": "Count the Evidence",
+  "skill": "wc -l",
+  "marks": 2,
+  "description": "A file named data.txt contains several lines of information. Instead of manually counting each line, use an appropriate terminal command that reports the number of lines in a file. How many lines are present in data.txt?",
+  "hint": "wc -l data.txt prints the number of lines in a file.",
+  "files": {
+   "/README.txt": "Count the lines in data.txt.",
+   "/data.txt": "alpha\nbravo\ncharlie\ndelta\necho",
+   "/other.txt": "x\ny\nz\nw\nv\nu\nt\ns\nr\nq"
+  },
+  "options": [
+   "5",
+   "10",
+   "8",
+   "12"
+  ],
+  "answer": "5"
+ },
+ {
+  "id": 9,
+  "level": "easy",
+  "title": "Search for the Secret",
+  "skill": "grep -r",
+  "marks": 2,
+  "description": "The directory contains several files and subdirectories. Somewhere in this directory tree, the word SECRET appears. Use a recursive text-search command to search through the available files. After finding the matching entry, identify the secret code associated with it. What secret code is revealed?",
+  "hint": "grep -r SECRET . ; the matching line holds the code.",
+  "files": {
+   "/docs/intro.txt": "welcome to the lab",
+   "/docs/tips.txt": "keep the secret safe (lowercase word, not our target)",
+   "/vault/log1.txt": "access check passed",
+   "/vault/log2.txt": "SECRET-OS-99",
+   "/vault/log3.txt": "nothing here"
+  },
+  "options": [
+   "SECRET-OS-99",
+   "SECRET-LINUX-99",
+   "OS-SECRET-09",
+   "SECRET-99-OS"
+  ],
+  "answer": "SECRET-OS-99"
+ },
+ {
+  "id": 10,
+  "level": "easy",
+  "title": "Where Am I?",
+  "skill": "pwd",
+  "marks": 2,
+  "description": "During a terminal investigation, you may move through several directories using cd. Before continuing your investigation, you need to know exactly which directory you are currently inside. Use the appropriate terminal command that prints the current working directory. Which command should you use?",
+  "hint": "This one is a command question. Try the commands in the options and see which one the terminal accepts.",
+  "files": {
+   "/README.txt": "Use cd to move around, then find out where you are.",
+   "/home/student/notes.txt": "You are exploring the filesystem.",
+   "/home/student/projects/todo.txt": "learn linux"
+  },
+  "options": [
+   "pwd",
+   "where",
+   "location",
+   "current"
+  ],
+  "answer": "pwd"
+ },
+ {
+  "id": 11,
+  "level": "medium",
+  "title": "The Needle in the Logs",
+  "skill": "grep -r",
+  "marks": 3,
+  "description": "The system contains multiple log files stored in different directories. One of the logs contains an important investigation code. You are given the keyword NEEDLE. Instead of manually opening every log file, search recursively through the directory tree for this keyword. When the matching line is found, read the code associated with it. What code does the terminal investigation reveal?",
+  "hint": "grep -r NEEDLE . prints the file and the line that match.",
+  "files": {
+   "/logs/app/a.log": "INFO started\nINFO ready",
+   "/logs/app/b.log": "INFO idle\ninvestigation code = NEEDLE-731\nINFO done",
+   "/logs/sys/c.log": "INFO boot\nINFO shutdown",
+   "/logs/sys/d.log": "needle in lowercase does not count"
+  },
+  "options": [
+   "NEEDLE-731",
+   "NEEDLE-713",
+   "LOG-NEEDLE-31",
+   "NEEDLE-173"
+  ],
+  "answer": "NEEDLE-731"
+ },
+ {
+  "id": 12,
+  "level": "medium",
+  "title": "Find and Read the Target",
+  "skill": "find, cat",
+  "marks": 3,
+  "description": "A file named target.txt has been placed somewhere inside the current directory structure. You do not know which directory contains it. First, use a file-search command to locate target.txt. After finding its location, navigate to it or use the discovered path to display its contents. What code is stored inside target.txt?",
+  "hint": "find . -name target.txt shows the path. Then cat that path.",
+  "files": {
+   "/README.txt": "target.txt is somewhere in this tree.",
+   "/var/data/archive/target.txt": "TARGET-404",
+   "/var/data/targets.txt": "TARGET-440",
+   "/tmp/target.bak": "TARGET-044",
+   "/home/user/notes.txt": "nothing"
+  },
+  "options": [
+   "TARGET-404",
+   "TARGET-440",
+   "FILE-404-TARGET",
+   "TARGET-044"
+  ],
+  "answer": "TARGET-404"
+ },
+ {
+  "id": 13,
+  "level": "medium",
+  "title": "Sort the Evidence",
+  "skill": "sort",
+  "marks": 3,
+  "description": "The file fruits.txt contains the following entries, but they are not arranged alphabetically: orange, apple, banana, and grape. Use a terminal command that sorts the lines of the file into alphabetical order. Which sequence should the terminal produce?",
+  "hint": "sort fruits.txt prints the lines in alphabetical order.",
+  "files": {
+   "/README.txt": "Sort the evidence.",
+   "/fruits.txt": "orange\napple\nbanana\ngrape"
+  },
+  "options": [
+   "apple, banana, grape, orange",
+   "orange, grape, banana, apple",
+   "banana, apple, orange, grape",
+   "grape, orange, apple, banana"
+  ],
+  "answer": "apple, banana, grape, orange"
+ },
+ {
+  "id": 14,
+  "level": "medium",
+  "title": "Which Entry Appears Most?",
+  "skill": "sort | uniq -c | sort -rn | head",
+  "marks": 3,
+  "description": "The file os.txt contains several operating-system names. Some names appear only once, while another name appears repeatedly. Your task is to sort the entries, group identical entries, count how many times each entry appears, and sort the counts from highest to lowest. Which operating-system name appears most frequently?",
+  "hint": "sort os.txt | uniq -c | sort -rn | head -1",
+  "files": {
+   "/README.txt": "Which operating system appears most often?",
+   "/os.txt": "linux\nwindows\nlinux\nunix\nmacos\nlinux\nwindows"
+  },
+  "options": [
+   "linux",
+   "windows",
+   "unix",
+   "macos"
+  ],
+  "answer": "linux"
+ },
+ {
+  "id": 15,
+  "level": "medium",
+  "title": "Warning in the Logs",
+  "skill": "cd, grep -r",
+  "marks": 3,
+  "description": "You need to investigate a directory called lab/terminal/logs/. Navigate through the directory structure until you reach the logs directory. Several log files are stored there. Search through them for the keyword WARNING. When you locate the matching entry, identify the investigation code contained in the result. What code does the warning entry contain?",
+  "hint": "cd lab/terminal/logs  then  grep WARNING *  (or grep -r WARNING lab).",
+  "files": {
+   "/lab/README.txt": "Logs live in lab/terminal/logs.",
+   "/lab/terminal/logs/a.log": "INFO started\nINFO ok",
+   "/lab/terminal/logs/b.log": "INFO check\nWARNING code: WARNING-2026\nINFO done",
+   "/lab/terminal/logs/c.log": "warning lowercase is not our target\nINFO end"
+  },
+  "options": [
+   "WARNING-2026",
+   "WARNING-2602",
+   "LOG-WARNING-26",
+   "WARNING-SYSTEM-26"
+  ],
+  "answer": "WARNING-2026"
+ },
+ {
+  "id": 16,
+  "level": "hard",
+  "title": "Find the Most Frequent Message",
+  "skill": "grep -c / cut | sort | uniq -c",
+  "marks": 5,
+  "description": "The file system.log contains many entries belonging to three categories: INFO, ERROR, and WARNING. Your job is to determine which category occurs most frequently. Use a pipeline to extract the relevant entries, sort identical entries together, count their occurrences, sort the counts from highest to lowest, and display the highest result. Which message occurs most frequently?",
+  "hint": "Try  cut -d\" \" -f1 system.log | sort | uniq -c | sort -rn | head -1   or count each word with grep -c.",
+  "files": {
+   "/README.txt": "Each log line starts with INFO, ERROR or WARNING.",
+   "/system.log": "INFO service started\nINFO user login\nWARNING disk almost full\nINFO backup done\nERROR connection lost\nINFO cache cleared\nWARNING high cpu\nINFO user logout\nERROR timeout\nINFO update checked\nINFO heartbeat"
+  },
+  "options": [
+   "INFO",
+   "ERROR",
+   "WARNING",
+   "SYSTEM"
+  ],
+  "answer": "INFO"
+ },
+ {
+  "id": 17,
+  "level": "hard",
+  "title": "The Deep Hidden File",
+  "skill": "find -name",
+  "marks": 5,
+  "description": "A secret file has been hidden somewhere several directories deep in the filesystem. You are given only one clue: the filename begins with .secret. You must investigate the directory tree rather than guessing its location. First, search for files whose names begin with .secret. Once you find the correct file, read its contents. What secret code is stored inside the hidden file?",
+  "hint": "find . -name \".secret*\" lists hidden files starting with .secret, then cat the one you find.",
+  "files": {
+   "/README.txt": "The secret file is hidden deep in the tree.",
+   "/opt/app/secret.txt": "SECRET-DEEP-371",
+   "/opt/app/config/backup/.secret_key": "DEEP-SECRET-731",
+   "/home/user/.config/.hidden_note": "DEEP-HIDDEN-713",
+   "/home/user/notes.txt": "nothing here"
+  },
+  "options": [
+   "DEEP-SECRET-731",
+   "DEEP-HIDDEN-713",
+   "SECRET-DEEP-371",
+   "HIDDEN-SECRET-731"
+  ],
+  "answer": "DEEP-SECRET-731"
+ },
+ {
+  "id": 18,
+  "level": "hard",
+  "title": "The Final Chain",
+  "skill": "grep -r, find, grep -c",
+  "marks": 5,
+  "description": "This challenge requires several steps. First, recursively search the directory tree for the keyword FINAL. After finding the matching file, determine its location. Finally, count how many lines in that file contain the word FINAL. The matching entry contains the final investigation code. What code does the final investigation reveal?",
+  "hint": "grep -r FINAL . finds the file; cat it to read the code.",
+  "files": {
+   "/final/a.txt": "just noise",
+   "/final/b.txt": "FINAL=FINAL-2026",
+   "/final/c.txt": "OTHER=END-2026",
+   "/notes/readme.txt": "Look for the keyword in capital letters."
+  },
+  "options": [
+   "FINAL-2026",
+   "FINAL-2602",
+   "END-2026",
+   "FINAL-2062"
+  ],
+  "answer": "FINAL-2026"
+ },
+ {
+  "id": 19,
+  "level": "hard",
+  "title": "Pipeline Investigation",
+  "skill": "sort | uniq -c | sort -rn | head",
+  "marks": 5,
+  "description": "The file words.txt contains many repeated words. You need to determine which word occurs most frequently. Use a pipeline that sorts the words, groups identical words, counts each occurrence, sorts the results by frequency in descending order, and displays only the highest-frequency result. Which word has the highest frequency?",
+  "hint": "sort words.txt | uniq -c | sort -rn | head -1",
+  "files": {
+   "/README.txt": "Find the most frequent word.",
+   "/words.txt": "red\nblue\nred\ngreen\nred\nblue\nyellow\nblue\nred"
+  },
+  "options": [
+   "red",
+   "blue",
+   "green",
+   "yellow"
+  ],
+  "answer": "red"
+ },
+ {
+  "id": 20,
+  "level": "hard",
+  "title": "The Ultimate Investigation",
+  "skill": "grep -r, find, grep -c, cat",
+  "marks": 5,
+  "description": "This is the final and most difficult investigation. You are given only the keyword FINAL. You must investigate the filesystem and complete the following chain: search recursively for FINAL; identify the file containing the matching entry; locate that file using the filesystem search; count how many lines in the file contain FINAL; then read the relevant file contents and identify the secret code. What is the final secret code?",
+  "hint": "grep -r FINAL . then  grep -c FINAL <file>  then  cat <file>.",
+  "files": {
+   "/ultimate/vault/final.dat": "FINAL checkpoint 1 passed\nFINAL checkpoint 2 passed\nFINAL secret: FINAL-2026",
+   "/ultimate/readme.txt": "The vault holds the secret.",
+   "/archive/notes.txt": "old notes, nothing here"
+  },
+  "options": [
+   "FINAL-2026",
+   "FINAL-2062",
+   "ULTIMATE-2026",
+   "FINAL-CODE-26"
+  ],
+  "answer": "FINAL-2026"
+ }
+]

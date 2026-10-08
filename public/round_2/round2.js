@@ -1,27 +1,15 @@
 if(!requireParticipant()) throw new Error('participant auth required');
 
 let termOut='',currentChallenge=1,timerId;
-const challengeInfo=[
- {title:'Ghost in the Directory',skill:'Hidden files',marks:5,description:'Some files may be hidden from a normal directory listing. Use the terminal to inspect the directory carefully and find the hidden clue. Once you discover the secret value, select it from the four options below and submit your answer.',hint:'Try checking directory contents with a command that can reveal hidden entries.'},
- {title:'Needle in the Logs',skill:'Searching text with grep',marks:5,description:'Several log files are stored inside the logs directory. One of them contains a special SECRET value. Search through the log files recursively, identify the value after SECRET=, then choose the matching option below.',hint:'A recursive text-search command is useful when the information may be inside multiple files.'},
- {title:'Lost in the Tree',skill:'cd, ls and cat',marks:10,description:'The clue is not in the starting directory. Navigate through the directory tree, locate the archive directory, and inspect the clue file inside it. Read the file carefully, then select the answer you found.',hint:'Move into directories, list their contents, and display the contents of the relevant text file.'},
- {title:'Pipe Dreams',skill:'grep, sort, uniq and head',marks:10,description:'The data file contains several repeated colour names. Your task is to determine which colour appears most frequently. Use the terminal pipeline to search, sort and count the entries, then select the colour with the highest count.',hint:'A pipeline using sort, uniq -c, sort -rn and head can help identify the most frequent entry.'},
- {title:'The Final Chain',skill:'grep, find and grep -c',marks:20,description:'This is the final and highest-value challenge. Several files contain TARGET entries, but only one contains the required final value. Use the terminal to locate the relevant file, inspect its TARGET line, and select the exact value from the options.',hint:'Use file searching and text searching together to locate the TARGET entry.'}
-];
-const options=[
- ['SECRET-GHOST-42','HIDDEN-GHOST-24','GHOST-SECRET-52','SECRET-FILE-42'],
- ['NEEDLE-731','NEEDLE-713','LOG-NEEDLE-731','SECRET-731'],
- ['TREE-908','TREE-809','ARCHIVE-908','TREE-980'],
- ['red','blue','green','yellow'],
- ['FINAL-2026','FINAL-2062','TARGET-2026','FINAL-2025']
-];
+let ch=null; /* current challenge, sent by the server (per-participant set) */
 
 async function init(){
  try{
   const d=await api('/api/me');
   if(!d.can?.round2){location.href='/participant.html';return}
   currentChallenge=d.terminal.challenge||1;
-  if(currentChallenge>5){location.href='/participant.html';return}
+  ch=await api('/api/round2/challenge');
+  if(currentChallenge>ch.total){location.href='/participant.html';return}
   render(d.participant,d.state,d.terminal);
   startTimer(d.state.remainingMs,()=>location.href='/participant.html');
  }catch(e){
@@ -37,10 +25,9 @@ async function watchRound(){
 setInterval(watchRound,3000);liveUpdates(watchRound);
 
 function render(p,s,t){
- const info=challengeInfo[currentChallenge-1],opts=options[currentChallenge-1];
- const solved=t.solved||{};
- const total=challengeInfo.reduce((a,x)=>a+x.marks,0);
- const pipe=challengeInfo.map((x,i)=>{
+ const info=ch,opts=ch.options,N=ch.total;
+ const total=ch.totalMarks;
+ const pipe=Array.from({length:N},(_,i)=>({title:'Challenge '+(i+1)})).map((x,i)=>{
   const n=i+1;
   const st=n===currentChallenge?'now':(n<currentChallenge?'done':'');
   return (i?'<li class="pl"></li>':'')+`<li class="pn ${st}" title="${escapeHtml(x.title)}"><b>${n}</b></li>`;
@@ -55,7 +42,7 @@ function render(p,s,t){
    <ol class="r2-pipe">${pipe}</ol>
    <div class="r2-timer" id="timerBox"><small>TIME LEFT</small><b id="timer">${fmt(s.remainingMs)}</b></div>
   </header>
-  <div class="r2-prog"><i style="transform:scaleX(${(currentChallenge-1)/5+0.04})"></i></div>
+  <div class="r2-prog"><i style="transform:scaleX(${(currentChallenge-1)/N+0.04})"></i></div>
 
   <main class="r2-main">
    <div class="r2-left r2-in">
@@ -65,7 +52,7 @@ function render(p,s,t){
       <div class="r2-mhead">
        <div class="r2-num"><svg viewBox="0 0 100 100"><circle class="a" cx="50" cy="50" r="46"/><circle class="b" cx="50" cy="50" r="46"/></svg><span>${currentChallenge}</span></div>
        <div class="r2-mmeta">
-        <p class="r2-eye">Challenge ${currentChallenge} of 5</p>
+        <p class="r2-eye">Challenge ${currentChallenge} of ${N} · ${escapeHtml(String(info.level||'').toUpperCase())}</p>
         <h2 class="r2-title">${escapeHtml(info.title)}</h2>
         <p class="r2-tags"><em>Skill</em>${escapeHtml(info.skill)}<em style="margin-left:14px">Marks</em>${info.marks}</p>
        </div>
@@ -96,7 +83,7 @@ function render(p,s,t){
      <div class="r2-afoot"><button id="submitAnswer">SUBMIT ANSWER</button></div>
     </section>
     <div class="r2-stats">
-     <div><small>CHALLENGE</small><b>${currentChallenge}<em>/5</em></b></div>
+     <div><small>CHALLENGE</small><b>${currentChallenge}<em>/${N}</em></b></div>
      <div><small>THIS ONE</small><b>${info.marks}<em> pts</em></b></div>
      <div><small>ROUND TOTAL</small><b>${total}</b></div>
     </div>

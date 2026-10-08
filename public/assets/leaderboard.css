@@ -1,5 +1,5 @@
 /* leaderboard.css — terminal theme (own variables) */
-:root{--lg:#34f58b;--lgold:#ffd24a;--lm:ui-monospace,"JetBrains Mono","Fira Code",Consolas,monospace;--ls:Inter,system-ui,Arial,sans-serif}
+:root{--lg:#34f58b;--lgold:#ffd24a;--lm:"JetBrains Mono",ui-monospace,"Fira Code",Consolas,monospace;--ls:Inter,system-ui,Arial,sans-serif}
 .nav a{color:var(--lg);font-family:var(--lm);text-decoration:none}
 #lbrain{position:fixed;inset:0;z-index:0;width:100%;height:100%;opacity:.2;pointer-events:none}
 #lbconf{position:fixed;inset:0;z-index:60;pointer-events:none}

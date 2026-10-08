@@ -1,67 +1,9 @@
-@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;700;800&family=JetBrains+Mono:wght@400;700&display=swap');
-
-/* ===== FONTS (must stay at the very top) ===== */
-/*
-  Works while the laptop has internet.
-
-  For the offline lab, uncomment the @font-face block below
-  and delete this @import line.
-*/
-@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;700;800&family=JetBrains+Mono:wght@400;700&display=swap');
-
-/*
-  ===== OFFLINE VERSION =====
-
-  Put the .woff2 files in:
-  public/assets/fonts/
-
-  Then uncomment this block and remove the @import above.
-
-@font-face{
-  font-family:'Outfit';
-  font-weight:400;
-  font-display:swap;
-  src:url('/assets/fonts/outfit-latin-400-normal.woff2') format('woff2')
-}
-
-
-
-@font-face{
-  font-family:'Outfit';
-  font-weight:700;
-  font-display:swap;
-  src:url('/assets/fonts/outfit-latin-700-normal.woff2') format('woff2')
-}
-
-
-
-@font-face{
-  font-family:'Outfit';
-  font-weight:800;
-  font-display:swap;
-  src:url('/assets/fonts/outfit-latin-800-normal.woff2') format('woff2')
-}
-
-
-
-@font-face{
-  font-family:'JetBrains Mono';
-  font-weight:400;
-  font-display:swap;
-  src:url('/assets/fonts/jetbrains-mono-latin-400-normal.woff2') format('woff2')
-}
-
-
-
-@font-face{
-  font-family:'JetBrains Mono';
-  font-weight:700;
-  font-display:swap;
-  src:url('/assets/fonts/jetbrains-mono-latin-700-normal.woff2') format('woff2')
-}
-
-
-*/
+/* ===== FONTS (bundled - no internet needed, every LAN computer gets the same fonts) ===== */
+@import url('/assets/fonts/fonts-inter.css');
+@font-face{font-family:'Outfit';font-weight:100 600;font-style:normal;font-display:block;src:url('/assets/fonts/outfit-400.woff') format('woff')}
+@font-face{font-family:'Outfit';font-weight:601 900;font-style:normal;font-display:block;src:url('/assets/fonts/outfit-700.woff') format('woff')}
+@font-face{font-family:'JetBrains Mono';font-weight:100 550;font-style:normal;font-display:block;src:url('/assets/fonts/jetbrains-mono-400.woff') format('woff')}
+@font-face{font-family:'JetBrains Mono';font-weight:551 900;font-style:normal;font-display:block;src:url('/assets/fonts/jetbrains-mono-700.woff') format('woff')}
 
 
 /* ===== ROOT VARIABLES ===== */

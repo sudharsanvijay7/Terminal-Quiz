@@ -5,7 +5,7 @@
    ========================================================= */
 :root{
   --rg:#34f58b;--rw:#ffbd2e;--rr:#ff5f56;
-  --rm:ui-monospace,"JetBrains Mono","Fira Code",Consolas,monospace;
+  --rm:"JetBrains Mono",ui-monospace,"Fira Code",Consolas,monospace;
   --rs:Inter,system-ui,Arial,sans-serif;
 }
 html:has(.r1),body:has(.r1){height:100%;overflow:hidden}

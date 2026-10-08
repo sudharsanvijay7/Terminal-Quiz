@@ -31,7 +31,10 @@ function fmtTaken(ms){if(ms==null)return '<span class="empty">—</span>';const 
 async function dashboard(){
   clearTimeout(pollId);
   try{
-    const [s,p,l,dv,bi]=await Promise.all([api('/api/state'),api('/api/admin/participants'),api('/api/admin/logs'),api('/api/admin/devices').catch(()=>[]),api('/api/batch-status').catch(()=>null)]);
+    const [s,pAll,l,dv,bi]=await Promise.all([api('/api/state'),api('/api/admin/participants'),api('/api/admin/logs'),api('/api/admin/devices').catch(()=>[]),api('/api/batch-status').catch(()=>null)]);
+    /* final round: show only the finalists, no batch details */
+    const finalMode=!!s.finalLoginOpen||s.state==='ROUND2_ACTIVE'||s.state==='ROUND2_COMPLETED';
+    const p=finalMode?pAll.filter(x=>x.finalist):pAll;
     /* redraw only when data changed (timer excluded): no flicker */
     const sig=JSON.stringify([{...s,remainingMs:null},p,l.slice(0,20),dv,bi]);
     if(sig!==lastSig){
@@ -91,8 +94,8 @@ async function dashboard(){
   </section>`:''}
   <section class="ad-cols">
     <div class="ad-panel">
-      <div class="ad-ph"><h2>Participants</h2><span>${p.length}</span></div>
-      <div class="ad-scroll"><table class="ad-table"><thead><tr><th>#</th><th>Join #</th><th>Name</th><th>ID</th><th>Batch</th><th>Status</th><th>R1</th><th>R1 Time</th><th>R2</th><th>R2 Time</th><th>Total</th></tr></thead><tbody>${p.map((x,i)=>`<tr class="${i<3&&x.total>0?'top'+(i+1):''}"><td class="rk">${i+1}</td><td>${x.joinNo||'-'}</td><td>${escapeHtml(x.name)}</td><td class="id">${escapeHtml(x.id)}</td><td>${escapeHtml(x.batch||'-')}</td><td class="${x.online&&!x.exited?'on':'off'}"><span class="status-dot ${x.online&&!x.exited?'is-online':'is-offline'}"></span>${x.exited?'<b style="color:#ff5f6d">EXITED</b> <button class="ad-btn rein" style="padding:3px 8px;font-size:11px;margin-left:6px" data-id="'+escapeHtml(x.id)+'">REINSTATE</button>':(x.online?'Online':'Offline')}${x.exitAttempts?' <span title="Fullscreen exits" style="color:#ff7d89;font-size:12px">&#9888;'+x.exitAttempts+'</span>':''}</td><td>${x.round1Score}</td><td>${fmtTaken(x.round1TimeMs)}</td><td>${x.round2Score}</td><td>${fmtTaken(x.round2TimeMs)}</td><td><b>${x.total}</b></td></tr>`).join('')||'<tr><td colspan="12" class="empty">Waiting for participants to join…</td></tr>'}</tbody></table></div>
+      <div class="ad-ph"><h2>${finalMode?'Finalists':'Participants'}</h2><span>${p.length}</span></div>
+      <div class="ad-scroll"><table class="ad-table"><thead><tr><th>#</th>${finalMode?'':'<th>Join #</th>'}<th>Name</th><th>ID</th>${finalMode?'':'<th>Batch</th>'}<th>Status</th><th>R1</th><th>R1 Time</th><th>R2</th><th>R2 Time</th><th>Total</th></tr></thead><tbody>${p.map((x,i)=>`<tr class="${i<3&&x.total>0?'top'+(i+1):''}"><td class="rk">${i+1}</td>${finalMode?'':`<td>${x.joinNo||'-'}</td>`}<td>${escapeHtml(x.name)}</td><td class="id">${escapeHtml(x.id)}</td>${finalMode?'':`<td>${escapeHtml(x.batch||'-')}</td>`}<td class="${x.online&&!x.exited?'on':'off'}"><span class="status-dot ${x.online&&!x.exited?'is-online':'is-offline'}"></span>${x.exited?'<b style="color:#ff5f6d">EXITED</b> <button class="ad-btn rein" style="padding:3px 8px;font-size:11px;margin-left:6px" data-id="'+escapeHtml(x.id)+'">REINSTATE</button>':(x.online?'Online':'Offline')}${x.exitAttempts?' <span title="Fullscreen exits" style="color:#ff7d89;font-size:12px">&#9888;'+x.exitAttempts+'</span>':''}</td><td>${x.round1Score}</td><td>${fmtTaken(x.round1TimeMs)}</td><td>${x.round2Score}</td><td>${fmtTaken(x.round2TimeMs)}</td><td><b>${x.total}</b></td></tr>`).join('')||`<tr><td colspan="12" class="empty">${finalMode?'Waiting for finalists to log in…':'Waiting for participants to join…'}</td></tr>`}</tbody></table></div>
     </div>
     <div class="ad-panel">
       <div class="ad-ph"><h2>Activity</h2><span>latest ${Math.min(20,l.length)}</span></div>
